@@ -1,0 +1,88 @@
+{%- liquid
+  if section.id == 'main-qv'
+    assign col_style = '3'
+  else
+    assign col_style = '15'
+  endif
+-%}
+
+<style>
+  .sr4-pr-choose__wrap {
+    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch
+  }
+  .sr4-pr-choose__title {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 500
+  }
+  .sr4-pr-choose__img .lz_op_ef {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center
+  }
+  .sr4-row.sr4-pr-choose__wrap {
+    margin: 10px 0 25px
+  }
+  .sr4-pr-choose__style~.nt_cart_form .swatch {
+    margin-bottom: 15px
+  }
+  .sr4-pr-choose__wrap > .sr4-pr-choose__item {
+    padding: 5px;
+    border: 1px solid #ddd;
+    margin-right: 10px;
+    border-radius: 4px
+  }
+  .rtl_true .sr4-pr-choose__wrap > .sr4-pr-choose__item {
+    margin-right: 0;
+    margin-left: 10px
+  }
+  .sr4-pr-choose__wrap > .sr4-pr-choose__item:last-child {
+    margin: 0
+  }
+  .sr4-pr-choose__info {
+    color: var(--secondary-color);
+    font-size: 12px;
+    font-weight: 500;
+    margin-top: 5px
+  }
+  .sr4-pr-choose__img-hover {
+    opacity: 0 !important;
+    -webkit-transition: opacity 0.5s
+    , -webkit-transform 2s cubic-bezier(0, 0, 0.44, 1.18);
+    transition: opacity 0.5s
+    , transform 2s cubic-bezier(0, 0, 0.44, 1.18)
+    , -webkit-transform 2s cubic-bezier(0, 0, 0.44, 1.18)
+  }
+  .sr4-pr-choose__item:hover .sr4-pr-choose__img-hover {
+    opacity: 1 !important;
+    transform: scale(1.09)
+  }
+  .sr4-pr-choose__wrap > .sr4-pr-choose__item.is--chosen {
+    border: 2px solid var(--accent-color);
+    background-color: rgba(var(--accent-color-rgb), 0.06)
+  }
+</style>
+<div class="sr4-pr-choose__style">
+  {%- capture choose__html -%}
+      {%- for pr in advance_pr_type %}{% assign pr_imgs = pr.images -%}
+         {%- assign title_chosen_pr = pr.metafields.theme.advance_pr_title | default:pr.title -%}
+         <div class="sr4-col-4 sr4-col-md-{{col_style}} sr4-col-item sr4-pr-choose__item sr4-text-center{% if pid == pr.id %}{% assign title_chosen = ': ' | append: title_chosen_pr %} is--chosen{% endif %}">
+            <a href="{{pr.url}}" class="sr4-d-block" data-tooltip="top" title="{{pr.title | escape}}">
+               {%- if pr_imgs.size > 0 %}{% assign image = pr_imgs[0] -%}{% unless image0 %}{% assign image0_ratio = image.aspect_ratio %}{% endunless -%}
+               <div class="sr4-pr-choose__img sr4_ratio sr4-pr sr4-oh">
+                  <img class="sr4-pr-choose__img-main lazyloadsr4 sr4-lz--fadeIn" data-src="{{ image | image_url: width: 1 }}" data-widths="[102,204]" data-optimumx="2" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}">
+                  {%- if pr_imgs.size > 1 %}{% assign image = pr_imgs[1] -%}
+                  <img class="sr4-pr-choose__img-hover sr4-pe-none sr4-pa sr4-t-0 sr4-t-0 sr4-t-0 sr4-t-0 sr4-op-0 lazyloadsr4 sr4-lz--fadeIn" data-src="{{ image | image_url: width: 1 }}" data-widths="[102,204]" data-optimumx="2" data-sizes="auto" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}">
+                  {%- endif -%}
+               </div>
+               {%- endif -%}
+               <div class="sr4-pr-choose__info sr4-truncate">{{pr.metafields.theme.advance_pr_title | default:pr.title}}</div>      
+            </a>
+         </div>
+      {%- endfor -%}
+    {%- endcapture -%}
+  <h4 class="sr4-pr-choose__title sr4-truncate">{{ title | escape }}{{ title_chosen }}</h4>
+  <div class="sr4-row sr4-g-0 sr4-flex-nowrap sr4-pr-choose__wrap sr4_ratioadapt sr4-current-scrollbar-" style="--aspect-ratioapt:{{image0_ratio}}">{{ choose__html }}</div>
+</div>

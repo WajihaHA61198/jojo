@@ -1,0 +1,38 @@
+.sr4-pagination-wrapper {
+  border-top: 1px solid var(--border-color);
+  margin-bottom: 60px;
+  text-align: inherit !important;
+}
+.sr4-has-btn-load-more .sr4-pagination-wrapper,
+.sr4-has-btn-infinite .sr4-pagination-wrapper {
+  padding-top: 40px;
+}
+
+.sr4-pagination-wrapper .sr4-pagination__list {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 0;
+  padding: 5px 10px;
+}
+.sr4-pagination-wrapper .sr4-pagination__list li {
+  float: left;
+  margin: 0 10px;
+  color: var(--sr4-dark-color);
+}
+.sr4-pagination__item {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 0;
+  padding: 5px 10px;
+}
+.sr4-pagination__list li a:hover,
+.sr4-pagination__list .pagination__item--current {
+  color: #ec0101;
+}
+.sr4-prs-footer .sr4-btn.sr4-loadmore-btn svg.sr4-btn-icon {
+  width: 30px;
+  height: 30px;
+}
+.sr4-pagination-wrapper > a {
+  margin-top: 40px;
+}

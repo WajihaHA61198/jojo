@@ -1,0 +1,84 @@
+.sr4-single-product-badge {
+  opacity: 1 !important;
+  top: 15px;
+  right: 15px;
+  z-index: 100;
+  transform-origin: 100% 0;
+  -webkit-transform-origin: 100% 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: flex-end;
+}
+.sr4-single-product-badge > span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 60px;
+  min-height: 24px;
+  font-size: 14px;
+  color: #fff;
+  margin-bottom: 10px;
+  word-break: break-word;
+  padding: 0 5px;
+  line-height: 1;
+  text-align: center;
+}
+.badge_shape_1 .sr4-single-product-badge > span {
+  height: 60px;
+  border-radius: 30px;
+}
+.sr4-single-product-badge > .sr4-badge-sale {
+  color: var(--sale-badge-color);
+  background-color: var(--sale-badge-background);
+}
+.sr4-single-product-badge > .sr4-badge-new {
+  color: var(--new-badge-color);
+  background-color: var(--new-badge-background);
+}
+.sr4-single-product-badge > .sr4-badge-hot {
+  color: var(--hot-badge-color);
+  background-color: var(--hot-badge-background);
+}
+.sr4-single-product-badge > .sr4-badge-soldout {
+  color: var(--soldout-badge-color);
+  background-color: var(--soldout-badge-background);
+}
+.sr4-single-product-badge > .sr4-badge-preorder {
+  color: var(--preorder-badge-color);
+  background-color: var(--preorder-badge-background);
+}
+.sr4-single-product-badge > .sr4-badge-custom {
+  color: var(--custom-badge-color);
+  background-color: var(--custom-badge-background);
+}
+
+.sr4-single-product-badge > .sr4-badge-item {
+  display: none;
+}
+.sr4-single-product-badge > .sr4-badge-item:not([hidden]) {
+  display: inline-flex;
+  -webkit-animation: 1s sr4-ani-fadeIn;
+  animation: 1s sr4-ani-fadeIn;
+}
+[data-main-media] {
+  z-index: 1;
+}
+@media (max-width: 1024px) {
+  .sr4-single-product-badge > span {
+    margin-bottom: 5px;
+    min-width: 40px;
+    font-size: 12px;
+  }
+  .badge_shape_1 .sr4-single-product-badge > span {
+    height: 40px;
+  }
+}
+@media (max-width: 767px) {
+  .sr4-single-product-badge > span {
+    min-width: 36px;
+  }
+  .badge_shape_1 .sr4-single-product-badge > span {
+    height: 36px;
+  }
+}

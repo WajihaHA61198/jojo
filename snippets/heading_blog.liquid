@@ -1,0 +1,28 @@
+{%- if se_bks.size > 0 -%}
+<div class="page-head sr4-pr sr4-oh page_bg_img {{se_stts.content_align}}">
+   <div class="sr4-container sr4-pr sr4-z-100">
+      {%- for block in se_bks -%}
+      	{%- assign bk_stts = block.settings -%}
+        {%- case block.type -%}
+            {%- when '1' -%}
+            {%- assign general_block = true -%}
+                <h1 data-lh="{{bk_stts.text_lh_mb}}" data-lh-md="{{bk_stts.text_lh}}" data-lh-lg="{{bk_stts.text_lh}}" class="title-head sr4-bl-item sr4-animation-none sr4-text-bl sr4-fnt-fm-{{bk_stts.fontf}} sr4-font-italic-{{bk_stts.font_italic}} sr4-uppercase-{{bk_stts.font_uppercase}} sr4-hidden-mobile-{{bk_stts.hidden_mobile}} sr4-br-mb-{{bk_stts.remove_br_tag}} sr4-text-shadow-{{bk_stts.text_shadow}}" id="b_{{block.id}}" {%- render 'bk_cus_style',type:'custom_text',bk_stts:bk_stts,ani_delay:ani_delay -%}>{{ blog.title }}</h1>
+            {%- when '2' -%}
+                {% if block.settings.content == blank %}{% continue %}{% endif %}{%- assign general_block = true -%}<div data-lh="{{bk_stts.text_lh_mb}}" data-lh-md="{{bk_stts.text_lh}}" data-lh-lg="{{bk_stts.text_lh}}" class="desc-head sr4-bl-item sr4-animation-none sr4-text-bl sr4-fnt-fm-{{bk_stts.fontf}} sr4-font-italic-{{bk_stts.font_italic}} sr4-uppercase-{{bk_stts.font_uppercase}} sr4-hidden-mobile-{{bk_stts.hidden_mobile}} sr4-br-mb-{{bk_stts.remove_br_tag}} sr4-text-shadow-{{bk_stts.text_shadow}}" id="b_{{block.id}}" {%- render 'bk_cus_style',type:'custom_text',bk_stts:bk_stts,ani_delay:ani_delay -%}>{{ block.settings.content }}</div>
+            {%- when '3' -%}
+           	<nav class="breadcrumbs" role="navigation" aria-label="breadcrumbs" style="--brc-cl:{{bk_stts.breadcrumb_color}};--brc_mgb:{{bk_stts.brc_mgb}}px;">
+      				<ul class="breadcrumbs__list">
+      		           <li class="breadcrumbs__item">
+      			          	<a href="{{ routes.root_url }}" class="sr4-dib">{{'general.breadcrumb.home' | t}}</a> <svg class="sr4-icon-arrow" viewBox="0 0 100 100"><path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" class="arrow" transform="translate(100, 100) rotate(180) "></path></svg> 
+      			        </li>
+      			        <li class="breadcrumbs__item">{{ blog.title }}</li>
+      			    </ul>
+      			</nav> 
+      		{%- endcase -%} 
+      {%- endfor -%}
+   </div>
+</div>
+{%- endif -%} 
+{%- if general_block -%}
+    {{ 'general-block.css' | asset_url | stylesheet_tag }}
+{%- endif -%}

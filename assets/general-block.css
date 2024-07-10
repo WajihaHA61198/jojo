@@ -1,0 +1,107 @@
+.sr4-col-inner {
+  padding: var(--pd);
+  background-color: var(--bg-cl);
+}
+.sr4-has-imgbg {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.sr4-text-bl {
+  font-size: var(--text-fs);
+  font-weight: var(--text-fw);
+  line-height: var(--text-lh);
+  letter-spacing: var(--text-ls);
+  font-style: var(--text-fonts);
+  color: var(--text-cl);
+  margin-bottom: var(--text-mgb);
+}
+.sr4-font-italic-true {
+  font-style: italic !important;
+}
+.sr4-text-shadow-true {
+  text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+}
+.sr4-img-child::before,
+.sr4-img-child::after {
+  pointer-events: none;
+}
+.sr4-img-child,
+.custom-menu,
+.socials-block,
+.sr4-newsletter-parent {
+  margin-bottom: var(--mgb);
+}
+.sr4-img-child img {
+  width: 100%;
+  max-width: var(--width);
+  display: inline-block;
+  vertical-align: top;
+}
+.sr4-space-html {
+  height: var(--height);
+  margin-bottom: var(--mgb);
+  vertical-align: top;
+}
+.sr4-space-html::before {
+  content: '';
+  display: inline-block;
+  max-width: 100%;
+  background-color: var(--color);
+  width: var(--width);
+  height: var(--height);
+  vertical-align: top;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+  .sr4-space-html {
+    height: var(--height-tl);
+    margin-bottom: var(--mgb-tl);
+  }
+  .sr4-space-html::before {
+    background-color: var(--color);
+    width: var(--width-tl);
+    height: var(--height-tl);
+  }
+  .sr4-hidden-tablet-true {
+    display: none;
+  }
+  .sr4-col-inner {
+    padding: var(--pd-tb);
+  }
+}
+@media (max-width: 767px) {
+  .sr4-col-inner {
+    padding: var(--pd-mb);
+  }
+  .sr4-text-bl {
+    font-size: var(--text-fs-mb);
+    line-height: var(--text-lh-mb);
+    letter-spacing: var(--text-ls-mb);
+    margin-bottom: var(--text-mgb-mb);
+  }
+  .sr4-hidden-mobile-true {
+    display: none;
+  }
+  .sr4-br-mb-true br {
+    display: none;
+  }
+
+  .sr4-img-child,
+  .custom-menu,
+  .socials-block,
+  .sr4-newsletter-parent {
+    margin-bottom: var(--mgb-mb);
+  }
+  .sr4-space-html {
+    height: var(--height-mb);
+    margin-bottom: var(--mgb-mb);
+  }
+  .sr4-space-html::before {
+    background-color: var(--color);
+    width: var(--width-mb);
+    height: var(--height-mb);
+  }
+  .sr4-img-child img {
+    max-width: var(--width-mb);
+  }
+}

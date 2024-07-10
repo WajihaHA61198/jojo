@@ -1,0 +1,172 @@
+.sr4-tabs-list-collections .sr4-tabs-ul {
+  margin-bottom: var(--mgb);
+  display: flex;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul.flickitysr4_prev_enable,
+.sr4-tabs-list-collections .sr4-tabs-ul.flickitysr4_next_enable {
+  padding: 0 24px;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul .flickitysr4-prev-next-button.next {
+  right: 0;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul .flickitysr4-prev-next-button.previous {
+  left: 0;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul.sr4-flicky-slider .flickitysr4-button {
+  color: var(--item-cl);
+  width: 24px;
+  height: 24px;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul.sr4-flicky-slider:not(:hover) .flickitysr4-button {
+  transform: translate(0) translateY(-50%);
+}
+.sr4-tabs-list-collections .sr4-tabs-ul.sr4-flicky-slider .flickitysr4-button:hover {
+  color: var(--item-cl-active);
+}
+.sr4-tabs-list-collections .sr4-tabs-ul li:not(:last-child) {
+  margin-right: var(--space-between);
+}
+.sr4-tabs-list-collections .sr4-tabs-ul li a {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  position: relative;
+  color: var(--item-cl);
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  padding-bottom: 5px;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul li a::after {
+  height: 2px;
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  transition: width 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+  background-color: var(--item-bg-active);
+}
+.sr4-tabs-list-collections .sr4-tabs-ul .sr4-tab-item a.sr4-active::after {
+  width: 100%;
+}
+.sr4-tabs-list-collections .sr4-tabs-ul li a:hover,
+.sr4-tabs-list-collections .sr4-tabs-ul li a.sr4-active {
+  opacity: 1;
+  color: var(--item-cl-active);
+}
+.sr4-tabs-list-collections .sr4-tabs-ul li a .sr4-icon-title {
+  font-size: 20px;
+}
+
+.sr4-tabs-list-collections .sr4-tabs-head {
+  display: flex;
+  align-items: center;
+  margin-bottom: var(--mgb);
+  flex-direction: row;
+}
+.sr4-tabs-list-collections .sr4-section-title {
+  position: relative;
+  z-index: 1;
+  margin-right: 30px;
+  flex: 0 0 auto;
+  margin-bottom: 2px;
+}
+.sr4-tabs-list-collections .sr4-tabs .sr4-tabs-ul {
+  margin-bottom: 0;
+  display: flex;
+  padding: 0;
+  flex: 1 1 auto;
+}
+.sr4-tabs-list-collections .sr4-tabs .sr4-tabs-ul.flickitysr4_prev_enable,
+.sr4-tabs-list-collections .sr4-tabs .sr4-tabs-ul.flickitysr4_next_enable {
+  padding: 0 25px;
+}
+.sr4-tabs-list-collections .sr4-tabs .sr4-tabs-ul li {
+  display: inline-flex;
+}
+.sr4-tabs-list-collections.sr4-border-none .sr4-tabs-head,
+.sr4-tabs-list-collections.sr4-border-none .sr4-section-title {
+  border-bottom: none;
+}
+.rtl_true .sr4-slider-btn-pos-ontop.sr4-flicky-slider .flickitysr4-button.previous {
+  right: calc(var(--flickity-btn-pos) / 2);
+}
+.rtl_true .sr4-slider-btn-pos-ontop.sr4-flicky-slider .flickitysr4-button.next {
+  right: calc(var(--btn-height-slider) + 20px + var(--flickity-btn-pos) / 2);
+}
+@media (max-width: 991px) {
+  .sr4-tabs-list-collections .sr4-tabs-head {
+    flex-direction: column;
+    align-items: center;
+    border-bottom: none;
+    display: block;
+  }
+  .sr4-tabs-list-collections .sr4-tabs .sr4-tabs-ul {
+    display: block;
+    padding: 10px 0 0;
+  }
+  .sr4-tabs-list-collections .sr4-section-title {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 15px;
+  }
+}
+@media (max-width: 767px) {
+  .sr4-g-50,
+  .sr4-gx-50,
+  .sr4-px-50 {
+    --ts-gutter-x: 50px;
+  }
+  .sr4-g-50,
+  .sr4-gy-50 {
+    --ts-gutter-y: 50px;
+  }
+  .sr4-g-60,
+  .sr4-gx-60,
+  .sr4-px-60 {
+    --ts-gutter-x: 60px;
+  }
+  .sr4-g-60,
+  .sr4-gy-60 {
+    --ts-gutter-y: 60px;
+  }
+  .sr4-g-70,
+  .sr4-gx-70,
+  .sr4-px-70 {
+    --ts-gutter-x: 70px;
+  }
+  .sr4-g-70,
+  .sr4-gy-70 {
+    --ts-gutter-y: 70px;
+  }
+}
+@media (min-width: 768px) {
+  .sr4-g-md-50,
+  .sr4-gx-md-50,
+  .sr4-px-md-50 {
+    --ts-gutter-x: 50px;
+  }
+  .sr4-g-md-50,
+  .sr4-gy-md-50 {
+    --ts-gutter-y: 50px;
+  }
+  .sr4-g-md-60,
+  .sr4-gx-md-60,
+  .sr4-px-md-60 {
+    --ts-gutter-x: 60px;
+  }
+  .sr4-g-md-60,
+  .sr4-gy-md-60 {
+    --ts-gutter-y: 60px;
+  }
+  .sr4-g-md-70,
+  .sr4-gx-md-70,
+  .sr4-px-md-70 {
+    --ts-gutter-x: 70px;
+  }
+  .sr4-g-md-70,
+  .sr4-gy-md-70 {
+    --ts-gutter-y: 70px;
+  }
+}

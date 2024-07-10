@@ -1,0 +1,76 @@
+.sr4-list-collections-simple {
+  display: flex;
+}
+.sr4-collection-item-simple a {
+  color: var(--title-cl-pri);
+  padding: 5px calc(var(--space-item-dk) / 2);
+  font-size: 16px;
+  font-weight: 500;
+  display: inline-block;
+  white-space: nowrap;
+}
+.sr4-collection-item-simple a:hover {
+  color: var(--title-cl-pri-hover);
+}
+.sr4-collection-item-simple::after {
+  content: '';
+  position: absolute;
+  top: 20%;
+  bottom: 20%;
+  right: 0;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.5);
+}
+.rtl_true .sr4-collection-item-simple:first-child:after,
+.rtl_false .sr4-collection-item-simple:last-child::after {
+  display: none;
+}
+.rtl_false .sr4-list-collections-simple .sr4-collection-item-simple:first-child a,
+.rtl_true .sr4-list-collections-simple .sr4-collection-item-simple:first-child a {
+  padding-left: 0;
+}
+.rtl_false .sr4-list-collections-simple .sr4-collection-item-simple:last-child a,
+.rtl_true .sr4-list-collections-simple .sr4-collection-item-simple:last-child a {
+  padding-right: 0;
+}
+/* .sr4-list-collections-simple.flickitysr4_next_enable .sr4-collection-item-simple:first-child a,
+.sr4-list-collections-simple.flickitysr4_prev_enable .sr4-collection-item-simple:first-child a {
+    padding-left: 0;
+}
+.sr4-list-collections-simple.flickitysr4_next_enable .sr4-collection-item-simple:last-child a,
+.sr4-list-collections-simple.flickitysr4_prev_enable .sr4-collection-item-simple:last-child a {
+    padding-right: 0;
+} */
+/* .sr4-list-collections-simple.flickitysr4_next_enable,
+.sr4-list-collections-simple.flickitysr4_prev_enable {
+    padding: 0 35px;
+} */
+/* .sr4-list-collections-simple .flickitysr4-prev-next-button,
+.sr4-list-collections-simple .flickitysr4-prev-next-button {
+    display: none;
+} */
+/* .sr4-list-collections-simple.flickitysr4_next_enable .flickitysr4-prev-next-button,
+.sr4-list-collections-simple.flickitysr4_prev_enable .flickitysr4-prev-next-button {
+    display: flex;
+} */
+.sr4-collections-list-simple .sr4-flicky-slider .flickitysr4-prev-next-button.previous {
+  left: 0;
+}
+.sr4-collections-list-simple .sr4-flicky-slider .flickitysr4-prev-next-button.next {
+  right: 0;
+}
+.sr4-collections-list-simple .flickitysr4-prev-next-button {
+  transform: translateY(-50%) !important;
+  width: 35px;
+  height: 35px;
+}
+@media screen and (max-width: 1023px) {
+  .sr4-collection-item-simple a {
+    padding: 5px calc(var(--space-item-tb) / 2);
+  }
+}
+@media screen and (max-width: 767px) {
+  .sr4-collection-item-simple a {
+    padding: 5px calc(var(--space-item-mb) / 2);
+  }
+}

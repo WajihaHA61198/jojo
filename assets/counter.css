@@ -1,0 +1,115 @@
+.sr4-counter-item .sr4-counter-inner {
+  background-color: var(--bg-cl);
+  padding: 15px;
+}
+.sr4-counter-border-true .sr4-counter-inner {
+  border: solid 1px;
+  border-color: var(--bd-cl);
+}
+.sr4-counter-item .sr4-counter-title {
+  color: var(--heading-cl);
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 15px;
+}
+.sr4-counter-item .sr4-counter-number {
+  color: var(--number-cl);
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  margin-bottom: 10px;
+}
+.sr4-counter-item .sr4-counter-des {
+  color: var(--des-cl);
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 0;
+}
+.sr4-counter-icon {
+  margin-bottom: 10px;
+}
+.sr4-counter-icon__image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.sr4-text-center .sr4-counter-icon__theme {
+  justify-content: center;
+}
+.sr4-text-center .sr4-counter-icon__image {
+  margin: 0 auto;
+}
+.sr4-text-end .sr4-counter-icon__theme {
+  justify-content: end;
+}
+.sr4-text-end .sr4-counter-icon__image {
+  margin-inline-start: auto;
+}
+.sr4-counter-icon__awesome,
+.sr4-counter-icon__theme {
+  color: var(--icon-cl);
+}
+.sr4-counter-icon__theme svg {
+  display: inline-block;
+  vertical-align: top;
+  fill: currentColor;
+}
+.sr4-counter-small .sr4-counter-icon__theme svg {
+  width: 36px;
+  height: 36px;
+}
+.sr4-counter-small .sr4-counter-icon__image {
+  width: 40px;
+  height: 40px;
+}
+.sr4-counter-small .sr4-counter-icon__awesome {
+  font-size: 36px;
+}
+
+.sr4-counter-medium .sr4-counter-title {
+  font-size: 18px;
+  line-height: 24px;
+}
+.sr4-counter-medium .sr4-counter-number {
+  font-size: 30px;
+  line-height: 36px;
+}
+.sr4-counter-medium .sr4-counter-des {
+  font-size: 16px;
+  line-height: 24px;
+}
+.sr4-counter-medium .sr4-counter-icon__theme svg {
+  width: 40px;
+  height: 40px;
+}
+.sr4-counter-medium .sr4-counter-icon__image {
+  width: 50px;
+  height: 50px;
+}
+.sr4-counter-medium .sr4-counter-icon__awesome {
+  font-size: 40px;
+}
+
+.sr4-counter-large .sr4-counter-title {
+  font-size: 22px;
+  line-height: 24px;
+}
+.sr4-counter-large .sr4-counter-number {
+  font-size: 36px;
+  line-height: 40px;
+}
+.sr4-counter-large .sr4-counter-des {
+  font-size: 18px;
+  line-height: 24px;
+}
+.sr4-counter-large .sr4-counter-icon__theme svg {
+  width: 48px;
+  height: 48px;
+}
+.sr4-counter-large .sr4-counter-icon__awesome {
+  font-size: 48px;
+}
+.sr4-counter-large .sr4-counter-icon__image {
+  width: 60px;
+  height: 60px;
+}

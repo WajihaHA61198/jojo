@@ -1,0 +1,28 @@
+{%- assign image = article.image -%}
+<div class="sr4-row sr4-space-item-inner">
+  <div class="sr4-col-item sr4-col sr4-widget_img_ar {{image_ratio}} {{image_position}} {{image_size}}">
+    {%- if image != blank -%}
+      <a
+        class="sr4-d-block sr4-pr sr4-oh sr4_ratio"
+        href="{{article.url}}"
+        {{ imgatt }}
+        style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}">
+        <img
+          class="lazyloadsr4"
+          data-src="{{ image | image_url: width: 1 }}"
+          data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]"
+          data-optimumx="2"
+          data-sizes="auto"
+          src="{% render 'img_svg',w:image.width,h:image.height %}"
+          width="{{ image.width }}"
+          height="{{ image.height }}"
+          alt="{{ image.alt | escape }}">
+        <span class="lazyloadsr4-loader"></span>
+      </a>
+    {%- endif -%}
+  </div>
+  <div class="sr4-col-item sr4-col sr4-widget_if_ar">
+    <a class="sr4-article-title sr4-d-block" href="{{article.url}}">{{ article.title }}</a>
+    {{ article.published_at | time_tag: format: date }}
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div
+  class="sr4-product-img sr4_ratio"
+  {{ imgatt }}
+  style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}">
+  <img
+    data-pr-img
+    class="sr4-product-main-img lazyloadsr4"
+    loading="lazy"
+    src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+    data-src="{{ image | image_url: width: 1 }}"
+    data-widths="[100,200,330,400,500,600,700,800,900]"
+    data-optimumx="2"
+    data-sizes="auto"
+    width="{{ image.width }}"
+    height="{{ image.height }}"
+    alt="{{ image.alt | escape }}">
+  <span class="lazyloadsr4-loader"></span>
+  <div data-replace-img2></div>
+  <noscript><img
+      class="sr4-product-main-img"
+      loading="lazy"
+      src="{{ image | image_url: width: 600 }}"
+      alt="{{ image.alt | escape }}"></noscript>
+</div>

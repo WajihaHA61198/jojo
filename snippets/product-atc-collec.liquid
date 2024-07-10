@@ -1,0 +1,83 @@
+{%- comment -%}
+{%- render 'product-atc', pr_available:product.available, pr_url:pr_url, isDefault:isDefault, isPreoder:isPreoder,
+      isExternal:isExternal, external_title:external_title, external_link:external_link, isGrouped:isGrouped, current_variant:current_variant, cus_qty: cus_qty -%}
+{%- endcomment -%}
+
+{%- if isExternal -%}
+   <a href="{{ external_link }}" class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow" target="_blank"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-external"></use></svg></span><span class="sr4-text-pr">{{external_title}}</span></a>
+
+{%- elsif pr_available == false -%}
+   {% comment %}<a href="{{ pr_url }}"  class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-link"></use></svg></span><span class="sr4-text-pr">
+  {{ 'products.product_card.read_more' | t }}
+  </span></a> {% endcomment %}
+
+  <a href="{{ pr_url }}" class="btn-anchor" rel="nofollow"><span class="my-btn" >
+     SHOP NOW <i class="fa-solid fa-arrow-right btn-icons-nk" style="margin-left:.5rem; padding-right:1rem;"></i>
+  </span></a>
+
+{%- elsif isGrouped -%}
+   <a href="{{ pr_url }}"  class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">{{ 'products.product_card.view' | t }}</span></a>
+
+{%- elsif isDefault -%}
+   {%- capture capture_btn_atc -%}
+     <a href="{{ pr_url }}" class="sr4-pr-item-btn sr4-pr-addtocart" data-variant-id="{{current_variant.id}}" data-action-atc rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">{% if isPreoder %}{{ 'products.product.pre_order' | t }}{% else %}{{ 'products.product.add_to_cart' | t }}{% endif %}</span></a>
+   {%- endcapture -%}
+   
+   {%- if settings.show_qty -%}
+      <div class="sr4-product-atc-qty"><div data-quantity-wrapper class="sr4-quantity-wrapper sr4-quantity-pr-item"> 
+           <button data-quantity-selector data-decrease-qty type="button" class="sr4-quantity-selector is--minus"><svg focusable="false" class="icon icon--minus" viewBox="0 0 10 2" role="presentation"><path d="M10 0v2H0V0z" fill="currentColor"></path></svg></button>
+           <input data-quantity-value type="number" class="sr4-quantity-input" step="1" min="{{cus_qty}}" max="{{cur_qty}}" name="quantity" value="{{cus_qty}}" size="4" pattern="[0-9]*" inputmode="numeric">
+           <button data-quantity-selector data-increase-qty type="button" class="sr4-quantity-selector is--plus"><svg focusable="false" class="icon icon--plus" viewBox="0 0 10 10" role="presentation"><path d="M6 4h4v2H6v4H4V6H0V4h4V0h2v4z" fill="currentColor" fill-rule="evenodd"></path></svg></button>
+         </div>
+         {{capture_btn_atc}}</div>
+   {%- else -%}
+      {{capture_btn_atc}}
+   {%- endif -%}
+   
+
+{%- elsif settings.enable_quickshop -%}
+   <a href="{{ pr_url }}"class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow" data-action-quickshop data-id="{{pid}}"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">{{ 'products.product_card.quick_shop' | t }}</span></a>
+
+{%- else -%}
+ {% comment %}  <a href="{{ pr_url }}" class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">
+  {{ 'products.product_card.select_option' | t }}
+  </span></a> {% endcomment %}
+
+  <a href="{{ pr_url }}" rel="nofollow" class="btn-anchor"><span class="my-btn">
+     <!-- SHOP NOW  -->
+    <i class="fa-solid fa-arrow-right btn-icons-nk" style="margin-left:.5rem; padding-right:1rem;"></i>
+  </span></a>
+
+{%- endif -%}
+
+<style>
+  .my-btn{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing: 1px;
+    text-transform: uppercase !important;
+    color:black;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+  .btn-icons-nk {
+     transition: transform 0.2s ease-in-out; /* Add a transition effect */
+   }
+  .my-btn:hover .btn-icons-nk {
+      transform: translateX(5px); /* Move the icon 5 pixels to the right */
+    color: black;
+   }
+  .sr4-product .sr4-product-title a{
+    color: black;;
+  }
+  .sr4-product:hover .sr4-product-title a{
+    color:#475569;;
+  }
+
+  @media (max-width:768px){
+    .my-btn{
+      font-size:10px;
+     }
+  }
+</style>

@@ -1,0 +1,170 @@
+.sr4-categories__wrapper {
+  top: 100%;
+  right: 0;
+  left: 0;
+  z-index: 9;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  -webkit-transform: translateY(15px) translateZ(0);
+  transform: translateY(15px) translateZ(0);
+  pointer-events: none;
+  padding: 15px 0;
+  padding: 0;
+  background-color: #fff;
+  box-shadow: 0 5px 15px 0 rgb(0 0 0 / 15%);
+}
+.sr4-categories__wrapper .sr4-svg-spinner {
+  width: 2rem;
+  height: 2rem;
+  line-height: 0;
+  --color-foreground: 18, 18, 18;
+  margin: 20px auto;
+  display: block;
+}
+.sr4-categories__wrapper .sr4-svg-spinner:not([hidden]) .sr4-path {
+  stroke: var(--secondary-color);
+}
+.sr4-h-cat.is-action__hover .sr4-categories__wrapper,
+.sr4-h-cat:hover .sr4-categories__wrapper {
+  visibility: visible;
+  opacity: 1;
+  -webkit-transform: none;
+  transform: none;
+  pointer-events: auto;
+}
+#sr4-nav-categories > li > a {
+  font-size: 12px;
+  padding: 8px 15px;
+  color: var(--text-color);
+  position: relative;
+  min-height: 38px;
+  transition: all 0.3s;
+}
+#sr4-nav-categories > li > a:hover,
+#sr4-nav-categories .sr4-sub-menu a {
+  color: var(--text-color) !important;
+}
+#sr4-nav-categories .type_mn_link > a {
+  color: var(--text-color) !important;
+}
+#sr4-nav-categories .sr4-sub-menu a:hover {
+  color: var(--accent-color) !important;
+}
+#sr4-nav-categories > li > a:hover {
+  background-color: rgba(var(--text-color-rgb), 0.08);
+}
+#sr4-nav-categories > li:not(:last-child) > a:before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  height: 1px;
+  background-color: var(--border-color);
+  z-index: 22;
+  display: block;
+  /*     left: 15px;
+    right: 15px;
+    width: calc(100% - 30px);
+    width: -webkit-calc(100% - 30px); */
+  left: 0;
+  right: 0;
+  width: 100%;
+  background-color: rgba(var(--text-color-rgb), 0.15);
+}
+#sr4-nav-categories {
+  padding: 0;
+  margin: 0;
+}
+#sr4-nav-categories svg.sr4-icon-select-arrow {
+  transform: rotate(270deg);
+}
+#sr4-nav-categories > li {
+  position: relative;
+}
+#sr4-nav-categories > li > a i {
+  font-size: 22px;
+  margin-right: 4px;
+}
+#sr4-nav-categories .sr4_lb_nav {
+  position: relative;
+  right: auto;
+  margin-top: 0;
+  margin-left: 3px;
+  display: inline-block;
+  line-height: 14px;
+  min-width: 30px;
+}
+#sr4-nav-categories li .sr4-sub-menu {
+  padding: 15px 0;
+}
+#sr4-nav-categories li.sr4-type__lv0_mega .sr4-sub-menu {
+  padding: 20px;
+}
+#sr4-nav-categories li.sr4-type__lv0_mega .sr4-sub-menu li.sr4-menu-item {
+  padding-left: 0;
+  padding-right: 0;
+}
+#sr4-nav-categories .type_mn_link .sr4-heading {
+  margin-bottom: 10px;
+  padding-bottom: 5px;
+}
+#sr4-nav-categories .sr4-sub-menu .sr4-menu-item {
+  position: relative;
+  padding: 5px 20px;
+}
+#sr4-nav-categories .sr4-sub-menu .type_mn_link .sr4-menu-item {
+  padding: 5px 0;
+}
+#sr4-nav-categories .sr4-sub-menu .type_mn_link2 a {
+  padding: 10px 0;
+}
+#sr4-nav-categories .sr4-sub-menu .type_mn_link2 a:first-child {
+  padding-top: 0;
+}
+#sr4-nav-categories .sr4-sub-menu .type_mn_link2 a:last-child {
+  padding-bottom: 0;
+}
+#sr4-nav-categories > li > .sr4-sub-menu .sr4-sub-menu {
+  position: absolute;
+  left: 100%;
+  min-width: 270px;
+  padding: 15px 0;
+  top: 0;
+  background-color: #fff;
+  box-shadow: 0 5px 15px #00000026;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease;
+  -webkit-transform: translateY(15px) translateZ(0);
+  transform: translateY(15px) translateZ(0);
+  pointer-events: none;
+}
+#sr4-nav-categories .sr4-sub-menu .has--children > a {
+  width: 100%;
+  display: inline-block;
+  position: relative;
+  padding: 0;
+}
+#sr4-nav-categories .sr4-sub-menu .has--children > a svg {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 0;
+  width: 7px;
+}
+#sr4-nav-categories > li > .sr4-sub-menu .sr4-menu-item:hover > .sr4-sub-menu {
+  visibility: visible;
+  -webkit-transform: translateY(0) translateZ(0);
+  transform: translateY(0) translateZ(0);
+  pointer-events: auto;
+  opacity: 1;
+}
+#sr4-nav-categories .sr4_lb_nav {
+  position: relative;
+  right: auto;
+  margin-top: 0;
+  margin-left: 3px;
+  display: inline-block;
+  line-height: 14px;
+  min-width: 30px;
+  left: auto;
+}

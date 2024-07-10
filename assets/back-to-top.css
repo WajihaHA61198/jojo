@@ -1,0 +1,117 @@
+#sr4-backToTop {
+  right: 40px;
+  bottom: 55px;
+  cursor: pointer;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.25s;
+  position: fixed;
+  z-index: 100;
+  transition: 0.4s ease 0s;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+  font-size: 35px;
+  border-radius: 3px;
+  background: #fff;
+  color: #878787;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  transition: 0.4s;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.2);
+}
+#sr4-backToTop.sr4-progress_bar_true {
+  height: 50px;
+  width: 50px;
+  line-height: 50px;
+}
+#sr4-backToTop.is--show {
+  opacity: 1;
+  visibility: visible;
+  z-index: 193;
+}
+#sr4-backToTop svg {
+  width: 12px;
+}
+#sr4-backToTop.sr4-back-to-top__design2 {
+  line-height: 42px;
+  border: 2px solid var(--sr4-dark-color);
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--sr4-dark-color);
+}
+#sr4-backToTop:hover,
+#sr4-backToTop.sr4-back-to-top__design2:hover {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--sr4-light-color);
+}
+#sr4-backToTop .sr4-circle--inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#sr4-backToTop .sr4-circle-css {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 3px;
+}
+#sr4-backToTop.sr4-back-to-top__design1 .sr4-circle--inner,
+#sr4-backToTop.sr4-back-to-top__design1 .sr4-circle--bg {
+  border-radius: 2px;
+}
+#sr4-backToTop.sr4-back-to-top__design2 .sr4-circle-css {
+  border-radius: 0;
+}
+#sr4-backToTop.sr4-progress_bar_true,
+#sr4-backToTop.sr4-progress_bar_true:hover {
+  border: none;
+  color: var(--cricle-active);
+}
+.sr4p-hover #sr4-backToTop.sr4-progress_bar_true:hover svg {
+  -webkit-animation: move_on_top 0.5s ease-in-out forwards;
+  animation: move_on_top 0.5s ease-in-out forwards;
+}
+@keyframes move_on_top {
+  0% {
+    transform: translateY(0%);
+  }
+
+  25% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  50% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+
+  75% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+@media (max-width: 1024px) {
+  #sr4-backToTop {
+    right: 15px;
+  }
+  #sr4-backToTop span {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+  }
+}
+#sr4-backToTop {
+  bottom: 55px;
+}
+.sticky-is--active #sr4-backToTop {
+  bottom: calc(10px + var(--stickyATC-height, 45px));
+}

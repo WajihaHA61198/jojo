@@ -1,0 +1,66 @@
+/*-----------------------------------------------------------------------------/
+/ Custom Theme CSS
+/-----------------------------------------------------------------------------*/
+/*---------------- Global Custom CSS -------------------*/
+.sr4-newsletter__inner .sr4-newsletter__submit .sr4-newsletter__text {
+  font-weight: 100;
+  /* font-family: 'Helvetica'; */
+}
+
+.shopify-policy__container {
+  margin: auto;
+  max-width: 1024px;
+}
+
+.shopify-policy__title h1 {
+  font-weight: 400;
+  color: #838383;
+}
+
+@media (min-width: 1024px) {
+  .shopify-policy__title h1 {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .shopify-policy__title h1 {
+    font-size: 49px;
+  }
+}
+
+li#item_base_VQ8NQb a,
+li#item_menu_cxE4PF a {
+  font-weight: 600;
+}
+.plyr--video .plyr__controls {
+  margin-bottom: 35px;
+}
+
+/*---------------- Custom CSS for only desktop -------------------*/
+@media (min-width: 1025px) {
+}
+
+/*---------------- Custom CSS for tablet, mobile -------------------*/
+@media (max-width: 1024px) {
+}
+
+/*---------------- Custom CSS for only tablet -------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+}
+
+/*---------------- Custom CSS for only mobile -------------------*/
+@media (max-width: 767px) {
+  section#shopify-section-template--19111144292628__b34d72d3-93f6-47f7-8215-d2c17e3a3d8c {
+    margin-top: 50px;
+  }
+}
+
+/*  ---------------*/
+button#track123_submit_button {
+  background-color: black;
+  color: white;
+  /* font-family: 'Helvetica' !important; */
+  letter-spacing: 0.1rem;
+}
+/* ---- */

@@ -1,0 +1,70 @@
+{%- liquid
+  assign collection = collections[bk_stts.collection]
+  assign block_title = bk_stts.title | default: collection.title
+  assign image = bk_stts.image | default: collection.image
+  assign title = bk_stts.collection_title | default: collection.title
+  assign collection_link = bk_stts.collection_link | default: collection.url
+  assign html = cur_html | split: ','
+-%}
+
+{{ html[0] }}
+<div class="sr4-col-item sr4-collection-item sr4-coll-style-{{collection_des}} coll-item-{{stt}} sr4-col-lg-{{html[1]}} sr4-col-md-{{html[2]}} sr4-col-{{html[3]}}" id="b_{{block.id}}">
+  <div class="sr4-cat-content sr4-source-{{source}} sr4-eff sr4-eff-{{b_effect}} sr4-eff-img-{{img_effect}} sr4-text-center sr4-pr sr4-oh">
+    <div class="sr4-coll-img sr4-pr" data-cacl-slide>
+      {% if collection_des == "11" %}
+        <span class="sr4-count">{{ collection.all_products_count | default: 0 }}</span>
+      {% endif %}
+      <a
+        class="sr4_cat_item_link sr4-img-wrap sr4-d-block"
+        href="{{ collection_link }}"
+        target="{{open_link}}">
+        <div
+          class="sr4_ratio sr4_ratio_hasmb sr4-bg-11"
+          style="{%- if image != blank -%} background: url({{ image | image_url: width: 1 }});{%- endif -%} --aspect-ratioapt: {{html[4]}}/{{html[5]}};--aspect-ratioapttb: {{html[6]}}/{{html[7]}};--aspect-ratioaptmb: {{html[8]}}/{{html[9]}};"
+          data-cacl-slide>
+          {%- if image != blank -%}
+            <img
+              {% if image.presentation.focal_point != '50.0% 50.0%' %}
+              style="object-position: {{image.presentation.focal_point}}"
+              {% endif %}
+              class="lazyloadsr4 sr4-lz--fadeIn sr4-obj-eff"
+              data-src="{{ image | image_url: width: 1 }}"
+              data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]"
+              data-optimumx="2"
+              data-sizes="auto"
+              src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              alt="{{ image.alt | escape }}">
+          {%- else -%}
+            {%- assign txt = html[4] | append: 'x' | append: html[5] -%}
+            {%- render 'svg_holder', txt: txt, fs: "40px" | placeholder_svg_tag: 'sr4-placeholder-svg sr4-obj-eff' -%}
+          {%- endif -%}
+        </div>
+      </a>
+    </div>
+    {%- if title != blank -%}
+      <div class="sr4-cate-wrapper">
+        <a
+          class="sr4-cat-title"
+          href="{{ collection_link }}"
+          target="{{open_link}}">
+          <span class="sr4-text">{{ title }}</span>
+          {% if collection_des == "12" %}
+            <span class="sr4-count">{{ collection.all_products_count | default: 0 }}</span>
+          {% endif %}
+        </a>
+        {%- if subtitle != blank -%}
+          <a
+            class="sr4-cat-subtitle"
+            href="{{ collection_link }}"
+            target="{{open_link}}">
+            <span class="sr4-count">{{ collection.all_products_count | default: 0 }}</span>
+            <span class="sr4-text">{{ subtitle }}</span>
+          </a>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+{{ html[10] }}

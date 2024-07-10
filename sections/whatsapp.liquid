@@ -1,0 +1,68 @@
+{%- if section.settings.show_wa -%}
+  <a
+    rel="nofollow"
+    href="{{ section.settings.link_wa }}"
+    class="float whatsapp"
+    target="{{ section.settings.target_link  }}"
+    data-no-instant>
+    {%- render 'icon_socials'
+      , icon_name: 'whatsapp' -%}
+  </a>
+{% endif %}
+
+<style>
+  @media (max-width: 767px) {
+    .float {
+      bottom: 70px !important;
+    }
+  }
+  .float {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 15px;
+    padding-top: 1px;
+    background-color: #25d366;
+    color: #FFF;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+  }
+</style>
+{% schema %}
+  {
+    "name": "Whatsapp button",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_wa",
+        "label": "Show Whastapp floating icon",
+        "default": true
+      },
+      {
+        "type": "url",
+        "id": "link_wa",
+        "label": "Whastsapp Link"
+      },
+      {
+        "type": "select",
+        "id": "target_link",
+        "label": "Open link in",
+        "default": "_self",
+        "options": [
+          {
+            "value": "_self",
+            "label": "Current window"
+          },
+          {
+            "value": "_blank",
+            "label": "New window"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

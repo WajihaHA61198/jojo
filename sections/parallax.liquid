@@ -1,0 +1,195 @@
+<style>
+	
+
+    .container_para {
+        -webkit-align-items: center;
+        align-items: center;
+        display: -webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-align: center;
+        -webkit-flex-wrap: wrap;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        margin: -10;
+        
+        position: relative;
+        width: 100%;
+    }
+    .container_para--big {
+        height: 175vh;
+    }
+    .container_para--full {
+        height: 100vh;
+    }
+    .container_para--small {
+        height: 50vh;
+    }
+  .parallax__container .parallax {
+    height: 100vh;
+}
+    .container_para .content {
+        background: rgba(0, 0, 0, .75);
+        border-radius: 8px;
+        color: #fff;
+        margin: 0 auto;
+        padding: 30px 35px;
+        text-align: center;
+      z-index:100;
+    }
+    
+    .parallax__container_para {
+        clip: rect(0, auto, auto, 0);
+        height: 100%;
+        left: 0;
+        overflow: auto;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 0;
+    }
+    .parallax__container_para .parallax {
+        /* can be put in a seperate class for better control */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* --------------------------- */
+        position: fixed;
+        top: 0;
+        -webkit-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        width: 100%;
+      z-index:0;
+    }
+    
+  
+    
+    .show-on-mobile--inline {
+        display: none;
+    }
+    
+    .arrow {
+        -webkit-animation: bounce 3s infinite;
+        animation: bounce 3s infinite;
+        bottom: -64px;
+        bottom: -4rem;
+        left: calc(50% - 19px);
+        position: absolute;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        transition: opacity 250ms ease-in-out;
+        width: 38px;
+    }
+    .arrow--hide {
+        opacity: 0;
+    }
+    
+    @-webkit-keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        40% {
+            -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+        }
+        60% {
+            -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+        }
+    }
+    
+    @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+        40% {
+            -webkit-transform: translateY(-15px);
+            transform: translateY(-15px);
+        }
+        60% {
+            -webkit-transform: translateY(-5px);
+            transform: translateY(-5px);
+        }
+    }
+    @media screen and (max-width: 480px) {
+        .hide-on-mobile {
+            display: none;
+        }
+    
+        .show-on-mobile--inline {
+            display: inline;
+        }
+    }
+  /*---------------- Custom CSS for only tablet -------------------*/
+@media (min-width: 768px) and (max-width: 1024px) {
+ .parallax__container_para .parallax {
+        /* can be put in a seperate class for better control */
+        background-position: center !important;
+
+}
+  @media screen and (max-width: 768px){
+        .parallax__container_para .parallax {
+        /* can be put in a seperate class for better control */
+        background-position: center !important;
+
+    }
+
+
+        </style>
+    
+    
+<!-- <h3 class="section-title tc pr flex fl_center al_center fs__24 title_2"><span class="mr__10 ml__10">FORMALS</span></h3> -->
+    
+        <section class="container_para container_para--small mt__20 mb__50 ">
+            
+          
+<!-- <div class="pweb parallax h__580 baner-1568626626451" data-parallax-image="https://cdn.shopify.com/s/files/1/0761/3959/4004/files/Parallax_Desktop_Banner_acce7e1e-4ae7-4394-90a7-9b29df698796.jpg?v=1697698758" style"height: 580px!important;"></div> -->
+<div class="pweb parallax h__580 baner-1568626626451" data-parallax-image="https://cdn.shopify.com/s/files/1/0761/3959/4004/files/Paralyx_Web.jpg?v=1709547919" style="height: 580px!important;"></div>
+<div class="pmob parallax h__580 baner-1568626626451" data-parallax-image="https://cdn.shopify.com/s/files/1/0761/3959/4004/files/Paralyx_Mob.jpg?v=1709547919" style="height: 580px!important;"></div>          
+        
+        
+        </section>
+    
+      
+    
+
+    
+        <script>
+    
+    "use strict";var windowHeight=window.innerHeight,windowHeightExtra=0,safari=/^((?!chrome|android).)*safari/i.test(navigator.userAgent),mobile=/Mobi/.test(navigator.userAgent);safari&&!mobile&&(windowHeightExtra=window.outerHeight-window.innerHeight),mobile&&(windowHeight=window.screen.availHeight,windowHeightExtra=(window.screen.availHeight-window.innerHeight)/2);var positionParallax=function(e,t,a,i){var n=e.top/t-windowHeightExtra;a[i].style.top=n+"px"},animateParallax=function(e,t){for(var a=0;e.length>a;a++){var i=e[a].parentElement.parentElement.getBoundingClientRect();0<=i.top+i.height&&i.top<=windowHeight&&positionParallax(i,t,e,a)}},calculateHeight=function(e,t){for(var a=0;e.length>a;a++){var i=e[a].parentElement.parentElement.getBoundingClientRect(),n=e[a].parentElement.parentElement.offsetTop,o=(windowHeight-i.height)/2,r=windowHeight>i.height+n?i.height+n-n/t:i.height+2*(o-o/t);e[a].style.height=r+2*windowHeightExtra+"px",positionParallax(i,t,e,a)}},universalParallax=function(){this.init=function(i){void 0===i&&(i={}),i={speed:void 0!==i.speed?i.speed:1.5,className:void 0!==i.className?i.className:"parallax"};for(var n=document.getElementsByClassName(i.className),e=0;n.length>e;e++){var t=document.createElement("div");n[e].parentNode.insertBefore(t,n[e]),t.appendChild(n[e]);var a=n[e].parentElement;a.className+="parallax__container_para","relative"!==window.getComputedStyle(a.parentElement,null).getPropertyValue("position")&&(a.parentElement.style.position="relative");var o=n[e].dataset.parallaxImage;void 0!==o&&(n[e].style.backgroundImage="url("+o+")",1===n[e].classList.length&&"parallax"===n[e].classList[0]&&(n[e].style.backgroundRepeat="no-repeat",n[e].style.backgroundPosition="center",n[e].style.backgroundSize="cover"))}document.addEventListener("readystatechange",function(e){var t,a;"complete"===e.target.readyState&&(t=n,(a=i.speed)<1&&(a=1),calculateHeight(t,a),mobile||window.addEventListener("resize",function(){windowHeight=window.innerHeight,calculateHeight(t,a)}),window.addEventListener("scroll",function(){animateParallax(t,a)}))})}};
+    
+        </script>
+        
+        <script>
+            new universalParallax().init({
+                speed: 4
+            }); 
+        </script>
+        <script>
+    
+    "use strict";function bounceArrow(){var t=window.innerHeight,e=/^((?!chrome|android).)*safari/i.test(navigator.userAgent),n=/Mobi/.test(navigator.userAgent);e&&!n&&(window.outerHeight,window.innerHeight),n&&(t=window.screen.availHeight,window.screen.availHeight,window.innerHeight);var i=document.getElementById("arrow");window.addEventListener("scroll",function(){var e=i.parentElement.parentElement.getBoundingClientRect();0<=e.top+e.height&&e.top<=t&&(i.getBoundingClientRect().top<e.height/2?i.classList.add("arrow--hide"):i.classList.remove("arrow--hide"))})}bounceArrow();
+    
+        </script>
+<script src="node_modules/universal-parallax/dist/universal-parallax.min.js"></script>
+    {% schema %}
+    {
+    "name": "Parallaxx",
+    "settings": [],
+    "presets": [
+    {
+    "name": "Parallax",
+    "category": "ADVANCED LAYOUT"
+    }
+    ]
+    }
+    {% endschema %}
+    {% stylesheet %}
+    {% endstylesheet %}
+    {% javascript %}
+    {% endjavascript %}
+    

@@ -1,0 +1,248 @@
+<!-- sections/main-pagebrands.liquid -->
+{{ 'section.css' | asset_url | stylesheet_tag }}
+{%- liquid
+    assign sid = section.id
+    assign se_stts  = section.settings
+    assign stt_layout = se_stts.layout
+    assign stt_image_bg = se_stts.image_bg
+    if stt_layout == 'sr4-se-container' 
+        assign html_layout = '<div class="sr4-container">__</div></div>' | split:'__'
+    elsif stt_layout == 'sr4-container-wrap'
+        assign html_layout = '<div class="sr4-container">__</div>' | split:'__'
+    else
+        assign html_layout = '__' | split:'__'
+    endif 
+    assign html_title = ''
+    assign use_link_vendor = settings.use_link_vendor 
+-%}
+<div class="sr4-section-inner sr4_nt_se_{{sid}} sr4-main-brand-page {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %} {% render 'section_style',se_stts:se_stts -%} >
+    {{-html_layout[0]-}}
+    {%- if stt_layout == 'sr4-se-container' -%}
+        <div class="sr4-container-inner{% if stt_image_bg != blank %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %}>{% endif -%}
+            {%- if se_stts.options == 'shop_vendor' -%}
+                <div class="sr4-row sr4-row-cols-lg-5 sr4-row-cols-md-3 sr4-row-cols-2 sr4-gx-10 isotopesr4" data-isotopesr4-js='{ "itemSelector": ".sr4-filter-item", "layoutMode": "masonry" }'>
+                    {%- for product_vendor in shop.vendors -%}
+
+                        {%- liquid
+                        assign pr_vendor_url = product_vendor | url_for_vendor
+                        if use_link_vendor
+                            assign pr_vendor_handle = product_vendor | handle
+                            assign collection_vendor = collections[pr_vendor_handle]
+                            assign pr_vendor_url = collection_vendor.url |default:pr_vendor_url
+                        endif -%}
+
+                        <div class="sr4-filter-item sr4-col-item">
+                            <div class="sr4-vendor-item sr4-text-center">
+                                <a href="{{pr_vendor_url}}">{{ product_vendor }}</a>
+                            </div>
+                        </div>
+                    {%- endfor -%}
+                </div>
+            {%- else -%}
+                {%- for i in (1..1) -%}
+                    {%- capture getContentHTML -%}
+                        {%- for link in linklists[se_stts.link_list].links -%}
+                            {%- liquid
+                                assign ltt = link.title
+                                assign ltt_handle = ltt | handle
+                                assign data_filter = '.sr4_filter_' | append:ltt_handle
+                                if link.url contains '#*'
+                                    assign child_btn = ' sr4-filter-haschild'
+                                elsif link.links != blank
+                                    assign child_btn = ' sr4-filter-haschild'
+                                else
+                                    assign child_btn = ''
+                                endif
+                                if forloop.first
+                                    assign data_filter = '*'
+                                    assign child_btn = child_btn | append:' is--active'
+                                endif
+                                assign item_title = '<button class="sr4-btn-filter' | append:child_btn | append:'" data-filter="'| append:data_filter| append:'"><span>'| append:ltt | append:'</span></button>'
+                                assign html_title = html_title |append:item_title 
+                            -%}
+                            {%- if link.links != blank %}
+                                <div class="sr4-filter-item sr4-col-item sr4_filter_{{ltt_handle}}" >
+                                    <div class="sr4-filter-item-inner">
+                                        <h4>{{ltt}}</h4>
+                                        <ul>{%- for child_link in link.links -%}<li><a href="{{ child_link.url }}">{{ child_link.title }}</a></li>{%- endfor -%}</ul>
+                                    </div>
+                                </div>
+                            {%- endif -%}
+                        {%- endfor -%}
+                    {%- endcapture -%}
+                    <div class="sr4-brands-filter sr4-text-center" data-isotopesr4-filter>{{html_title}}</div>
+                    <div class="sr4-row sr4-row-cols-lg-4 sr4-row-cols-md-2 sr4-row-cols-2 sr4-gx-10 isotopesr4" data-isotopesr4-js='{ "itemSelector": ".sr4-filter-item", "layoutMode": "masonry" }'>
+                        {{getContentHTML}}
+                    </div>
+                {%- endfor -%}
+            {%- endif -%}
+    {{-html_layout[1]-}}
+</div>
+<style>
+.sr4-brands-filter{
+    font-weight: 500;
+    margin-bottom: 35px;
+}
+button.sr4-btn-filter {
+    position: relative;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    line-height: 100%;
+    margin: 0;
+    padding: 10px 20px;
+    min-height: auto;
+    border: 0;
+    background-color: transparent;
+    color: var(--text-color);
+  	border-radius: 0;
+    box-shadow: inset -1px -1px #eee, -1px -1px #eee;
+}
+button.sr4-btn-filter:not(.sr4-filter-haschild) {
+    pointer-events: none;
+    text-decoration: line-through;
+}
+button.sr4-btn-filter:not(.sr4-filter-haschild) span{
+    opacity: .5;
+}
+button.sr4-btn-filter.is--active {
+    color:var(--secondary-color);;
+    background-color: #f5f5f5;
+}
+button.sr4-btn-filter:focus, button.sr4-btn-filter:hover {
+    color: var(--secondary-color);;
+}
+.sr4-filter-item {
+    box-shadow: inset -1px -1px #eee, -1px -1px #eee;
+}
+.sr4-filter-item-inner {
+    padding: 15px 5px;
+}
+.sr4-filter-item ul {
+    list-style: square;
+    padding-left: 20px;
+    line-height: 1.6;
+}
+.sr4-filter-item h4 {
+    margin: 0 0 15px;font-size: 16px;
+}
+.sr4-vendor-item a {
+    padding: 15px 0px;
+    display: inline-block;
+    width: 100%;
+}
+@media (min-width: 768px) {
+    .sr4-filter-item-inner {
+        padding: 20px 5px;
+    }
+    .sr4-vendor-item a {
+        padding: 20px 0px;
+    }
+}
+</style>
+{%- schema -%}
+{
+    "name": "Page Brands",
+    "tag":"section",
+    "class":"sr4-section sr4_tp_istope",
+    "settings":[
+        {
+            "type":"select",
+            "id":"options",
+            "label":"Source brands",
+            "default":"shop_vendor",
+            "options":[
+                {
+                    "label":"Shop vendor",
+                    "value":"shop_vendor"
+                },
+                {
+                    "label":"Linklist",
+                    "value":"linklist"
+                }
+            ]
+        },
+        {
+            "type":"link_list",
+            "id":"link_list",
+            "label":"Choose menu"
+        },
+        {
+            "type": "select","id": "layout","default": "sr4-container-wrap","label": "Layout",
+            "options": [
+                { "value": "sr4-se-container", "label": "Container"},
+                { "value": "sr4-container-wrap", "label": "Wrapped container"},
+                { "value": "sr4-container-fluid", "label": "Full width"}
+            ]
+        },
+        {
+            "type": "color",
+            "id": "cl_bg",
+            "label": "Background"
+        },
+        {
+            "type": "color_background",
+            "id": "cl_bg_gradient",
+            "label": "Background gradient"
+        },
+        {
+            "type": "image_picker",
+            "id": "image_bg",
+            "label": "Background image"
+        },
+        {
+            "type": "text",
+            "id": "mg",
+            "label": "Margin",
+            "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+            "default": "50px,,50px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd",
+            "label": "Padding",
+            "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+            "placeholder": "50px,,50px,"
+        },
+        {
+          "type": "header",
+          "content": "+ Design Tablet Options"
+        },
+        {
+          "type": "text",
+          "id": "mg_tb",
+          "label": "Margin",
+          "placeholder": ",,50px,"
+        },
+        {
+          "type": "text",
+          "id": "pd_tb",
+          "label": "Padding",
+          "placeholder": ",,50px,"
+        },
+        {
+            "type": "header",
+            "content": "+ Design mobile options"
+        },
+        {
+            "type": "text",
+            "id": "mg_mb",
+            "label": "Margin",
+            "default": "30px,,30px,",
+            "placeholder": ",,50px,"
+        },
+        {
+            "type": "text",
+            "id": "pd_mb",
+            "label": "Padding",
+            "placeholder": ",,50px,"
+        }
+    ],
+    "presets":[
+        {
+            "name":"Page Brands"
+        }
+    ]
+}
+{% endschema %}

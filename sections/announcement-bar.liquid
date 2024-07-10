@@ -1,0 +1,267 @@
+{%- if section.settings.show_announcement -%}
+  {%- liquid
+    assign theme_name = 'kalles'
+    assign se_stts = section.settings
+    assign label = 'sections.announcement.label' | t -%}
+  {%- capture cap_btn -%}{%- if se_stts.close != '0' -%}<div class="sr4-col-item sr4-col-auto sr4-d-none sr4-d-md-block"><button class="sr4-announcement-bar__close sr4-op-0"><svg role="presentation" class="sr4-iconsvg-close" viewBox="0 0 16 14"><path d="M15 0L1 14m14 0L1 0" stroke="currentColor" fill="none" fill-rule="evenodd"></path></svg> {{ 'sections.announcement.close' | t }}</button></div>{%- endif -%}{%- endcapture -%}
+  {{ 'pre_flickityt4s.min.css' | asset_url | stylesheet_tag }}
+
+  {%- style -%}
+    {%- assign bg_op = se_stts.bg_op | divided_by: 100.0 -%}
+    .sr4-announcement-bar { background-color: {{ se_stts.bg | color_modify: 'alpha', bg_op }};min-height:{{ se_stts.height }}px;font-size:{{ se_stts.fontsize }}px;}
+    .sr4-announcement-bar__wrap,.sr4-announcement-bar__wrap a { color:{{ se_stts.cl }} }
+    .sr4-announcement-bar__wrap {padding: 5px 10px;min-height:{{ se_stts.height }}px}
+    .sr4-announcement-bar__item p a { z-index: 5;position: relative; }.sr4-announcement-bar__item p {margin-bottom:0} .sr4-announcement-bar__item strong {font-size: 14px;font-weight: 600;}
+    .sr4-announcement-bar__close { color:{{ se_stts.cl_btn }};padding: 0;background-color: transparent;line-height: 1;transition: .2s;font-size:{{ se_stts.fontsize }}px; }
+    .sr4-announcement-bar__close:hover,.sr4-announcement-bar__close:focus { background-color: transparent !important; opacity: .7; color:{{ se_stts.cl_btn }} !important; }
+    .sr4-announcement-bar .sr4-col-auto { line-height: 1; }.sr4-announcement-bar__item p a:hover { opacity: .7 }.sr4-announcement-bar.sr4-type-close-1 .sr4-iconsvg-close {width: 9px;height: 9px;stroke-width: 2px;}.sr4-announcement-bar:not(.sr4-type-close-1) .sr4-iconsvg-close {width: 15px;height: 15px;stroke-width: 1.5px;}.sr4-announcement-bar.sr4-type-close-2 .sr4-announcement-bar__close { font-size:0 !important }.sr4-announcement-bar.sr4-type-close-3 .sr4-iconsvg-close { display: none !important }.sr4-announcement-bar__close.sr4-op-0 { opacity: 0 !important; }
+    svg.sr4-icon-arrow {
+      width: 12px;display: inline-block;
+    }
+    .sr4-announcement-bar__item .sr4-icon-arrow {
+      -webkit-transition: .2s ease-in-out;
+      transition: -webkit-transform .2s ease-in-out,transform .2s ease-in-out;
+    }
+    .sr4-announcement-bar__item:hover .sr4-icon-arrow {
+       transform: translateX(0.25rem);
+    }
+    .sr4-announcement-bar .sr4-countdown-enabled {display: inline-block}
+  {%- endstyle -%}
+
+<svg class="sr4-d-none"><symbol id="icon-{{ section.id }}" viewBox="0 0 14 10" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M8.537.808a.5.5 0 01.817-.162l4 4a.5.5 0 010 .708l-4 4a.5.5 0 11-.708-.708L11.793 5.5H1a.5.5 0 010-1h10.793L8.646 1.354a.5.5 0 01-.109-.546z" fill="currentColor"></path></symbol></svg>
+{%- capture cap_arrow %}<svg class="sr4-icon sr4-icon-arrow" width="13" viewBox="0 0 14 10" fill="none" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg"><use href="#icon-{{ section.id }}"/></svg>{% endcapture -%}
+
+  <div aria-hidden="false" class="sr4-announcement-bar sr4-pr sr4-oh sr4-type-close-{{ se_stts.close }}" data-ver='{{ se_stts.version }}_nt' data-date='{{ se_stts.date }}'>
+    <div class="sr4-container">
+       <div class="sr4-row sr4-gx-0 sr4-flex-nowrap sr4-align-items-center">
+
+          {{- cap_btn -}}
+
+          {%- if section.blocks.size > 0 -%}
+
+             <div class="sr4-announcement-bar__wrap sr4-col sr4-col-item sr4-d-flex sr4-align-items-center sr4-text-center sr4-row sr4-row-cols-1 sr4-g-0 flickitysr4{% if se_stts.effect == '1' %} sr4-slide-eff-fade{% endif %}" data-flickitysr4-js='{ "cellAlign": "center","imagesLoaded": 0,"lazyLoad": 0,"freeScroll": 0,"wrapAround": true,"autoPlay" : {{ se_stts.au_time | times: 1000 }},"pauseAutoPlayOnHover" : true, "prevNextButtons": false,"pageDots": false, "contain" : 1,"adaptiveHeight" : 1,"dragThreshold" : 5,"percentPosition": 1 }'>
+               {%- for block in section.blocks -%}{%- assign bk_stts = block.settings -%}
+                  {%- capture cap_date %}{% assign se_dayx = bk_stts.dayx %}<span data-refresh-owl data-countdown-sr4 data-loop="{% if se_dayx > 0 %}true{% else %}false{% endif %}" data-date="{{ bk_stts.countdown }}" data-dayl="{{ se_dayx }}">%D {{ bk_stts.txt_day }} %H:%M:%S</span>{% endcapture -%}
+
+                  <div id="b_{{ block.id }}" {{ block.shopify_attributes }} data-select-flickity class="sr4-col-item sr4-announcement-bar__item sr4-pr sr4-oh sr4-rte{% unless block.settings.adding_border %}--list{% endunless %}">
+                  {%- if bk_stts.link != blank -%}<a href="{{ bk_stts.link }}" aria-label="{{ label }}" class="sr4-full-width-link sr4-a"></a>{%- endif -%}
+                  {{- block.settings.content | replace: '[countdown]', cap_date | replace: '[icon_arrow]', cap_arrow -}}
+                  </div>
+               {%- endfor -%}
+             </div>
+            {%- endif -%}
+
+          {{- cap_btn | replace: 'sr4-op-0', 'sr4-z-100' | remove: ' sr4-d-none sr4-d-md-block' -}}
+       </div>
+    </div>
+  </div>
+  <script>try { if (document.cookie.indexOf('sr4_announcement_{{ theme_name }}_{{ se_stts.version }}_nt') > -1) { document.getElementById('shopify-section-announcement-bar').setAttribute("aria-hidden", true);document.getElementsByClassName('sr4-announcement-bar')[0].setAttribute("aria-hidden", true);document.getElementsByClassName('sr4-announcement-bar')[0].classList.add('sr4-d-none'); } }catch(err) {}</script>
+{%- else -%}
+<script>try { if (window.Shopify && !Shopify.designMode) { document.getElementById('shopify-section-announcement-bar').remove() } else { document.getElementById('shopify-section-announcement-bar').setAttribute("aria-hidden", true) } }catch(err) {}</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "class": "t4-section t4-section-announcement-bar sr4_bk_flickity sr4_tp_cd",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_announcement",
+      "label": "Show announcement",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "effect",
+      "label": "Slider effect",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "Fade"
+        },
+        {
+          "value": "0",
+          "label": "Slide"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "au_time",
+      "min": 0,
+      "max": 30,
+      "step": 0.5,
+      "label": "Autoplay speed in second.",
+      "info": "Set is '0' to disable autoplay.",
+      "unit": "sec",
+      "default": 3.5
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Min height",
+      "default": 41,
+      "min": 20,
+      "max": 120,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "fontsize",
+      "label": "Font size",
+      "default": 12,
+      "min": 10,
+      "max": 18,
+      "step": 0.5,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "cl",
+      "label": "Text color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bg",
+      "label": "Background color",
+      "default": "#86198f"
+    },
+    // {
+    //   "type": "range",
+    //   "id": "bg_op",
+    //   "label": "Background opacity",
+    //   "default": 100,
+    //   "min": 0,
+    //   "max": 100,
+    //   "step": 1,
+    //   "unit": "%"
+    // },
+    {
+      "type": "select",
+      "id": "close",
+      "label": "Button close",
+      "default": "2",
+      "options": [
+        {
+          "value": "0",
+          "label": "Disable"
+        },
+        {
+          "value": "1",
+          "label": "Icon & text"
+        },
+        {
+          "value": "2",
+          "label": "Only icon"
+        },
+        {
+          "value": "3",
+          "label": "Only text"
+        }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "cl_btn",
+      "label": "Button close color",
+      "default": "#fff"
+    },
+    // {
+    //   "type": "radio",
+    //   "id": "version",
+    //   "label": "Announcement version",
+    //   "info": "If you apply any changes to your announcement settings or content you might want to force the announcement to all visitor who already close it again. In this case, you just need to change the announcement version.",
+    //   "default": "1",
+    //   "options": [
+    //     {
+    //       "value": "1",
+    //       "label": "1"
+    //     },
+    //     {
+    //       "value": "2",
+    //       "label": "2"
+    //     }
+    //   ]
+    // },
+    // {
+    //   "type": "range",
+    //   "id": "date",
+    //   "min": 0,
+    //   "max": 100,
+    //   "step": 1,
+    //   "unit": "day",
+    //   "label": "Header banner expires",
+    //   "info": "You will be able to specify when to expire the cookie. Once you click the \"CLOSE\" button",
+    //   "default": 60
+    // }
+  ],
+  "blocks": [
+    {
+      "type": "announcement",
+      "name": "Announcement",
+      "limit": 10,
+      "settings": [
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "richtext",
+          "id": "content",
+          "label": "Content",
+          "default": "<p>Announcement bar!!</p>",
+          "info": "Place here text you want to see in the header banner. You can use shortocdes: [countdown], [icon_arrow]"
+        }
+        // {
+        //   "type": "checkbox",
+        //   "id": "adding_border",
+        //   "label": "Adding a bottom border on link",
+        //   "default": false
+        // },
+        // {
+        //   "type": "text",
+        //   "id": "countdown",
+        //   "label": "Date countdown",
+        //   "default": "2023/12/26",
+        //   "info": "Use shortocdes: [countdown]. Countdown to the end sale date will be shown.( 2023/12/26 or 2023/12/26 20:00:30 )"
+        // },
+        // {
+        //   "type": "text",
+        //   "id": "txt_day",
+        //   "label": "Text day countdown",
+        //   "default": "days"
+        // },
+        // {
+        //   "type": "range",
+        //   "id": "dayx",
+        //   "min": 0,
+        //   "max": 100,
+        //   "step": 1,
+        //   "label": "Reset countdown every x days from an initial date.",
+        //   "info": "Set is '0' to disable reset countdown.",
+        //   "unit": "day",
+        //   "default": 0
+        // }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
+        "type": "announcement"
+      },
+      {
+        "type": "announcement"
+      },
+      {
+        "type": "announcement"
+      }
+    ]
+  }
+}
+{% endschema %}

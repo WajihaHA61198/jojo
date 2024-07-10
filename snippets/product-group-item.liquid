@@ -1,0 +1,50 @@
+{%- liquid
+  assign pr_url = product.url
+  assign pid = product.id
+  unless placeholder_img
+    assign placeholder_img = settings.placeholder_img
+  endunless
+  assign image = product.featured_media | default: placeholder_img
+-%}
+
+<div class="sr4-product sr4-pr-grid sr4-col-12 sr4-pr-group sr4-pr-{{pid}} {{col}} sr4-col-item">
+  <div class="sr4-row sr4-product-wrapper">
+    <div class="sr4-col-item sr4-col sr4-product-img">
+      {%- if image != blank -%}
+        <a href="{{pr_url}}">
+          <div
+            class="sr4_ratio"
+            {{ imgatt }}
+            style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}">
+            <img
+              class="lazyloadsr4"
+              loading="lazy"
+              src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+              data-src="{{ image | image_url: width: 1 }}"
+              data-widths="[100,200]"
+              data-optimumx="2"
+              data-sizes="auto"
+              width="{{ image.width }}"
+              height="{{ image.height }}"
+              alt="{{ image.alt | escape }}">
+            <span class="lazyloadsr4-loader"></span>
+            <noscript><img
+                loading="lazy"
+                src="{{ image | image_url: width: 100 }}"
+                alt="{{ image.alt | escape }}"></noscript>
+          </div>
+        </a>
+      {%- endif -%}
+    </div>
+    <div class="sr4-col-item sr4-col sr4-product-info">
+      <h3 class="sr4-widget__pr-title">
+        <a data-pr-href href="{{pr_url}}">{{ product.title }}</a>
+      </h3>
+      {%- render 'product-price'
+        , class_price: 'sr4-widget__pr-price'
+        , product: product
+        , price_varies_style: price_varies_style
+        , isGrouped: false -%}
+    </div>
+  </div>
+</div>
