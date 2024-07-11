@@ -372,6 +372,17 @@ endif -%}
 {%- liquid
 section 'whatsapp'
 if admin_sp
+
+render 'var_adm'
+  if enable_quickview
+  section 'main-qv'
+  endif
+  if enable_quickshop
+  section 'main-qs'
+  endif
+  unless customer or settings.login_side == false
+     section 'login-sidebar'
+  endunless
   if page_type == 'collection' or page_type == 'search'
      section 'facets'
   endif 
@@ -384,9 +395,17 @@ if admin_sp
 section 'popups'
 endif
 
-if template.suffix != 'config' and admin_sp
-
+section 'toolbar_mobile'
+if admin_sp
+section 'popups'
 endif
+
+if template.suffix != 'config' and admin_sp
+  section 'pr_item_config'
+  section 'title_config'
+  section 'btn_config'
+endif
+
 if  template.suffix != 'config'
   section 'slider_config'
 endif
