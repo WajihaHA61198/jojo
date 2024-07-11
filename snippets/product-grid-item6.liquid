@@ -135,6 +135,9 @@ endif -%}
        {% comment %} <div class="sr4-product-btns NK" style="padding: 0 .5rem;">
         {%- render 'product-atc-collec', pr_available:product.available, pr_url:pr_url, isDefault:isDefault, isPreoder:isPreoder,isExternal:isExternal, external_title:external_title, external_link:external_link, isGrouped:isGrouped, current_variant:current_variant, pid:pid, cus_qty: cus_qty -%}
         </div> {% endcomment %}
+        <div class="sr4-product-btns">
+          {%- render 'product-atc', pr_available: product.available, pr_url: pr_url, isDefault: isDefault, isPreoder: isPreoder, isExternal: isExternal, external_title: external_title, external_link: external_link, isGrouped: isGrouped, current_variant: current_variant, pid: pid, cus_qty: cus_qty -%}
+      </div>
       </div>
       {%- if show_list_btns -%}
         <div class="sr4-product-btns sr4-product-info__btns">

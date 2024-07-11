@@ -65,7 +65,7 @@
           {%- for block in se_blocks -%}
             {%- assign bk_stts = block.settings -%}
             {%- assign blockid = block.id -%} 
-            <li class="sr4-tab-item sr4-d-inline-flex"><a id="b_{{block.id}}" href="#sr4-{{blockid}}" rel="nofollow" data-sr4-tab-item data-no-instant {{ block.shopify_attributes }} {%if forloop.first == true %} class="sr4-active" {% endif %}>
+            <li class="tabs-{{ forloop.index0 }} sr4-tab-item sr4-d-inline-flex"><a id="b_{{block.id}}" href="#sr4-{{blockid}}" rel="nofollow" data-sr4-tab-item data-no-instant {{ block.shopify_attributes }} {%if forloop.first == true %} class="sr4-active" {% endif %}>
               <span>
                 {% if bk_stts.icon_title != blank %} <span class="sr4-icon-title"><i class="{{bk_stts.icon_title}}"></i></span>{% endif %}
                 <span class="sr4-text-title">{{bk_stts.title}}</span>
@@ -92,7 +92,11 @@
               </div>
               {%- for block in section.blocks offset:1 -%}
               {%- assign collection = collections[block.settings.collection]  -%}
-                <div id="sr4-{{block.id}}" class="sr4-tab-content2 lazyloadsr4" data-sr4-tab-content data-render-lazy-component data-rendersr4="{{collection.url | default:search_url}}/{{forloop.index}}_bid+ntt4tag" data-set4url='/?section_id={{sid}}' data-sr4plitlz><div class="lds_bginfinity sr4-pr"></div></div>
+                {% comment %}<div id="sr4-{{block.id}}" class="sr4-tab-content2 lazyloadsr4" data-sr4-tab-content data-render-lazy-component data-rendersr4="{{collection.url | default:search_url}}/{{forloop.index}}_bid+ntt4tag" data-set4url='/?section_id={{sid}}' data-sr4plitlz><div class="lds_bginfinity sr4-pr"></div></div> {% endcomment %}
+
+                <div id="sr4-{{block.id}}" class="collections2-{{ forloop.index0 }} sr4-tab-content2 lazyloadt4s" data-sr4-tab-content data-render-lazy-component>
+                  {%- render 'inc_tab',ck_q:true,section:section,sid:sid,collection:collection,block:block,se_stts:se_stts,arrow_icon:arrow_icon,use_link_vendor:use_link_vendor -%}            
+                </div> 
               {%- endfor -%}
           {%- endif -%}
         </div>
@@ -106,6 +110,7 @@
     "name": "Tabs collection",
     "tag": "section",
     "class": "sr4-section sr4-section-all sr4_bk_flickity sr4_tp_cdt sr4-tabs-collection sr4_tp_tab2",
+    "max_blocks": 5,
     "settings": [
       {
           "type": "header",
