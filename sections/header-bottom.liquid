@@ -216,42 +216,34 @@
 .sr4-col__textSocial p {
   margin-bottom: 0;
 }
-{%- if se_stts.enable_active %}
+{% if se_stts.enable_active %}
   .sr4-nav__ul > li.is--nav__active > a {
     color: var(--h-text-color-hover) !important;
     transition: none;
   }
-{%- endif -%}
+{% endif %}
 }
 {%- endstyle -%}
 
 <div
   data-header-options='{ "isTransparent": {{h_transparent}},"isSticky": {{se_stts.sticky_header}},"hideScroldown": {{se_stts.scroll_header}} }'
-  class="sr4-header__wrapper sr4-pr sr4-layout-layout_bottom{% if h__bgimg != blank %} lazyloadsr4 sr4-header__bgimg"
+  class="sr4-header__wrapper sr4-pr sr4-layout-layout_bottom {% if h__bgimg != blank %} lazyloadsr4 sr4-header__bgimg {% else %} {% endif %}"
   data-bgset="{{ h__bgimg | image_url: width: 1 }}"
   data-ratio="{{h__bgimg.aspect_ratio}}"
-  data-sizes="auto"
-  {% else %}
-  "{% endif %}>
-    <div class="
-  sr4-container">
-  <div
-  class="sr4-section-header__mid">
-  {%- if source != '4' -%}
-  <div
-  data-header-height
-  class="sr4-row sr4-gx-15 sr4-gx-md-30 sr4-align-items-center">
-  <div
-  class="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">
-  {%- render 'push_menu' -%}</div>
-  <div
-  class="sr4-col-3 sr4-text-lg-start sr4-d-none sr4-d-lg-block sr4-col-item sr4-col__textSocial">
-  {%- if source == '1' -%}
-  {{- se_stts.txt -}}
-  {%- elsif source == '2' or source == '3' -%}
-  {%- if source == '3' %}
-  {% assign follow_social = true %}
-  {% endif -%}{{ 'icon-social.css' | asset_url | stylesheet_tag }}{%- render 'social_sharing'
+  data-sizes="auto">
+  <div class="sr4-container">
+    <div class="sr4-section-header__mid">
+      {%- if source != '4' -%}
+        <div data-header-height class="sr4-row sr4-gx-15 sr4-gx-md-30 sr4-align-items-center">
+          <div class="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div>
+          <div class="sr4-col-3 sr4-text-lg-start sr4-d-none sr4-d-lg-block sr4-col-item sr4-col__textSocial">
+            {%- if source == '1' -%}
+              {{- se_stts.txt -}}
+            {%- elsif source == '2' or source == '3' -%}
+              {%- if source == '3' %}
+                {% assign follow_social = true %}
+              {% endif -%}
+              {{ 'icon-social.css' | asset_url | stylesheet_tag }}{%- render 'social_sharing'
   , style: 1
   , use_color_set: false
   , size: 'small'
@@ -262,550 +254,482 @@
   , share_permalink: shop.url
   , share_title: shop.name
   , share_image: share_image
-  , follow_social: follow_social -%}{%- endif -%}</div><divclass="sr4-col-lg-6 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">{%- render 't4s_logo'
+  , follow_social: follow_social -%}{%- endif -%}
+          </div>
+          <div class="sr4-col-lg-6 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">{%- render 't4s_logo'
 , tag: 'div'
-, isTransparent: h_transparent -%}</div><divclass="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 't4s_group_btns'
-, se_stts: se_stts -%}</div></div>{%- else -%}<divdata-header-heightclass="sr4-row sr4-gx-15 sr4-gx-md-30 sr4-align-items-center"><divclass="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div><divclass="sr4-col-lg-3 sr4-d-lg-block sr4-d-none sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 't4s_group_btns_split'
-, se_stts: se_stts
-, isSplit1: true -%}</div><divclass="sr4-col-lg-6 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">{%- render 't4s_logo'
+, isTransparent: h_transparent -%}</div>
+          <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 't4s_group_btns'
+, se_stts: se_stts -%}</div>
+        </div>
+      {%- else -%}
+        <div data-header-height class="sr4-row sr4-gx-15 sr4-gx-md-30 sr4-align-items-center">
+          <div class="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div>
+          <div class="sr4-col-lg-3 sr4-d-lg-block sr4-d-none sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 't4s_group_btns_split'
+, se_stts: se_stts  
+, isSplit1: true -%}</div>
+          <div class="sr4-col-lg-6 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">{%- render 't4s_logo'
 , tag: 'div'
-, isTransparent: h_transparent -%}</div><divclass="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 't4s_group_btns_split'
-, se_stts: se_stts
-, isSplit1: false -%}</div></div>{%- endif -%}</div><divclass="4s-section-header__bot sr4-d-none sr4-d-lg-block"><divdata-header-height2class="sr4-row sr4-g-0 sr4-align-items-center"><divclass="sr4-col sr4-col-item">{%- render 'menu_blocks'
-, admin_sp: admin_sp
-, se_blocks: se_blocks
-, se_stts: se_stts -%}</div></div></div></div>
+, isTransparent: h_transparent -%}</div>
+          <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 't4s_group_btns_split'
+, se_stts: se_stts  
+, isSplit1: false -%}</div>
+        </div>
+      {%- endif -%}
+    </div>
+    <div class="4s-section-header__bot sr4-d-none sr4-d-lg-block">
+      <div data-header-height2 class="sr4-row sr4-g-0 sr4-align-items-center">
+        <div class="sr4-col sr4-col-item">{%- render 'menu_blocks'
+, admin_sp: admin_sp  
+, se_blocks: se_blocks  
+, se_stts: se_stts -%}</div>
+      </div>
+    </div>
   </div>
+</div>
 
-  {%- if h_transparent -%}
-    <script>
+{%- if h_transparent -%}
+  <script>
       document.documentElement.classList.add('is--header-transparent');
       document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-{{section.id}}').offsetHeight + 'px');
-    </script>
-  {%- endif -%}
+  </script>
+{%- endif -%}
 
-  {%- schema -%}
-    {
-      "name": "Header bottom",
-      "tag": "header",
-      "class": "sr4-section sr4-section-header",
-      "settings": [
-        {
-          "type": "checkbox",
-          "id": "full_header",
-          "info": "Make header full width",
-          "label": "Enable full Width",
-          "default": false
-        },
-        {
-          "type": "header",
-          "content": "+ Options only working desktop"
-        },
-        {
-          "type": "range",
-          "id": "height",
-          "label": "Custom header top height",
-          "min": 60,
-          "max": 160,
-          "step": 1,
-          "unit": "px",
-          "default": 90
-        },
-        {
-          "type": "range",
-          "id": "height2",
-          "label": "Custom header bottom height",
-          "min": 40,
-          "max": 140,
-          "step": 1,
-          "unit": "px",
-          "default": 50
-        },
-        {
-          "type": "checkbox",
-          "id": "arrow",
-          "label": "Show dropdown arrow",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "border",
-          "label": "Show border bottom",
-          "default": true
-        },
-        {
-          "type": "select",
-          "id": "align",
-          "options": [
-            {
-              "value": "start",
-              "label": "Left"
-            },
-            {
-              "value": "center",
-              "label": "Center"
-            },
-            {
-              "value": "end",
-              "label": "Right"
-            }
-          ],
-          "label": "Main menu align:",
-          "default": "center"
-        },
-        {
-          "type": "select",
-          "id": "hover",
-          "options": [
-            {
-              "value": "hover_sideup",
-              "label": "Hover Slide Up"
-            },
-            {
-              "value": "hover_fadein",
-              "label": "Hover Fade In"
-            }
-          ],
-          "label": "Hover effect:",
-          "default": "hover_sideup"
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_active",
-          "info": "Make hightlight if the link is active",
-          "label": "Enable link active",
-          "default": false
-        },
-        {
-          "type": "header",
-          "content": "+ Options only working Tablet, mobile"
-        },
-        {
-          "type": "range",
-          "id": "h_navmb",
-          "label": "Custom header mobile height",
-          "min": 60,
-          "max": 160,
-          "step": 1,
-          "unit": "px",
-          "default": 62
-        },
-
-
-/*
-   {
-   "type": "checkbox",
-   "id": "mb_cat",
-   "label": "Show Categories?",
-   "info": "Add, Edit content to this section using the Sections sidebar.",
-   "default": true
-   },
-   {
-   "type": "checkbox",
-   "id": "only_icon",
-   "label": "Only click icon?",
-   "info": "Only click icon to show submenu.",
-   "default": false
-   },
-   {
-   "type": "checkbox",
-   "id": "first_cat",
-   "label": "Categories position the first?",
-   "default": false
-   },
-*/
-        {
-          "type": "header",
-          "content": "+ Header Colors:"
-        },
-        {
-          "type": "image_picker",
-          "id": "h__bgimg",
-          "label": "Header Background image"
-        },
-        {
-          "type": "color",
-          "id": "bgnav",
-          "label": "Header background color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "range",
-          "id": "opnav",
-          "label": "Background opacity",
-          "default": 100,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "%"
-        },
-        {
-          "type": "color",
-          "id": "clnav",
-          "label": "Header text/icon color",
-          "default": "#222222"
-        },
-        {
-          "type": "color",
-          "id": "clnav_hover",
-          "label": "Header text/icon color when hover",
-          "default": "#56cfe1"
-        },
-        {
-          "type": "header",
-          "content": "+ Header Group buttons:"
-        },
-        {
-          "type": "select",
-          "id": "h_icon",
-          "options": [
-            {
-              "value": "kalles",
-              "label": "Kalles icon"
-            },
-            {
-              "value": "pe",
-              "label": "Pe icon"
-            },
-            {
-              "value": "drawn",
-              "label": "Drawn icon"
-            },
-            {
-              "value": "line",
-              "label": "Line awesome"
-            }
-          ],
-          "label": "Design icon:",
-          "default": "kalles"
-        },
-        {
-          "type": "select",
-          "id": "hover_icon",
-          "options": [
-            {
-              "value": "1",
-              "label": "Simple"
-            },
-            {
-              "value": "2",
-              "label": "Zoom"
-            },
-            {
-              "value": "3",
-              "label": "Zoom and skew"
-            }
-          ],
-          "label": "Hover effect icon:",
-          "default": "2"
-        },
-        {
-          "type": "checkbox",
-          "id": "show_search",
-          "label": "Show search icon?",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "show_acc",
-          "label": "Show account icon?",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "show_wis",
-          "label": "Show wishlist icon?",
-          "default": true
-        },
-        {
-          "type": "select",
-          "id": "cart_des",
-          "options": [
-            {
-              "value": "0",
-              "label": "Disable"
-            },
-            {
-              "value": "1",
-              "label": "Cart count"
-            },
-            {
-              "value": "2",
-              "label": "Cart count, total price"
-            },
-            {
-              "value": "3",
-              "label": "Cart count 2"
-            },
-            {
-              "value": "4",
-              "label": "Cart total price"
-            },
-            {
-              "value": "5",
-              "label": "Cart divider, total price"
-            }
-          ],
-          "label": "Shopping cart:",
-          "default": "1",
-          "info": "Set your shopping cart widget design in the header."
-        },
-        {
-          "type": "color",
-          "id": "bg_hc",
-          "label": "Count background color",
-          "default": "#000000"
-        },
-        {
-          "type": "color",
-          "id": "cl_hc",
-          "label": "Count text color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "header",
-          "content": "+ Sticky header"
-        },
-        {
-          "type": "checkbox",
-          "id": "sticky_header",
-          "label": "Enable sticky header",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "scroll_header",
-          "label": "Enable hide sticky header on scroll down",
-          "default": true
-        },
-        {
-          "type": "color",
-          "id": "bgnavst",
-          "label": "Header background color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "range",
-          "id": "opnavst",
-          "label": "Background opacity",
-          "default": 100,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "%"
-        },
-        {
-          "type": "color",
-          "id": "clnavst",
-          "label": "Header text/icon color",
-          "default": "#222222"
-        },
-        {
-          "type": "color",
-          "id": "clnavst_hover",
-          "label": "Header text/icon color when hover",
-          "default": "#56cfe1"
-        },
-        {
-          "type": "header",
-          "content": "+ Transparent header"
-        },
-        {
-          "type": "checkbox",
-          "id": "transparent_header",
-          "label": "Enable transparent header",
-          "info": "Only active on homepage",
-          "default": false
-        },
-        {
-          "type": "checkbox",
-          "id": "space_transparent_header",
-          "label": "Enable transparent header space top",
-          "info": "Only active on homepage and transparent header active",
-          "default": false
-        },
-        {
-          "type": "color",
-          "id": "bgnavtr",
-          "label": "Header background color",
-          "default": "#000000"
-        },
-        {
-          "type": "range",
-          "id": "opnavtr",
-          "label": "Background opacity",
-          "default": 40,
-          "min": 0,
-          "max": 100,
-          "step": 1,
-          "unit": "%"
-        },
-        {
-          "type": "color",
-          "id": "clnavtr",
-          "label": "Header text/icon color",
-          "default": "#ffffff"
-        },
-        {
-          "type": "color",
-          "id": "clnavtr_hover",
-          "label": "Header text/icon color when hover",
-          "default": "#ffffff"
-        },
-        {
-          "type": "header",
-          "content": "+ Text/Social"
-        },
-        {
-          "type": "select",
-          "id": "source",
-          "options": [
-            {
-              "value": "0",
-              "label": "None"
-            },
-            {
-              "value": "1",
-              "label": "Text"
-            },
-            {
-              "value": "2",
-              "label": "Social share"
-            },
-            {
-              "value": "3",
-              "label": "Social follow"
-            },
-            {
-              "value": "4",
-              "label": "Button search, account"
-            }
-          ],
-          "label": "Left show:",
-          "default": "2"
-        },
-        {
-          "type": "richtext",
-          "id": "txt",
-          "label": "Text",
-          "info": "You can place here some advertisement or phone numbers.",
-          "default": "<p>Welcome to our store!</p>"
-        },
-        {
-          "type": "header",
-          "content": "+ Navigation typography"
-        },
-        {
-          "type": "select",
-          "id": "fm_nav",
-          "label": "Font Family",
-          "default": "1",
-          "options": [
-            {
-              "value": "1",
-              "label": "Font Family #1"
-            },
-            {
-              "value": "2",
-              "label": "Font Family #2"
-            },
-            {
-              "value": "3",
-              "label": "Font Family #3"
-            }
-          ]
-        },
-        {
-          "type": "range",
-          "id": "fs_nav",
-          "min": 10,
-          "max": 20,
-          "step": 0.5,
-          "label": "Font size",
-          "unit": "px",
-          "default": 14
-        },
-        {
-          "type": "range",
-          "id": "fw_nav",
-          "min": 300,
-          "max": 800,
-          "step": 100,
-          "label": "Font weight",
-          "default": 400
-        },
-        {
-          "type": "number",
-          "id": "ls_nav",
-          "label": "Letter spacing (in pixel)",
-          "info": "set is '0' use to default",
-          "default": 0
-        }
-      ],
-      "blocks": [
-        {
-          "type": "mega",
-          "name": "Mega item",
-          "settings": [
-            {
-              "type": "text",
-              "id": "title",
-              "label": "Heading",
-              "default": "mega"
-            },
-            {
-              "type": "url",
-              "id": "url",
-              "label": "Link"
-            },
-            {
-              "type": "select",
-              "id": "open_link",
-              "options": [
-                {
-                  "value": "_self",
-                  "label": "Current window"
-                },
-                {
-                  "value": "_blank",
-                  "label": "New window"
-                }
-              ],
-              "label": "Open link in"
-            },
-            {
-              "id": "icon",
-              "type": "text",
-              "label": "Icon",
-              "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
-            },
-            {
-              "type": "checkbox",
-              "id": "cus_cl",
-              "label": "Use custom heading color?",
-              "default": false
-            },
-            {
-              "type": "color",
-              "id": "cl",
-              "default": "#ec0101",
-              "label": "Heading color"
-            },
-            {
-              "type": "text",
-              "id": "lb",
-              "label": "Label text"
-            },
-            {
-              "type": "color",
-              "id": "lb_cl",
-              "label": "Label color",
-              "default": "#00BADB"
-            },
-            {
-              "type": "header",
-              "content": "+ Submenu"
-            },
+{%- schema -%}
+  {
+    "name": "Header bottom",
+    "tag": "header",
+    "class": "sr4-section sr4-section-header",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "full_header",
+        "info": "Make header full width",
+        "label": "Enable full Width",
+        "default": false
+      },
+      {
+        "type": "header",
+        "content": "+ Options only working desktop"
+      },
+      {
+        "type": "range",
+        "id": "height",
+        "label": "Custom header top height",
+        "min": 60,
+        "max": 160,
+        "step": 1,
+        "unit": "px",
+        "default": 90
+      },
+      {
+        "type": "range",
+        "id": "height2",
+        "label": "Custom header bottom height",
+        "min": 40,
+        "max": 140,
+        "step": 1,
+        "unit": "px",
+        "default": 50
+      }, {
+        "type": "checkbox",
+        "id": "arrow",
+        "label": "Show dropdown arrow",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "border",
+        "label": "Show border bottom",
+        "default": true
+      }, {
+        "type": "select",
+        "id": "align",
+        "options": [
+          {
+            "value": "start",
+            "label": "Left"
+          }, {
+            "value": "center",
+            "label": "Center"
+          }, {
+            "value": "end",
+            "label": "Right"
+          }
+        ],
+        "label": "Main menu align:",
+        "default": "center"
+      }, {
+        "type": "select",
+        "id": "hover",
+        "options": [
+          {
+            "value": "hover_sideup",
+            "label": "Hover Slide Up"
+          }, {
+            "value": "hover_fadein",
+            "label": "Hover Fade In"
+          }
+        ],
+        "label": "Hover effect:",
+        "default": "hover_sideup"
+      }, {
+        "type": "checkbox",
+        "id": "enable_active",
+        "info": "Make hightlight if the link is active",
+        "label": "Enable link active",
+        "default": false
+      }, {
+        "type": "header",
+        "content": "+ Options only working Tablet, mobile"
+      }, {
+        "type": "range",
+        "id": "h_navmb",
+        "label": "Custom header mobile height",
+        "min": 60,
+        "max": 160,
+        "step": 1,
+        "unit": "px",
+        "default": 62
+      }, {
+        "type": "header",
+        "content": "+ Header Colors:"
+      }, {
+        "type": "image_picker",
+        "id": "h__bgimg",
+        "label": "Header Background image"
+      }, {
+        "type": "color",
+        "id": "bgnav",
+        "label": "Header background color",
+        "default": "#ffffff"
+      }, {
+        "type": "range",
+        "id": "opnav",
+        "label": "Background opacity",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      }, {
+        "type": "color",
+        "id": "clnav",
+        "label": "Header text/icon color",
+        "default": "#222222"
+      }, {
+        "type": "color",
+        "id": "clnav_hover",
+        "label": "Header text/icon color when hover",
+        "default": "#56cfe1"
+      }, {
+        "type": "header",
+        "content": "+ Header Group buttons:"
+      }, {
+        "type": "select",
+        "id": "h_icon",
+        "options": [
+          {
+            "value": "kalles",
+            "label": "Kalles icon"
+          }, {
+            "value": "pe",
+            "label": "Pe icon"
+          }, {
+            "value": "drawn",
+            "label": "Drawn icon"
+          }, {
+            "value": "line",
+            "label": "Line awesome"
+          }
+        ],
+        "label": "Design icon:",
+        "default": "kalles"
+      }, {
+        "type": "select",
+        "id": "hover_icon",
+        "options": [
+          {
+            "value": "1",
+            "label": "Simple"
+          }, {
+            "value": "2",
+            "label": "Zoom"
+          }, {
+            "value": "3",
+            "label": "Zoom and skew"
+          }
+        ],
+        "label": "Hover effect icon:",
+        "default": "2"
+      }, {
+        "type": "checkbox",
+        "id": "show_search",
+        "label": "Show search icon?",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_acc",
+        "label": "Show account icon?",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "show_wis",
+        "label": "Show wishlist icon?",
+        "default": true
+      }, {
+        "type": "select",
+        "id": "cart_des",
+        "options": [
+          {
+            "value": "0",
+            "label": "Disable"
+          },
+          {
+            "value": "1",
+            "label": "Cart count"
+          },
+          {
+            "value": "2",
+            "label": "Cart count, total price"
+          },
+          {
+            "value": "3",
+            "label": "Cart count 2"
+          }, {
+            "value": "4",
+            "label": "Cart total price"
+          }, {
+            "value": "5",
+            "label": "Cart divider, total price"
+          }
+        ],
+        "label": "Shopping cart:",
+        "default": "1",
+        "info": "Set your shopping cart widget design in the header."
+      }, {
+        "type": "color",
+        "id": "bg_hc",
+        "label": "Count background color",
+        "default": "#000000"
+      }, {
+        "type": "color",
+        "id": "cl_hc",
+        "label": "Count text color",
+        "default": "#ffffff"
+      }, {
+        "type": "header",
+        "content": "+ Sticky header"
+      }, {
+        "type": "checkbox",
+        "id": "sticky_header",
+        "label": "Enable sticky header",
+        "default": true
+      }, {
+        "type": "checkbox",
+        "id": "scroll_header",
+        "label": "Enable hide sticky header on scroll down",
+        "default": true
+      }, {
+        "type": "color",
+        "id": "bgnavst",
+        "label": "Header background color",
+        "default": "#ffffff"
+      }, {
+        "type": "range",
+        "id": "opnavst",
+        "label": "Background opacity",
+        "default": 100,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      }, {
+        "type": "color",
+        "id": "clnavst",
+        "label": "Header text/icon color",
+        "default": "#222222"
+      }, {
+        "type": "color",
+        "id": "clnavst_hover",
+        "label": "Header text/icon color when hover",
+        "default": "#56cfe1"
+      }, {
+        "type": "header",
+        "content": "+ Transparent header"
+      }, {
+        "type": "checkbox",
+        "id": "transparent_header",
+        "label": "Enable transparent header",
+        "info": "Only active on homepage",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "space_transparent_header",
+        "label": "Enable transparent header space top",
+        "info": "Only active on homepage and transparent header active",
+        "default": false
+      }, {
+        "type": "color",
+        "id": "bgnavtr",
+        "label": "Header background color",
+        "default": "#000000"
+      }, {
+        "type": "range",
+        "id": "opnavtr",
+        "label": "Background opacity",
+        "default": 40,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "%"
+      }, {
+        "type": "color",
+        "id": "clnavtr",
+        "label": "Header text/icon color",
+        "default": "#ffffff"
+      }, {
+        "type": "color",
+        "id": "clnavtr_hover",
+        "label": "Header text/icon color when hover",
+        "default": "#ffffff"
+      }, {
+        "type": "header",
+        "content": "+ Text/Social"
+      }, {
+        "type": "select",
+        "id": "source",
+        "options": [
+          {
+            "value": "0",
+            "label": "None"
+          },
+          {
+            "value": "1",
+            "label": "Text"
+          },
+          {
+            "value": "2",
+            "label": "Social share"
+          },
+          {
+            "value": "3",
+            "label": "Social follow"
+          }, {
+            "value": "4",
+            "label": "Button search, account"
+          }
+        ],
+        "label": "Left show:",
+        "default": "2"
+      }, {
+        "type": "richtext",
+        "id": "txt",
+        "label": "Text",
+        "info": "You can place here some advertisement or phone numbers.",
+        "default": "<p>Welcome to our store!</p>"
+      }, {
+        "type": "header",
+        "content": "+ Navigation typography"
+      }, {
+        "type": "select",
+        "id": "fm_nav",
+        "label": "Font Family",
+        "default": "1",
+        "options": [
+          {
+            "value": "1",
+            "label": "Font Family #1"
+          }, {
+            "value": "2",
+            "label": "Font Family #2"
+          }, {
+            "value": "3",
+            "label": "Font Family #3"
+          }
+        ]
+      }, {
+        "type": "range",
+        "id": "fs_nav",
+        "min": 10,
+        "max": 20,
+        "step": 0.5,
+        "label": "Font size",
+        "unit": "px",
+        "default": 14
+      }, {
+        "type": "range",
+        "id": "fw_nav",
+        "min": 300,
+        "max": 800,
+        "step": 100,
+        "label": "Font weight",
+        "default": 400
+      }, {
+        "type": "number",
+        "id": "ls_nav",
+        "label": "Letter spacing (in pixel)",
+        "info": "set is '0' use to default",
+        "default": 0
+      }
+    ],
+    "blocks": [
+      {
+        "type": "mega",
+        "name": "Mega item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "mega"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link"
+          },
+          {
+            "type": "select",
+            "id": "open_link",
+            "options": [
+              {
+                "value": "_self",
+                "label": "Current window"
+              }, {
+                "value": "_blank",
+                "label": "New window"
+              }
+            ],
+            "label": "Open link in"
+          },
+          {
+            "id": "icon",
+            "type": "text",
+            "label": "Icon",
+            "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
+          }, {
+            "type": "checkbox",
+            "id": "cus_cl",
+            "label": "Use custom heading color?",
+            "default": false
+          }, {
+            "type": "color",
+            "id": "cl",
+            "default": "#ec0101",
+            "label": "Heading color"
+          }, {
+            "type": "text",
+            "id": "lb",
+            "label": "Label text"
+          }, {
+            "type": "color",
+            "id": "lb_cl",
+            "label": "Label color",
+            "default": "#00BADB"
+          }, {
+            "type": "header",
+            "content": "+ Submenu"
+          },
 
 
 /*
@@ -817,339 +741,299 @@
    "default": true
    },
 */
-            {
-              "type": "select",
-              "id": "pos_sub",
-              "default": "bottom",
-              "options": [
-                {
-                  "value": "bottom-start",
-                  "label": "Start"
-                },
-                {
-                  "value": "bottom",
-                  "label": "Center"
-                },
-                {
-                  "value": "bottom-end",
-                  "label": "End"
-                }
-              ],
-              "label": "Position submenu"
-            },
-            {
-              "type": "select",
-              "id": "wid",
-              "options": [
-                {
-                  "value": "cus",
-                  "label": "Custom"
-                },
-                {
-                  "value": "full",
-                  "label": "Full width"
-                },
-                {
-                  "value": "full nav_t4cnt",
-                  "label": "Content full width"
-                }
-              ],
-              "label": "Width submenu:"
-            },
-            {
-              "type": "range",
-              "id": "cus_wid",
-              "label": "+ Custom Width",
-              "min": 200,
-              "max": 1200,
-              "step": 50,
-              "unit": "px",
-              "default": 1200
-            },
-            {
-              "type": "range",
-              "id": "id",
-              "min": 1,
-              "max": 16,
-              "step": 1,
-              "label": "ID",
-              "unit": "#",
-              "info": "ID connect mega menu.",
-              "default": 1
-            },
-            {
-              "type": "checkbox",
-              "id": "enable_packery",
-              "label": "Enable layout packery",
-              "default": true
-            },
-            {
-              "type": "select",
-              "id": "r_s_h_item",
-              "options": [
-                {
-                  "value": "0",
-                  "label": "0"
-                },
-                {
-                  "value": "2",
-                  "label": "2px"
-                },
-                {
-                  "value": "4",
-                  "label": "4px"
-                },
-                {
-                  "value": "6",
-                  "label": "6px"
-                },
-                {
-                  "value": "8",
-                  "label": "8px"
-                },
-                {
-                  "value": "10",
-                  "label": "10px"
-                },
-                {
-                  "value": "20",
-                  "label": "20px"
-                },
-                {
-                  "value": "30",
-                  "label": "30px"
-                }
-              ],
-              "label": "Space horizontal items",
-              "default": "30"
-            },
-            {
-              "type": "select",
-              "id": "r_s_v_item",
-              "options": [
-                {
-                  "value": "0",
-                  "label": "0"
-                },
-                {
-                  "value": "2",
-                  "label": "2px"
-                },
-                {
-                  "value": "4",
-                  "label": "4px"
-                },
-                {
-                  "value": "6",
-                  "label": "6px"
-                },
-                {
-                  "value": "8",
-                  "label": "8px"
-                },
-                {
-                  "value": "10",
-                  "label": "10px"
-                },
-                {
-                  "value": "20",
-                  "label": "20px"
-                },
-                {
-                  "value": "30",
-                  "label": "30px"
-                }
-              ],
-              "label": "Space vertical items",
-              "default": "30"
-            }
-          ]
-        },
-        {
-          "type": "drop",
-          "name": "Dropdown item",
-          "settings": [
-            {
-              "type": "text",
-              "id": "title",
-              "label": "Heading",
-              "default": "Dropdown"
-            },
-            {
-              "type": "url",
-              "id": "url",
-              "label": "Link"
-            },
-            {
-              "type": "select",
-              "id": "open_link",
-              "options": [
-                {
-                  "value": "_self",
-                  "label": "Current window"
-                },
-                {
-                  "value": "_blank",
-                  "label": "New window"
-                }
-              ],
-              "label": "Open link in"
-            },
-            {
-              "type": "link_list",
-              "id": "menu",
-              "label": "Add menu"
-            },
-            {
-              "id": "icon",
-              "type": "text",
-              "label": "Icon",
-              "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
-            },
-            {
-              "type": "checkbox",
-              "id": "cus_cl",
-              "label": "Use custom heading color?",
-              "default": false
-            },
-            {
-              "type": "color",
-              "id": "cl",
-              "default": "#ec0101",
-              "label": "Heading color"
-            },
-            {
-              "type": "text",
-              "id": "lb",
-              "label": "Label text"
-            },
-            {
-              "type": "color",
-              "id": "lb_cl",
-              "label": "Label color"
-            },
-            {
-              "type": "header",
-              "content": "+ Submenu"
-            },
-            {
-              "type": "checkbox",
-              "id": "lazy_mn",
-              "label": "Enable Lazy menu?",
-              "info": "improve page load speed",
-              "default": true
-            },
-            {
-              "type": "select",
-              "id": "pos_sub",
-              "default": "bottom",
-              "options": [
-                {
-                  "value": "bottom-start",
-                  "label": "Start"
-                },
-                {
-                  "value": "bottom",
-                  "label": "Center"
-                },
-                {
-                  "value": "bottom-end",
-                  "label": "End"
-                }
-              ],
-              "label": "Position submenu"
-            },
-            {
-              "type": "select",
-              "id": "pos",
-              "options": [
-                {
-                  "value": "left",
-                  "label": "Left"
-                },
-                {
-                  "value": "right",
-                  "label": "Right"
-                }
-              ],
-              "label": "Position child submenu"
-            }
-          ]
-        },
-        {
-          "type": "base",
-          "name": "Base item",
-          "settings": [
-            {
-              "type": "text",
-              "id": "title",
-              "label": "Heading",
-              "default": "base"
-            },
-            {
-              "type": "url",
-              "id": "url",
-              "label": "Link",
-              "default": "/"
-            },
-            {
-              "type": "select",
-              "id": "open_link",
-              "options": [
-                {
-                  "value": "_self",
-                  "label": "Current window"
-                },
-                {
-                  "value": "_blank",
-                  "label": "New window"
-                }
-              ],
-              "label": "Open link in"
-            },
-            {
-              "id": "icon",
-              "type": "text",
-              "label": "Icon",
-              "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
-            },
-            {
-              "type": "checkbox",
-              "id": "cus_cl",
-              "label": "Use custom heading color?",
-              "default": false
-            },
-            {
-              "type": "color",
-              "id": "cl",
-              "default": "#ec0101",
-              "label": "Heading color"
-            },
-            {
-              "type": "text",
-              "id": "lb",
-              "label": "Label text"
-            },
-            {
-              "type": "color",
-              "id": "lb_cl",
-              "label": "Label color"
-            }
-          ]
-        }
-      ],
-      "default": {
-        "blocks": [
           {
-            "type": "mega"
+            "type": "select",
+            "id": "pos_sub",
+            "default": "bottom",
+            "options": [
+              {
+                "value": "bottom-start",
+                "label": "Start"
+              }, {
+                "value": "bottom",
+                "label": "Center"
+              }, {
+                "value": "bottom-end",
+                "label": "End"
+              }
+            ],
+            "label": "Position submenu"
+          }, {
+            "type": "select",
+            "id": "wid",
+            "options": [
+              {
+                "value": "cus",
+                "label": "Custom"
+              }, {
+                "value": "full",
+                "label": "Full width"
+              }, {
+                "value": "full nav_t4cnt",
+                "label": "Content full width"
+              }
+            ],
+            "label": "Width submenu:"
+          }, {
+            "type": "range",
+            "id": "cus_wid",
+            "label": "+ Custom Width",
+            "min": 200,
+            "max": 1200,
+            "step": 50,
+            "unit": "px",
+            "default": 1200
+          }, {
+            "type": "range",
+            "id": "id",
+            "min": 1,
+            "max": 16,
+            "step": 1,
+            "label": "ID",
+            "unit": "#",
+            "info": "ID connect mega menu.",
+            "default": 1
+          }, {
+            "type": "checkbox",
+            "id": "enable_packery",
+            "label": "Enable layout packery",
+            "default": true
+          }, {
+            "type": "select",
+            "id": "r_s_h_item",
+            "options": [
+              {
+                "value": "0",
+                "label": "0"
+              },
+              {
+                "value": "2",
+                "label": "2px"
+              },
+              {
+                "value": "4",
+                "label": "4px"
+              },
+              {
+                "value": "6",
+                "label": "6px"
+              }, {
+                "value": "8",
+                "label": "8px"
+              }, {
+                "value": "10",
+                "label": "10px"
+              }, {
+                "value": "20",
+                "label": "20px"
+              }, {
+                "value": "30",
+                "label": "30px"
+              }
+            ],
+            "label": "Space horizontal items",
+            "default": "30"
+          }, {
+            "type": "select",
+            "id": "r_s_v_item",
+            "options": [
+              {
+                "value": "0",
+                "label": "0"
+              },
+              {
+                "value": "2",
+                "label": "2px"
+              },
+              {
+                "value": "4",
+                "label": "4px"
+              },
+              {
+                "value": "6",
+                "label": "6px"
+              }, {
+                "value": "8",
+                "label": "8px"
+              }, {
+                "value": "10",
+                "label": "10px"
+              }, {
+                "value": "20",
+                "label": "20px"
+              }, {
+                "value": "30",
+                "label": "30px"
+              }
+            ],
+            "label": "Space vertical items",
+            "default": "30"
+          }
+        ]
+      }, {
+        "type": "drop",
+        "name": "Dropdown item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "Dropdown"
           },
           {
-            "type": "mega"
+            "type": "url",
+            "id": "url",
+            "label": "Link"
           },
           {
-            "type": "base"
+            "type": "select",
+            "id": "open_link",
+            "options": [
+              {
+                "value": "_self",
+                "label": "Current window"
+              }, {
+                "value": "_blank",
+                "label": "New window"
+              }
+            ],
+            "label": "Open link in"
+          },
+          {
+            "type": "link_list",
+            "id": "menu",
+            "label": "Add menu"
+          }, {
+            "id": "icon",
+            "type": "text",
+            "label": "Icon",
+            "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
+          }, {
+            "type": "checkbox",
+            "id": "cus_cl",
+            "label": "Use custom heading color?",
+            "default": false
+          }, {
+            "type": "color",
+            "id": "cl",
+            "default": "#ec0101",
+            "label": "Heading color"
+          }, {
+            "type": "text",
+            "id": "lb",
+            "label": "Label text"
+          }, {
+            "type": "color",
+            "id": "lb_cl",
+            "label": "Label color"
+          }, {
+            "type": "header",
+            "content": "+ Submenu"
+          }, {
+            "type": "checkbox",
+            "id": "lazy_mn",
+            "label": "Enable Lazy menu?",
+            "info": "improve page load speed",
+            "default": true
+          }, {
+            "type": "select",
+            "id": "pos_sub",
+            "default": "bottom",
+            "options": [
+              {
+                "value": "bottom-start",
+                "label": "Start"
+              }, {
+                "value": "bottom",
+                "label": "Center"
+              }, {
+                "value": "bottom-end",
+                "label": "End"
+              }
+            ],
+            "label": "Position submenu"
+          }, {
+            "type": "select",
+            "id": "pos",
+            "options": [
+              {
+                "value": "left",
+                "label": "Left"
+              }, {
+                "value": "right",
+                "label": "Right"
+              }
+            ],
+            "label": "Position child submenu"
+          }
+        ]
+      }, {
+        "type": "base",
+        "name": "Base item",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Heading",
+            "default": "base"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "Link",
+            "default": "/"
+          },
+          {
+            "type": "select",
+            "id": "open_link",
+            "options": [
+              {
+                "value": "_self",
+                "label": "Current window"
+              }, {
+                "value": "_blank",
+                "label": "New window"
+              }
+            ],
+            "label": "Open link in"
+          },
+          {
+            "id": "icon",
+            "type": "text",
+            "label": "Icon",
+            "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
+          }, {
+            "type": "checkbox",
+            "id": "cus_cl",
+            "label": "Use custom heading color?",
+            "default": false
+          }, {
+            "type": "color",
+            "id": "cl",
+            "default": "#ec0101",
+            "label": "Heading color"
+          }, {
+            "type": "text",
+            "id": "lb",
+            "label": "Label text"
+          }, {
+            "type": "color",
+            "id": "lb_cl",
+            "label": "Label color"
           }
         ]
       }
+    ],
+    "default": {
+      "blocks": [
+        {
+          "type": "mega"
+        }, {
+          "type": "mega"
+        }, {
+          "type": "base"
+        }
+      ]
     }
-  {% endschema %}
+  }
+{% endschema %}
