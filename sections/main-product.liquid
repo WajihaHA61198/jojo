@@ -23,10 +23,7 @@ dataLayer.push({
     ]
   }
 });
-</script>{%- comment -%}
-Color_pink | alt text
-t4option0_0 | alt text
-{%- endcomment -%}
+</script>
 
 {%- liquid
 assign isProductAvailable = product.available
@@ -407,9 +404,6 @@ endif -%}
                 assign lh_pr = bk_stts.lh_pr | append:'px'
               endif  %}
             <h1 class="sr4-product__title" style="letter-spacing:.2rem;--title-family:var(--font-family-{{bk_stts.fnt_df_pr}});--title-style:{{bk_stts.txt_tr_pr}};--title-size:{{bk_stts.size_pr}}px;--title-weight:{{bk_stts.fw_pr}};--title-line-height:{{lh_pr}};--title-spacing:{{bk_stts.ls_pr}}px;--title-color:{{bk_stts.pr_title_color}};--title-color-hover:{{bk_stts.pr_title_color}};" {{ block.shopify_attributes }}>{{product.title}}</h1>
-
-              
-              <div style="border-bottom: 2px solid #cbd5e1; margin-bottom:16px;"></div>
            
             {%- when 'price_review' -%}
             <div class="sr4-product__price-review" style="--price-size:{{bk_stts.size_price_pr}}px;--price-weight:{{bk_stts.fw_price_pr}};--price-color:{{bk_stts.price_color}};--price-sale-color:{{bk_stts.price_sale_color}};">
@@ -464,8 +458,6 @@ endif -%}
                    {%- else -%}<p>{{- pr_des | strip_html | truncatewords: bk_stts.length -}}{{readm}}</p>
                    {%-endif-%}
                   </div>
-
-                     <div style="border-bottom: 2px solid #cbd5e1; margin-bottom:8px;" class="mob-underline"></div>
 
             {%- when 'form' -%}
               {%- liquid
@@ -764,20 +756,6 @@ endif -%}
   </div>
   <aside data-sidebar-content class="sr4-col-item sr4-col-12 sr4-col-lg-3 sr4-sidebar sr4-dn"><div class="sr4-loading--bg"></div></aside>
 </div>
-</div>
-
-                <div id="mySizeChartModal" class="ebcf_modal">
-
-  <div class="ebcf_modal-content">
-    <span class="ebcf_close">&times;</span>
-    <div>
-       <div class="get_video">
-          <video controls autoplay muted style="width:100%;">
-           <source src="" type="">
-          </video>
-       </div>
-    </div>
-  </div>
 </div>
 
               
@@ -4479,97 +4457,3 @@ endif -%}
       }
     }
   {% endschema %}
-                            <style>
-                /* The Modal (background) */
-.ebcf_modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 999; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-}
-
-/* Modal Content */
-.ebcf_modal-content {
-    background-color: #fefefe;
-    margin: auto;
-    padding: 10px;
-    border: 1px solid #888;
-    width: 90%;
-}
-
-/* The Close Button */
-.ebcf_close {
-    color: #aaaaaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-}
-
-.ebcf_close:hover,
-.ebcf_close:focus {
-    color: #000;
-    text-decoration: none;
-    cursor: pointer;
-}
-    #mySizeChart span{
-      text-decoration: 1px solid underline;
-    text-align: center;
-                  text-underline-offset: 4px;
-    }
-    @media screen and (min-width: 480px) {
-    #mySizeChart{
-      display: none;
-    }
-}
-
-              </style>
-<script>
-    var product = {{product.media | json}};
-    var lastIndex = product.length - 1;
-    var videoSource = product[lastIndex].sources[0].url;
-
-    // Set video source and type
-    var videoElement = document.querySelector('.get_video video');
-    videoElement.src = videoSource;
-    videoElement.type = 'video/mp4';
-
-    // Autoplay (with muted)
-    videoElement.autoplay = true;
-    videoElement.muted = true;
-
-    // Controls
-    videoElement.controls = true;
-  // Get the modal
-var ebModal = document.getElementById('mySizeChartModal');
-
-// Get the button that opens the modal
-var ebBtn = document.getElementById("mySizeChart");
-
-// Get the <span> element that closes the modal
-var ebSpan = document.getElementsByClassName("ebcf_close")[0];
-
-// When the user clicks the button, open the modal 
-ebBtn.onclick = function() {
-    ebModal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-ebSpan.onclick = function() {
-    ebModal.style.display = "none";
-}
-
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == ebModal) {
-        ebModal.style.display = "none";
-    }
-}
-  
-</script>

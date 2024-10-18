@@ -7,49 +7,49 @@
     "theme_documentation_url": "https://siardigital.com/",
     "theme_support_url": "https://siardigital.com/"
   },
-  {
-    "name": "Theme active",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "Start your business journey with Kalles"
-      },
-      {
-        "type": "text",
-        "id": "purchase_code",
-        "label": "Purchase code"
-      },
-      {
-        "type": "paragraph",
-        "content": "[Where is my purchase code](https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-) [Buy a new license](https://bit.ly/3lST9WX) [Get EComposer Page Builder for Free (only The4'users)](https://apps.shopify.com/ecomposer?utm_source=TF&utm_medium=Kalles-des-EC-banner)"
-      },
-      {
-        "type": "paragraph",
-        "content": "Use Kalles and explore all the tools and services you need to start, run, and grow your business. We know that Kalles will make your life easier by improving your workflow. With the tools that Kalles gives you, you will realize your true design potential without the need to know any coding. We would be glad if you help us to improve our theme, installation process or documentation."
-      }
-    ]
-  },
-  {
-    "name": "Dear customers!",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "[The4 Studio](https://the4.co/) is an experienced web development team that loves to deliver impressive and well-designed Shopify themes. All of our themes are easy to install and customize, so you can start your own web-site in just a few minutes. Our dedicated support team will provide you with fast answers if you have any questions concerning the theme setup or configuration."
-      },
-      {
-        "type": "paragraph",
-        "content": "If you are facing a problems with installation, please visit our [documentation page](https://the4.gitbook.io/kalles-4.0/) to find answers to many of the commonly asked questions. You can also [create a new ticket](https://support.the4.co) and we will help you as soon as possible. If you discover any technical issues, or find ways to improve our theme, installation process, or documentation, please message us at any time. Thanks for buying my theme!"
-      },
-      {
-        "type": "paragraph",
-        "content": "Our #1 priority is you, the end-user, and we show this by providing you with the most professional world-class theme support available anywhere. Start today, and build a the website of your dreams together with us!"
-      },
-      {
-        "type": "paragraph",
-        "content": "[Free Course: Build a Shopify Store](https://webdesign.tutsplus.com/courses/how-to-create-an-online-store-with-shopify)"
-      }
-    ]
-  },
+  // {
+  //   "name": "Theme active",
+  //   "settings": [
+  //     {
+  //       "type": "paragraph",
+  //       "content": "Start your business journey with Kalles"
+  //     },
+  //     {
+  //       "type": "text",
+  //       "id": "purchase_code",
+  //       "label": "Purchase code"
+  //     },
+  //     {
+  //       "type": "paragraph",
+  //       "content": "[Where is my purchase code](https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-) [Buy a new license](https://bit.ly/3lST9WX) [Get EComposer Page Builder for Free (only The4'users)](https://apps.shopify.com/ecomposer?utm_source=TF&utm_medium=Kalles-des-EC-banner)"
+  //     },
+  //     {
+  //       "type": "paragraph",
+  //       "content": "Use Kalles and explore all the tools and services you need to start, run, and grow your business. We know that Kalles will make your life easier by improving your workflow. With the tools that Kalles gives you, you will realize your true design potential without the need to know any coding. We would be glad if you help us to improve our theme, installation process or documentation."
+  //     }
+  //   ]
+  // },
+  // {
+  //   "name": "Dear customers!",
+  //   "settings": [
+  //     {
+  //       "type": "paragraph",
+  //       "content": "[The4 Studio](https://the4.co/) is an experienced web development team that loves to deliver impressive and well-designed Shopify themes. All of our themes are easy to install and customize, so you can start your own web-site in just a few minutes. Our dedicated support team will provide you with fast answers if you have any questions concerning the theme setup or configuration."
+  //     },
+  //     {
+  //       "type": "paragraph",
+  //       "content": "If you are facing a problems with installation, please visit our [documentation page](https://the4.gitbook.io/kalles-4.0/) to find answers to many of the commonly asked questions. You can also [create a new ticket](https://support.the4.co) and we will help you as soon as possible. If you discover any technical issues, or find ways to improve our theme, installation process, or documentation, please message us at any time. Thanks for buying my theme!"
+  //     },
+  //     {
+  //       "type": "paragraph",
+  //       "content": "Our #1 priority is you, the end-user, and we show this by providing you with the most professional world-class theme support available anywhere. Start today, and build a the website of your dreams together with us!"
+  //     },
+  //     {
+  //       "type": "paragraph",
+  //       "content": "[Free Course: Build a Shopify Store](https://webdesign.tutsplus.com/courses/how-to-create-an-online-store-with-shopify)"
+  //     }
+  //   ]
+  // },
   {
     "name": "Layout",
     "settings": [
@@ -256,68 +256,68 @@
         "type": "textarea",
         "id": "home_keywords",
         "label": "Keywords for homepage",
-        "default": "Kalles shopify, Fastest, Ajax Shop, Minimal, Lazyload",
+        "default": "Shopify, Fastest, Minimal, Lazyload",
         "info": "Define keywords for search engines."
       },
       {
         "type": "text",
         "id": "shop_author",
         "label": "Author for shop",
-        "default": "The4",
+        "default": "Shopify",
         "info": "Define the author of a Shop."
       },
-      {
-        "type": "header",
-        "content": "+ Shop"
-      },
-      {
-        "type": "text",
-        "id": "global_acc",
-        "label": "General instagram access token [learn more](https://kalles-docs.the4.co/installation/how-to-get-instagram-access-token)"
-      },
-      {
-        "type": "paragraph",
-        "content": "NOTE: Via GraphQL API (General Instagram Access Token) Long-lived tokens are valid for 60 days. You will have to manually regenerate your access token."
-      },
-      {
-        "type": "select",
-        "id": "use_rtl",
-        "label": "RTL mode:",
-        "default": "3",
-        "options": [
-          {
-            "value": "0",
-            "label": "Disable"
-          },
-          {
-            "value": "1",
-            "label": "Enable"
-          },
-          {
-            "value": "3",
-            "label": "Only enable with 'List RTL Default'"
-          },
-          {
-            "value": "2",
-            "label": "Only enable with 'List RTL Custom'"
-          }
-        ]
-      },
-      {
-        "type": "paragraph",
-        "content": "List RTL Default: ar; dv; ha; he; ku; fa; ur; ug; ps; yi"
-      },
-      {
-        "type": "textarea",
-        "id": "list_rtl",
-        "label": "List RTL Custom language iso code:",
-        "default": "ar; ha; he; ur; ug",
-        "info": "Separate your language codes with a ';'. Only working when selected 'Only enable with List RTL'"
-      },
-      {
-        "type": "paragraph",
-        "content": "List RTL language iso code: ar (Arabic); dv : (Dhivehi,Maldivian); ha : (Hausa); he : (Hebrew); ku : (Kurdish/Sorani); fa : (Persian/Farsi); ur : (Urdu); ps : (Pashto); yi : (Yiddish)"
-      },
+      // {
+      //   "type": "header",
+      //   "content": "+ Shop"
+      // },
+      // {
+      //   "type": "text",
+      //   "id": "global_acc",
+      //   "label": "General instagram access token [learn more](https://kalles-docs.the4.co/installation/how-to-get-instagram-access-token)"
+      // },
+      // {
+      //   "type": "paragraph",
+      //   "content": "NOTE: Via GraphQL API (General Instagram Access Token) Long-lived tokens are valid for 60 days. You will have to manually regenerate your access token."
+      // },
+      // {
+      //   "type": "select",
+      //   "id": "use_rtl",
+      //   "label": "RTL mode:",
+      //   "default": "3",
+      //   "options": [
+      //     {
+      //       "value": "0",
+      //       "label": "Disable"
+      //     },
+      //     {
+      //       "value": "1",
+      //       "label": "Enable"
+      //     },
+      //     {
+      //       "value": "3",
+      //       "label": "Only enable with 'List RTL Default'"
+      //     },
+      //     {
+      //       "value": "2",
+      //       "label": "Only enable with 'List RTL Custom'"
+      //     }
+      //   ]
+      // },
+      // {
+      //   "type": "paragraph",
+      //   "content": "List RTL Default: ar; dv; ha; he; ku; fa; ur; ug; ps; yi"
+      // },
+      // {
+      //   "type": "textarea",
+      //   "id": "list_rtl",
+      //   "label": "List RTL Custom language iso code:",
+      //   "default": "ar; ha; he; ur; ug",
+      //   "info": "Separate your language codes with a ';'. Only working when selected 'Only enable with List RTL'"
+      // },
+      // {
+      //   "type": "paragraph",
+      //   "content": "List RTL language iso code: ar (Arabic); dv : (Dhivehi,Maldivian); ha : (Hausa); he : (Hebrew); ku : (Kurdish/Sorani); fa : (Persian/Farsi); ur : (Urdu); ps : (Pashto); yi : (Yiddish)"
+      // },
       {
         "type": "header",
         "content": "+ Email Marketing"

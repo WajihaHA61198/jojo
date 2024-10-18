@@ -7,9 +7,9 @@
    <a href="{{ external_link }}" class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow" target="_blank"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-external"></use></svg></span><span class="sr4-text-pr">{{external_title}}</span></a>
 
 {%- elsif pr_available == false -%}
-   {% comment %}<a href="{{ pr_url }}"  class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-link"></use></svg></span><span class="sr4-text-pr">
+  <a href="{{ pr_url }}"  class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-link"></use></svg></span><span class="sr4-text-pr">
   {{ 'products.product_card.read_more' | t }}
-  </span></a> {% endcomment %}
+  </span></a> 
 
   <a href="{{ pr_url }}" class="btn-anchor" rel="nofollow"><span class="my-btn" >
      SHOP NOW <i class="fa-solid fa-arrow-right btn-icons-nk" style="margin-left:.5rem; padding-right:1rem;"></i>
@@ -39,45 +39,8 @@
    <a href="{{ pr_url }}"class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow" data-action-quickshop data-id="{{pid}}"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">{{ 'products.product_card.quick_shop' | t }}</span></a>
 
 {%- else -%}
- {% comment %}  <a href="{{ pr_url }}" class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">
+ <a href="{{ pr_url }}" class="sr4-pr-item-btn sr4-pr-addtocart" rel="nofollow"><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-atc"></use></svg></span><span class="sr4-text-pr">
   {{ 'products.product_card.select_option' | t }}
-  </span></a> {% endcomment %}
-
-  <a href="{{ pr_url }}" rel="nofollow" class="btn-anchor"><span class="my-btn">
-     <!-- SHOP NOW  -->
-    <i class="fa-solid fa-arrow-right btn-icons-nk" style="margin-left:.5rem; padding-right:1rem;"></i>
-  </span></a>
+  </span></a> 
 
 {%- endif -%}
-
-<style>
-  .my-btn{
-    font-size:12px;
-    font-weight:600;
-    letter-spacing: 1px;
-    text-transform: uppercase !important;
-    color:black;
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-  }
-  .btn-icons-nk {
-     transition: transform 0.2s ease-in-out; /* Add a transition effect */
-   }
-  .my-btn:hover .btn-icons-nk {
-      transform: translateX(5px); /* Move the icon 5 pixels to the right */
-    color: black;
-   }
-  .sr4-product .sr4-product-title a{
-    color: black;;
-  }
-  .sr4-product:hover .sr4-product-title a{
-    color:#475569;;
-  }
-
-  @media (max-width:768px){
-    .my-btn{
-      font-size:10px;
-     }
-  }
-</style>

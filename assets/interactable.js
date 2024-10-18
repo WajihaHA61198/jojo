@@ -8087,8 +8087,8 @@
 
           $(_parent + ' [data-current]')
             .text($this.text())
-            .removeClass('flagst4-' + oldISO)
-            .addClass('flagst4-' + newISO);
+            .removeClass('flagst4s-' + oldISO)
+            .addClass('flagst4s-' + newISO);
 
           // $(_child).removeClass(classes.select);
           $(_parent + ' [data-iso=' + newISO + ']')

@@ -32,7 +32,7 @@
 
   assign listTyCurent = ''
   assign listTyCurent1 = ''
-  assign listTyCurent2 = '' -%}
+  assign listTyCurent2 = ''-%}
 
 {%- for i in (1..1) -%}
   {%- if tabBlocks.size == 0 %}
@@ -293,8 +293,8 @@
                   id="{{tab_id}}"
                   class="sr4-tab-content{{class_first_tab}}"
                   data-sr4-tab-content>{%- render 't4s-pr-FBT'
-, product: product 
-, nav_up_size: nav_up_size 
+, product: product  
+, nav_up_size: nav_up_size  
 , class: 'is--tab-product' -%}</div>
               </div>
               {%- assign forloop_first = false %}{% assign isEmty = false -%}

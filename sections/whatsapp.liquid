@@ -1,164 +1,71 @@
 {%- if section.settings.show_wa -%}
-  <a
-    id="scrollLink"
-    rel="nofollow"
-    href="{{ section.settings.link_wa }}"
-    class="float whatsapp"
-    target="{{ section.settings.target_link  }}"
-    data-no-instant>
-    {%- render 'icon_socials'
-      , icon_name: 'whatsapp' -%}
-  </a>
+  <div id="whatsappbutton">
+    <a
+      id="scrollLink"
+      rel="nofollow"
+      href="{{ section.settings.link_wa }}"
+      class="float whatsapp"
+      target="{{ section.settings.target_link  }}"
+      aria-describedby="a11y-new-window-external-message"
+      data-no-instant>
+      <span>
+        {%- render 'icon_socials'
+          , icon_name: 'whatsapp' -%}
+      </span>
+    </a>
+  </div>
 {% endif %}
 
 <style>
-  .float {
-    position: fixed;
-    width: 50px;
-    height: 50px;
-    bottom: 50px;
-    right: 15px;
-    padding-top: 0.5rem;
-    background-color: #25d366;
-    border-radius: 50px;
-    text-align: center;
-    box-shadow: 2px 2px 3px #999;
-    z-index: 100;
-    transition: 2s;
-  }
-  .float svg {
-    width: 32px;
-    height: 32px;
+  div#whatsappbutton svg {
     fill: white;
+    width: 70%;
+    transform: translate(0px, 5px);
   }
   @media (max-width: 767px) {
     .float {
-      bottom: 70px !important;
+      bottom: 10% !important;
     }
   }
-
-
-  /*
-
-   .float { 
-   -webkit-animation: shockwaveJump 1s ease-out infinite; 
-   animation: shockwaveJump 1s ease-out infinite; 
-   } 
-*/
-  .float--shockwave:after {
-    content: '';
-    position: absolute;
-    /* top: 0; */
-    /* left: 0; */
-    bottom: 50px;
-    right: 15px;
-    /* border-radius: 50%; */
-    -webkit-animation: shockwave 1s 0.65s ease-out infinite;
-    animation: shockwave 1s 0.65s ease-out infinite;
+  #t4s-backToTop {
+    width: 30px;
+    height: 30px;
+    right: 13px;
+    bottom: 70px;
   }
-  .float:before {
-    content: '';
-    position: absolute;
-
-
-    /*
-
-   top: 0; 
-   left: 0; 
-*/
-    bottom: 50px;
-    right: 15px;
-    /* border-radius: 50%; */
-    -webkit-animation: shockwave 1s 0.5s ease-out infinite;
-    animation: shockwave 1s 0.5s ease-out infinite;
+  .float {
+    position: fixed;
+    width: 45px;
+    height: 45px;
+    /* bottom: 120px; */
+    bottom: 10%;
+    line-height: 45px;
+    /* right: 10px; */
+    right: 20px;
+    padding-top: 0;
+    background-color: #25d366;
+    color: white;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 25px;
+    z-index: 100;
+    animation-name: pulses;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-iteration-count: infinite;
   }
-
-  @-webkit-keyframes shockwaveJump {
+  @keyframes pulses {
     0% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
+      box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5);
     }
-    40% {
-      -webkit-transform: scale(1.08);
-      transform: scale(1.08);
-    }
-    50% {
-      -webkit-transform: scale(0.98);
-      transform: scale(0.98);
-    }
-    55% {
-      -webkit-transform: scale(1.02);
-      transform: scale(1.02);
-    }
-    60% {
-      -webkit-transform: scale(0.98);
-      transform: scale(0.98);
-    }
-    100% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
+    80% {
+      box-shadow: 0 0 0 14px rgba(37, 211, 102, 0);
     }
   }
-
-  @keyframes shockwaveJump {
-    0% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
-    40% {
-      -webkit-transform: scale(1.08);
-      transform: scale(1.08);
-    }
-    50% {
-      -webkit-transform: scale(0.98);
-      transform: scale(0.98);
-    }
-    55% {
-      -webkit-transform: scale(1.02);
-      transform: scale(1.02);
-    }
-    60% {
-      -webkit-transform: scale(0.98);
-      transform: scale(0.98);
-    }
-    100% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-    }
+  .float:hover {
+    color: white;
+    background-color: #13b650;
   }
-  @-webkit-keyframes shockwave {
-    0% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.15)
-      , inset 0 0 1px rgba(0, 0, 0, 0.15);
-    }
-    95% {
-      box-shadow: 0 0 50px transparent
-      , inset 0 0 30px transparent;
-    }
-    100% {
-      -webkit-transform: scale(2.25);
-      transform: scale(2.25);
-    }
-  }
-  @keyframes shockwave {
-    0% {
-      -webkit-transform: scale(1);
-      transform: scale(1);
-      box-shadow: 0 0 2px rgba(0, 0, 0, 0.15)
-      , inset 0 0 1px rgba(0, 0, 0, 0.15);
-    }
-    95% {
-      box-shadow: 0 0 50px transparent
-      , inset 0 0 30px transparent;
-    }
-    100% {
-      -webkit-transform: scale(2.25);
-      transform: scale(2.25);
-    }
-  }
-
 </style>
 {% schema %}
   {

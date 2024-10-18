@@ -879,14 +879,6 @@ button.sr4-product__description_readm:hover {
 /* ------------------------------- */
 a.sr4-product-form__btn.sr4-pr-wishlist.sr4-tooltip-actived {
   position: absolute;
-  top: 24px;
+  top: 0;
   right: 0;
-}
-
-h1.sr4-product__title,
-button.shopify-payment-button__button.shopify-payment-button__button--unbranded.BUz42FHpSPncCPJ4Pr_f.jjzYeefyWpPZLH9pIgyw.RWJ0IfBjxIhflh4AIrUw {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
-button.shopify-payment-button__button.shopify-payment-button__button--unbranded.BUz42FHpSPncCPJ4Pr_f.jjzYeefyWpPZLH9pIgyw.RWJ0IfBjxIhflh4AIrUw {
-  display: none;
 }
