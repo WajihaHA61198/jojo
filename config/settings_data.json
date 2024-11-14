@@ -621,6 +621,12 @@
               "r_s_h_item": "20",
               "r_s_v_item": "30"
             }
+          },
+          "app_PwLjYR": {
+            "type": "app",
+            "settings": {
+              "app_setting_id": ""
+            }
           }
         },
         "block_order": [
@@ -630,7 +636,8 @@
           "4a281327-6e12-4cd4-af83-0ce2f502e7b8",
           "334013b4-82f3-4046-8371-eaf3c3340153",
           "556a85dc-041d-4d44-8c22-263ed70a8b48",
-          "9a73cf8b-993e-4dbe-9f11-6e990bfb91c0"
+          "9a73cf8b-993e-4dbe-9f11-6e990bfb91c0",
+          "app_PwLjYR"
         ],
         "settings": {
           "layout": "logo_left",
