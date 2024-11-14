@@ -1402,7 +1402,7 @@
         "mystery_price_inquiry_dev_star_rating_mCRccA": {
           "type": "shopify://apps/mystery-price-inquiry-dev/blocks/star_rating/e2977e70-19b6-4ca0-a9ee-77cbcfdaa792",
           "settings": {
-            "product": "",
+            "product": "its-a-boy-hamper",
             "colour": "#ff0000"
           }
         }
