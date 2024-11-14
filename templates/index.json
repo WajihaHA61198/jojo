@@ -1398,17 +1398,20 @@
     },
     "1731579615886f70be": {
       "type": "apps",
+      "settings": {}
+    },
+    "173158195626dc8b74": {
+      "type": "apps",
       "blocks": {
-        "mystery_price_inquiry_dev_star_rating_mCRccA": {
-          "type": "shopify://apps/mystery-price-inquiry-dev/blocks/star_rating/e2977e70-19b6-4ca0-a9ee-77cbcfdaa792",
+        "test_demo_first_exit_CAphw7": {
+          "type": "shopify://apps/test-demo/blocks/firstExit/4d9b554a-403d-418c-8136-060e59bfb9a0",
           "settings": {
-            "product": "its-a-boy-hamper",
-            "colour": "#ff0000"
+            "color": "#000000"
           }
         }
       },
       "block_order": [
-        "mystery_price_inquiry_dev_star_rating_mCRccA"
+        "test_demo_first_exit_CAphw7"
       ],
       "settings": {}
     }
@@ -1423,6 +1426,7 @@
     "1646209857bf69e76a",
     "164620932069107a3a",
     "92096392-13d4-4ca0-8480-1c8b7a0a6f35",
-    "1731579615886f70be"
+    "1731579615886f70be",
+    "173158195626dc8b74"
   ]
 }
