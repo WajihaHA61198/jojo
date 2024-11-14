@@ -28,8 +28,6 @@
     {%- endif -%}
 
       {%- case bk_type -%}
-        {% when 'app' %}
-        mim
         {%- when 'banner' %}{% assign c_bid = block.id %}{% assign image = bk_stts.image -%}
           {{ 'content-position.css' | asset_url | stylesheet_tag }}
           {{ 'banner.css' | asset_url | stylesheet_tag }}
