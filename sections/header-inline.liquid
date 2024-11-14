@@ -217,6 +217,15 @@
 }
 {%- endstyle -%}
 
+
+
+{%- liquid
+  for block in section.blocks
+    if block.type == '@app'
+      assign has_app_block = true
+    endif
+  endfor
+-%}
 <div
   data-header-options='{ "isTransparent": {{h_transparent}},"isSticky": {{se_stts.sticky_header}},"hideScroldown": {{se_stts.scroll_header}} }'
   class="sr4-header__wrapper sr4-pr sr4-header-layout_{{se_stts.layout}} {% if h__bgimg != blank %} lazyloadsr4 sr4-header__bgimg"
