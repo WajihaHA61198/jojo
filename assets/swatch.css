@@ -36,11 +36,11 @@
 sr4-color-mode__circle 
 sr4-selector-mode__circle  */
 .sr4-swatch__option {
-  margin-bottom: 20px;
+  margin-bottom: 15px;
 }
 .sr4-swatch__title {
   font-size: 14px;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   font-weight: 700;
   margin: 0.65em 0 0.5em;
 }
@@ -49,15 +49,16 @@ sr4-selector-mode__circle  */
   margin-top: 0px;
 }
 .sr4-swatch__item {
+  font-size:12px;
   -ms-touch-action: manipulation;
   touch-action: manipulation;
   display: inline-block;
-  padding: 5px 16px 5px;
+  padding: 4px 16px 4px;
   text-align: center;
-  /*     border: 1px solid var(--border-sw-color); */
-  border: 1px solid #707070;
-  /*     color: var(--secondary-sw-color); */
-  color: black;
+      border: 1px solid var(--border-sw-color);
+  /* border: 1px solid #707070; */
+      color: var(--secondary-sw-color);
+  /* color: black; */
   /*     border-radius: 3px; */
   vertical-align: middle;
   cursor: pointer;
@@ -68,9 +69,20 @@ sr4-selector-mode__circle  */
   transition: color 0.25s ease, background-color 0.25s ease, border-color 0.15s ease, box-shadow 0.25s ease,
     opacity 0.25s ease;
 }
+.sr4-selector-mode__block .sr4-swatch__item:hover,
+.sr4-selector-mode__block2 .sr4-swatch__item:hover,
+.sr4-selector-mode__circle .sr4-swatch__item:hover{
+  /* border-color: var(--primary-sw-color);
+  color: var(--primary-sw-color); */
+  background-color: var(--primary-sw-color);
+  color: #fff;
+}
+
 .sr4p-hover .sr4-swatch__item:hover {
   border-color: var(--primary-sw-color);
-  color: var(--primary-sw-color);
+  /* color: var(--primary-sw-color); */
+  /* background-color: var(--primary-sw-color);
+  color: #fff; */
 }
 .sr4-swatch__item:not(.is-sw__color).is--selected {
   /*     border-color: var(--primary-sw-color); */
@@ -85,7 +97,7 @@ sr4-selector-mode__circle  */
 /* CSS selector color block round  */
 .sr4-selector-mode__block2 .sr4-swatch__option:not(.is-sr4-style__color) .sr4-swatch__item,
 .sr4-color-mode__block2 .sr4-swatch__option.is-sr4-style__color .sr4-swatch__item {
-  border-radius: 40px;
+  border-radius: 8px;
 }
 
 /* CSS selector color circle   */
@@ -96,7 +108,7 @@ sr4-selector-mode__circle  */
   min-width: 30px;
   min-height: 30px;
   line-height: 18px;
-  /*     border-radius: 40px; */
+      border-radius: 40px;
   text-align: center;
 }
 

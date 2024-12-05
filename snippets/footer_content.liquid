@@ -11,10 +11,12 @@
   {%- if image -%}
     <a href="{{bk_stts.link_img | default:routes.root_url}}" class="sr4-d-block">
       <div class="sr4-img-child sr4-pr sr4-hidden-mobile-{{bk_stts.hidden_mobile}}" {%- render 'bk_cus_style',type:'image',bk_stts:bk_stts -%}>
-        <img data-maxw="{{ bk_stts.img_width_mb }}" data-maxw-md="{{ bk_stts.img_width }}" data-maxw-lg="{{ bk_stts.img_width }}" class="lazyloadsr4 sr4-lz--fadeIn" data-src="{{ image | image_url: width: 1 }}" data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]" data-optimumx="2" data-sizes="auto" src="{%- render 'img_svg',w:image.width,h:image.height -%}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}">
+      <img data-maxw="{{ bk_stts.img_width_mb }}" data-maxw-md="{{ bk_stts.img_width }}" data-maxw-lg="{{ bk_stts.img_width }}" class="lazyloadsr4 sr4-lz--fadeIn" data-src="{{ image | image_url: width: 1 }}" data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]" data-optimumx="2" data-sizes="auto" src="{%- render 'img_svg',w:image.width,h:image.height -%}" width="{{ image.width }}" height="{{ image.height }}" alt="{{ image.alt | escape }}">
         <span class="lazyloadsr4-loader"></span>
       </div>
     </a>
+    {% else %}
+      <img src="https://cdn.shopify.com/s/files/1/0680/4180/1945/files/svgviewer-output_2.svg?v=1732086484"/>  
   {%- endif -%}
 {%- when 'payments' -%} 
   {%- assign arr = bk_stts.svg | remove: ' ' | split:"," -%}

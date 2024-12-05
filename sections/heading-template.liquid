@@ -49,39 +49,39 @@
 </div>
 {%- schema -%}
   {
-    "name": "Page heading",
+    "name": "Main heading",
     "class": "page_section_heading",
-    "max_blocks": 3,
+    "max_blocks": 2,
     "settings": [
       {
         "type": "image_picker",
         "id": "image",
-        "label": "+ Background image"
+        "label": "Background image"
       },
-      {
-        "type": "checkbox",
-        "id": "use_specify_image",
-        "label": "Specify other image for particular page",
-        "info": "Use collection image for 'Collection' page",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "parallax",
-        "label": "Use scroll parallax?",
-        "default": false
-      },
+
+// {
+// "type": "checkbox",
+// "id": "use_specify_image",
+// "label": "Specify other image for particular page",
+// "info": "Use collection image for 'Collection' page",
+// "default": true
+// },
+// {
+// "type": "checkbox",
+// "id": "parallax",
+// "label": "Use scroll parallax?",
+// "default": false
+// },
       {
         "type": "color",
         "id": "color",
-        "label": "Background color",
-        "default": "#000"
+        "label": "Background color"
       },
       {
         "type": "range",
         "id": "overlay",
         "label": "Background overlay",
-        "default": 54,
+        "default": 0,
         "min": 0,
         "max": 100,
         "step": 1,
@@ -91,72 +91,59 @@
         "type": "range",
         "id": "padding",
         "label": "Padding space (Desktop)",
-        "default": 50,
+        "default": 20,
         "min": 0,
         "max": 100,
         "step": 1,
         "unit": "px"
-      },
-      {
+      }, {
         "type": "range",
         "id": "paddingmb",
         "label": "Padding space (Mobile)",
-        "default": 50,
+        "default": 20,
         "min": 0,
         "max": 100,
         "step": 1,
         "unit": "px"
-      },
-      {
+      }, {
         "type": "range",
         "id": "mg_b",
         "label": "Margin space bottom (Desktop)",
-        "default": 50,
+        "default": 0,
         "min": 0,
         "max": 100,
         "step": 1,
         "unit": "px"
-      },
-      {
+      }, {
         "type": "range",
         "id": "mg_bmb",
         "label": "Margin space bottom (Mobile)",
-        "default": 50,
+        "default": 0,
         "min": 0,
         "max": 100,
         "step": 1,
         "unit": "px"
-      },
-      {
+      }, {
         "type": "select",
         "id": "content_align",
-        "label": "+ Content align",
+        "label": "Heading & Content alignment",
         "default": "sr4-text-center",
         "options": [
           {
             "label": "Left",
             "value": "sr4-text-start"
-          },
-          {
+          }, {
             "label": "Center",
             "value": "sr4-text-center"
-          },
-          {
+          }, {
             "label": "Right",
             "value": "sr4-text-end"
           }
         ]
-      },
-
-      {
+      }, {
         "type": "header",
-        "content": "+ Background image config:"
-      },
-      {
-        "type": "paragraph",
-        "content": "Not active when you enable scroll parallax."
-      },
-      {
+        "content": "Background image config:"
+      }, {
         "type": "select",
         "id": "bg_pos",
         "label": "Background image position",
@@ -177,113 +164,69 @@
           {
             "value": "center top",
             "label": "Center Top"
-          },
-          {
+          }, {
             "value": "center center",
             "label": "Center Center"
-          },
-          {
+          }, {
             "value": "center bottom",
             "label": "Center Bottom"
-          },
-          {
+          }, {
             "value": "right top",
             "label": "Right Top"
-          },
-          {
+          }, {
             "value": "right center",
             "label": "Right Center"
-          },
-          {
+          }, {
             "value": "right bottom",
             "label": "Right Bottom"
           }
         ]
-      },
-      {
-        "type": "select",
-        "id": "bg_repeat",
-        "options": [
-          {
-            "value": "no-repeat",
-            "label": "No repeat"
-          },
-          {
-            "value": "repeat",
-            "label": "Repeat all"
-          },
-          {
-            "value": "repeat-x",
-            "label": "Repeat horizontally"
-          },
-          {
-            "value": "repeat-y",
-            "label": "Repeat vertically"
-          },
-          {
-            "value": "inherit",
-            "label": "Inherit"
-          }
-        ],
-        "label": "Background repeat",
-        "default": "no-repeat",
-        "info": "[Specifies how to repeat the background images](https:\/\/w3schools.com\/cssref\/pr_background-repeat.asp)"
-      },
-      {
+      }, {
         "type": "select",
         "id": "bg_size",
         "options": [
           {
             "value": "auto",
             "label": "Auto"
-          },
-          {
+          }, {
             "value": "inherit",
             "label": "Inherit"
-          },
-          {
+          }, {
             "value": "cover",
             "label": "Cover"
-          },
-          {
+          }, {
             "value": "contain",
             "label": "Contain"
           }
         ],
         "label": "Background size",
-        "default": "cover",
-        "info": "[Specifies the size of the background images](https:\/\/w3schools.com\/cssref\/css3_pr_background-size.asp)"
-      },
-      {
+        "default": "cover"
+      }, {
         "type": "header",
-        "content": "+ Custom css"
-      },
-      {
+        "content": "Custom css"
+      }, {
         "id": "use_cus_css",
         "type": "checkbox",
         "label": "Use custom css",
         "default": false,
         "info": "If you want custom style for this section."
-      },
-      {
+      }, {
         "id": "code_cus_css",
         "type": "textarea",
         "label": "Code custom css",
         "info": "Use selector .SectionID to style css"
-
       }
     ],
     "blocks": [
       {
         "type": "1",
-        "name": "Page heading",
+        "name": "Main heading",
         "limit": 1,
         "settings": [
           {
             "type": "text",
             "id": "heading",
-            "label": "Page Heading",
-            "info": "Page heading automatically shows the heading of the current page, please leave it blank. Note: It does not work with the blog, collection page and pages."
+            "label": "Page Heading"
           },
           {
             "type": "select",
@@ -294,16 +237,13 @@
               {
                 "label": "Inherit",
                 "value": "inherit"
-              },
-              {
+              }, {
                 "label": "Font family #1",
                 "value": "1"
-              },
-              {
+              }, {
                 "label": "Font family #2",
                 "value": "2"
-              },
-              {
+              }, {
                 "label": "Font family #3",
                 "value": "3"
               }
@@ -313,7 +253,7 @@
             "type": "color",
             "id": "text_cl",
             "label": "Color text",
-            "default": "#fff"
+            "default": "#212121"
           },
           {
             "type": "range",
@@ -323,9 +263,8 @@
             "min": 10,
             "step": 1,
             "unit": "px",
-            "default": 20
-          },
-          {
+            "default": 50
+          }, {
             "type": "range",
             "id": "text_lh",
             "label": "Line height",
@@ -335,61 +274,42 @@
             "default": 0,
             "unit": "px",
             "info": "Set is '0' use to default"
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_fw",
             "label": "Font weight",
             "min": 100,
             "max": 900,
             "step": 100,
-            "default": 400
-          },
-          {
+            "default": 500
+          }, {
             "type": "range",
             "id": "text_ls",
             "label": "Letter spacing",
             "max": 10,
             "min": 0,
-            "default": 0,
+            "default": 1,
             "step": 0.1,
             "unit": "px"
-          },
-          {
-            "type": "checkbox",
-            "id": "font_italic",
-            "label": "Enable font style italic",
-            "default": false
-          },
-          {
+          }, {
             "type": "checkbox",
             "id": "font_uppercase",
             "label": "Enable font uppercase",
             "default": false
-          },
-          {
-            "type": "checkbox",
-            "id": "text_shadow",
-            "label": "Enable text shadow",
-            "default": false
-          },
-          {
+          }, {
             "type": "number",
             "id": "text_mgb",
             "label": "Margin bottom",
             "default": 0
-          },
-          {
+          }, {
             "type": "header",
-            "content": "+ Option mobile "
-          },
-          {
+            "content": "Option for mobile "
+          }, {
             "type": "checkbox",
             "id": "hidden_mobile",
             "label": "Hidden on mobile ",
             "default": false
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_fs_mb",
             "label": "Font size (Mobile)",
@@ -398,8 +318,7 @@
             "step": 1,
             "unit": "px",
             "default": 20
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_lh_mb",
             "label": "Line height (Mobile)",
@@ -409,8 +328,7 @@
             "default": 0,
             "unit": "px",
             "info": "Set is '0' use to default"
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_ls_mb",
             "label": "Letter spacing (Mobile)",
@@ -418,17 +336,15 @@
             "max": 10,
             "step": 0.1,
             "unit": "px",
-            "default": 0
-          },
-          {
+            "default": 1
+          }, {
             "type": "number",
             "id": "text_mgb_mobile",
             "label": "Margin bottom (Mobile)",
             "default": 0
           }
         ]
-      },
-      {
+      }, {
         "type": "2",
         "name": "Page subheading",
         "limit": 1,
@@ -448,16 +364,13 @@
               {
                 "label": "Inherit",
                 "value": "inherit"
-              },
-              {
+              }, {
                 "label": "Font family #1",
                 "value": "1"
-              },
-              {
+              }, {
                 "label": "Font family #2",
                 "value": "2"
-              },
-              {
+              }, {
                 "label": "Font family #3",
                 "value": "3"
               }
@@ -467,7 +380,7 @@
             "type": "color",
             "id": "text_cl",
             "label": "Color text",
-            "default": "#fff"
+            "default": "#212121"
           },
           {
             "type": "range",
@@ -477,9 +390,8 @@
             "min": 10,
             "step": 1,
             "unit": "px",
-            "default": 16
-          },
-          {
+            "default": 12
+          }, {
             "type": "range",
             "id": "text_lh",
             "label": "Line height",
@@ -489,8 +401,7 @@
             "default": 0,
             "unit": "px",
             "info": "Set is '0' use to default"
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_fw",
             "label": "Font weight",
@@ -498,8 +409,7 @@
             "max": 900,
             "step": 100,
             "default": 400
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_ls",
             "label": "Letter spacing",
@@ -508,42 +418,25 @@
             "default": 0,
             "step": 0.1,
             "unit": "px"
-          },
-          {
-            "type": "checkbox",
-            "id": "font_italic",
-            "label": "Enable font style italic",
-            "default": false
-          },
-          {
+          }, {
             "type": "checkbox",
             "id": "font_uppercase",
             "label": "Enable font uppercase",
             "default": false
-          },
-          {
-            "type": "checkbox",
-            "id": "text_shadow",
-            "label": "Enable text shadow",
-            "default": false
-          },
-          {
+          }, {
             "type": "number",
             "id": "text_mgb",
             "label": "Margin bottom",
             "default": 0
-          },
-          {
+          }, {
             "type": "header",
-            "content": "+ Option mobile"
-          },
-          {
+            "content": "Option for mobile"
+          }, {
             "type": "checkbox",
             "id": "hidden_mobile",
             "label": "Hidden on mobile ",
             "default": false
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_fs_mb",
             "label": "Font size (Mobile)",
@@ -551,9 +444,8 @@
             "min": 10,
             "step": 1,
             "unit": "px",
-            "default": 16
-          },
-          {
+            "default": 12
+          }, {
             "type": "range",
             "id": "text_lh_mb",
             "label": "Line height (Mobile)",
@@ -563,8 +455,7 @@
             "default": 0,
             "unit": "px",
             "info": "Set is '0' use to default"
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_ls_mb",
             "label": "Letter spacing (Mobile)",
@@ -573,16 +464,14 @@
             "step": 0.1,
             "unit": "px",
             "default": 0
-          },
-          {
+          }, {
             "type": "number",
             "id": "text_mgb_mobile",
             "label": "Margin bottom (Mobile)",
             "default": 0
           }
         ]
-      },
-      {
+      }, {
         "type": "3",
         "name": "Breadcrumb",
         "limit": 1,
@@ -591,17 +480,15 @@
             "type": "color",
             "id": "breadcrumb_color",
             "label": "Breadcrumb color",
-            "default": "#f2f2f2"
-          },
-          {
+            "default": "#212121"
+          }, {
             "type": "number",
             "id": "brc_mgb",
             "label": "Margin bottom",
             "default": 5
           }
         ]
-      },
-      {
+      }, {
         "type": "4",
         "name": "Description Collection",
         "limit": 1,
@@ -614,13 +501,12 @@
             "type": "select",
             "id": "design_des",
             "label": "Design description",
-            "default": "excerpt",
+            "default": "show_all",
             "options": [
               {
                 "label": "Show all",
                 "value": "show_all"
-              },
-              {
+              }, {
                 "label": "Excerpt",
                 "value": "excerpt"
               }
@@ -628,30 +514,25 @@
           },
           {
             "type": "header",
-            "content": "+ Options for excerpt description"
+            "content": "Options for excerpt description"
           },
           {
             "type": "number",
             "id": "length",
             "label": "Excerpt length (integer)",
-            "info": "Number of words that will be displayed for each content if you don't set short description page or set metafield excerpt for each collection content.",
-            "default": 10
-          },
-          {
+            "default": 20
+          }, {
             "type": "checkbox",
             "id": "view_more",
-            "label": "Use view more",
-            "default": false,
-            "info": "Only work when a collection has description. It will be activate at 'Show description collection' in 'Main collection' options"
-          },
-          {
+            "label": "Use read more",
+            "default": false
+          }, {
             "type": "text",
             "id": "viewm_txt",
-            "label": "View more label",
-            "default": "View more",
+            "label": "Read more label",
+            "default": "Read more",
             "info": "If set blank will not show"
-          },
-          {
+          }, {
             "type": "select",
             "id": "fontf",
             "default": "inherit",
@@ -660,28 +541,23 @@
               {
                 "label": "Inherit",
                 "value": "inherit"
-              },
-              {
+              }, {
                 "label": "Font family #1",
                 "value": "1"
-              },
-              {
+              }, {
                 "label": "Font family #2",
                 "value": "2"
-              },
-              {
+              }, {
                 "label": "Font family #3",
                 "value": "3"
               }
             ]
-          },
-          {
+          }, {
             "type": "color",
             "id": "text_cl",
             "label": "Color text",
-            "default": "#fff"
-          },
-          {
+            "default": "#212121"
+          }, {
             "type": "range",
             "id": "text_fs",
             "label": "Font size",
@@ -689,9 +565,8 @@
             "min": 10,
             "step": 1,
             "unit": "px",
-            "default": 16
-          },
-          {
+            "default": 12
+          }, {
             "type": "range",
             "id": "text_lh",
             "label": "Line height",
@@ -701,8 +576,7 @@
             "default": 0,
             "unit": "px",
             "info": "Set is '0' use to default"
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_fw",
             "label": "Font weight",
@@ -710,8 +584,7 @@
             "max": 900,
             "step": 100,
             "default": 400
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_ls",
             "label": "Letter spacing",
@@ -720,42 +593,20 @@
             "default": 0,
             "step": 0.1,
             "unit": "px"
-          },
-          {
-            "type": "checkbox",
-            "id": "font_italic",
-            "label": "Enable font style italic",
-            "default": false
-          },
-          {
-            "type": "checkbox",
-            "id": "font_uppercase",
-            "label": "Enable font uppercase",
-            "default": false
-          },
-          {
-            "type": "checkbox",
-            "id": "text_shadow",
-            "label": "Enable text shadow",
-            "default": false
-          },
-          {
+          }, {
             "type": "number",
             "id": "text_mgb",
             "label": "Margin bottom",
             "default": 0
-          },
-          {
+          }, {
             "type": "header",
-            "content": "+ Option mobile"
-          },
-          {
+            "content": "Option for mobile"
+          }, {
             "type": "checkbox",
             "id": "hidden_mobile",
             "label": "Hidden on mobile ",
             "default": false
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_fs_mb",
             "label": "Font size (Mobile)",
@@ -763,9 +614,8 @@
             "min": 10,
             "step": 1,
             "unit": "px",
-            "default": 16
-          },
-          {
+            "default": 12
+          }, {
             "type": "range",
             "id": "text_lh_mb",
             "label": "Line height (Mobile)",
@@ -775,8 +625,7 @@
             "default": 0,
             "unit": "px",
             "info": "Set is '0' use to default"
-          },
-          {
+          }, {
             "type": "range",
             "id": "text_ls_mb",
             "label": "Letter spacing (Mobile)",
@@ -785,8 +634,7 @@
             "step": 0.1,
             "unit": "px",
             "default": 0
-          },
-          {
+          }, {
             "type": "number",
             "id": "text_mgb_mobile",
             "label": "Margin bottom (Mobile)",

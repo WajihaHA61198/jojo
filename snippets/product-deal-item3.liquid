@@ -106,7 +106,6 @@ endif -%}
             {%- unless the_snippet_fave_icon contains 'Liquid error' -%}<div class="sr4-pr-item-btn sr4-pr-wishlist is--growave">{{ the_snippet_fave_icon }}</div>{%- endunless -%}
          {%- else -%}<div data-replace-wishlist data-tooltip="right"></div>
          {%- endif -%}
-         <div data-replace-compare data-tooltip="right"></div>
       </div>
       {%- if size_count > 0 and pr_size_pos == '1'%}{%- render 'product-size', size_variants: size_variants, size_variants_avai: size_variants_avai, show_size_type: show_size_type -%}{% endif -%}
       {%- if use_countdown and countdown != blank %}{%- render 'product-countdown',countdown:countdown %}{% endif -%}

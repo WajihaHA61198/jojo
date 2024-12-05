@@ -110,7 +110,6 @@ endif -%}
               {%- unless the_snippet_fave_icon contains 'Liquid error' -%}<div class="sr4-pr-wishlist">{{ the_snippet_fave_icon }}</div>{%- endunless -%}
            {%- else -%}<div data-replace-wishlist data-tooltip="top"></div>
            {%- endif -%}
-           <div data-replace-compare data-tooltip="top"></div>
         </div>
       </div>
       {%- if use_countdown and countdown != blank %}{%- render 'product-countdown',countdown:countdown %}{% endif -%}

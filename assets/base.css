@@ -641,6 +641,11 @@ em {
   margin-inline-end: auto;
   margin-inline-start: auto;
 }
+.sr4-site-wrapper{
+  width:100%;
+  padding-left:1rem;
+  padding-right:1rem;
+}
 
 /* @media (min-width: 576px) {
   .sr4-container-sm, .sr4-container {
@@ -4591,8 +4596,10 @@ shopify policy
   .is--layout_full {
     max-width: 100% !important;
     width: 100%;
-    padding-left: 30px;
-    padding-right: 30px;
+    /* padding-left: 30px;
+    padding-right: 30px; */
+    padding-left: 10px;
+    padding-right: 10px;
   }
 }
 .sr4-child-lazyloaded.sr4-bg-11 {
@@ -4893,9 +4900,36 @@ shopify-payment-terms {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2e1065;
+  background-color: #212121;
   /* background-color: #0e121d; */
   border-radius: 1rem;
   border: 0.1rem solid transparent;
   background-clip: content-box;
+}
+/* ----- */
+img.header__normal-logo.sr4-d-none.sr4-d-lg-block{
+  /* height: 81px;
+  max-height: 81px; */
+  -webkit-transition: all .7s ease-in-out;
+  transition: all .7s ease-in-out;
+  /* width: auto; */
+  border:1px solid;
+}
+.sr4-inlineFlex{
+  display:inline-flex;
+}
+.sr4-gap4{
+  gap:4px;
+}
+.sr4-gap6{
+  gap:6px;
+}
+.sr4-gap8{
+  gap:8px;
+}
+.sr4-gap10{
+  gap:10px;
+}
+.p-0{
+  padding:0;
 }

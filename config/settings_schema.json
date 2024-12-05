@@ -467,7 +467,7 @@
           }
         ],
         "label": "Header design",
-        "default": "inline"
+        "default": "sidebar"
       },
       {
         "type": "header",

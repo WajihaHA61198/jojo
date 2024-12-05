@@ -119,7 +119,7 @@ endif -%}
               {%- else -%}
 
                 <div data-swatch-option data-id="{{ forloop.index0 }}" class="sr4-swatch__option is-sr4-name__{{option_name | handle}}">
-                  <h4 class="sr4-swatch__title"><span>{{option_name}}:</span>{% if name_sizeg == name_downcase %}{{html_sizeg}}{% endif %}</h4>
+                  <h4 class="sr4-swatch__title"><span>{{option_name}}</span>{% if name_sizeg == name_downcase %}{{html_sizeg}}{% endif %}</h4>
                   <div class="sr4-swatch__list">
                     {%- if selector_mode != 'dropdown' -%}
                       {%- for value in option.values -%}

@@ -271,7 +271,7 @@ endif -%}
   <div class="sr4-row">
     <div class="sr4-col-item sr4-col-12 sr4-main-area">
       <div data-product-featured='{"id":"{{product.id}}","isMainProduct":true, "sectionId":"{{se_id}}", "disableSwatch":{{isProductDefault}}, "media": {% if media_size > 1 %}true{% else %}false{% endif %},"enableHistoryState": {{enableHistoryState}}, "formID": "#product-form-{{pr_se_id}}", "removeSoldout":{{remove_soldout}}, "changeVariantByImg":{{settings.use_change_variant_by_img}}, "isNoPick":{{PR_no_pick}},"hasSoldoutUnavailable":{{ck_so_un}},"enable_zoom_click_mb":{{se_stts.enable_zoom_click_mb}},"main_click":"{{main_click}}","canMediaGroup":{{canMedia_group}},"isGrouped":{{isGrouped}},"hasIsotope":{{hasIsotope}},"available":{{product.available}}, "customBadge":{{arr_badge | json }}, "customBadgeHandle":{{arr_badge_handle | json }},"dateStart":{{product.created_at | date: "%s"}}, "compare_at_price":{{current_variant.compare_at_price | json}},"price":{{current_variant.price| json}}, "isPreoder":{{isPreoder}}, "showFirstMedia":{{settings.show_first_media}}, "isSticky":{{isSticky}}, "isStickyMB":{{isStickyMB}}, "stickyShow":"{{se_stts.sticky_show}}", "useStickySelect": {{se_stts.enable_select}} }' class="sr4-row sr4-row__product is-zoom-type__{{se_stts.zoom_tp}}" data-sr4-zoom-main{% if main_click == 'zoom' %} data-zoom-options='{"type":"{{se_stts.zoom_tp}}", "magnify":2, "touch":false, "pr_type":"1","isZoomPR": true}'{% endif %}>
-        <div class="sr4-{{class_media}} sr4-col-12 sr4-col-item sr4-product__media-wrapper">
+        <div class="sr4-{{class_media}} sr4-col-12 sr4-col-item sr4-product__media-wrapper p-0">
           {%- case media_layout -%}
 
           {%- when 'no_media_size' -%}
@@ -403,7 +403,7 @@ endif -%}
               else
                 assign lh_pr = bk_stts.lh_pr | append:'px'
               endif  %}
-            <h1 class="sr4-product__title" style="letter-spacing:.2rem;--title-family:var(--font-family-{{bk_stts.fnt_df_pr}});--title-style:{{bk_stts.txt_tr_pr}};--title-size:{{bk_stts.size_pr}}px;--title-weight:{{bk_stts.fw_pr}};--title-line-height:{{lh_pr}};--title-spacing:{{bk_stts.ls_pr}}px;--title-color:{{bk_stts.pr_title_color}};--title-color-hover:{{bk_stts.pr_title_color}};" {{ block.shopify_attributes }}>{{product.title}}</h1>
+            <h1 class="sr4-product__title" style="--title-family:var(--font-family-{{bk_stts.fnt_df_pr}});--title-style:{{bk_stts.txt_tr_pr}};--title-size:{{bk_stts.size_pr}}px;--title-weight:{{bk_stts.fw_pr}};--title-line-height:{{lh_pr}};--title-spacing:{{bk_stts.ls_pr}}px;--title-color:{{bk_stts.pr_title_color}};--title-color-hover:{{bk_stts.pr_title_color}};" {{ block.shopify_attributes }}>{{product.title}}</h1>
            
             {%- when 'price_review' -%}
             <div class="sr4-product__price-review" style="--price-size:{{bk_stts.size_price_pr}}px;--price-weight:{{bk_stts.fw_price_pr}};--price-color:{{bk_stts.price_color}};--price-sale-color:{{bk_stts.price_sale_color}};">
@@ -452,7 +452,7 @@ endif -%}
                   {%- if bk_stts.readm %}<button class="sr4-product__description_readm" data-go-id='#{{idTabDes}}'>{{bk_stts.readm_txt}}</button>{% endif -%}
                 {%- endcapture -%}
 
-                  <div class="sr4-product__description sr4-rte" {{ block.shopify_attributes }}>
+                  <div class="sr4-product__description sr4-rte" style="--desc-size:{{bk_stts.size_desc_pr}}px; --desc-color:{{bk_stts.desc_color}}; --desc-weight:{{bk_stts.fw_desc}};" {{ block.shopify_attributes }}>
                    {%- if bk_stts.des == '1' -%}{{- pr_des -}}
                    {%- elsif description_excerpt != blank -%}{{- description_excerpt -}}{{readm}}
                    {%- else -%}<p>{{- pr_des | strip_html | truncatewords: bk_stts.length -}}{{readm}}</p>
@@ -734,7 +734,7 @@ endif -%}
               {%- when 'tab_des' or 'tab_add' or 'tab_buy' or 'tab_rivui' or 'tab_liquid' or 'tab_html' -%}
                 {%- if tabCheck or tabs_position == 'external' %}{% continue %}{% endif -%}
                 {%- assign tabCheck = true -%}
-                {%- render 'product_tabs',product:product, se_stts:se_stts, seBlocks: seBlocks, idTabDes:idTabDes, idTabReview:idTabReview, isProductDefault:isProductDefault -%}
+                {%- render 'product_tabs',product:product, se_stts:se_stts, seBlocks: seBlocks, idTabDes:idTabDes, idTabReview:idTabReview, isProductDefault:isProductDefault, --tabs_size: se_stts.size_tabs, --tabs_color: se_stts.tabs_color -%}
 
               {%- when 'html' %}{% if bk_stts.page.content == blank %}{% continue %}{% endif -%}
                 <div class="sr4-custom_{{bk_id}} sr4-pr__html sr4-rte" {{ block.shopify_attributes }}>{{bk_stts.page.content}}</div>
@@ -761,7 +761,8 @@ endif -%}
               
 {%- render 'FBT' -%}
 
-{%- if tabs_position == 'external' %}{% render 'product_tabs',product:product, se_stts:se_stts, seBlocks: seBlocks, idTabDes:idTabDes, idTabReview:idTabReview, isProductDefault:isProductDefault %}{% endif -%} 
+{%- if tabs_position == 'external' %}
+{% render 'product_tabs',product:product, se_stts:se_stts, seBlocks: seBlocks, idTabDes:idTabDes, idTabReview:idTabReview, isProductDefault:isProductDefault, desc_size: bk_stts.size_desc_pr, desc_color: bk_stts.desc_color, desc_weight: bk_stts.fw_desc %}{% endif -%} 
 
 <template data-icons-thumb>
   <svg class="sr4-d-none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -979,18 +980,19 @@ endif -%}
   
   {%- schema -%}
     {
-      "name": "Product main",
+      "name": "Main product information",
       "tag": "section",
       "class": "sr4-section sr4-section-main sr4-section-main-product sr4_tp_flickity",
       "settings": [
         {
           "type": "select",
           "id": "pr_layout",
-          "default": "default",
+          "label": "Product Layout",
+          "default": "full",
           "options": [
             {
               "value": "default",
-              "label": "Default"
+              "label": "container"
             },
             {
               "value": "wide",
@@ -1000,8 +1002,7 @@ endif -%}
               "value": "full",
               "label": "Full width"
             }
-          ],
-          "label": "+ Product Layout"
+          ]
         },
         {
           "type": "checkbox",
@@ -1011,18 +1012,13 @@ endif -%}
         },
         {
           "type": "header",
-          "content": "+ Media"
-        },
-        {
-          "type": "paragraph",
-          "content": "Learn more about [media types](https://help.shopify.com/en/manual/products/product-media)"
+          "content": "Product Media"
         },
         {
           "type": "select",
           "id": "media_layout",
           "label": "Media layout",
-          "info": "Choose between different predefined designs",
-          "default": "thumbnails_bottom",
+          "default": "thumbnails_left",
           "options": [
             {
               "value": "thumbnails_left",
@@ -1058,7 +1054,7 @@ endif -%}
           "type": "select",
           "id": "media_size",
           "label": "Media size",
-          "info": "Only applicable on desktop screens",
+          "info": "Only applicable for desktop",
           "default": "medium",
           "options": [
             {
@@ -1079,8 +1075,8 @@ endif -%}
           "type": "select",
           "id": "thumb_lr_size",
           "label": "Thumbnail left/right size",
-          "info": "Only applicable on desktop screens",
-          "default": "medium",
+          "info": "Only applicable for desktop",
+          "default": "small",
           "options": [
             {
               "value": "small",
@@ -1104,19 +1100,19 @@ endif -%}
           "info": "Aspect ratio custom will settings in general panel",
           "options": [
             {
-              "group": "Natural",
+              "group": "Usual",
               "value": "ratioadapt",
               "label": "Adapt to media"
             },
             {
               "group": "Landscape",
               "value": "ratio2_1",
-              "label": "2:1"
+              "label": "2:1 (200 x 100)"
             },
             {
               "group": "Landscape",
               "value": "ratio16_9",
-              "label": "16:9"
+              "label": "16:9 (1.78 x 1)"
             },
             {
               "group": "Landscape",
@@ -1126,22 +1122,17 @@ endif -%}
             {
               "group": "Landscape",
               "value": "ratio3_2",
-              "label": "3:2"
+              "label": "3:2 (photography)"
             },
             {
               "group": "Landscape",
               "value": "ratio4_3",
-              "label": "4:3"
+              "label": "4:3 (old TV)"
             },
             {
               "group": "Landscape",
               "value": "rationt",
-              "label": "Ratio ASOS"
-            },
-            {
-              "group": "Squared",
-              "value": "ratio1_1",
-              "label": "1:1"
+              "label": "Aspect ratio ASOS"
             },
             {
               "group": "Portrait",
@@ -1154,24 +1145,9 @@ endif -%}
               "label": "1:2"
             },
             {
-              "group": "Custom",
-              "value": "ratiocus1",
-              "label": "Ratio custom 1"
-            },
-            {
-              "group": "Custom",
-              "value": "ratiocus2",
-              "label": "Ratio custom 2"
-            },
-            {
-              "group": "Custom",
-              "value": "ratio_us3",
-              "label": "Ratio custom 3"
-            },
-            {
-              "group": "Custom",
-              "value": "ratiocus4",
-              "label": "Ratio custom 4"
+              "group": "Squared",
+              "value": "ratio1_1",
+              "label": "1:1"
             }
           ]
         },
@@ -1196,7 +1172,7 @@ endif -%}
           "type": "select",
           "id": "image_position",
           "label": "Media position",
-          "info": "The first value is the horizontal position and the second value is the vertical. This settings apply only if the media ratio is not set to 'Adapt to media'",
+          "info": "[horizontal vertical]. This settings apply only if the media ratio is not set to 'Adapt to media'",
           "options": [
             {
               "value": "default",
@@ -1246,20 +1222,21 @@ endif -%}
           "id": "main_click",
           "options": [
             {
-              "value": "zoom",
-              "label": "Zoom"
+              "value": "none",
+              "label": "None"
             },
             {
               "value": "pswp",
-              "label": "PhotoSwipe popup"
+              "label": "Zoom popup"
             },
             {
-              "value": "none",
-              "label": "None"
+              "value": "zoom",
+              "label": "Zoom"
             }
           ],
           "label": "Image click action",
-          "info": "Only zoom applicable on desktop screens"
+          "info": "Only zoom applicable on desktop screens",
+          "default": "pswp"
         },
         {
           "type": "select",
@@ -1309,17 +1286,17 @@ endif -%}
         {
           "type": "checkbox",
           "id": "enable_video_autoplaying",
-          "default": true,
+          "default": false,
           "label": "Enable video autoplaying",
           "info": "Only working when has slider and on desktop"
         },
         {
           "type": "header",
-          "content": "+ Product slider"
+          "content": "Product carousel"
         },
         {
           "type": "select","id": "eff", "default": "fade",
-          "label": "Slider effect","info":"Effect between transitioning slides",
+          "label": "Slider effect",
           "options": [
             {
               "value": "slide","label": "Slide"
@@ -1534,7 +1511,7 @@ endif -%}
         },
         {
           "type": "header",
-          "content": "+ Product Tabs"
+          "content": "Product Tabs"
         },
         {
           "type": "select",
@@ -1592,6 +1569,24 @@ endif -%}
           "info": "Only working with layout 'Accordion'",
           "default": false
         },
+
+        {
+          "type": "range",
+          "id": "size_tabs",
+          "min": 10,
+          "max": 30,
+          "step": 0.5,
+          "label": "font size",
+          "unit": "px",
+          "default": 12
+        },
+        {
+          "type": "color",
+          "id": "tabs_color",
+          "label": "font color",
+          "default": "#212121"
+        },
+
         {
           "type": "select",
           "id": "tabs_layout_fix",
@@ -1618,28 +1613,14 @@ endif -%}
           "label": "Product tabs layout"
         },
         {
-          "type": "color",
-          "id": "bg",
-          "label": "Background Color",
-          "info": "Not working when enable tabs position inner",
-          "default": "#fff"
-        },
-        {
-          "type": "color",
-          "id": "bg_mb",
-          "label": "Background Color (mobile)",
-          "info": "Not working when enable tabs position inner",
-          "default": "#fff"
-        },
-        {
           "type": "header",
-          "content": "+ Frequently Bought Together"
+          "content": "Frequently Bought Together"
         },
         {
           "type": "product_list",
           "id": "product_list",
           "label": "Products",
-          "limit": 10
+          "limit": 5
         },
         {
           "type": "header",
@@ -1769,12 +1750,13 @@ endif -%}
         },
         {
           "type": "title",
-          "name": "Product Title",
+          "name": "Title",
           "limit": 1,
           "settings": [
               {
                 "type": "select",
                 "id": "txt_tr_pr",
+                "label": "Text transformation",
                 "default": "none",
                 "options": [
                   {
@@ -1794,7 +1776,6 @@ endif -%}
                     "label": "Uppercase"
                   }
                 ],
-                "label": "Style"
               },
               {
                 "type": "select",
@@ -1824,7 +1805,7 @@ endif -%}
                 "step": 0.5,
                 "label": "Font size",
                 "unit": "px",
-                "default": 16
+                "default": 30
               },
               {
                 "type": "range",
@@ -1833,7 +1814,7 @@ endif -%}
                 "max": 900,
                 "step": 100,
                 "label": "Font weight",
-                "default": 600
+                "default": 500
               },
               {
                 "type":"range",
@@ -1847,29 +1828,34 @@ endif -%}
                 "info":"Set is '0' use to default"            
               },
               {
-                "type": "number",
+                "type": "range",
                 "id": "ls_pr",
                 "label": "Letter spacing (in pixel)",
+                "max":20,
+                "min":0,
+                "step":1,
+                "unit":"px",
                 "info": "set is '0' use to default",
                 "default": 0
               },
               {
                 "type": "color",
                 "id": "pr_title_color",
-                "label": "Product title",
-                "default": "#222"
+                "label": "Product title color",
+                "default": "#222222"
               }
           ]
         },
-
         {
           "type": "price_review",
-          "name": "Product Price, review",
+          "name": "Price",
           "limit": 1,
           "settings": [
             {
               "type": "select",
               "id": "price",
+              "label": "Price varies settings",
+              "default": "0",
               "options": [
                 {
                   "value": "0",
@@ -1877,15 +1863,13 @@ endif -%}
                 },
                 {
                   "value": "1",
-                  "label": "$39.00 – $59.00"
+                  "label": "$20 – $90"
                 },
                 {
                   "value": "2",
-                  "label": "From $39.00"
+                  "label": "From $20"
                 }
-              ],
-              "label": "Price varies settings",
-              "default": "0"
+              ]
             },
             {
               "type": "select",
@@ -1932,9 +1916,9 @@ endif -%}
                 "min": 10,
                 "max": 50,
                 "step": 0.5,
-                "label": "Price size",
+                "label": "Font size",
                 "unit": "px",
-                "default": 22
+                "default": 16
             },
             {
                 "type": "range",
@@ -1949,7 +1933,7 @@ endif -%}
               "type": "color",
               "id": "price_color",
               "label": "Price",
-              "default": "#696969"
+              "default": "#212121"
             },
             {
               "type": "color",
@@ -1967,6 +1951,7 @@ endif -%}
             {
               "type": "select",
               "id": "des",
+              "label": "Description mode",
               "options": [
                 {
                   "value": "1",
@@ -1977,26 +1962,42 @@ endif -%}
                   "label": "Short description"
                 }
               ],
-              "label": "Description mode",
-              "info": "If you want to show full HTML of the Product Description, please select \"Full Description\".",
-              "default": "2"
+              "default": "1"
+            },
+            {
+              "type": "range",
+              "id": "size_desc_pr",
+              "min": 10,
+              "max": 30,
+              "step": 0.5,
+              "label": "font size",
+              "unit": "px",
+              "default": 12
+            },
+            {
+              "type": "range",
+              "id": "fw_desc",
+              "min": 100,
+              "max": 600,
+              "step": 100,
+              "label": "Font weight",
+              "default": 200
+            },
+            {
+              "type": "color",
+              "id": "desc_color",
+              "label": "font color",
+              "default": "#212121"
             },
             {
               "type": "header",
               "content": "Short description configs"
             },
-            {
-              "type": "richtext",
-              "id": "text",
-              "label": "Short description",
-              "info": "Short description that will be displayed for each product content if you don't set metafield excerpt for each product content."
-            },
            {
               "type": "number",
               "id": "length",
               "label": "Excerpt length (integer)",
-              "info": "Number of words that will be displayed for each product content if you don't set short description page or set metafield excerpt for each product content.",
-              "default": 31
+              "default": 25
            },
            {
              "type": "checkbox",
@@ -2019,13 +2020,21 @@ endif -%}
           "settings": [
            {
              "type": "header",
-             "content": "+ Product Swatch"
+             "content": "Product Swatch"
            },
           {
             "type": "select",
             "id": "selector_mode",
             "label": "Selector type",
             "options": [
+              {
+                "value": "block2",
+                "label": "Block round"
+              },
+              {
+                "value": "block",
+                "label": "Block"
+              },
               {
                 "value": "circle",
                 "label": "Circle"
@@ -2035,23 +2044,11 @@ endif -%}
                 "label": "Radio"
               },
               {
-                "value": "radio is-sw__full",
-                "label": "Radio full"
-              },
-              {
-                "value": "block",
-                "label": "Block"
-              },
-              {
-                "value": "block2",
-                "label": "Block round"
-              },
-              {
                 "value": "dropdown",
                 "label": "Dropdown"
               }
             ],
-            "default": "block"
+            "default": "block2"
           },
           {
             "type": "select",
@@ -2060,24 +2057,20 @@ endif -%}
             /*"info": "Variant image mode requires that all variant has an associated image. [Learn more](https://help.shopify.com/en/manual/products/product-variant-images#add-images-to-existing-variants)",*/
             "options": [
               {
-                "value": "circle",
-                "label": "Circle"
-              },
-              {
-                "value": "radio",
-                "label": "Radio"
-              },
-              {
-                "value": "radio is-sw-cl__full",
-                "label": "Radio full"
+                "value": "block2",
+                "label": "Block round"
               },
               {
                 "value": "block",
                 "label": "Block"
               },
               {
-                "value": "block2",
-                "label": "Block round"
+                "value": "circle",
+                "label": "Circle"
+              },
+              {
+                "value": "radio",
+                "label": "Radio"
               },
               {
                 "value": "dropdown",
@@ -2100,7 +2093,7 @@ endif -%}
                 "label": "Variant image round"
               }
             ],
-            "default": "color"
+            "default": "block2"
           },
           {
             "type": "checkbox",
@@ -2233,12 +2226,6 @@ endif -%}
              "label": "Enable wishlist",
              "default": true
            },
-           {
-             "type": "checkbox",
-             "id": "enable_compare",
-             "label": "Enable compare",
-             "default": true
-           },
               {
                   "type": "checkbox",
                   "id": "btn_atc_full",
@@ -2257,7 +2244,7 @@ endif -%}
               }, 
               {
                   "type": "header",
-                  "content": "+ Add to cart button"
+                  "content": "Add to cart button"
               },
                {
                  "type": "select",
