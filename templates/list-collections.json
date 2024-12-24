@@ -141,7 +141,7 @@
         "button_style": "default",
         "btns_size": "large",
         "btns_cl": "primary",
-        "button_effect": "fade",
+        "button_effect": "default",
         "btn_pos": "sr4-text-center",
         "pr_txt": "products",
         "layout": "sr4-container-wrap",

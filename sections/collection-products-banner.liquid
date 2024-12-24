@@ -191,26 +191,11 @@
                   {%- paginate collection.products by limit  -%}
                     {%- render 'product-Card2' for collection.products as product,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type, price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown, show_list_btns:false -%}
                   {%- endpaginate -%}
-                {%- when '3' -%}
-                  {%- paginate collection.products by limit  -%}
-                    {%- render 'product-Card3' for collection.products as product,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type, price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown, show_list_btns:false -%}
-                  {%- endpaginate -%}
-                {%- when '4' -%}
-                  {%- paginate collection.products by limit  -%}
-                    {%- render 'product-Card4' for collection.products as product,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type, price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown, show_list_btns:false -%}
-                  {%- endpaginate -%}
-                {%- when '5' -%}
-                  {%- paginate collection.products by limit  -%}
-                    {%- render 'product-Card5' for collection.products as product,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type, price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown, show_list_btns:false -%}
-                  {%- endpaginate -%}
                 {%- when '6' -%}
                 {%- paginate collection.products by limit  -%}
                   {%- render 'product-Card6' for collection.products as product,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type, price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown, show_list_btns:false -%}
                 {%- endpaginate -%}
-                {%- when '7' -%}
-                  {%- paginate collection.products by limit  -%}
-                    {%- render 'product-Card7' for collection.products as product,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type, price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown, show_list_btns:false -%}
-                  {%- endpaginate -%}
+               
               {%- endcase -%}
             {%- else -%}
               {%- for i in (1..18) limit:limit -%}
@@ -324,10 +309,6 @@
           {
             "value": "6",
             "label": "Style 6"
-          },
-          {
-            "value": "7",
-            "label": "Style 7"
           }
         ],
         "label": "Product item design",
@@ -2273,10 +2254,6 @@
                     {
                         "label":"Default",
                         "value":"default"
-                    },
-                    {
-                        "label":"Fade",
-                        "value":"fade"
                     },
                     {
                         "label":"Rectangle out",

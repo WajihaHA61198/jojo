@@ -33,16 +33,8 @@
                   render 'product-Card1' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
                 when '2'
                   render 'product-Card2' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
-                when '3'
-                  render 'product-Card3' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
-                when '4'
-                  render 'product-Card4' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
-                when '5'
-                  render 'product-Card5' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
                 when '6'
                   render 'product-Card6' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
-                when '7'
-                  render 'product-Card7' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: false
                 when 'list'
                   render 'product-Card1' for collections.all.products as product, product: product, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor: show_vendor, enable_pr_color: enable_pr_color, show_cl_type: show_cl_type, get_color: get_color, enable_pr_size: enable_pr_size, pr_size_pos: pr_size_pos, get_size: get_size, show_size_type: show_size_type, price_varies_style: price_varies_style, app_review: app_review, enable_rating: enable_rating, use_countdown: use_countdown, imgatt: imgatt, show_list_btns: true
                 when 'packery'
@@ -79,10 +71,12 @@
     --product-title-family: var(--font-family-{{se_stts.fnt_df_pr}});
     --product-title-style: {{ se_stts.txt_tr_pr }};
     --product-title-size: {{ se_stts.size_pr }}px;
+    --product-title-size-mb: {{ se_stts.size_pr_mb }}px;
     --product-title-weight: {{ se_stts.fw_pr }};
     --product-title-line-height: {{ lh_pr }};
     --product-title-spacing: {{ se_stts.ls_pr }}px;
     --product-price-size: {{ se_stts.size_price_pr }}px;
+    --product-price-size-mb: {{ se_stts.size_price_pr_mb }}px;
     --product-price-weight: {{ se_stts.fw_price_pr }};
     --product-space-img-txt: {{ se_stts.space_img_content }}px;
     --product-space-elements: {{ se_stts.space_elements }}px;
@@ -598,6 +592,15 @@
         "default": 14
       }, {
         "type": "range",
+        "id": "size_pr_mb",
+        "min": 10,
+        "max": 30,
+        "step": 0.5,
+        "label": "Font size (Mobile)",
+        "unit": "px",
+        "default": 13
+      }, {
+        "type": "range",
         "id": "fw_pr",
         "min": 300,
         "max": 800,
@@ -631,7 +634,16 @@
         "step": 0.5,
         "label": "Price size",
         "unit": "px",
-        "default": 14
+        "default": 13
+      }, {
+        "type": "range",
+        "id": "size_price_pr_mb",
+        "min": 10,
+        "max": 36,
+        "step": 0.5,
+        "label": "Price size (Mobile)",
+        "unit": "px",
+        "default": 11
       }, {
         "type": "range",
         "id": "fw_price_pr",
@@ -651,7 +663,7 @@
         "step": 0.5,
         "label": "Space between images and content",
         "unit": "px",
-        "default": 15
+        "default": 8
       }, {
         "type": "range",
         "id": "space_elements",
@@ -674,8 +686,8 @@
         "type": "range",
         "id": "swatch_color_size_mb",
         "label": "Swatch size (Mobile)",
-        "default": 20,
-        "min": 15,
+        "default": 12,
+        "min": 10,
         "max": 50,
         "step": 1,
         "unit": "px"
@@ -691,7 +703,7 @@
         "label": "Button round corners",
         "info": "Not working with product design 4",
         "unit": "px",
-        "default": 40
+        "default": 0
       }, {
         "type": "header",
         "content": "+ Color options",
@@ -724,27 +736,13 @@
       }, {
         "type": "color",
         "id": "vendors_color",
-        "label": "Vendors",
-        "default": "#878787"
+        "label": "Vendors & Type",
+        "default": "#212121"
       }, {
         "type": "color",
         "id": "vendors_color_hover",
         "label": "Vendors hover",
         "default": "#005b69"
-      }, {
-        "type": "color",
-        "id": "countdown_color",
-        "label": "Countdown primary color",
-        "default": "#ffffff"
-      }, {
-        "type": "range",
-        "id": "countdown_overlay",
-        "label": "Background color countdown opacity",
-        "default": 10,
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "%"
       }, {
         "type": "color",
         "id": "pr_bg_overlay",
@@ -781,7 +779,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           },
           {
             "type": "color",
@@ -853,7 +851,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           },
           {
             "type": "color",
@@ -925,7 +923,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           },
           {
             "type": "color",
@@ -997,7 +995,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           },
           {
             "type": "color",
@@ -1077,7 +1075,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           },
           {
             "type": "color",
@@ -1327,7 +1325,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           }, {
             "type": "color",
             "id": "addtocart_color_hover",
@@ -1429,7 +1427,7 @@
             "type": "color",
             "id": "addtocart_color",
             "label": "Button add to cart",
-            "default": "#fff"
+            "default": "#222"
           }, {
             "type": "color",
             "id": "addtocart_color_hover",

@@ -13,6 +13,8 @@
     assign html_layout = '<div class="sr4-container">__</div></div>' | split:'__'
   elsif stt_layout == 'sr4-container-wrap'
     assign html_layout = '<div class="sr4-container">__</div>' | split:'__'
+  elsif stt_layout == 'sr4-site-wrapper'
+    assign html_layout = '<div class="sr4-site-wrapper">__</div>' | split: '__'
   else
     assign html_layout = '__' | split:'__'
   endif
@@ -26,7 +28,7 @@
   <div class="sr4-section-inner sr4_nt_se_{{sid}} sr4_se_{{sid}} {{stt_layout}} {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4 {% endif %} "  {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %}  data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2" {% endif %}   {% render 'section_style',se_stts:se_stts %}>
     {{- html_layout[0] |replace:'010693', se_stts.custom_width -}}
     {%- if stt_layout == 'sr4-se-container' -%}<div class="sr4-container-inner {% if stt_image_bg != blank %} sr4-has-imgbg lazyloadsr4 {% endif %} "  {%- if stt_image_bg != blank -%} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2" {%- endif -%} > {%- endif -%}
-    <div class="sr4-accordion-style-{{se_stts.accor_des}}">
+    <div class="sr4-accordion-style-{{ se_stts.accor_des }}">
       {%- render 'section_tophead',se_stts:se_stts -%}
       <div class="sr4-tabs sr4-type-accordion {{se_stts.content_align}}" data-sr4-tabs style="--title-cl: {{se_stts.title_cl}};--bg-title-cl: {{se_stts.bg_title_cl}};--title-active-cl: {{se_stts.title_active_cl}};--bg-title-active-cl: {{se_stts.bg_title_active_cl}};--content-cl: {{se_stts.content_cl}};--bg-content-cl: {{se_stts.bg_content_cl}};">
         {%- for block in se_blocks -%}
@@ -34,11 +36,11 @@
           {%- assign blockid = block.id -%}
           <div class="sr4-tab-wrapper {% if forloop.first == true and se_stts.auto_active %} sr4-active {% endif %}" data-sr4-tab-wrapper {{block.shopify_attributes}}>
             <a id="b_{{block.id}}" class="sr4-accor-title" href="#sr4-{{blockid}}" rel="nofollow" data-sr4-tab-item data-no-instant>
-              <span class="sr4-accor-text">
-                <span class="sr4-accor-icon">{%- render 'icon_accordion',icon:bk_stts.icon -%} </span>
-                {{bk_stts.title}}
+              <span class="sr4-accor-text tab-title-{{ se_stts.accor_des }}">
+                <span class="sr4-accor-icon">{%- render 'icon_accordion',icon:bk_stts.icon -%}</span>
+                <span class="sr4-acc-tab_title">{{bk_stts.title}} </span>
               </span>
-              <span class="sr4-accor-item-nav"></span>
+              <span class="sr4-accor-item-nav tab-icon-{{ se_stts.accor_des }}"></span>
             </a>
             <div id="sr4-{{blockid}}" class="sr4-tab-content sr4-rte" data-sr4-tab-content {% if se_stts.auto_active == false %} style="display: none;"{%- endif -%}>{{bk_stts.content}}</div>
           </div>
@@ -60,8 +62,8 @@
       {
           "type": "select",
           "id": "design_heading",
-          "label": "+ Design heading",
-          "default": "1",
+          "label": "Heading design",
+          "default": "2",
           "options": [
               {
                   "value": "1",
@@ -74,57 +76,13 @@
               {
                   "value": "3",
                   "label": "Design 03"
-              },
-              {
-                  "value": "4",
-                  "label": "Design 04"
-              },
-              {
-                  "value": "5",
-                  "label": "Design 05"
-              },
-              {
-                  "value": "6",
-                  "label": "Design 06 (width line-awesome)"
-              },
-              {
-                  "value": "7",
-                  "label": "Design 07"
-              },
-              {
-                  "value": "8",
-                  "label": "Design 08"
-              },
-              {
-                  "value": "9",
-                  "label": "Design 09"
-              },
-              {
-                  "value": "10",
-                  "label": "Design 10"
-              },
-              {
-                  "value": "11",
-                  "label": "Design 11"
-              },
-              {
-                  "value": "12",
-                  "label": "Design 12"
-              },
-              {
-                  "value": "13",
-                  "label": "Design 13"
-              },
-              {
-                  "value": "14",
-                  "label": "Design 14"
               }
           ]
       },
       {
           "type": "select",
           "id": "heading_align",
-          "label": "+ Heading align",
+          "label": "Heading align",
           "default": "sr4-text-center",
           "options": [
               {
@@ -144,27 +102,20 @@
       {
           "type": "text",
           "id": "top_heading",
-          "label": "+ Heading",
-          "default": "Accordion"
-      },
-      {
-        "type": "text",
-        "id": "icon_heading",
-        "label": "Enter a icon name on heading",
-        "info": "Only used for design 6 [LineAwesome](https://kalles.the4.co/font-lineawesome/)",
-        "default": "las la-gem"
+          "label": "Heading",
+          "default": "Collapsible Tab"
       },
       {
           "type": "textarea",
           "id": "top_subheading",
-          "label": "+ Subheading"
+          "label": "Subheading",
+          "default": "Lorem ipsum dolor sit amet. Ut ullam ratione ex nisi corrupti est nihil rerum."
       }, 
       {
         "type": "number",
         "id": "tophead_mb",
-        "label": "+ Space bottom (px)",
-        "info": "The vertical spacing between heading and content",
-        "default": 30
+        "label": "Space bottom between heading and content (px)",
+        "default": 20
       },
       {
         "type": "header",
@@ -184,7 +135,7 @@
           }
         ],
         "label": "Accordion design",
-        "default": "1"
+        "default": "2"
       },
       {
         "type": "color",
@@ -196,7 +147,7 @@
         "type": "color",
         "id": "bg_title_cl",
         "label": "Accordion label background color",
-        "default": "#f6f6f8"
+        "default": "#f8fafc"
       },
       {
         "type": "color",
@@ -208,7 +159,7 @@
         "type": "color",
         "id": "bg_title_active_cl",
         "label": "Accordion label active background color",
-        "default": "#f6f6f8"
+        "default": "#f8fafc"
       },
       {
         "type": "color",
@@ -253,12 +204,13 @@
         "content": "3. Design options"
       },
       {
-        "type": "select","id": "layout","default": "sr4-container-wrap","label": "Layout",
+        "type": "select","id": "layout","default": "sr4-site-wrapper","label": "Layout",
         "options": [
             { "value": "sr4-cus-width", "label": "Custom width"},
             { "value": "sr4-se-container", "label": "Container"},
             { "value": "sr4-container-wrap", "label": "Wrapped container"},
-            { "value": "sr4-container-fluid", "label": "Full width"}
+            { "value": "sr4-container-fluid", "label": "Full width"},
+            { "value": "sr4-site-wrapper", "label": "Full width with wrapped"}
         ]
       },
       {
@@ -288,10 +240,14 @@
         "label": "Background image"
       },
       {
+          "type": "header",
+          "content": "Desktop"
+      },
+      {
           "type": "text",
           "id": "mg",
           "label": "Margin",
-          "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+          "info":"trbl",
           "default": ",,50px,",
           "placeholder": ",,50px,"
       },
@@ -299,58 +255,56 @@
           "type": "text",
           "id": "pd",
           "label": "Padding",
-          "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
           "placeholder": "50px,,50px,"
       },
       {
         "type": "header",
-        "content": "+ Design Tablet Options"
+        "content": "Tablet"
       },
       {
           "type": "text",
           "id": "mg_tb",
           "label": "Margin",
-          "placeholder": ",,50px,"
+          "placeholder": ",,40px,"
       },
       {
           "type": "text",
           "id": "pd_tb",
           "label": "Padding",
-          "placeholder": ",,50px,"
+          "placeholder": ",,40px,"
       }, 
       {
         "type": "header",
-        "content": "+ Design mobile options"
+        "content": "Mobile"
       },
       {
           "type": "text",
           "id": "mg_mb",
           "label": "Margin",
           "default": ",,30px,",
-          "placeholder": ",,50px,"
+          "placeholder": ",,30px,"
       },
       {
           "type": "text",
           "id": "pd_mb",
           "label": "Padding",
-          "placeholder": ",,50px,"
+          "placeholder": ",,30px,"
       },
       {
         "type": "header",
-        "content": "4. Custom css"
+        "content": "4. Personalized css"
       },
       {
         "id": "use_cus_css",
         "type": "checkbox",
-        "label": "Use custom css",
+        "label": "Use custom styling",
         "default":false,
-        "info": "If you want custom style for this section."
+        "info": "If you prefer custom styling for this section."
       },
       { 
         "id": "code_cus_css",
         "type": "textarea",
-        "label": "Code custom css",
-        "info": "Use selector .SectionID to style css"
+        "label": "Code custom css"
       }
     ],
     "blocks": [
@@ -466,7 +420,7 @@
             "type": "text",
             "id": "title",
             "label": "Accordion label",
-            "default": "Accordion item"
+            "default": "Tab item"
           },
           {
             "id": "content",
@@ -479,24 +433,23 @@
   "presets": [
       {
         "name": "Accordion",
-        "category": "Homepage",
         "blocks": [
           { "type": "accor_item",
             "settings": {
-              "title": "Tab 01",
-              "content": "<p>We love to hear from you on our customer service, merchandise, website or any topics you want to share with us. Your comments and suggestions will be appreciated. Please complete the form below.</p>"
+              "title": "Tab 1",
+              "content": "<p>Lorem ipsum dolor sit amet. Ut quisquam quia qui debitis sapiente sit ipsam delectus.</p>"
             }
           },
           { "type": "accor_item",
             "settings": {
-              "title": "Tab 02",
-              "content": "<p>We love to hear from you on our customer service, merchandise, website or any topics you want to share with us. Your comments and suggestions will be appreciated. Please complete the form below.</p>"
+              "title": "Tab 2",
+              "content": "<p>Lorem ipsum dolor sit amet. Ut quisquam quia qui debitis sapiente sit ipsam delectus.</p>"
             }
           },
           { "type": "accor_item",
             "settings": {
-              "title": "Tab 03",
-              "content": "<p>We love to hear from you on our customer service, merchandise, website or any topics you want to share with us. Your comments and suggestions will be appreciated. Please complete the form below.</p>"
+              "title": "Tab 3",
+              "content": "<p>Lorem ipsum dolor sit amet. Ut quisquam quia qui debitis sapiente sit ipsam delectus.</p>"
             }
           }
         ]

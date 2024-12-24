@@ -28,6 +28,7 @@
   display: inline-block;
   z-index: 2;
 }
+/* camera border */
 .sr4-about-us-img.sr4-border__true > span.sr4_br_1:before {
   left: 0;
   top: 0;
@@ -77,6 +78,58 @@
   height: 2px;
   width: 5%;
 }
+
+/* full border */
+.sr4-about-us-img.sr4-border__true > span.sr4_br_11:before {
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+}
+.sr4-about-us-img.sr4-border__true > span.sr4_br_11:after {
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: 100%;
+}
+
+.sr4-about-us-img.sr4-border__true > span.sr4_br_22:before {
+  right: 0;
+  top: 0;
+  width: 2px;
+  height: 100%;
+}
+.sr4-about-us-img.sr4-border__true > span.sr4_br_22:after {
+  right: 0;
+  top: 0;
+  height: 2px;
+  width: 100%;
+}
+.sr4-about-us-img.sr4-border__true > span.sr4_br_33:before {
+  left: 0;
+  bottom: 0;
+  width: 2px;
+  height: 100%;
+}
+.sr4-about-us-img.sr4-border__true > span.sr4_br_33:after {
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+.sr4-about-us-img.sr4-border__true > span.sr4_br_44:before {
+  right: 0;
+  bottom: 0;
+  width: 2px;
+  height: 100%;
+}
+.sr4-about-us-img.sr4-border__true > span.sr4_br_44:after {
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  width: 100%;
+}
+/* --- */
 
 @media (max-width: 767px) {
   .sr4-about-us-img,

@@ -54,7 +54,7 @@
             "btn_icon": false,
             "button_style": "default",
             "button_color": "primary",
-            "button_effect": "sweep-to-top",
+            "button_effect": "default",
             "wishlist_color": "#222222",
             "wishlist_color_hover": "#005b69",
             "wishlist_color_active": "#e81e1e",

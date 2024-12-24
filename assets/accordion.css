@@ -57,11 +57,17 @@
   display: inline-block;
   vertical-align: top;
 }
-.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav {
+.sr4-accor-title .sr4-accor-item-nav.tab-icon-2 {
+  background-color: transparent;
+}
+.sr4-accordion-style-3 .sr4-type-accordion .sr4-accor-title {
+  border-bottom: 1px solid rgb(187, 186, 186);
+}
+.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav.tab-icon-1 {
   background-color: var(--title-active-cl);
 }
-.sr4-accor-title .sr4-accor-item-nav::before,
-.sr4-accor-title .sr4-accor-item-nav::after {
+.sr4-accor-title .sr4-accor-item-nav.tab-icon-1::before,
+.sr4-accor-title .sr4-accor-item-nav.tab-icon-1::after {
   position: absolute;
   content: '';
   top: 50%;
@@ -72,24 +78,23 @@
   transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out, -webkit-transform 0.35s ease-in-out;
   background-color: #fff;
 }
-.sr4-accor-title .sr4-accor-item-nav::before {
+.sr4-accor-title .sr4-accor-item-nav.tab-icon-1::before {
   width: 15px;
   height: 2px;
   opacity: 1;
 }
-.sr4-accor-title .sr4-accor-item-nav::after {
+.sr4-accor-title .sr4-accor-item-nav.tab-icon-1::after {
   width: 2px;
   height: 15px;
   opacity: 1;
 }
-.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav::before {
+.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav.tab-icon-1::before {
   opacity: 0;
 }
-.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav:after,
-.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav:before {
+.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav.tab-icon-1:after,
+.sr4-tab-wrapper.sr4-active .sr4-accor-title .sr4-accor-item-nav.tab-icon-1:before {
   -webkit-transform: translate(-50%, -50%) rotate(90deg);
   transform: translate(-50%, -50%) rotate(90deg);
-  background-color: var(--bg-title-active-cl);
 }
 .sr4-type-accordion.sr4-text-center .sr4-accor-title .sr4-accor-item-nav {
   display: inline-block;
@@ -111,27 +116,9 @@
   margin-left: 5px;
   margin-right: 0;
 }
-.sr4-accordion-style-2 .sr4-type-accordion .sr4-accor-title {
-  padding: 10px 30px;
-}
-.sr4-accordion-style-2 .sr4-accor-title .sr4-accor-item-nav {
-  border-radius: 100%;
-  right: 30px;
-  background-color: var(--bg-title-active-cl);
-}
-.sr4-accordion-style-2 .sr4-type-accordion.sr4-text-end .sr4-accor-title .sr4-accor-item-nav {
-  left: 30px;
-  right: auto;
-}
 @media (max-width: 767px) {
   .sr4-type-accordion .sr4-accor-title {
     padding: 0 50px 0 10px;
-  }
-  .sr4-accordion-style-2 .sr4-type-accordion .sr4-accor-title {
-    padding: 10px 50px 10px 10px;
-  }
-  .sr4-accordion-style-2 .sr4-accor-title .sr4-accor-item-nav {
-    right: 10px;
   }
   .sr4-type-accordion .sr4-tab-content {
     padding: 10px;
@@ -143,4 +130,50 @@
     width: 36px;
     height: 36px;
   }
+}
+
+span.sr4-accor-item-nav.tab-icon-2::before {
+  position: absolute;
+  content: '';
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23000000" height="10px" width="10px" viewBox="0 0 330 330"><path d="M250.606,154.389l-150-149.996c-5.857-5.858-15.355-5.858-21.213,0.001 c-5.857,5.858-5.857,15.355,0.001,21.213l139.393,139.39L79.393,304.394c-5.857,5.858-5.857,15.355,0.001,21.213 C82.322,328.536,86.161,330,90,330s7.678-1.464,10.607-4.394l149.999-150.004c2.814-2.813,4.394-6.628,4.394-10.606 C255,161.018,253.42,157.202,250.606,154.389z"/></svg>');
+  background-repeat: no-repeat;
+  background-size: contain;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: transform 0.35s ease-in-out, opacity 0.35s ease-in-out;
+  width: 12px;
+  height: 12px;
+}
+
+.sr4-active > .sr4-accor-title > .sr4-accor-item-nav.tab-icon-2:before,
+.sr4-active > .sr4-accor-title > .sr4-accor-item-nav.tab-icon-2:after {
+  transform: translate(-50%, -50%) rotate(90deg);
+}
+
+.sr4-accor-title span.sr4-accor-text.tab-title-2 .sr4-acc-tab_title,
+.sr4-active span.sr4-accor-text.tab-title-2 .sr4-acc-tab_title {
+  position: relative;
+  color: black;
+}
+
+.sr4-accor-title span.sr4-accor-text.tab-title-2 .sr4-acc-tab_title::before,
+.sr4-active span.sr4-accor-text.tab-title-2 .sr4-acc-tab_title::before {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  background-color: #212121;
+  transition: transform 0.1s ease;
+  display: block;
+}
+
+.sr4-accor-title:hover span.sr4-accor-text.tab-title-2 .sr4-acc-tab_title::before,
+.sr4-active span.sr4-accor-text.tab-title-2 .sr4-acc-tab_title::before {
+  transform: translateX(-50%) scaleX(1);
+  color: black;
 }

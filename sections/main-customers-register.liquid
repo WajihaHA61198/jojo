@@ -39,11 +39,11 @@
     , class: 'sr4-w-100' -%}
     {%- if form.errors -%}
       {% comment %}  <h2 class="form__message" tabindex="-1">
-                <svg aria-hidden="true" focusable="false" role="presentation">
-                  <use href="#icon-error" />
-                </svg>
-                {{ 'customer.form.error_heading' | t }}
-            </h2>{% endcomment %}
+                        <svg aria-hidden="true" focusable="false" role="presentation">
+                          <use href="#icon-error" />
+                        </svg>
+                        {{ 'customer.form.error_heading' | t }}
+                  </h2>{% endcomment %}
       <ul>
         {%- for field in form.errors -%}
           <li>
@@ -188,8 +188,7 @@
           {
             "value": "start",
             "label": "Default"
-          },
-          {
+          }, {
             "value": "center",
             "label": "Center"
           }
@@ -208,14 +207,12 @@
           {
             "value": "default",
             "label": "Default"
-          },
-          {
+          }, {
             "value": "full",
             "label": "Full width"
           }
         ]
-      },
-      {
+      }, {
         "type": "select",
         "id": "button_style",
         "label": "Button style",
@@ -223,22 +220,18 @@
           {
             "label": "Default",
             "value": "default"
-          },
-          {
+          }, {
             "label": "Outline",
             "value": "outline"
-          },
-          {
+          }, {
             "label": "Bordered bottom",
             "value": "bordered"
-          },
-          {
+          }, {
             "label": "Link",
             "value": "link"
           }
         ]
-      },
-      {
+      }, {
         "type": "select",
         "id": "btns_size",
         "label": "Button size",
@@ -259,18 +252,15 @@
           {
             "label": "Large",
             "value": "extra-medium"
-          },
-          {
+          }, {
             "label": "Extra large",
             "value": "large"
-          },
-          {
+          }, {
             "label": "Extra extra large",
             "value": "extra-large"
           }
         ]
-      },
-      {
+      }, {
         "type": "select",
         "id": "btns_cl",
         "label": "Button color",
@@ -291,14 +281,12 @@
           {
             "value": "custom1",
             "label": "Custom color 1"
-          },
-          {
+          }, {
             "value": "custom2",
             "label": "Custom color 2"
           }
         ]
-      },
-      {
+      }, {
         "type": "select",
         "id": "button_effect",
         "label": "Button hover effect",
@@ -308,10 +296,6 @@
           {
             "label": "Default",
             "value": "default"
-          },
-          {
-            "label": "Fade",
-            "value": "fade"
           },
           {
             "label": "Rectangle out",
@@ -324,28 +308,22 @@
           {
             "label": "Sweep to left",
             "value": "sweep-to-left"
-          },
-          {
+          }, {
             "label": "Sweep to bottom",
             "value": "sweep-to-bottom"
-          },
-          {
+          }, {
             "label": "Sweep to top",
             "value": "sweep-to-top"
-          },
-          {
+          }, {
             "label": "Shutter out horizontal",
             "value": "shutter-out-horizontal"
-          },
-          {
+          }, {
             "label": "Outline",
             "value": "outline"
-          },
-          {
+          }, {
             "label": "Shadow",
             "value": "shadow"
-          },
-          {
+          }, {
             "label": "Overlay run (Only working with button default)",
             "value": "overlay-run"
           }

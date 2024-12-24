@@ -141,7 +141,7 @@ endif -%}
   };
 
   window.sr4configs = {
-    theme: 'kalles',
+    theme: 'Jojo',
     isPageIndex: {{ is_page_index | json }},
     cartCurrency: {{ cart.currency.iso_code | json }},
     moneyFormat: {% if settings.currency_code_enabled %}{{ shop.money_with_currency_format | json }}{% else%}{{ shop.money_format | json }}{% endif %},
@@ -192,8 +192,8 @@ endif -%}
     cartType: '{{ settings.cart_type }}',
     afterActionATC: '{{ settings.after_action_atc }}',
     enableCompePopup: {{ settings.enable_compe_popup | default:false }},
-    preViewBar: 'demo-kalles',
-    cacheName: '{{ shop.metafields.sr4.kalles.value | default:'kalles' }}{% if customer %}customer{% endif %}{{ theme.id }}',
+    preViewBar: 'demo-jojo',
+    cacheName: '{{ shop.metafields.sr4.jojo.value | default:'jojo' }}{% if customer %}customer{% endif %}{{ theme.id }}',
     CartAttrHidden : true,
     timeOutNotices : 4000,
     autoHideNotices: true,
@@ -218,12 +218,25 @@ endif -%}
 </script>
 
 <template id="btns_pr_temp">
-  {%- if enable_quickview %}<a href="#sr4_pr_url" data-tooltip="" data-id="id_nt_94" rel="nofollow" class="sr4-pr-item-btn sr4-pr-quickview" data-action-quickview><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-qv"></use></svg></span><span class="sr4-text-pr">{{'products.product_card.quick_view' | t}}</span></a>{% endif %}[split_t4nt]
+  {%- if enable_quickview %}<a href="#sr4_pr_url" data-tooltip="" data-id="id_nt_94" rel="nofollow" class="sr4-pr-item-btn sr4-pr-quickview" data-action-quickview><span class="sr4-svg-pr-icon">
+    <svg class=" " width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M18.0002 7H15.7502V5.75C15.7502 4.79 14.9702 4 14.0002 4H9.99023C9.03023 4 8.24023 
+						4.78 8.24023 5.75V7H5.99023C4.89023 7 3.99023 7.89 3.99023 9V18C3.99023 19.1 4.88023 20 
+						5.99023 20H17.9902C19.0902 20 19.9902 19.11 19.9902 18V9C19.9902 7.9 19.1002 7 17.9902 
+						7H18.0002ZM9.75023 5.75C9.75023 5.61 9.86023 5.5 10.0002 5.5H14.0102C14.1502 5.5 14.2602 
+						5.61 14.2602 5.75V7H9.76023V5.75H9.75023ZM18.5002 18.01C18.5002 18.28 18.2802 18.51 18.0002 
+						18.51H6.00023C5.73023 18.51 5.50023 18.29 5.50023 18.01V9.01C5.50023 8.74 5.72023 8.51 6.00023 
+						8.51H8.25023V10.01H9.75023V8.51H14.2502V10.01H15.7502V8.51H18.0002C18.2702 8.51 18.5002 8.73 
+						18.5002 9.01V18.01Z" fill="var(--_g-icon-fill-color)"></path></svg>
+    </span><span class="sr4-text-pr">{{'products.product_card.quick_view' | t}}</span></a>{% endif %}[split_t4nt]
   
   {%- if settings.enable_compe %}<a href="#sr4_pr_url" data-tooltip="" data-id="id_nt_94" data-handle="handle_nt_94" rel="nofollow" class="sr4-pr-item-btn sr4-pr-compare" data-action-compare><span class="sr4-svg-pr-icon"><svg class="sr4-svg-cp" viewBox="0 0 24 24"><use xlink:href="#sr4-icon-cp"></use></svg></span><span class="sr4-text-pr">{{'products.product.compare' | t}}</span></a>{% endif %}[split_t4nt]
   
   {%- if settings.wishlist_mode == "1" -%}
-     <a href="#sr4_pr_url" data-tooltip="" data-id="id_nt_94" rel="nofollow" class="sr4-pr-item-btn sr4-pr-wishlist" data-action-wishlist><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-wis"></use></svg></span><span class="sr4-text-pr">{{'products.product.add_to_wishlist' | t}}</span></a>
+     <a href="#sr4_pr_url" data-tooltip="" data-id="id_nt_94" rel="nofollow" class="sr4-pr-item-btn sr4-pr-wishlist" data-action-wishlist>
+     <span class="sr4-svg-pr-icon">
+     
+     <svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-wis"></use></svg>
+     </span><span class="sr4-text-pr">{{'products.product.add_to_wishlist' | t}}</span></a>
   {%- elsif settings.wishlist_mode == "2" and shop.customer_accounts_enabled -%}
      {%- if customer -%} 
      <a href="#sr4_pr_url" data-tooltip="" data-id="id_nt_94" data-handle="handle_nt_94" rel="nofollow" class="sr4-pr-item-btn sr4-pr-wishlist" data-action-wishlist><span class="sr4-svg-pr-icon"><svg viewBox="0 0 24 24"><use xlink:href="#sr4-icon-wis"></use></svg></span><span class="sr4-text-pr">{{'products.product.add_to_wishlist' | t}}</span></a>
@@ -371,9 +384,9 @@ endif -%}
 
 {%- liquid
 section 'whatsapp'
+section 'pr_item_config'
 if admin_sp
 
-render 'var_adm'
   if enable_quickview
   section 'main-qv'
   endif
@@ -396,15 +409,16 @@ section 'popups'
 endif
 
 section 'toolbar_mobile'
-if admin_sp
-section 'popups'
-endif
 
-if template.suffix != 'config' and admin_sp
-  section 'pr_item_config'
+
+
+
+
+
+  
   section 'title_config'
   section 'btn_config'
-endif
+
 
 if  template.suffix != 'config'
   section 'slider_config'

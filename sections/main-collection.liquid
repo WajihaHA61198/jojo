@@ -30,6 +30,11 @@
   assign use_pagination = section.settings.use_pagination 
   assign sett_equal = section.settings.use_eq_height
   assign show_vendor = section.settings.show_vendor
+  assign show_type = section.settings.show_type
+  assign show_sizes = section.settings.show_sizes
+  assign show_sizes_hover = section.settings.show_sizes_hover
+  assign show_wishlist = section.settings.show_wishlist
+  assign adb_style = section.settings.adb_style
   assign use_link_vendor = settings.use_link_vendor
   assign enable_rating = settings.enable_rating
   assign inc_pr = section.settings.pr_des
@@ -256,19 +261,11 @@
         {%- liquid 
           case product_des
             when '1'
-              render 'product-Card1' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
+              render 'product-Card1' for collection.products as product,prefix_url:prefix_url,show_img: show_img,show_vendor:show_vendor,show_type:show_type,show_sizes:show_sizes,show_sizes_hover:show_sizes_hover,show_wishlist:show_wishlist,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
             when '2'
-              render 'product-Card2' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
-            when '3'
-              render 'product-Card3' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
-            when '4'
-              render 'product-Card4' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
-            when '5'
-              render 'product-Card5' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
+              render 'product-Card2' for collection.products as product,prefix_url:prefix_url,show_img: show_img,show_vendor:show_vendor,show_type:show_type,show_sizes:show_sizes,show_sizes_hover:show_sizes_hover,show_wishlist:show_wishlist,adb_style:adb_style,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
             when '6'
-              render 'product-Card6' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
-            when '7'
-              render 'product-Card7' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
+              render 'product-Card6' for collection.products as product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img: show_img,show_vendor:show_vendor,show_type:show_type,show_sizes:show_sizes,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns, placeholder_img:placeholder_img
             endcase -%}
       </div>
       {%- if paginate.pages > 1 -%}
@@ -381,24 +378,8 @@
             "label": "Style 2"
           },
           {
-            "value": "3",
-            "label": "Style 3"
-          },
-          {
-            "value": "4",
-            "label": "Style 4"
-          },
-          {
-            "value": "5",
-            "label": "Style 5"
-          },
-          {
             "value": "6",
             "label": "Style 6"
-          },
-          {
-            "value": "7",
-            "label": "Style 7"
           }
         ],
         "label": "Product item design",
@@ -406,9 +387,59 @@
       },
       {
         "type": "checkbox",
+        "id": "show_type",
+        "label": "Show product type",
+        "default": false
+      },
+      {
+        "type": "checkbox",
         "id": "show_vendor",
         "label": "Show product vendors",
         "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sizes",
+        "label": "Show sizes",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_sizes_hover",
+        "label": "Product sizes over the image",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "show_wishlist",
+        "label": "Wishlist icon on collection page",
+        "info": "If its select to false, it will only hide from the product card.",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "adb_style",
+        "label": "Button placement on product card",
+        "info": "Only for style #2",
+        "default": "3",
+        "options": [
+          {
+            "value": "1",
+            "label": "As icon (with wishlist)"
+          },{
+            "value": "2",
+            "label": "On hover (over the card)"
+          },{
+            "value": "3",
+            "label": "Sticky on card"
+          },{
+            "value": "4",
+            "label": "On bottom left (just like khaadi)"
+          },{
+            "value": "5",
+            "label": "With product information as button"
+          }
+        ]
       },
       {
         "type": "header",
@@ -734,7 +765,7 @@
           }
         ],
         "label": "Space vertical items",
-        "default": "8"
+        "default": "20"
       },
       {
         "type": "select",
@@ -822,7 +853,7 @@
           }
         ],
         "label": "Space vertical items (Mobile)",
-        "default": "8"
+        "default": "15"
       },
       {
         "type": "select",
@@ -982,10 +1013,6 @@
             {
                 "label":"Default",
                 "value":"default"
-            },
-            {
-                "label":"Fade",
-                "value":"fade"
             },
             {
                 "label":"Rectangle out",

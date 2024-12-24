@@ -262,7 +262,7 @@
         "button_style": "outline",
         "btns_size": "large",
         "btns_cl": "primary",
-        "button_effect": "rectangle-out",
+        "button_effect": "default",
         "btn_pos": "sr4-text-center",
         "layout": "sr4-container-wrap",
         "cl_bg": "",
