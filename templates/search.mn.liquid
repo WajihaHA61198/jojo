@@ -6,7 +6,10 @@
   <div class="sr4-drawer__header">
     <span>
       {% if mobile_nav_type == '1' %}
-        {%- assign navActive = 'is--active' -%}
+        {%- assign navActive = 'is--active' -%}<img
+          style="width:25%;"
+          src="https://cdn.shopify.com/s/files/1/0761/3959/4004/files/logo.jpg?v=1686118618"
+          alt="logo" />
       {% else %}
         {%- assign catActive = 'is--active' -%}{{ 'general.mobile_menu.categories' | t }}{% endif %}
     </span>

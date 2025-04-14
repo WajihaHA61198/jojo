@@ -9,8 +9,6 @@
     assign html_layout = '<div class="sr4-container">__</div></div>' | split:'__'
   elsif stt_layout == 'sr4-container-wrap'
     assign html_layout = '<div class="sr4-container">__</div>' | split:'__'
-  elsif stt_layout == 'sr4-site-wrapper'
-    assign html_layout = '<div class="sr4-site-wrapper">__</div>' | split: '__'
   else
     assign html_layout = '__' | split:'__'
   endif
@@ -94,12 +92,20 @@
                       {%- if item == blank %}{% continue %}{% endif -%}
                         {%- case product_des -%}
                           {%- when '1' -%}
-                          {%- render 'product-Card1',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item1',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '2' -%}
-                          {%- render 'product-Card2',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item2',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '3' -%}
+                          {%- render 'product-grid-item3',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '4' -%}
+                          {%- render 'product-grid-item4',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '5' -%}
+                          {%- render 'product-grid-item5',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '6' -%}
-                          {%- render 'product-Card6',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
-                          {%- endcase -%}
+                          {%- render 'product-grid-item6',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '7' -%}
+                            {%- render 'product-grid-item7',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                        {%- endcase -%}
                     {%- endfor -%}
 
                 {%- elsif sortby == 2 -%}
@@ -109,12 +115,20 @@
                       {%- if item == blank %}{% continue %}{% endif -%}
                       {%- case product_des -%}
                           {%- when '1' -%}
-                          {%- render 'product-Card1',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item1',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '2' -%}
-                          {%- render 'product-Card2',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item2',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '3' -%}
+                          {%- render 'product-grid-item3',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '4' -%}
+                          {%- render 'product-grid-item4',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '5' -%}
+                          {%- render 'product-grid-item5',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '6' -%}
-                          {%- render 'product-Card6',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
-                          {%- endcase -%}
+                          {%- render 'product-grid-item6',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '7' -%}
+                            {%- render 'product-grid-item7',product:item[0],prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                        {%- endcase -%}
                     {%- endfor -%}
 
                 {%- else -%}
@@ -124,12 +138,20 @@
                       {%- for product in results -%}
                         {%- case product_des -%}
                           {%- when '1' -%}
-                          {%- render 'product-Card1',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item1',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '2' -%}
-                          {%- render 'product-Card2',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item2',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '3' -%}
+                          {%- render 'product-grid-item3',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '4' -%}
+                          {%- render 'product-grid-item4',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '5' -%}
+                          {%- render 'product-grid-item5',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '6' -%}
-                          {%- render 'product-Card6',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
-                          {%- endcase -%}
+                          {%- render 'product-grid-item6',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '7' -%}
+                            {%- render 'product-grid-item7',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                        {%- endcase -%}
                       {%- endfor -%}
 
                   {%- else -%}
@@ -137,12 +159,20 @@
                       {%- for product in results reversed -%}
                         {%- case product_des -%}
                           {%- when '1' -%}
-                          {%- render 'product-Card1',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item1',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '2' -%}
-                          {%- render 'product-Card2',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- render 'product-grid-item2',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '3' -%}
+                          {%- render 'product-grid-item3',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '4' -%}
+                          {%- render 'product-grid-item4',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '5' -%}
+                          {%- render 'product-grid-item5',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
                           {%- when '6' -%}
-                          {%- render 'product-Card6',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
-                          {%- endcase -%}
+                          {%- render 'product-grid-item6',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                          {%- when '7' -%}
+                            {%- render 'product-grid-item7',product:product,prefix_url:prefix_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+                        {%- endcase -%}
                       {%- endfor -%}
 
                   {%- endif -%}
@@ -176,7 +206,7 @@
         "type": "checkbox",
         "id": "show",
         "label": "Show product recently viewed?",
-        "default": false
+        "default": true
       },
       {
           "type": "header",
@@ -185,8 +215,8 @@
       {
           "type": "select",
           "id": "design_heading",
-          "label": "1. Heading options",
-          "default": "2",
+          "label": "+ Design heading",
+          "default": "1",
           "options": [
               {
                   "value": "1",
@@ -199,6 +229,50 @@
               {
                   "value": "3",
                   "label": "Design 03"
+              },
+              {
+                  "value": "4",
+                  "label": "Design 04"
+              },
+              {
+                  "value": "5",
+                  "label": "Design 05"
+              },
+              {
+                  "value": "6",
+                  "label": "Design 06 (width line-awesome)"
+              },
+              {
+                  "value": "7",
+                  "label": "Design 07"
+              },
+              {
+                  "value": "8",
+                  "label": "Design 08"
+              },
+              {
+                  "value": "9",
+                  "label": "Design 09"
+              },
+              {
+                  "value": "10",
+                  "label": "Design 10"
+              },
+              {
+                  "value": "11",
+                  "label": "Design 11"
+              },
+              {
+                  "value": "12",
+                  "label": "Design 12"
+              },
+              {
+                  "value": "13",
+                  "label": "Design 13"
+              },
+              {
+                  "value": "14",
+                  "label": "Design 14"
               }
           ]
       },
@@ -225,20 +299,20 @@
       {
           "type": "text",
           "id": "top_heading",
-          "label": "Heading",
+          "label": "+ Heading",
           "default": "Recent products"
       },
       {
           "type": "textarea",
           "id": "top_subheading",
-          "label": "Subheading"
+          "label": "+ Subheading"
       }, 
       {
         "type": "number",
         "id": "tophead_mb",
-        "label": "Space bottom in (px)",
+        "label": "+ Space bottom (px)",
         "info": "The vertical spacing between heading and content",
-        "default": 20
+        "default": 30
       },
       {
         "type": "header",
@@ -247,7 +321,6 @@
       {
         "type": "select",
         "id": "product_des",
-        "label": "Product card design",
         "options": [
           {
             "value": "1",
@@ -278,6 +351,7 @@
             "label": "Design 7"
           }
         ],
+        "label": "Product item design",
         "default": "1"
       },
       {
@@ -287,13 +361,19 @@
         "default": false
       },
       {
+        "type": "checkbox",
+        "id": "use_cdt",
+        "label": "Show product countdown",
+        "default": false
+      },
+      {
         "type": "range",
         "id": "limit",
         "min": 1,
-        "max": 20,
+        "max": 50,
         "step": 1,
         "label": "Maximum products to show",
-        "default": 6
+        "default": 8
       },
       {
         "type": "select",
@@ -333,7 +413,7 @@
           }
         ],
         "label": "Sort By",
-        "default": "1"
+        "default": "3"
       },
       {
         "type": "select",
@@ -349,17 +429,21 @@
           }
         ],
         "label": "Unavailable products",
-        "default": "hide"
+        "default": "show"
+      },
+      {
+        "type": "paragraph",
+        "content": "Specifies whether to display results for unavailable products. The three possible options are show, hide. Set to hide to exclude unavailable products from the search results."
       },
       {
         "type": "header",
-        "content": "3. Options for products image"
+        "content": "+ Options image products"
       },
       {
         "type": "select",
         "id": "image_ratio",
         "label": "Image ratio",
-        "default": "ratioadapt",
+        "default": "rationt",
         "info": "Aspect ratio custom will settings in general panel",
         "options": [
           {
@@ -370,12 +454,12 @@
           {
             "group": "Landscape",
             "value": "ratio2_1",
-            "label": "2:1 (200x100)"
+            "label": "2:1"
           },
           {
             "group": "Landscape",
             "value": "ratio16_9",
-            "label": "16:9 (1.78x1)"
+            "label": "16:9"
           },
           {
             "group": "Landscape",
@@ -385,17 +469,22 @@
           {
             "group": "Landscape",
             "value": "ratio3_2",
-            "label": "3:2 (photography)"
+            "label": "3:2"
           },
           {
             "group": "Landscape",
             "value": "ratio4_3",
-            "label": "4:3 (old TV)"
+            "label": "4:3"
           },
           {
             "group": "Landscape",
             "value": "rationt",
-            "label": "Aspect ratio ASOS"
+            "label": "Ratio ASOS"
+          },
+          {
+            "group": "Squared",
+            "value": "ratio1_1",
+            "label": "1:1"
           },
           {
             "group": "Portrait",
@@ -408,9 +497,24 @@
             "label": "1:2"
           },
           {
-            "group": "Squared",
-            "value": "ratio1_1",
-            "label": "1:1"
+            "group": "Custom",
+            "value": "ratiocus1",
+            "label": "Ratio custom 1"
+          },
+          {
+            "group": "Custom",
+            "value": "ratiocus2",
+            "label": "Ratio custom 2"
+          },
+          {
+            "group": "Custom",
+            "value": "ratio_us3",
+            "label": "Ratio custom 3"
+          },
+          {
+            "group": "Custom",
+            "value": "ratiocus4",
+            "label": "Ratio custom 4"
           }
         ]
       },
@@ -482,9 +586,25 @@
       },
       {
         "type": "select",
+        "id": "content_align",
+        "label": "Product content align",
+        "default": "default",
+        "options": [
+          {
+            "label": "Default",
+            "value": "default"
+          },
+          {
+            "label": "Center",
+            "value": "center"
+          }
+        ]
+      },
+      {
+        "type": "select",
         "id": "col_dk",
         "label": "Items per row",
-        "default": "5",
+        "default": "4",
         "options": [
           {
             "value": "1",
@@ -516,7 +636,7 @@
         "type": "select",
         "id": "col_tb",
         "label": "Items per row (Tablet)",
-        "default": "3",
+        "default": "2",
         "options": [
           {
             "value": "1",
@@ -590,7 +710,7 @@
           }
         ],
         "label": "Space horizontal items",
-        "default": "8"
+        "default": "30"
       },
       {
         "type": "select",
@@ -630,7 +750,7 @@
           }
         ],
         "label": "Space vertical items",
-        "default": "8"
+        "default": "30"
       },
       {
         "type": "select",
@@ -670,7 +790,7 @@
           }
         ],
         "label": "Space horizontal items (Mobile)",
-        "default": "8"
+        "default": "10"
       },
       {
         "type": "select",
@@ -710,11 +830,11 @@
           }
         ],
         "label": "Space vertical items (Mobile)",
-        "default": "8"
+        "default": "10"
       },
       {
         "type": "header",
-        "content": "4. Layout options"
+        "content": "--Box options--"
       },
       {
         "type": "select",
@@ -734,14 +854,14 @@
       },
       {
         "type": "header",
-        "content": "5. Options for carousel"
+        "content": "+Options for carousel layout"
       },
       {
         "type": "checkbox",
         "id": "loop",
         "label": "Enable loop",
         "info": "At the end of cells, wrap-around to the other end for infinite scrolling",
-        "default": false
+        "default": true
       },
       {
         "type": "range",
@@ -759,7 +879,7 @@
         "id": "au_hover",
         "label": "Pause autoplay on hover",
         "info": "Auto-playing will pause when the user hovers over the carousel",
-        "default": false
+        "default": true
       },
       {
         "type": "paragraph",
@@ -780,7 +900,7 @@
         "type": "select",
         "id": "btn_vi",
         "label": "Visible",
-        "default": "always",
+        "default": "hover",
         "options": [
           {
             "value": "always",
@@ -850,6 +970,14 @@
               {
                   "value": "primary",
                   "label": "Primary"
+              },
+              {
+                  "value": "custom1",
+                  "label": "Custom color 1"
+              },
+              {
+                  "value": "custom2",
+                  "label": "Custom color 2"
               }
           ]
       },
@@ -931,6 +1059,14 @@
           {
               "value": "primary",
               "label": "Primary"
+          },
+          {
+              "value": "custom1",
+              "label": "Custom color 1"
+          },
+          {
+              "value": "custom2",
+              "label": "Custom color 2"
           }
         ]
       },
@@ -958,15 +1094,14 @@
       },
       {
         "type": "header",
-        "content": "6. Design options"
+        "content": "3. Design options"
       },
       {
-        "type": "select","id": "layout","default": "sr4-site-wrapper","label": "Layout",
+        "type": "select","id": "layout","default": "sr4-container-wrap","label": "Layout",
         "options": [
             { "value": "sr4-se-container", "label": "Container"},
             { "value": "sr4-container-wrap", "label": "Wrapped container"},
-            { "value": "sr4-container-fluid", "label": "Full width"},
-            { "value": "sr4-site-wrapper", "label": "Full width with wrapped"}
+            { "value": "sr4-container-fluid", "label": "Full width"}
         ]
       },
       {
@@ -985,55 +1120,52 @@
         "label": "Background image"
       },
       {
-        "type": "header",
-        "content": "+ Desktop"
-      },
-      {
           "type": "text",
           "id": "mg",
           "label": "Margin",
-          "info":"trbl",
-          "default": ",,30px,",
-          "placeholder": ",,30px,"
+          "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
+          "default": ",,50px,",
+          "placeholder": ",,50px,"
       },
       {
           "type": "text",
           "id": "pd",
           "label": "Padding",
-          "placeholder": "30px,,30px,"
+          "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
+          "placeholder": "50px,,50px,"
       },
       {
         "type": "header",
-        "content": "+ Tablet"
+        "content": "+ Design Tablet Options"
       },
       {
         "type": "text",
         "id": "mg_tb",
         "label": "Margin",
-        "placeholder": ",,30px,"
+        "placeholder": ",,50px,"
       },
       {
         "type": "text",
         "id": "pd_tb",
         "label": "Padding",
-        "placeholder": ",,30px,"
+        "placeholder": ",,50px,"
       },
       {
         "type": "header",
-        "content": "+ Mobile"
+        "content": "+ Design mobile options"
       },
       {
           "type": "text",
           "id": "mg_mb",
           "label": "Margin",
-          "default": ",,20px,",
-          "placeholder": ",,20px,"
+          "default": ",,30px,",
+          "placeholder": ",,50px,"
       },
       {
           "type": "text",
           "id": "pd_mb",
           "label": "Padding",
-          "placeholder": ",,20px,"
+          "placeholder": ",,50px,"
       }
   ]
 }

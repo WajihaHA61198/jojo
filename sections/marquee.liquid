@@ -1,0 +1,157 @@
+{%- liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+  assign stt_layout = se_stts.layout
+  assign stt_image_bg = se_stts.image_bg
+
+  if stt_layout == 'sr4-se-container'
+    assign html_layout = '<div class="sr4-container">__</div></div>' | split: '__'
+  elsif stt_layout == 'sr4-container-wrap'
+    assign html_layout = '<div class="sr4-container">__</div>' | split: '__'
+  else
+    assign html_layout = '__' | split: '__'
+  endif
+
+  assign sr4_se_class = 'sr4_nt_se_' | append: sid
+  if se_stts.use_cus_css and se_stts.code_cus_css != blank
+    render 'se_cus_css', code_cus_css: se_stts.code_cus_css, sr4_se_class: sr4_se_class
+  endif
+%}
+
+<div
+  class="sr4-section-inner {{sr4_se_class}} sr4_nt_se_{{sid}} {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4{% endif %}"
+  {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %}
+    data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto" data-optimumx="2"
+  {% endif %}
+  {% render 'section_style', se_stts: se_stts -%}
+>
+  {{- html_layout[0] -}}
+  <div id="sid-{{ section.id }}">
+    <div class="marquee_container">
+      <div class="o-product-thumbnail-secondary__marquee">
+        {% for i in (1..4) %}
+          {{ section.settings.marq_text }}&nbsp;
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  {{- html_layout[1] -}}
+</div>
+
+<style>
+  #sid-{{ section.id }} * {
+    padding: 0;
+    margin: 0;
+  }
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee {
+    display: flex;
+    overflow: hidden;
+    max-width: 100%;
+    padding: {{ section.settings.paddingTb }}px 0;
+  }
+
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul,
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
+      white-space: nowrap;
+      will-change: transform;
+      animation: marquee {{ section.settings.animation_time }}s linear infinite;
+      display: flex;
+  }
+
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul li,
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee p,
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee h5 {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+  }
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
+    font-size: clamp({{ section.settings.font_size_mb }}px,({{section.settings.font_size}} / 1440)* 100vw, {{section.settings.font_size}}px);
+    background-image: {{section.settings.color}};
+    font-weight: {{section.settings.font_weight}};
+    letter-spacing: 1px;
+    line-height: 1;
+    color: #0000;
+    background-clip: text;
+  }
+
+  @keyframes marquee {
+      0% {
+          transform: translateX(0%);
+      }
+      100% {
+          transform: translateX(-100%);
+      }
+  }
+</style>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "tag": "section",
+  "class": "sr4-section sr4-section-all",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "marq_text",
+      "label": "Marquee",
+      "default": "Extravagence – 68 Sections of Pure Customization Power."
+    },
+    {
+      "type": "number",
+      "id": "animation_time",
+      "label": "Animation Speeds",
+      "default": 50
+    },
+    {
+      "type": "number",
+      "id": "font_size",
+      "label": "Font Size",
+      "default": 70
+    },
+    {
+      "type": "number",
+      "id": "font_size_mb",
+      "label": "Font Size Mobile",
+      "default": 20
+    },
+    {
+      "type": "range",
+      "id": "font_weight",
+      "label": "Font Weight",
+      "default": 700,
+      "step": 100,
+      "min": 100,
+      "max": 900
+    },
+    {
+      "type": "color_background",
+      "id": "color",
+      "label": "Text Color"
+    },
+    {
+      "type": "number",
+      "id": "paddingTb",
+      "label": "Top-Bottom Padding",
+      "default": 20
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "default": "sr4-container-wrap",
+      "label": "Layout",
+      "options": [
+        { "value": "sr4-se-container", "label": "Container" },
+        { "value": "sr4-container-wrap", "label": "Wrapped container" },
+        { "value": "sr4-container-fluid", "label": "Full width" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Marquee",
+      "category": "homepage"
+    }
+  ]
+}
+{% endschema %}

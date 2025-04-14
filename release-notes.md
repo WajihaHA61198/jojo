@@ -1,7 +1,11 @@
 Dawn 13.0.1 introduces a few fixes.
+
 ### Changed
+
 - The cart drawer header (Product, Total) is not sticky anymore when the content is scrollable
+
 ### Fixes and improvements
+
 - Fix product rating alignment when the product doesn't have a media
 - Fix scroll issue on variant change
 - Limit width of country selector when the currency is the same for all the countries

@@ -736,7 +736,7 @@ assign exit_product_popup   = false
 					{%- case product_des -%} 
 		        {%-  when '1' -%} 
 			        {%- for product in product_list -%}
-			        	{%- render 'product-Card1',
+			        	{%- render 'product-grid-item1',
           				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
 		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
 		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
@@ -744,15 +744,47 @@ assign exit_product_popup   = false
 		            {%- endfor -%}
 		        {%-  when '2' -%} 
 			        {%- for product in product_list -%}
-			        	{%- render 'product-Card2',
+			        	{%- render 'product-grid-item2',
           				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
 		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
 		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
 		                price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
 		            {%- endfor -%}
-                    {%-  when '6' -%} 
+		        {%-  when '3' -%} 
 			        {%- for product in product_list -%}
-			        	{%- render 'product-Card6',
+			        	{%- render 'product-grid-item3',
+          				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
+		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
+		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
+		                price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+		            {%- endfor -%}
+		        {%-  when '4' -%} 
+			        {%- for product in product_list -%}
+			        	{%- render 'product-grid-item4',
+          				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
+		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
+		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
+		                price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+		            {%- endfor -%}
+		        {%-  when '5' -%} 
+			        {%- for product in product_list -%}
+			        	{%- render 'product-grid-item5',
+          				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
+		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
+		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
+		                price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+		            {%- endfor -%}
+		        {%-  when '6' -%} 
+			        {%- for product in product_list -%}
+			        	{%- render 'product-grid-item6',
+          				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
+		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
+		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
+		                price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false -%}
+		            {%- endfor -%}
+		         {%-  when '7' -%} 
+			        {%- for product in product_list -%}
+			        	{%- render 'product-grid-item7',
           				product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
 		                enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
 		                enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
@@ -2268,13 +2300,6 @@ assign exit_product_popup   = false
 		          "default": "Wait! Can't find what you're looking for ?"
 		      },
 		      {
-		        "type": "text",
-		        "id": "icon_heading",
-		        "label": "Enter a icon name on heading",
-		        "info": "Only used for design 6 [LineAwesome](https://kalles.the4.co/font-lineawesome/)",
-		        "default": "las la-gem"
-		      },
-		      {
 		          "type": "textarea",
 		          "id": "top_subheading",
 		          "label": "+ Subheading",
@@ -2303,27 +2328,31 @@ assign exit_product_popup   = false
 		        "options": [
 		          {
 		            "value": "1",
-		            "label": "Style 1"
+		            "label": "Design 1"
 		          },
 		          {
 		            "value": "2",
-		            "label": "Style 2"
+		            "label": "Design 2"
 		          },
 		          {
 		            "value": "3",
-		            "label": "Style 3"
+		            "label": "Design 3"
 		          },
 		          {
 		            "value": "4",
-		            "label": "Style 4"
+		            "label": "Design 4"
 		          },
 		          {
 		            "value": "5",
-		            "label": "Style 5"
+		            "label": "Design 5"
 		          },
 		          {
 		            "value": "6",
-		            "label": "Style 6"
+		            "label": "Design 6"
+		          },
+		          {
+		            "value": "7",
+		            "label": "Design 7"
 		          }
 		        ],
 		        "label": "Product item design",

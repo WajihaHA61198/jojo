@@ -25,7 +25,7 @@ endif -%}
 
               {%- liquid 
                 if settings.flag_currency
-                  assign fl = 'flagst4s'
+                  assign fl = 'flagst4'
                 endif
                 assign sz = settings.size_currency
                 assign cart_iso_code = cart.currency.iso_code
@@ -34,7 +34,7 @@ endif -%}
               {%- if shop.enabled_currencies.size > 1 and settings.currency_type == '1' -%}
 
                 {%- if settings.flag_currency %}
-                  <style>.flagst4s>img {margin-inline-end: 7px;border-radius: 2px;height: 15px;}.flagst4s [data-current]{display: inline-block;}.flagst4s [data-img-current]{margin-inline-end: 3px;}[data-flagssr4="sm"] img[data-img-current] {height: 12px;width: auto;}[data-flagssr4="md"] img {height: 18.5px;width: auto;margin-inline-end: 7px;}.flagst4s[data-flagssr4="md"] [data-img-current]{height: 15.5px;}</style>
+                  <style>.flagst4>img {margin-inline-end: 7px;border-radius: 2px;height: 15px;}.flagst4 [data-current]{display: inline-block;}.flagst4 [data-img-current]{margin-inline-end: 3px;}[data-flagssr4="sm"] img[data-img-current] {height: 12px;width: auto;}[data-flagssr4="md"] img {height: 18.5px;width: auto;margin-inline-end: 7px;}.flagst4[data-flagssr4="md"] [data-img-current]{height: 15.5px;}</style>
                 {% endif -%}
                 {%- if linklists.currency-the4.links.size > 0 -%}
                   {%- assign ck_iso_code = '#' | append: cart_iso_code -%}{%- assign links_cur = linklists.currency-the4.links | where: "url", ck_iso_code -%}
@@ -85,14 +85,14 @@ endif -%}
                 {%- if settings.flag_currency %}{{ 'currencies.min.css' | asset_url | stylesheet_tag }}{% endif -%}
                   {%- assign supported_codes = settings.supported_currencies | split: '|' -%}
                   <li data-currency-wrap id="item_mb_cur" class="sr4-menu-item sr4-item-level-0 sr4-menu-item-has-children sr4-only_icon_false sr4-currencies" {{ block.shopify_attributes }}>
-                     <a rel="nofollow" data-no-instant href="/"><span data-flagst4s="{{ sz }}" data-current class="sr4-currencies__current sr4-d-inline-block {{ fl }} lazyloadsr4 flagst4s-{{ cart_iso_code }}">{{ cart_iso_code }}</span><span class="sr4-mb-nav__icon"></span></a>
+                     <a rel="nofollow" data-no-instant href="/"><span data-flagst4="{{ sz }}" data-current class="sr4-currencies__current sr4-d-inline-block {{ fl }} lazyloadsr4 flagst4-{{ cart_iso_code }}">{{ cart_iso_code }}</span><span class="sr4-mb-nav__icon"></span></a>
                      <ul class="sr4-sub-menu">
-                      <li><a data-flagst4s="{{ sz }}" data-currency-item class="sr4-currency-item {{ fl }} lazyloadsr4 sr4-d-none" href="/" data-no-instant rel="nofollow" data-currency-temp></a></li>
+                      <li><a data-flagst4="{{ sz }}" data-currency-item class="sr4-currency-item {{ fl }} lazyloadsr4 sr4-d-none" href="/" data-no-instant rel="nofollow" data-currency-temp></a></li>
                      {%- for code in supported_codes -%}
                           {%- assign array_money = code | split: '-' -%}
                           {%- assign data_currency = array_money | first | upcase | strip | remove: ' ' -%}
                           {%- assign name_money = array_money | last | strip -%}
-                           <li><a data-flagst4s="{{ sz }}" data-currency-item class="sr4-currency-item {{ fl }} lazyloadsr4 flagst4s-{{ data_currency }}{% if data_currency == cart_iso_code %} is--selected{% endif %}" href="/" data-no-instant rel="nofollow" data-currency="{{ data_currency }}">{{ name_money }}</a></li>
+                           <li><a data-flagst4="{{ sz }}" data-currency-item class="sr4-currency-item {{ fl }} lazyloadsr4 flagst4-{{ data_currency }}{% if data_currency == cart_iso_code %} is--selected{% endif %}" href="/" data-no-instant rel="nofollow" data-currency="{{ data_currency }}">{{ name_money }}</a></li>
                      {%- endfor -%}
                      </ul>
                  </li>
@@ -108,10 +108,10 @@ endif -%}
                   assign current_locale_iso_code = current_locale.iso_code
                   -%}
                 <li data-locale-wrap id="item_mb_lang" class="sr4-menu-item sr4-item-level-0 sr4-menu-item-has-children sr4-only_icon_false sr4-languages" {{ block.shopify_attributes }}>
-                   <a rel="nofollow" data-no-instant href="/"><span data-flagst4s="{{ sz }}" data-current class="sr4-languages__current sr4-d-inline-block {{ fl }} lazyloadsr4 flagst4s-{{ current_locale_iso_code }}">{{ current_locale.endonym_name }}</span><span class="sr4-mb-nav__icon"></span></a>
+                   <a rel="nofollow" data-no-instant href="/"><span data-flagst4="{{ sz }}" data-current class="sr4-languages__current sr4-d-inline-block {{ fl }} lazyloadsr4 flagst4-{{ current_locale_iso_code }}">{{ current_locale.endonym_name }}</span><span class="sr4-mb-nav__icon"></span></a>
                    <ul class="sr4-sub-menu">
                     {%- for locale in shop.published_locales -%}{%- assign iso_code = locale.iso_code -%}
-                         <li><a data-flagst4s="{{ sz }}" data-locale-item class="sr4-lang-item {{ fl }} lazyloadsr4 flagst4s-{{ iso_code }}{% if iso_code == current_locale_iso_code %} is--selected{% endif %}" href="/" data-no-instant rel="nofollow" data-iso="{{ iso_code }}">{{ locale.endonym_name }}</a></li>
+                         <li><a data-flagst4="{{ sz }}" data-locale-item class="sr4-lang-item {{ fl }} lazyloadsr4 flagst4-{{ iso_code }}{% if iso_code == current_locale_iso_code %} is--selected{% endif %}" href="/" data-no-instant rel="nofollow" data-iso="{{ iso_code }}">{{ locale.endonym_name }}</a></li>
                    {%- endfor -%}
                    </ul>
                </li>
@@ -389,8 +389,7 @@ endif -%}
                 "id": "icon",
                 "type": "text",
                 "label": "Icon",
-                "default":"las la-chair",
-                "info":"[Line awesome icons](https://kalles.the4.co/font-lineawesome/)"
+                "default":"las la-chair"
             }
         ]
       },
@@ -448,8 +447,7 @@ endif -%}
               "id": "icon",
               "type": "text",
               "label": "Icon",
-              "default":"las la-user",
-              "info":"[Line awesome icons](https://kalles.the4.co/font-lineawesome/)"
+              "default":"las la-user"
            },
           {
             "type": "header",

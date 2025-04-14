@@ -124,7 +124,7 @@
   width: 22px;
   height: 22px;
 }
-.sr4-site-nav__icons.sr4-use__kalles svg.sr4-icon--account {
+.sr4-site-nav__icons.sr4-use__jojo svg.sr4-icon--account {
   width: 24px;
   height: 24px;
 }
@@ -217,15 +217,6 @@
 }
 {%- endstyle -%}
 
-
-
-{%- liquid
-  for block in section.blocks
-    if block.type == '@app'
-      assign has_app_block = true
-    endif
-  endfor
--%}
 <div
   data-header-options='{ "isTransparent": {{h_transparent}},"isSticky": {{se_stts.sticky_header}},"hideScroldown": {{se_stts.scroll_header}} }'
   class="sr4-header__wrapper sr4-pr sr4-header-layout_{{se_stts.layout}} {% if h__bgimg != blank %} lazyloadsr4 sr4-header__bgimg"
@@ -259,6 +250,7 @@
 , se_stts: se_stts -%}</div>
   <div
   class="NK sr4-col-lg-auto sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">
+
   {%- render 't4s_group_btns'
     , se_stts: se_stts -%}
   </div>{%- when 'logo_center' -%}<divclass="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div><divclass="sr4-col-5 sr4-d-none sr4-d-lg-block sr4-col-item">{%- render 'menu_blocks'
@@ -286,10 +278,7 @@
 , se_stts: se_stts
 , isSplit1: false -%}</div>{%- else -%}<divclass="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div><divclass="sr4-col-lg-auto sr4-col-md-4 sr4-col-6 sr4-text-center sr4-text-lg-start sr4-col-item">{%- render 't4s_logo'
 , tag: 'div'
-, isTransparent: h_transparent -%}</div><divclass="sr4-col sr4-d-none sr4-d-lg-block sr4-col-item">
-  
-  
-  {%- render 'menu_blocks'
+, isTransparent: h_transparent -%}</div><divclass="sr4-col sr4-d-none sr4-d-lg-block sr4-col-item">{%- render 'menu_blocks'
 , placement: 'bottom'
 , admin_sp: admin_sp
 , se_blocks: se_blocks
@@ -501,8 +490,8 @@
           "id": "h_icon",
           "options": [
             {
-              "value": "custom",
-              "label": "Custom icon"
+              "value": "jojo",
+              "label": "theme icon"
             },
             {
               "value": "pe",
@@ -518,7 +507,7 @@
             }
           ],
           "label": "Design icon:",
-          "default": "custom"
+          "default": "jojo"
         },
         {
           "type": "select",
@@ -767,7 +756,6 @@
         }
       ],
       "blocks": [
-
         {
           "type": "mega",
           "name": "Mega item",
@@ -801,8 +789,7 @@
             {
               "id": "icon",
               "type": "text",
-              "label": "Icon",
-              "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
+              "label": "Icon"
             },
             {
               "type": "checkbox",
@@ -1028,8 +1015,7 @@
             {
               "id": "icon",
               "type": "text",
-              "label": "Icon",
-              "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
+              "label": "Icon"
             },
             {
               "type": "checkbox",
@@ -1135,8 +1121,7 @@
             {
               "id": "icon",
               "type": "text",
-              "label": "Icon",
-              "info": "[Get icons Line awesome](https://kalles.the4.co/font-lineawesome/)"
+              "label": "Icon"
             },
             {
               "type": "checkbox",
@@ -1169,7 +1154,19 @@
             "type": "mega"
           },
           {
-            "type": "mega"
+            "type": "drop"
+          },
+          {
+            "type": "base"
+          },
+          {
+            "type": "base"
+          },
+          {
+            "type": "base"
+          },
+          {
+            "type": "base"
           },
           {
             "type": "base"

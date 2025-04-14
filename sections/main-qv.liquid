@@ -327,10 +327,12 @@
               <div class="sr4-liquid_38af7ea4-8340-431a-ad80-a6713f694bdd sr4-pr__custom-liquid sr4-rte">{{ product.type }}</div>
 
               
-              <h1 class="sr4-product__title" style="--title-family:var(--font-family-{{bk_stts.fnt_df_pr}});--title-style:{{bk_stts.txt_tr_pr}};--title-size:{{bk_stts.size_pr}}px;--title-weight:{{bk_stts.fw_pr}};--title-line-height:{{lh_pr}};--title-spacing:{{bk_stts.ls_pr}}px;--title-color:{{bk_stts.pr_title_color}};--title-color-hover:{{bk_stts.pr_title_color_hover}};" {{ block.shopify_attributes }}><a href="{{product.url}}">{{product.title | escape}}</a></h1>
+              <h1 class="sr4-product__title" style="letter-spacing:.2rem;font-weight:400;font-size:2rem;--title-family:var(--font-family-{{bk_stts.fnt_df_pr}});--title-style:{{bk_stts.txt_tr_pr}};--title-size:{{bk_stts.size_pr}}px;--title-weight:{{bk_stts.fw_pr}};--title-line-height:{{lh_pr}};--title-spacing:{{bk_stts.ls_pr}}px;--title-color:{{bk_stts.pr_title_color}};--title-color-hover:{{bk_stts.pr_title_color_hover}};" {{ block.shopify_attributes }}><a href="{{product.url}}">{{product.title | escape}}</a></h1>
+
+              <div style="border-bottom: 2px solid #cbd5e1; margin-bottom:16px;"></div>
               
               {%- when 'price_review' -%}
-                <div class="sr4-product__price-review" style="--price-size:{{bk_stts.size_price_pr}}px;--price-weight:{{bk_stts.fw_price_pr}};--price-color:{{bk_stts.price_color}};--price-sale-color:{{bk_stts.price_sale_color}};">
+                <div class="sr4-product__price-review" style="font-weight:400;font-size:2rem;--price-size:{{bk_stts.size_price_pr}}px;--price-weight:{{bk_stts.fw_price_pr}};--price-color:{{bk_stts.price_color}};--price-sale-color:{{bk_stts.price_sale_color}};">
                   {%- render 'product-price-single', variant: current_variant, product:product, PR_no_pick:PR_no_pick, type_sale:bk_stts.type_sale, price_varies_style:bk_stts.price -%}
                   {%- if bk_stts.rating -%}
                   {%- assign pid = product.id -%}
@@ -379,6 +381,9 @@
                    {%- else -%}<p>{{- pr_des | strip_html | truncatewords: bk_stts.length -}}</p>
                    {%-endif-%}
                   </div>
+
+
+                     <div style="border-bottom: 2px solid #cbd5e1; margin-bottom:8px;" class="mob-underline"></div>
   
               {%- when 'form' -%}
                   {%- liquid
@@ -1831,12 +1836,16 @@
                     "type":"select",
                     "id":"button_effect",
                     "label":"Button hover effect",
-                    "default":"default",
+                    "default":"fade",
                     "info":"Only working button style default, outline",
                     "options":[
                         {
                             "label":"Default",
                             "value":"default"
+                        },
+                        {
+                            "label":"Fade",
+                            "value":"fade"
                         },
                         {
                             "label":"Rectangle out",
@@ -2047,7 +2056,7 @@
            "type": "select",
            "id": "size_chart",
            "label": "Use size chart:",
-           "default": "3",
+           "default": "2",
            "options": [
              {
                "value": "1",
@@ -2067,7 +2076,7 @@
            "type": "select",
            "id": "pos_sizeg",
            "label": "Position show size chart:",
-           "default": "1",
+           "default": "2",
            "options": [
              {
                "value": "1",
@@ -2541,8 +2550,7 @@
              "type": "text",
              "id": "icon_name",
              "label": "Icon class name",
-             "default": "las la-stopwatch",
-             "info": "[Get name icon](https://kalles.the4.co/font-lineawesome/)"
+             "default": "las la-stopwatch"
            },
            {
              "type": "image_picker",
@@ -2707,8 +2715,7 @@
                "type": "text",
                "id": "icon_name",
                "label": "Icon class name",
-               "default": "las la-hourglass-half",
-               "info": "[Get name icon](https://kalles.the4.co/font-lineawesome/)"
+               "default": "las la-hourglass-half"
              },
              {
                "type": "image_picker",
@@ -3053,8 +3060,7 @@
              "type": "text",
              "id": "icon_name",
              "label": "Icon class name",
-             "default": "las la-eye",
-             "info": "[Get name icon](https://kalles.the4.co/font-lineawesome/)"
+             "default": "las la-eye"
            },
            {
              "type": "image_picker",
@@ -3166,8 +3172,7 @@
              "type": "text",
              "id": "icon_name",
              "label": "Icon class name",
-             "default": "lab la-gripfire",
-             "info": "[Get name icon](https://kalles.the4.co/font-lineawesome/)"
+             "default": "lab la-gripfire"
            },
            {
              "type": "image_picker",
@@ -3302,8 +3307,7 @@
              "type": "text",
              "id": "icon_name",
              "label": "Icon class name",
-             "default": "las la-truck",
-             "info": "[Get name icon](https://kalles.the4.co/font-lineawesome/)"
+             "default": "las la-truck"
            },
            {
              "type": "image_picker",
@@ -3646,12 +3650,16 @@
                   "type":"select",
                   "id":"button_effect",
                   "label":"Button hover effect",
-                  "default":"default",
+                  "default":"fade",
                   "info":"Only working button style default, outline",
                   "options":[
                       {
                           "label":"Default",
                           "value":"default"
+                      },
+                      {
+                          "label":"Fade",
+                          "value":"fade"
                       },
                       {
                           "label":"Rectangle out",
@@ -3841,3 +3849,9 @@
       }
     }
   {% endschema %}
+
+<style>
+  div#shopify-svg-symbols{
+    display:none;
+  }
+</style>

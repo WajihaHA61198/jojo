@@ -163,12 +163,20 @@
             {%- liquid
               case product_des
                 when '1'
-                  render 'product-Card1' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+                  render 'product-grid-item1' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
                 when '2'
-                  render 'product-Card2' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+                  render 'product-grid-item2' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+                when '3'
+                  render 'product-grid-item3' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+                when '4'
+                  render 'product-grid-item4' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+                when '5'
+                  render 'product-grid-item5' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
                 when '6'
-                  render 'product-Card6' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
-endcase -%}
+                  render 'product-grid-item6' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+                when '7'
+                  render 'product-grid-item7' for arr_results as product, prefix_url: prefix_url, isGrowaveWishlist: isGrowaveWishlist, show_img: show_img, show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:show_list_btns
+              endcase -%}
             </div>
           {%- if paginate.pages > 1 -%}
             {%- assign has_paginate_wishlist = true -%}
@@ -275,27 +283,31 @@ endcase -%}
         "options": [
           {
             "value": "1",
-            "label": "Style 1"
+            "label": "Design 1"
           },
           {
             "value": "2",
-            "label": "Style 2"
+            "label": "Design 2"
           },
           {
             "value": "3",
-            "label": "Style 3"
+            "label": "Design 3"
           },
           {
             "value": "4",
-            "label": "Style 4"
+            "label": "Design 4"
           },
           {
             "value": "5",
-            "label": "Style 5"
+            "label": "Design 5"
           },
           {
             "value": "6",
-            "label": "Style 6"
+            "label": "Design 6"
+          },
+          {
+            "value": "7",
+            "label": "Design 7"
           }
         ],
         "label": "Product item design",
@@ -907,6 +919,10 @@ endcase -%}
                 "value":"default"
             },
             {
+                "label":"Fade",
+                "value":"fade"
+            },
+            {
                 "label":"Rectangle out",
                 "value":"rectangle-out"
             },
@@ -1183,6 +1199,10 @@ endcase -%}
                     {
                         "label":"Default",
                         "value":"default"
+                    },
+                    {
+                        "label":"Fade",
+                        "value":"fade"
                     },
                     {
                         "label":"Rectangle out",

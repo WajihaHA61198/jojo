@@ -111,7 +111,6 @@
           "settings": {
             "collection": "default",
             "image": "shopify:\/\/shop_images\/cl10_400x_63592bfa-0886-46bc-b3e4-d3453fdf1d04.jpg",
-            "icon": "las la-gem",
             "collection_title": "New Arrival",
             "collection_link": ""
           }
@@ -121,7 +120,6 @@
           "settings": {
             "collection": "women",
             "image": "shopify:\/\/shop_images\/cl11_400x_3bed1d7b-4322-42a4-bd9a-53f51eb1b092.jpg",
-            "icon": "las la-gem",
             "collection_title": "Bottom",
             "collection_link": ""
           }
@@ -131,7 +129,6 @@
           "settings": {
             "collection": "dress",
             "image": "shopify:\/\/shop_images\/cl12_400x_355a8f09-7c0b-4283-917b-1f3848912ea5.jpg",
-            "icon": "las la-gem",
             "collection_title": "Dress",
             "collection_link": ""
           }
@@ -141,7 +138,6 @@
           "settings": {
             "collection": "separates",
             "image": "shopify:\/\/shop_images\/cl13_400x_fe793a6a-c1b2-46bc-9753-c1c760ebaf52.jpg",
-            "icon": "las la-gem",
             "collection_title": "Accessories",
             "collection_link": ""
           }
@@ -157,7 +153,6 @@
         "design_heading": "1",
         "heading_align": "sr4-text-center",
         "top_heading": "",
-        "icon_heading": "las la-gem",
         "top_subheading": "",
         "tophead_mb": 30,
         "collection_des": "1",
@@ -183,8 +178,8 @@
         "col_dk": "4",
         "col_tb": "2",
         "col_mb": "2",
-        "space_h_item": "30",
-        "space_v_item": "30",
+        "space_h_item": "20",
+        "space_v_item": "20",
         "space_h_item_mb": "10",
         "space_v_item_mb": "10",
         "loop": true,
@@ -251,8 +246,8 @@
         "col_dk": "4",
         "col_tb": "2",
         "col_mb": "2",
-        "space_h_item": "30",
-        "space_v_item": "30",
+        "space_h_item": "20",
+        "space_v_item": "20",
         "space_h_item_mb": "10",
         "space_v_item_mb": "10",
         "layout_des": "1",
@@ -262,7 +257,7 @@
         "button_style": "outline",
         "btns_size": "large",
         "btns_cl": "primary",
-        "button_effect": "default",
+        "button_effect": "rectangle-out",
         "btn_pos": "sr4-text-center",
         "layout": "sr4-container-wrap",
         "cl_bg": "",
@@ -374,7 +369,6 @@
         "design_heading": "1",
         "heading_align": "sr4-text-center",
         "top_heading": "",
-        "icon_heading": "las la-gem",
         "top_subheading": "",
         "tophead_mb": 30,
         "content_align": "text-center",
@@ -392,8 +386,8 @@
         "cl_hd": "#222222",
         "cl_cot": "#222222",
         "bg_item": "#f2f2f4",
-        "space_h_item": "30",
-        "space_v_item": "30",
+        "space_h_item": "20",
+        "space_v_item": "20",
         "space_h_item_mb": "10",
         "space_v_item_mb": "10",
         "carousel_mobile": true,

@@ -103,7 +103,7 @@
                 <div data-collection-url="{{collection.url}}" class="sr4-product-outer sr4-text-md-{{bk_stts.content_align}} sr4-text-{{bk_stts.content_align_mobile}} sr4-row">
                   {% if product != blank %}
                     {%- liquid 
-                    render 'product-Card1' ,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false  -%}
+                    render 'product-grid-item1' ,product:product,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,price_varies_style:price_varies_style,app_review:app_review,enable_rating:enable_rating,use_countdown:use_countdown,imgatt:imgatt,show_list_btns:false  -%}
                   {% else %}
                     <div class="sr4-col-item sr4-product sr4-pr-grid sr4-pr-style{{product_des}} sr4-pr-item sr4-pr-des-{{product_des}}">
                       <div class="sr4-product-wrapper">
@@ -1324,6 +1324,10 @@
                   {
                       "label":"Default",
                       "value":"default"
+                  },
+                  {
+                      "label":"Fade",
+                      "value":"fade"
                   },
                   {
                       "label":"Rectangle out",

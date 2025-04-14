@@ -1,18 +1,18 @@
 {
   "sections": {
-    // "breadcrumb": {
-    //   "type": "brc-nav-product",
-    //   "settings": { "breadcrumb_pr": true, "back_next_pr": false, "cl_bg": "#ffffff", "cl_link": "#222222" }
-    // },
+    "breadcrumb": {
+      "type": "brc-nav-product",
+      "settings": { "breadcrumb_pr": false, "back_next_pr": false, "cl_bg": "#ffffff", "cl_link": "#222222" }
+    },
     "main": {
       "type": "main-product",
       "blocks": {
         "title": {
           "type": "title",
           "settings": {
-            "txt_tr_pr": "none",
-            "fnt_df_pr": "1",
-            "size_pr": 30,
+            "txt_tr_pr": "uppercase",
+            "fnt_df_pr": "3",
+            "size_pr": 23,
             "fw_pr": 500,
             "lh_pr": 0,
             "ls_pr": 0,
@@ -23,30 +23,33 @@
           "type": "price_review",
           "settings": {
             "price": "0",
-            "type_sale": "0",
+            "type_sale": "1",
             "tax_ship": false,
             "rating": false,
             "review_liquid": "",
-            "size_price_pr": 16,
+            "size_price_pr": 15,
             "fw_price_pr": 400,
-            "price_color": "#212121",
+            "price_color": "#222222",
             "price_sale_color": "#ec0101"
           }
         },
-        "description": {
-          "type": "description",
-          "settings": { "des": "1", "size_desc_pr": 12, "desc_color": "#212121", "length": 25, "readm": false, "readm_txt": "Read more" }
+        "divider_line_i4QXTY": {
+          "type": "divider_line",
+          "settings": {
+            "divider_line": false
+          }
         },
         "form": {
           "type": "form",
           "settings": {
-            "selector_mode": "block2",
-            "color_mode": "block2",
+            "selector_mode": "underline",
+            "color_mode": "underline",
             "enable_fit_ratio_img": false,
             "color_size": "small",
             "show_qty": true,
             "enable_wishlist": true,
-            "btn_atc_full": false,
+            "enable_compare": false,
+            "btn_atc_full": true,
             "pr_btn_round": 0,
             "ani": "none",
             "time": 5,
@@ -54,7 +57,7 @@
             "btn_icon": false,
             "button_style": "default",
             "button_color": "primary",
-            "button_effect": "default",
+            "button_effect": "fade",
             "wishlist_color": "#222222",
             "wishlist_color_hover": "#005b69",
             "wishlist_color_active": "#e81e1e",
@@ -71,53 +74,75 @@
             "advance_pr_list": []
           }
         },
+        "order_whatsapp_QBGR3y": {
+          "type": "order_whatsapp",
+          "settings": {
+            "order_whatsapp": "923130213321"
+          }
+        },
+        "size_delivery_ask_rD8Ymq": {
+          "type": "size_delivery_ask",
+          "settings": {
+            "size_chart": "2",
+            "pos_sizeg": "2",
+            "sc_type": "2",
+            "page": "",
+            "image": "shopify://shop_images/MI-2222L_3_430x_1d7ef839-9d47-4984-9ab5-32703bd2a83e.webp",
+            "size_ck": "",
+            "delivery": false,
+            "page_dr": "",
+            "ask": false,
+            "phone": true
+          }
+        },
+        "tab_des_J49HMf": {
+          "type": "tab_des",
+          "settings": {
+            "title": "Description"
+          }
+        },
         "7e824fef-d97e-4455-bd95-9f41bf304d2b": {
           "type": "tab_liquid",
           "settings": {
             "title": "Delivery Timeline",
-            "custom_liquid": "Delivery estimated in 1-4 business days"
-          }
-        },
-        "c870d6b6-44a0-4980-9123-9b6ef2759e40": {
-          "type": "tab_liquid",
-          "settings": {
-            "title": "Care Instructions",
-            "custom_liquid": "It is advised to dry clean the clothes. Avoid drying the clothes in direct sunlight. Iron the outfit using a moderate temperature. Store the outfit in the provided garment bag."
+            "custom_liquid": "Delivery 2 Weeks"
           }
         },
         "542b73f3-60f5-47dc-acdc-0403d7677069": {
           "type": "tab_liquid",
           "settings": {
             "title": "Disclaimer",
-            "custom_liquid": "The fabric pattern/laces, patchwork, and handmade details may vary!<br>\nActual colors of the outfit may vary from the colors being displayed on your device"
+            "custom_liquid": "The fabric pattern/laces, patchwork, and handmade details may vary!"
           }
         }
       },
       "block_order": [
         "title",
         "price_review",
-        "description",
+        "divider_line_i4QXTY",
         "form",
+        "order_whatsapp_QBGR3y",
+        "size_delivery_ask_rD8Ymq",
+        "tab_des_J49HMf",
         "7e824fef-d97e-4455-bd95-9f41bf304d2b",
-        "c870d6b6-44a0-4980-9123-9b6ef2759e40",
         "542b73f3-60f5-47dc-acdc-0403d7677069"
       ],
       "settings": {
-        "pr_layout": "full",
-        "enable_sticky_info": false,
-        "media_layout": "one_column",
+        "pr_layout": "default",
+        "enable_sticky_info": true,
+        "media_layout": "two_columns",
         "media_size": "medium",
-        "thumb_lr_size": "small",
+        "thumb_lr_size": "medium",
         "image_ratio": "ratioadapt",
         "image_size": "cover",
         "image_position": "8",
-        "main_click": "pswp",
+        "main_click": "zoom",
         "zoom_tp": "external",
         "enable_zoom_icon": true,
         "enable_zoom_click_mb": true,
-        "enable_video_looping": false,
+        "enable_video_looping": true,
         "enable_video_muting": true,
-        "enable_video_autoplaying": false,
+        "enable_video_autoplaying": true,
         "eff": "fade",
         "nav_btn": false,
         "btn_vi": "always",
@@ -135,7 +160,7 @@
         "tabs_design": "accordion",
         "tabs_design_mb": "accordion",
         "tabs_position": "inner",
-        "enable_first_tab": false,
+        "enable_first_tab": true,
         "tabs_layout_fix": "default",
         "bg": "#f6f6f8",
         "bg_mb": "#ffffff",
@@ -148,37 +173,52 @@
         "time": 6
       }
     },
+    "sidebar": {
+      "type": "sidebar-product",
+      "disabled": true,
+      "settings": {
+        "enable_drawer": true,
+        "space": 50,
+        "size": "medium",
+        "br_style": "none",
+        "brcolor": "#222222",
+        "sidebar_bdr": 5,
+        "sidebar_pd": 10
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
       "settings": {
         "show": true,
         "design_heading": "1",
         "heading_align": "sr4-text-center",
-        "top_heading": "Product recommendations",
+        "top_heading": "YOU MAY ALSO LIKE",
         "top_subheading": "",
-        "tophead_mb": 20,
-        "product_des": "6",
+        "tophead_mb": 30,
+        "product_des": "1",
         "show_vendor": false,
+        "use_cdt": false,
         "limit": 6,
-        "display_type": "3",
-        "image_ratio": "ratioadapt",
+        "display_type": "5",
+        "image_ratio": "ratio2_3",
         "image_size": "nt_cover",
         "image_position": "8",
+        "content_align": "default",
         "col_dk": "5",
         "col_tb": "3",
         "col_mb": "2",
-        "space_h_item": "8",
-        "space_v_item": "8",
-        "space_h_item_mb": "8",
-        "space_v_item_mb": "8",
+        "space_h_item": "20",
+        "space_v_item": "20",
+        "space_h_item_mb": "10",
+        "space_v_item_mb": "10",
         "layout_des": "2",
-        "loop": false,
-        "au_time": 0,
+        "loop": true,
+        "au_time": 3,
         "au_hover": false,
         "nav_btn": false,
         "btn_vi": "1",
-        "btn_owl": "default",
-        "btn_shape": "none",
+        "btn_owl": "outline",
+        "btn_shape": "round",
         "btn_cl": "dark",
         "btn_size": "small",
         "btn_hidden_mobile": true,
@@ -188,50 +228,52 @@
         "dots_round": true,
         "dots_space": 10,
         "dots_hidden_mobile": false,
-        "layout": "sr4-site-wrapper",
+        "layout": "sr4-container-wrap",
         "cl_bg": "",
         "cl_bg_gradient": "",
-        "mg": ",,30px,",
-        "pd": "",
+        "mg": "30px,,0px,",
+        "pd": "2rem,1rem,2rem,1rem",
         "mg_tb": "",
         "pd_tb": "",
-        "mg_mb": ",,20px,",
+        "mg_mb": ",,0px,",
         "pd_mb": ""
       }
     },
     "recently-viewed-products": {
       "type": "recently_viewed",
-      "disabled": false,
+      "disabled": true,
       "settings": {
-        "show": false,
+        "show": true,
         "design_heading": "1",
         "heading_align": "sr4-text-center",
-        "top_heading": "Recent products",
+        "top_heading": "Recently viewed products",
         "top_subheading": "",
-        "tophead_mb": 20,
+        "tophead_mb": 30,
         "product_des": "1",
         "show_vendor": false,
-        "limit": 6,
+        "use_cdt": false,
+        "limit": 14,
         "sortby": "1",
-        "unavailable_prs": "hide",
+        "unavailable_prs": "show",
         "image_ratio": "rationt",
         "image_size": "cover",
         "image_position": "8",
-        "col_dk": "5",
-        "col_tb": "3",
+        "content_align": "default",
+        "col_dk": "4",
+        "col_tb": "2",
         "col_mb": "2",
-        "space_h_item": "8",
-        "space_v_item": "8",
-        "space_h_item_mb": "8",
-        "space_v_item_mb": "8",
+        "space_h_item": "20",
+        "space_v_item": "20",
+        "space_h_item_mb": "10",
+        "space_v_item_mb": "10",
         "layout_des": "2",
-        "loop": false,
+        "loop": true,
         "au_time": 0,
-        "au_hover": false,
+        "au_hover": true,
         "nav_btn": true,
         "btn_vi": "always",
-        "btn_owl": "default",
-        "btn_shape": "none",
+        "btn_owl": "outline",
+        "btn_shape": "round",
         "btn_cl": "dark",
         "btn_size": "small",
         "btn_hidden_mobile": true,
@@ -241,17 +283,17 @@
         "dots_round": true,
         "dots_space": 10,
         "dots_hidden_mobile": false,
-        "layout": "sr4-site-wrapper",
+        "layout": "sr4-container-wrap",
         "cl_bg": "",
         "cl_bg_gradient": "",
-        "mg": ",,30px,",
+        "mg": "75px,,50px,",
         "pd": "",
         "mg_tb": "",
         "pd_tb": "",
-        "mg_mb": ",,20px,",
+        "mg_mb": ",,30px,",
         "pd_mb": ""
       }
     }
   },
-  "order": ["main", "product-recommendations", "recently-viewed-products"]
+  "order": ["breadcrumb", "main", "sidebar", "product-recommendations", "recently-viewed-products"]
 }

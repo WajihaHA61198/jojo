@@ -277,7 +277,7 @@ input[type='number']::-webkit-outer-spin-button {
 }
 
 p {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 a {
@@ -640,11 +640,6 @@ em {
   padding-left: calc(0.5 * var(--ts-gutter-x, 3rem));
   margin-inline-end: auto;
   margin-inline-start: auto;
-}
-.sr4-site-wrapper {
-  width: 100%;
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 /* @media (min-width: 576px) {
@@ -4596,10 +4591,8 @@ shopify policy
   .is--layout_full {
     max-width: 100% !important;
     width: 100%;
-    /* padding-left: 30px;
-    padding-right: 30px; */
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 .sr4-child-lazyloaded.sr4-bg-11 {
@@ -4900,66 +4893,31 @@ shopify-payment-terms {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #212121;
+  background-color: #2e1065;
   /* background-color: #0e121d; */
   border-radius: 1rem;
   border: 0.1rem solid transparent;
   background-clip: content-box;
 }
-/* ----- */
-img.header__normal-logo.sr4-d-none.sr4-d-lg-block {
-  /* height: 81px;
-  max-height: 81px; */
-  -webkit-transition: all 0.7s ease-in-out;
-  transition: all 0.7s ease-in-out;
-  /* width: auto; */
-  border: 1px solid;
+
+@media (min-width:1024px){
+  .fake-input {
+    display: block;
+    border-bottom: 1px solid;
+    padding: 4px;
+    padding-right: 40px;
+  }
+  
+  .fake-input .flex.items-center.gap-2{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
 }
-.sr4-inlineFlex {
-  display: inline-flex;
-}
-.sr4-flex {
-  display: flex;
-}
-.sr4-justify {
-  justify-content: space-between;
-}
-.sr4-items-end {
-  align-items: flex-end;
-}
-.sr4-gap4 {
-  gap: 4px;
-}
-.sr4-gap6 {
-  gap: 6px;
-}
-.sr4-gap8 {
-  gap: 8px;
-}
-.sr4-gap10 {
-  gap: 10px;
-}
-.p-0 {
-  padding: 0;
-}
-.sr4-items-center {
-  align-items: center;
-}
-.sr4-items-start {
-  align-items: flex-start;
+@media (max-width:1024px){
+  .fake-input .flex.items-center.gap-2 span{
+    display:none;
+  }
 }
 
-@media (max-width: 768px) {
-  .sr4-md-inline {
-    display: inline;
-  }
 
-  .sr4-sx-none {
-    display: none!important;
-  }
-}
-@media (min-width: 768px) {
-  .sr4-md-none {
-    display: none!important;
-  }
-}

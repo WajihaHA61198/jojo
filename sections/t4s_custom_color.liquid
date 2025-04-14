@@ -108,7 +108,7 @@
       text-transform: none;
     }
     .color_section .tooltip .tooltiptext::after {
-      content: "";
+      content: '';
       position: absolute;
       top: 100%;
       left: 50%;
@@ -171,15 +171,19 @@
       margin-top: 0;
     }
     .color_section .sr4-col-auto.is--selected {
-      background-image: repeating-linear-gradient(0deg,#d41616,#d41616 9px,transparent 9px,transparent 16px,#d41616 16px), repeating-linear-gradient(90deg, #d41616, #d41616 9px, transparent 9px, transparent 16px, #d41616 16px), repeating-linear-gradient(180deg, #d41616, #d41616 9px, transparent 9px, transparent 16px, #d41616 16px), repeating-linear-gradient(270deg, #d41616, #d41616 9px, transparent 9px, transparent 16px, #d41616 16px);
-      background-size: 2px calc(100% + 16px)
-      , calc(100% + 16px) 2px
-      , 2px calc(100% + 16px)
-      , calc(100% + 16px) 2px;
-      background-position: 0 0
-      , 0 0
-      , 100% 0
-      , 0 100%;
+      background-image: repeating-linear-gradient(
+          0deg,
+          #d41616,
+          #d41616 9px,
+          transparent 9px,
+          transparent 16px,
+          #d41616 16px
+        ),
+        repeating-linear-gradient(90deg, #d41616, #d41616 9px, transparent 9px, transparent 16px, #d41616 16px),
+        repeating-linear-gradient(180deg, #d41616, #d41616 9px, transparent 9px, transparent 16px, #d41616 16px),
+        repeating-linear-gradient(270deg, #d41616, #d41616 9px, transparent 9px, transparent 16px, #d41616 16px);
+      background-size: 2px calc(100% + 16px), calc(100% + 16px) 2px, 2px calc(100% + 16px), calc(100% + 16px) 2px;
+      background-position: 0 0, 0 0, 100% 0, 0 100%;
       background-repeat: no-repeat;
       animation: 0.6s linear infinite borderAnimation;
     }
@@ -190,32 +194,27 @@
     }
     @keyframes borderAnimation {
       from {
-        background-position: 0 0
-        , -16px 0
-        , 100% -16px
-        , 0 100%
+        background-position: 0 0, -16px 0, 100% -16px, 0 100%;
       }
       to {
-        background-position: 0 -16px
-        , 0 0
-        , 100% 0
-        , -16px 100%
+        background-position: 0 -16px, 0 0, 100% 0, -16px 100%;
       }
     }
   </style>
   <textarea>/*! Code css #{{ sid }} */ {{ cl_css_jsnt }}</textarea>
 
   <div id="admclnt_{{sid}}" class="sr4-text-center admclnt">
-
     <p class="admclnt_note">
-      1. In order showing the color on live page, click "COPY CSS CODE" button and then click on Actions->Edit code to paste the code in the file assets/colors.css.<br>
-      2. From Theme settings->CUSTOM CSS/JS option, click on checkbox "Use colors custom css". Then, click Save at the top right.<br>
-      <a href="https://the4.gitbook.io/kalles-4.0/general-sections/custom-color" target="_blank">👉 See guide</a><br>
+      1. In order showing the color on live page, click "COPY CSS CODE" button and then click on Actions->Edit code to
+      paste the code in the file assets/colors.css.<br>
+      2. From Theme settings->CUSTOM CSS/JS option, click on checkbox "Use colors custom css". Then, click Save at the
+      top right.<br>
     </p>
     <button
       onclick="myFunctionT4('{{sid}}')"
       onmouseout="outFuncT4('{{sid}}')"
-      class="btn_cp tooltip button mt__60 mb__60 pr tc">
+      class="btn_cp tooltip button mt__60 mb__60 pr tc"
+    >
       <span class="tooltiptext" id="myTooltip{{sid}}">Copy code to clipboard</span>
       <svg
         viewBox="0 0 24 24"
@@ -226,7 +225,8 @@
         fill="none"
         stroke-linecap="round"
         stroke-linejoin="round"
-        class="css-i6dzq1">
+        class="css-i6dzq1"
+      >
         <rect
           x="9"
           y="9"
@@ -245,14 +245,15 @@
     <div class="sr4-row sr4-align-items-center sr4-justify-content-center mt__30">
       {%- for block in section.blocks %}
         {% assign bk_stts = block.settings -%}
-        {%- if bk_stts.title != "" -%}
-          {%- assign title = bk_stts.title | split: ';' | first -%}{%- assign title_h = title | handleize -%}
+        {%- if bk_stts.title != '' -%}
+          {%- assign title = bk_stts.title | split: ';' | first -%}
+          {%- assign title_h = title | handleize -%}
           <div
             class="sr4-col-auto sr4-col-item pt__15 pb__15 sr4-text-center"
             id="item_{{block.id}}"
-            {{ block.shopify_attributes }}>
+            {{ block.shopify_attributes }}
+          >
             {%- case block.type -%}
-
               {%- when 'bg_color' -%}
                 <span class="sr4-color-bg-config bg_color_{{title_h}} lazyloadsr4"></span>
 
@@ -260,126 +261,125 @@
                 <span class="sr4_lb_nav sr4_lb_menu_{{title_h}}">{{ title }}</span>
 
               {%- else -%}
-                {%- assign splitTags = title | split: 'badge_' | last -%}<span class="sr4-badge-item sr4-badge-{{splitTags | handleize}}">{{ splitTags }}</span>
-
+                {%- assign splitTags = title | split: 'badge_' | last -%}
+                <span class="sr4-badge-item sr4-badge-{{splitTags | handleize}}">{{ splitTags }}</span>
             {%- endcase -%}
             <h5>{{ forloop.index }}. {{ title }}</h5>
           </div>
         {%- endif -%}
       {%- endfor -%}
     </div>
-
   </div>
 {%- endif -%}
 
 {%- schema -%}
-  {
-    "name": "Custom color",
-    "class": "color_section",
-    "settings": [
-      {
-        "type": "paragraph",
-        "content": "Set name the color and select the color code you want to customize."
-      },
-      {
-        "type": "paragraph",
-        "content": "Separate by a comma ; . If you want support multilingual"
-      },
-      {
-        "type": "paragraph",
-        "content": "Eg: yellow; jaune"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "bg_color",
-        "name": "Swatch color",
-        "settings": [
-          {
-            "type": "textarea",
-            "id": "title",
-            "label": "Color Name",
-            "info": "eg: yellow"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Background color"
-          },
-          {
-            "type": "color_background",
-            "id": "cl_gradient",
-            "label": "Background gradient (optional)"
-          },
-          {
-            "type": "checkbox",
-            "id": "color_img",
-            "label": "Show image"
-          },
-          {
-            "type": "image_picker",
-            "id": "color_jpg",
-            "label": "Color image",
-            "info": "100px x 100px recommended"
-          }
-        ]
-      },
-      {
-        "type": "lb_menu",
-        "name": "Label menu color",
-        "settings": [
-          {
-            "type": "textarea",
-            "id": "title",
-            "label": "Label Menu Name",
-            "info": "eg: Sale"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Background color"
-          },
-          {
-            "type": "color_background",
-            "id": "cl_gradient",
-            "label": "Background gradient (optional)"
-          },
-          {
-            "type": "color",
-            "id": "color_txt",
-            "label": "Text color",
-            "default": "#fff"
-          }
-        ]
-      },
-      {
-        "type": "nt_label",
-        "name": "Label product custom",
-        "settings": [
-          {
-            "type": "textarea",
-            "id": "title",
-            "label": "Label Product Name",
-            "info": "eg: Sale"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Background color"
-          },
-          {
-            "type": "color_background",
-            "id": "cl_gradient",
-            "label": "Background gradient (optional)"
-          },
-          {
-            "type": "color",
-            "id": "color_txt",
-            "label": "Text color",
-            "default": "#fff"
-          }
-        ]
-      }
-    ]
-  }
-{% endschema %}
+{
+  "name": "Custom color",
+  "class": "color_section",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Set name the color and select the color code you want to customize."
+    },
+    {
+      "type": "paragraph",
+      "content": "Separate by a comma ; . If you want support multilingual"
+    },
+    {
+      "type": "paragraph",
+      "content": "Eg: yellow; jaune"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bg_color",
+      "name": "Swatch color",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Color Name",
+          "info": "eg: yellow"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Background color"
+        },
+        {
+          "type": "color_background",
+          "id": "cl_gradient",
+          "label": "Background gradient (optional)"
+        },
+        {
+          "type": "checkbox",
+          "id": "color_img",
+          "label": "Show image"
+        },
+        {
+          "type": "image_picker",
+          "id": "color_jpg",
+          "label": "Color image",
+          "info": "100px x 100px recommended"
+        }
+      ]
+    },
+    {
+      "type": "lb_menu",
+      "name": "Label menu color",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Label Menu Name",
+          "info": "eg: Sale"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Background color"
+        },
+        {
+          "type": "color_background",
+          "id": "cl_gradient",
+          "label": "Background gradient (optional)"
+        },
+        {
+          "type": "color",
+          "id": "color_txt",
+          "label": "Text color",
+          "default": "#fff"
+        }
+      ]
+    },
+    {
+      "type": "nt_label",
+      "name": "Label product custom",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Label Product Name",
+          "info": "eg: Sale"
+        },
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Background color"
+        },
+        {
+          "type": "color_background",
+          "id": "cl_gradient",
+          "label": "Background gradient (optional)"
+        },
+        {
+          "type": "color",
+          "id": "color_txt",
+          "label": "Text color",
+          "default": "#fff"
+        }
+      ]
+    }
+  ]
+}
+{%- endschema -%}

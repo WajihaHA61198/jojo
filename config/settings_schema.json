@@ -7,49 +7,15 @@
     "theme_documentation_url": "https://siardigital.com/",
     "theme_support_url": "https://siardigital.com/"
   },
-  // {
-  //   "name": "Theme active",
-  //   "settings": [
-  //     {
-  //       "type": "paragraph",
-  //       "content": "Start your business journey with Kalles"
-  //     },
-  //     {
-  //       "type": "text",
-  //       "id": "purchase_code",
-  //       "label": "Purchase code"
-  //     },
-  //     {
-  //       "type": "paragraph",
-  //       "content": "[Where is my purchase code](https://help.market.envato.com/hc/en-us/articles/202822600-Where-Is-My-Purchase-Code-) [Buy a new license](https://bit.ly/3lST9WX) [Get EComposer Page Builder for Free (only The4'users)](https://apps.shopify.com/ecomposer?utm_source=TF&utm_medium=Kalles-des-EC-banner)"
-  //     },
-  //     {
-  //       "type": "paragraph",
-  //       "content": "Use Kalles and explore all the tools and services you need to start, run, and grow your business. We know that Kalles will make your life easier by improving your workflow. With the tools that Kalles gives you, you will realize your true design potential without the need to know any coding. We would be glad if you help us to improve our theme, installation process or documentation."
-  //     }
-  //   ]
-  // },
-  // {
-  //   "name": "Dear customers!",
-  //   "settings": [
-  //     {
-  //       "type": "paragraph",
-  //       "content": "[The4 Studio](https://the4.co/) is an experienced web development team that loves to deliver impressive and well-designed Shopify themes. All of our themes are easy to install and customize, so you can start your own web-site in just a few minutes. Our dedicated support team will provide you with fast answers if you have any questions concerning the theme setup or configuration."
-  //     },
-  //     {
-  //       "type": "paragraph",
-  //       "content": "If you are facing a problems with installation, please visit our [documentation page](https://the4.gitbook.io/kalles-4.0/) to find answers to many of the commonly asked questions. You can also [create a new ticket](https://support.the4.co) and we will help you as soon as possible. If you discover any technical issues, or find ways to improve our theme, installation process, or documentation, please message us at any time. Thanks for buying my theme!"
-  //     },
-  //     {
-  //       "type": "paragraph",
-  //       "content": "Our #1 priority is you, the end-user, and we show this by providing you with the most professional world-class theme support available anywhere. Start today, and build a the website of your dreams together with us!"
-  //     },
-  //     {
-  //       "type": "paragraph",
-  //       "content": "[Free Course: Build a Shopify Store](https://webdesign.tutsplus.com/courses/how-to-create-an-online-store-with-shopify)"
-  //     }
-  //   ]
-  // },
+  {
+    "name": "Theme info",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Start your business journey with Jojo"
+      }
+    ]
+  },
   {
     "name": "Layout",
     "settings": [
@@ -93,8 +59,7 @@
           }
         ],
         "label": "Site width: ",
-        "default": "full_width",
-        "info": "You can make your content wrapper boxed or full width"
+        "default": "full_width"
       },
       {
         "type": "range",
@@ -152,7 +117,7 @@
             "label": "Inherit"
           }
         ],
-        "label": "Background Repeat [Learn More](https://w3schools.com/cssref/pr_background-repeat.asp)",
+        "label": "Background Repeat",
         "default": "default"
       },
       {
@@ -176,7 +141,7 @@
             "label": "Contain"
           }
         ],
-        "label": "Background Size [Learn More](https://w3schools.com/cssref/css3_pr_background-size.asp)",
+        "label": "Background Size",
         "default": "default"
       },
       {
@@ -200,7 +165,7 @@
             "label": "Inherit"
           }
         ],
-        "label": "Background Attachment [Learn More](https://w3schools.com/cssref/pr_background-attachment.asp)",
+        "label": "Background Attachment",
         "default": "default"
       },
       {
@@ -236,7 +201,7 @@
             "label": "Center Bottom"
           }
         ],
-        "label": "Background Position [Learn More](https://w3schools.com/cssref/pr_background-position.asp)",
+        "label": "Background Position",
         "default": "default"
       }
     ]
@@ -249,75 +214,70 @@
         "content": "+ Meta keywords for homepage(SEO)"
       },
       {
-        "type": "paragraph",
-        "content": "Recommend app: [AVADA SEO](https://apps.shopify.com/avada-seo-suite?utm_source=The4&utm_medium=inapp&utm_campaign=partnership)"
-      },
-      {
         "type": "textarea",
         "id": "home_keywords",
         "label": "Keywords for homepage",
-        "default": "Shopify, Fastest, Minimal, Lazyload",
+        "default": "Shopify theme, Fastest, Ajax Shop, Minimal, Lazyload",
         "info": "Define keywords for search engines."
       },
       {
         "type": "text",
         "id": "shop_author",
         "label": "Author for shop",
-        "default": "Shopify",
+        "default": "Shopify theme",
         "info": "Define the author of a Shop."
       },
-      // {
-      //   "type": "header",
-      //   "content": "+ Shop"
-      // },
-      // {
-      //   "type": "text",
-      //   "id": "global_acc",
-      //   "label": "General instagram access token [learn more](https://kalles-docs.the4.co/installation/how-to-get-instagram-access-token)"
-      // },
-      // {
-      //   "type": "paragraph",
-      //   "content": "NOTE: Via GraphQL API (General Instagram Access Token) Long-lived tokens are valid for 60 days. You will have to manually regenerate your access token."
-      // },
-      // {
-      //   "type": "select",
-      //   "id": "use_rtl",
-      //   "label": "RTL mode:",
-      //   "default": "3",
-      //   "options": [
-      //     {
-      //       "value": "0",
-      //       "label": "Disable"
-      //     },
-      //     {
-      //       "value": "1",
-      //       "label": "Enable"
-      //     },
-      //     {
-      //       "value": "3",
-      //       "label": "Only enable with 'List RTL Default'"
-      //     },
-      //     {
-      //       "value": "2",
-      //       "label": "Only enable with 'List RTL Custom'"
-      //     }
-      //   ]
-      // },
-      // {
-      //   "type": "paragraph",
-      //   "content": "List RTL Default: ar; dv; ha; he; ku; fa; ur; ug; ps; yi"
-      // },
-      // {
-      //   "type": "textarea",
-      //   "id": "list_rtl",
-      //   "label": "List RTL Custom language iso code:",
-      //   "default": "ar; ha; he; ur; ug",
-      //   "info": "Separate your language codes with a ';'. Only working when selected 'Only enable with List RTL'"
-      // },
-      // {
-      //   "type": "paragraph",
-      //   "content": "List RTL language iso code: ar (Arabic); dv : (Dhivehi,Maldivian); ha : (Hausa); he : (Hebrew); ku : (Kurdish/Sorani); fa : (Persian/Farsi); ur : (Urdu); ps : (Pashto); yi : (Yiddish)"
-      // },
+      {
+        "type": "header",
+        "content": "+ Shop"
+      },
+      {
+        "type": "text",
+        "id": "global_acc"
+      },
+      {
+        "type": "paragraph",
+        "content": "NOTE: Via GraphQL API (General Instagram Access Token) Long-lived tokens are valid for 60 days. You will have to manually regenerate your access token."
+      },
+      {
+        "type": "select",
+        "id": "use_rtl",
+        "label": "RTL mode:",
+        "default": "3",
+        "options": [
+          {
+            "value": "0",
+            "label": "Disable"
+          },
+          {
+            "value": "1",
+            "label": "Enable"
+          },
+          {
+            "value": "3",
+            "label": "Only enable with 'List RTL Default'"
+          },
+          {
+            "value": "2",
+            "label": "Only enable with 'List RTL Custom'"
+          }
+        ]
+      },
+      {
+        "type": "paragraph",
+        "content": "List RTL Default: ar; dv; ha; he; ku; fa; ur; ug; ps; yi"
+      },
+      {
+        "type": "textarea",
+        "id": "list_rtl",
+        "label": "List RTL Custom language iso code:",
+        "default": "ar; ha; he; ur; ug",
+        "info": "Separate your language codes with a ';'. Only working when selected 'Only enable with List RTL'"
+      },
+      {
+        "type": "paragraph",
+        "content": "List RTL language iso code: ar (Arabic); dv : (Dhivehi,Maldivian); ha : (Hausa); he : (Hebrew); ku : (Kurdish/Sorani); fa : (Persian/Farsi); ur : (Urdu); ps : (Pashto); yi : (Yiddish)"
+      },
       {
         "type": "header",
         "content": "+ Email Marketing"
@@ -467,7 +427,7 @@
           }
         ],
         "label": "Header design",
-        "default": "sidebar"
+        "default": "bottom"
       },
       {
         "type": "header",
@@ -1127,7 +1087,7 @@
           },
           {
             "value": "6",
-            "label": "Other app [Instructions here](https://docs.the4.co/kalles-4/theme-faqs/custom-review-app)"
+            "label": "Other app"
           }
         ],
         "label": "Reviews app",
@@ -1181,7 +1141,7 @@
           }
         ],
         "label": "Sale badge display style",
-        "default": "1"
+        "default": "2"
       },
       {
         "type": "checkbox",
@@ -1209,13 +1169,13 @@
         "type": "checkbox",
         "id": "use_preorder_badge",
         "label": "Use pre order badge",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
         "id": "use_custom_badge",
         "label": "Use custom badge",
-        "default": true
+        "default": false
       },
       {
         "type": "paragraph",
@@ -1278,14 +1238,14 @@
         "type": "checkbox",
         "id": "use_link_vendor",
         "label": "Use collection link on vendor",
-        "info": "Allow removing 'vendor' in URL '/collection/vendor'. Note: Only active if exist a collection has the name same as the vendor of the product. [Learn more](https://docs.the4.co/kalles-4/theme-faqs/how-to-remove-vendor-in-the-url-of-the-collection)",
+        "info": "Allow removing 'vendor' in URL '/collection/vendor'. Note: Only active if exist a collection has the name same as the vendor of the product.",
         "default": false
       },
       {
         "type": "checkbox",
         "id": "use_link_type",
         "label": "Use collection link on type",
-        "info": "Allow removing 'type' in URL '/collection/type'. Note: Only active if exist a collection has the name same as the type of the product. [Learn more](https://docs.the4.co/kalles-4/theme-faqs/how-to-remove-vendor-in-the-url-of-the-collection)",
+        "info": "Allow removing 'type' in URL '/collection/type'. Note: Only active if exist a collection has the name same as the type of the product.",
         "default": false
       }
     ]
@@ -1320,7 +1280,7 @@
         "type": "checkbox",
         "id": "enable_quickview",
         "label": "Enable quick view",
-        "default": true
+        "default": false
       },
       {
         "type": "select",
@@ -1716,7 +1676,7 @@
         "id": "use_notify_me",
         "label": "Use a back in stock notification form",
         "info": "When a customer submits the back in stock notification form for a sold out product, you will receive an email to the email address you have set up in the admin to be [your Customer email.](//help.shopify.com/assets/manual/customize/customer-email-03cea16d2eb80d21ad80f8dc559ea5bc1ae4ce9f2b19d6cb83711f1e6c2b63bb.jpg)",
-        "default": true
+        "default": false
       },
       {
         "type": "paragraph",
@@ -1865,7 +1825,7 @@
         "type": "checkbox",
         "id": "enable_confetti",
         "label": "Enable confetti when got free shipping",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
@@ -2163,10 +2123,6 @@
         "default": "last"
       },
       {
-        "type": "paragraph",
-        "content": "Specifies whether to display results for unavailable products. The three possible options are show, hide, and last. Set to last to display unavailable products below other matching results. Set to hide to exclude unavailable products from the search results."
-      },
-      {
         "type": "header",
         "content": "+ Search suggest products"
       },
@@ -2194,7 +2150,7 @@
       {
         "type": "textarea",
         "id": "list_hotkey",
-        "placeholder": "Women, Men, New",
+        "placeholder": "Kids, Girls, Boys",
         "label": "Enter list hot key",
         "info": "Separate by a comma."
       }
@@ -2257,7 +2213,7 @@
         "type": "checkbox",
         "id": "auto_currency",
         "label": "Enable Customer Geolocation",
-        "default": true,
+        "default": false,
         "info": " Boost up your sales by showing your prices in the Visitor's Currency! When a customer goes to your store, your store chooses the currency to use based on the geolocation of their IP address. The prices in your storefront and checkout convert immediately to that currency. If a customer's location uses a currency that isn't supported by your store, then the store's currency is used. For example, your store currency is USD and you accept USD, EUR, and YEN. When a customer from Brazil visits your store, they see prices in USD (your store's currency) because you don't accept payments in BRL."
       },
       {
@@ -2280,7 +2236,7 @@
         "type": "checkbox",
         "id": "flag_currency",
         "label": "Show country flag",
-        "default": true
+        "default": false
       },
       {
         "type": "select",
@@ -2340,10 +2296,6 @@
       {
         "type": "paragraph",
         "content": "Even though prices are displayed in different currencies, orders will still be processed in your store's currency."
-      },
-      {
-        "type": "paragraph",
-        "content": "To offer multiple currencies on your online store, you must first [edit your store's currency formatting](https://kalles-docs.the4.co/theme-settings/currency-converter-plus#1-2-follow-by-the4)."
       },
       {
         "type": "textarea",
@@ -2461,10 +2413,6 @@
         "content": "+ Custom JS"
       },
       {
-        "type": "paragraph",
-        "content": "[Instructions to custom js](https://kalles-docs.the4.co/theme-settings/custom-css-js)"
-      },
-      {
         "type": "checkbox",
         "id": "t4s_custom_js",
         "label": "Use custom js",
@@ -2476,16 +2424,6 @@
   {
     "name": "Social Media",
     "settings": [
-      /*{
-        "type": "header",
-        "content": "Social sharing image"
-      },
-      {
-        "type": "image_picker",
-        "id": "share_image",
-        "label": "Image",
-        "info": "Shown when sharing a link on social media. [Learn more](https:\/\/help.shopify.com\/en\/manual\/using-themes\/troubleshooting\/showing-social-media-thumbnail-images\/) about image thumbnails."
-      },*/
       {
         "type": "header",
         "content": "Social sharing options"
@@ -2500,13 +2438,13 @@
         "type": "checkbox",
         "id": "share_twitter",
         "label": "Tweet on Twitter",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
         "id": "share_pinterest",
         "label": "Pin on Pinterest",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
@@ -2524,13 +2462,13 @@
         "type": "checkbox",
         "id": "share_telegram",
         "label": "Share on Telegram",
-        "default": true
+        "default": false
       },
       {
         "type": "checkbox",
         "id": "share_whatsapp",
         "label": "Share on WhatsApp",
-        "default": false
+        "default": true
       },
       {
         "type": "header",
@@ -2626,7 +2564,7 @@
     "settings": [
       {
         "type": "header",
-        "content": "== Favicon image"
+        "content": "+ Favicon image"
       },
       {
         "type": "image_picker",
@@ -2636,7 +2574,7 @@
       },
       {
         "type": "header",
-        "content": "== Favicon retina image"
+        "content": "+ Favicon retina image"
       },
       {
         "type": "image_picker",

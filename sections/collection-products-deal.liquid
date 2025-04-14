@@ -238,7 +238,7 @@
               {% if isHasCollection %}
               {%-assign pr_url = product.url | within:se_blocks %}
               {% else %}{%-assign pr_url = product.url %}{% endif -%}
-              {%- render 'product-Card1',
+              {%- render 'product-grid-item1',
                 product:product,pr_url:pr_url,isGrowaveWishlist:isGrowaveWishlist,show_img:show_img,show_vendor:show_vendor,use_link_vendor:use_link_vendor,
                 enable_pr_color:enable_pr_color,show_cl_type:show_cl_type,get_color:get_color,
                 enable_pr_size:enable_pr_size,pr_size_pos:pr_size_pos,get_size:get_size,show_size_type:show_size_type,
@@ -439,19 +439,19 @@
         "options": [
           {
             "value": "1",
-            "label": "Style 1"
+            "label": "Design 1"
           },
           {
             "value": "2",
-            "label": "Style 2"
+            "label": "Design 2"
           },
           {
             "value": "3",
-            "label": "Style 3"
+            "label": "Design 3"
           },
           {
             "value": "4",
-            "label": "Style 4"
+            "label": "Design 4"
           }
         ],
         "label": "Product item design",

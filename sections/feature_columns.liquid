@@ -221,14 +221,8 @@
         {
             "type": "text",
             "id": "top_heading",
-            "label": "+ Heading"
-        },
-        {
-            "type": "text",
-            "id": "icon_heading",
-            "label": "Enter a name icon [LineAwesome](https://kalles.the4.co/font-lineawesome/)",
-            "info": "Only used for design 6",
-            "default": "las la-gem"
+            "label": "+ Heading",
+            "default": "TRENDING COLLECTIONS"
         },
         {
             "type": "textarea",
@@ -250,7 +244,7 @@
             "type": "select",
             "id": "text_align",
             "label": "Text alignment",
-            "default": "center",
+            "default": "start",
             "options":[
                 {
                     "label":"Left",
@@ -475,7 +469,7 @@
             "id": "img_effect",
             "label": "Image hover effect",
             "info": "Waring: Hovering effect will resize your images",
-            "default": "none",
+            "default": "zoom",
             "options": [
                 {
                     "value": "none",
@@ -565,7 +559,7 @@
                 }
             ],
             "label": "Layout design",
-            "default": "1"
+            "default": "2"
         },
         {
             "type": "select",
@@ -841,13 +835,13 @@
             "id": "nav_btn",
             "label": "Use prev next button",
             "info": "Creates and show previous & next buttons",
-            "default": false
+            "default": true
         },
         {
             "type": "select",
             "id": "btn_vi",
             "label": "Visible",
-            "default": "hover",
+            "default": "always",
             "options": [
                 {
                     "value": "always",
@@ -952,7 +946,7 @@
             "type":"checkbox",
             "id":"btn_hidden_mobile",
             "label":"Hidden buttons on mobile ",
-            "default": true
+            "default": false
         },
         {
             "type": "paragraph",
@@ -1153,18 +1147,19 @@
                     "type": "text",
                     "id": "title",
                     "label": "Heading",
-                    "default": "Add a title or tagline"
+                    "default": "Collection title"
                 },
                 {
                     "type": "richtext",
                     "id": "text",
                     "label": "Text",
-                    "default": "<p>Share blog posts, products, or promotions with your customers. Use this text to describe products, share details on availability and style, or as a space to display recent reviews or FAQs.</p>"
+                    "default": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>"
                 },
                 {
                     "type": "text",
                     "id": "button_label",
                     "label": "Button label",
+                    "default": "View Collection",
                     "info":"If set blank will not show"
                 },
                 {
@@ -1177,7 +1172,7 @@
                     "type": "select",
                     "id": "open_link",
                     "label": "Open link in",
-                    "default": "_blank",
+                    "default": "_self",
                     "info":"Only working when has a link",
                     "options": [
                         {
@@ -1283,12 +1278,16 @@
                     "type":"select",
                     "id":"button_effect",
                     "label":"Button hover effect",
-                    "default":"default",
+                    "default":"fade",
                     "info":"Only working button style default, outline",
                     "options":[
                         {
                             "label":"Default",
                             "value":"default"
+                        },
+                        {
+                            "label":"Fade",
+                            "value":"fade"
                         },
                         {
                             "label":"Rectangle out",

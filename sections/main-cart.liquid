@@ -566,6 +566,10 @@ dataLayer.push({
                         "value":"default"
                     },
                     {
+                        "label":"Fade",
+                        "value":"fade"
+                    },
+                    {
                         "label":"Rectangle out",
                         "value":"rectangle-out"
                     },
@@ -707,6 +711,10 @@ dataLayer.push({
                     {
                         "label":"Default",
                         "value":"default"
+                    },
+                    {
+                        "label":"Fade",
+                        "value":"fade"
                     },
                     {
                         "label":"Rectangle out",
@@ -856,12 +864,16 @@ dataLayer.push({
               "type":"select",
               "id":"button_effect",
               "label":"Button hover effect",
-              "default":"default",
+              "default":"fade",
               "info":"Only working button style default, outline",
               "options":[
                   {
                       "label":"Default",
                       "value":"default"
+                  },
+                  {
+                      "label":"Fade",
+                      "value":"fade"
                   },
                   {
                       "label":"Rectangle out",
@@ -907,3 +919,9 @@ dataLayer.push({
     }
 }
 {% endschema %}
+
+<style>
+  button.sr4-btn__checkout.sr4-btn.sr4-btn-base.sr4-btn-style-default.sr4-btn-size-large.sr4-btn-color-primary.sr4-btn-effect-default.sr4-w-100.sr4-justify-content-center.sr4-truncate{
+     font-family: Helvetica, "Helvetica Neue", Arial, "Lucida Grande", sans-serif !important;
+  }
+</style>

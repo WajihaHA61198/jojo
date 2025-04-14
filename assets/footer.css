@@ -29,7 +29,7 @@
 .sr4-footer-menu ul li {
   list-style: none;
   margin-right: 0;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 .sr4-footer-menu.sr4-footer-menu-style2 ul li {
   display: inline-block;
@@ -94,11 +94,11 @@
 }
 
 .sr4-footer-has-border.sr4-footer-border-in::before {
-  /* width: calc(100% - 30px); */
-  /* left: 15px; */
-  /* right: 15px; */
-  /* margin: 0 auto; */
-  /* max-width: 1170px; */
+  width: calc(100% - 30px);
+  left: 15px;
+  right: 15px;
+  margin: 0 auto;
+  max-width: 1170px;
 }
 .sr4-footer .sr4-newsletter__inner .col_btn,
 .sr4-footer-extend .sr4-newsletter__inner .col_btn {

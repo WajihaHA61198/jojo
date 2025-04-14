@@ -1,0 +1,1042 @@
+<link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
+<script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
+
+{%- liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+
+  assign sr4_se_class = 'sr4_nt_se_' | append: sid
+  if se_stts.use_cus_css and se_stts.code_cus_css != blank
+    render 'se_cus_css', code_cus_css: se_stts.code_cus_css, sr4_se_class: sr4_se_class
+  endif
+%}
+
+<div class="sr4-container NP-video{% if section.settings.gutter_decrease %}-small{% endif %}">
+  {% assign blocks = section.blocks %}
+  {% assign selected_variant = product.selected_variant %}
+  {% assign cvps = selected_variant | default: pr_variants.last %}
+  {% assign cvpss = cvps.price %}
+  {% assign cvp = current_variant.price %}
+
+  {%- render 'section_tophead', se_stts: se_stts -%}
+
+  <div class="Nain_Preet section-promotion-card-slider1">
+    <div class="promotion-card-slider">
+      <div
+        class="carousell js-flickity"
+        data-flickity='
+          {
+          "draggable": true,
+          "wrapAround": true,
+          "pageDots": false,
+          "groupCells": 1,
+          "autoPlay": 6000,
+          "contains": true,
+          "freeScroll": false,
+          "checkVisibility": false,
+          "dragThreshold" : 1,
+          "cellAlign": "left",
+          "pauseAutoPlayOnHover": false
+          }
+        '
+      >
+        {% for block in blocks %}
+          {% case block.type %}
+            {% when 'promotion_card' %}
+              <div class="carousel-cell1">
+                <div class="promotion-card1">
+                  <a class="jugnu" href="{{ block.settings.card_url2 }}">
+                    <div class="promotion-card__image1">
+                      <video
+                        class="video-js"
+                        loop
+                        autoplay
+                        muted
+                        preload="none"
+                        playsinline
+                        poster="https:{{ block.settings.video_image | img_url: 'master' }}"
+                      >
+                        <source
+                          src="{% if block.settings.video_link != blank %} {{ block.settings.video_link }} {% else %}https://cdn.shopify.com/videos/c/o/v/9ae51e1b28374908a0677cdbac8e2811.mp4{% endif %}"
+                          type="video/mp4"
+                        >
+                        {% comment %} <source src="{{ block.settings.video_link }}" type="video/mp4"> {% endcomment %}
+                      </video>
+                    </div>
+                    <div class="pro__head">{{ block.settings.product_heading }}</div>
+                  </a>
+                  {% comment %}
+                    <div class="sfc carousell js-flickity JAW" data-flickity='{"wrapAround": true,"pageDots": false,"draggable": false }'>
+                      {% if block.settings.product_id != blank %}
+                          <div class="promotion-card__content1" style="background-color:{{ block.settings.color_background_main }} !important">
+                            <img src="{{ block.settings.product_id.featured_image | img_url: 'large' }}" alt="{{ block.settings.image.alt }}" width='45px' height='60px' style="margin-right: 0.6em;"/>
+                            <div class="product-info">
+                              <h3 class="promotion-card__heading1" style="text-transform:capitalize;">{{ block.settings.product_id}}</h3>
+                              <button onclick="window.location.href='{{ block.settings.button_link }}';"class="product-btn">{{ block.settings.button_text }}</button>
+                            </div>
+                         </div>
+                      {% endif %}
+                      {% if block.settings.product_id2 != blank %}
+                          <div class="promotion-card__content1" style="background-color:{{ block.settings.color_background_main }} !important">
+                            <img src="{{ block.settings.product_id2.featured_image | img_url: 'large' }}" alt="{{ block.settings.image.alt }}" width='45px' height='60px' style="margin-right: 0.6em;"/>
+                            <div class="product-info">
+                                <h3 class="promotion-card__heading1" style="text-transform:capitalize;">{{ block.settings.product_id2}}</h3>
+                                <button onclick="window.location.href='{{ block.settings.button_link2 }}';"class="product-btn">{{ block.settings.button_text2 }}</button>
+                            </div>
+                          </div>
+                      {% endif %}
+                      {% if block.settings.product_id3 != blank %}
+                        <div class="promotion-card__content1" style="background-color:{{ block.settings.color_background_main }} !important">
+                            <img src="{{ block.settings.product_id3.featured_image | img_url: 'large' }}" alt="{{ block.settings.image.alt }}" width='45px' height='60px' style="margin-right: 0.6em;"/>
+                            <div class="product-info">
+                              <h3 class="promotion-card__heading1" style="text-transform:capitalize;">{{ block.settings.product_id3}}</h3>
+                              <button onclick="window.location.href='{{ block.settings.button_link3 }}';"class="product-btn">{{ block.settings.button_text3 }}</button>
+                            </div>
+                        </div>
+                      {% endif %}
+                    </div>
+                  {% endcomment %}
+                </div>
+
+                <div style="display:flex;justify-content: center;">
+                  <div class="np_ig">
+                    {% if block.settings.product_id_collection != blank %}
+                      <div
+                        class="promotion-card__content1 promotion-card__content_collection"
+                        style="background-colorr:{{ block.settings.color_background_main }} !important"
+                      >
+                        <div class="product-info">
+                          <h3 class="promotion-card__heading11" style="text-transform:capitalize;">
+                            <a href="{{ block.settings.product_id_collection.url }}">
+                              {{- block.settings.product_id_collection.title -}}
+                            </a>
+                          </h3>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.product_id != blank %}
+                      <div
+                        class="promotion-card__content1"
+                        style="background-colorr:{{ block.settings.color_background_main }} !important"
+                      >
+                        <img
+                          src="{{ block.settings.product_id.featured_image | img_url: 'large' }}"
+                          alt="{{ block.settings.image.alt }}"
+                          width="45px"
+                          height="60px"
+                          style="margin-right: 0.6em;"
+                        >
+                        <div class="product-info">
+                          <h3 class="promotion-card__heading1" style="text-transform:capitalize;">
+                            {{ block.settings.product_id }}
+                          </h3>
+                          <div class="main-price">
+                            <span class="price">{{ block.settings.product_id.price | money }}</span>
+                          </div>
+                          <button
+                            onclick="window.location.href='{{ block.settings.button_link }}';"
+                            class="product-btn"
+                          >
+                            {{ block.settings.button_text }}
+                          </button>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.product_id2 != blank %}
+                      <div
+                        class="promotion-card__content1"
+                        style="background-colorr:{{ block.settings.color_background_main }} !important"
+                      >
+                        <img
+                          src="{{ block.settings.product_id2.featured_image | img_url: 'large' }}"
+                          alt="{{ block.settings.image.alt }}"
+                          width="45px"
+                          height="60px"
+                          style="margin-right: 0.6em;"
+                        >
+                        <div class="product-info">
+                          <h3 class="promotion-card__heading1" style="text-transform:capitalize;">
+                            {{ block.settings.product_id2 }}
+                          </h3>
+                          <div class="main-price">
+                            <span class="price">{{ block.settings.product_id2.price | money }}</span>
+                          </div>
+                          <button
+                            onclick="window.location.href='{{ block.settings.button_link2 }}';"
+                            class="product-btn"
+                          >
+                            {{ block.settings.button_text2 }}
+                          </button>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if block.settings.product_id3 != blank %}
+                      <div
+                        class="promotion-card__content1"
+                        style="background-colorr:{{ block.settings.color_background_main }} !important"
+                      >
+                        <img
+                          src="{{ block.settings.product_id3.featured_image | img_url: 'large' }}"
+                          alt="{{ block.settings.image.alt }}"
+                          width="45px"
+                          height="60px"
+                          style="margin-right: 0.6em;"
+                        >
+                        <div class="product-info">
+                          <h3 class="promotion-card__heading1" style="text-transform:capitalize;">
+                            {{ block.settings.product_id3 }}
+                          </h3>
+                          <div class="main-price">
+                            <span class="price">{{ block.settings.product_id3.price | money }}</span>
+                          </div>
+                          <button
+                            onclick="window.location.href='{{ block.settings.button_link3 }}';"
+                            class="product-btn"
+                          >
+                            {{ block.settings.button_text3 }}
+                          </button>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  @media (min-width: 1024px) {
+    .Nain_Preet.section-promotion-card-slider1 .flickity-viewport {
+      height: 420.236px !important;
+    }
+  }
+
+  .pro__head {
+    color: #5f1010;
+    position: absolute;
+    bottom: 22px;
+    font-size: 15px;
+    left: 37px;
+    background-color: #eaeaea85;
+    padding: 5px;
+    font-weight: 600;
+    width: 170px;
+    text-align: center;
+  }
+  .np_ig {
+    width: 90%;
+    position: absolute;
+    z-index: 9999;
+    color: black;
+    bottom: 4%;
+  }
+  .Nain_Preet.section-promotion-card-slider1 button.flickity-button.flickity-prev-next-button {
+    background-color: black;
+    width: 30px;
+    height: 30px;
+    /* width: 27px;
+    height: 27px; */
+  }
+  .Nain_Preet.section-promotion-card-slider1 button.flickity-button.flickity-prev-next-button svg {
+    color: white;
+    width: 10px;
+    left: 30%;
+  }
+  .Nain_Preet.section-promotion-card-slider1 button.flickity-button.flickity-prev-next-button.previous {
+    left: -33px;
+  }
+  .Nain_Preet.section-promotion-card-slider1 button.flickity-button.flickity-prev-next-button.next {
+    right: -33px;
+  }
+  @media (max-width: 767px) {
+    /* .Nain_Preet.section-promotion-card-slider1 .flickity-slider{
+    transform: translateX(-327%);
+  } */
+    .sr4-container.NP-video {
+      padding: 0;
+    }
+    .Nain_Preet.section-promotion-card-slider1 button.flickity-button {
+      display: none;
+    }
+    div#shopify-section-template--17861473337659__727cc7ec-4fdf-4405-87ef-0d6300dd491c
+      button.flickity-button.flickity-prev-next-button.previous {
+      left: -5px;
+    }
+    div#shopify-section-template--17861473337659__727cc7ec-4fdf-4405-87ef-0d6300dd491c
+      button.flickity-button.flickity-prev-next-button.next {
+      right: -5px;
+    }
+    .promotion-card1 {
+      margin: 0 !important;
+    }
+    .section-promotion-card-slider1 .flickity-viewport::before {
+      content: '';
+      position: absolute;
+      top: -0.5rem;
+      height: calc(100% + 10px);
+      width: 19%;
+      z-index: 2;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translateZ(0);
+    }
+    .pro__head {
+      color: #5f1010;
+      position: absolute;
+      bottom: 22px;
+      font-size: 12px;
+      left: 26px;
+      background-color: #eaeaea85;
+      padding: 5px;
+      font-weight: 600;
+      width: 110px;
+      text-align: center;
+    }
+  }
+
+  .sfc .flickity-viewport::after {
+    width: 0% !important;
+  }
+  .sfc .flickity-viewport::before {
+    width: 0% !important;
+  }
+  .sfc .flickity-prev-next-button.previous {
+    left: -6px;
+  }
+  .sfc .flickity-prev-next-button.next {
+    right: -4px;
+  }
+  .sfc .flickity-viewport {
+    overflow: visible !important;
+  }
+
+  /* Deskstop */
+  video.video-js {
+    /* width: 220px; */
+    width: 232px;
+  }
+  .Nain_Preet.section-promotion-card-slider1 {
+    padding: 10px 0;
+  }
+  .section-promotion-card-slider1 .button--icon {
+    padding-left: 0px;
+    padding-right: 0px;
+  }
+  .product-btn {
+    width: fit-content;
+    color: #878787;
+    text-transform: uppercase;
+    /* background-color: #f15587; */
+    background-color: transparent;
+    border: none;
+    border-radius: 0.25em;
+    /* margin-top: .75em; */
+    padding: 0;
+    font-size: 10px;
+    font-weight: 500;
+  }
+  /* .product-btn {
+  width: fit-content;
+  color: #fff;
+  text-transform: uppercase; */
+  /* background-color: #f15587; */
+  /* background-color:#44351b;
+  border: none;
+  border-radius: .25em;
+  margin-top: .75em;
+  padding: .4px 7px;
+  font-size: 10px;
+  font-weight: 500;
+} */
+  .promotion-card1 {
+    background-color: #fff;
+    overflow: hidden;
+  }
+  .promotion-card__image1 {
+    position: relative;
+    /* overflow: hidden; */
+  }
+  .promotion-card__content1 {
+    background-color: white !important;
+    /* left: 38px !important;
+  position: absolute; */
+    opacity: 0.8;
+    top: 0px;
+    color: #000;
+    backdrop-filter: blur(10px);
+    border-radius: 0.75em;
+    padding: 0.5em 1em;
+    padding: 0.5em 0.5em;
+    display: flex;
+    align-items: center;
+  }
+  .rt.container--large {
+    max-width: 1400px;
+  }
+  /* .section-promotion-card-slider1 .flickity-viewport{
+  height: 400px !important;
+} */
+  .sfc.carousell.js-flickity.flickity-enabled {
+    position: relative;
+    /* top: -467px; */
+    /* bottom:0; */
+    bottom: 20%;
+  }
+  .main-price {
+    line-height: normal;
+    margin-top: 10px;
+  }
+  .promotion-card__heading1 {
+    font-size: 12px;
+    font-weight: bold;
+    color: #878787;
+  }
+  .promotion-card__content1.promotion-card__content_collection {
+    background-color: transparent !important;
+    backdrop-filter: unset;
+  }
+  h3.promotion-card__heading11 {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ffffff;
+  }
+  h3.promotion-card__heading11 a {
+    color: #fff;
+  }
+  .sfc.carousell.js-flickity.JAW.flickity-enabled .flickity-button {
+    top: 7%;
+  }
+  .sfc button.flickity-button.flickity-prev-next-button.previous,
+  .sfc button.flickity-button.flickity-prev-next-button.next {
+    background-color: transparent !important;
+  }
+  .section-promotion-card-slider1 .sfc.carousell.js-flickity.flickity-enabled.is-draggable .flickity-slider {
+    left: 0 !important;
+  }
+
+  /*   flickity css */
+  .carousel-cell1 {
+    /* width: 30%; */
+    /* width: 25%; */
+    /* height: 450px; */
+    /* border-radius: 5px; */
+    /* margin-right:15px; */
+    padding: 0 4px;
+  }
+  .section-heading.section-heading--left.section-heading--one-row.gutter-bottom--large {
+    padding-bottom: 10px;
+    padding-top: 15px;
+  }
+  /* .section-promotion-card-slider1 .carousell.js-flickity.flickity-enabled.is-draggable .flickity-slider {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+} */
+
+  .main-price span.price span.money {
+    font-size: 12px;
+    color: #878787;
+    font-weight: 500;
+  }
+
+  button.product-btn:hover {
+    background-color: transparent !important;
+    color: #000;
+  }
+
+  @media screen and (max-width: 1600px) {
+    .promotion-card-slider .flickity-viewport {
+      height: 415px !important;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .promotion-card1 {
+      background-color: #fff;
+      /* overflow: hidden; */
+      /* width: 300px; */
+    }
+    /* .carousel-cell1 {
+    width:50%;
+  } */
+    .section-promotion-card-slider1 .carousell.js-flickity.flickity-enabled.is-draggable .flickity-slider {
+      /* left: -23% !important; */
+    }
+    .sfc .flickity-button {
+      margin-top: 212px !important;
+    }
+    .np_ig {
+      bottom: 14% !important;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    /* .promotion-card-slider .flickity-viewport {
+    height: 420px !important;
+  } */
+    video.video-js {
+      /* width: 250px; */
+      width: 100%;
+    }
+    /* Set width to 100% for smaller screens */
+    .promotion-card1 {
+      width: 100%;
+      /* height: 400px; */
+    }
+    .promotion-card__heading1 {
+      font-size: 9px;
+    }
+    .np_ig button.product-btn {
+      font-size: 8px;
+    }
+    .section-promotion-card-slider1 .carousell.js-flickity.flickity-enabled.is-draggable .flickity-slider {
+      width: 100%;
+    }
+    .main-price {
+      margin-top: 0px;
+    }
+    .main-price span.price span.money {
+      font-size: 10px;
+    }
+  }
+
+  @media (min-width: 450px) and (max-width: 768px) {
+    /* .promotion-card-slider .flickity-viewport{
+    height:400px!important;
+  } */
+    .carousel-cell1 {
+      width: 33.33% !important;
+    }
+  }
+
+  @media (min-width: 400px) and (max-width: 450px) {
+    /* .promotion-card-slider .flickity-viewport{
+    height:410px!important;
+  } */
+  }
+
+  @media screen and (max-width: 690px) {
+    .promotion-card-slider .flickity-viewport {
+      height: 415px !important;
+    }
+    .promotion-card__content1 {
+      width: fit-content;
+      height: auto;
+      line-height: normal;
+      padding: 6px 10px;
+      border-radius: 2px;
+      margin: auto;
+      /* background-color: #8D8680 !important; */
+    }
+
+    .promotion-card__content1 img {
+      display: none;
+    }
+
+    .promotion-card__content1 .product-info {
+      line-height: 1;
+      /* padding: 5px 0; */
+      display: flex;
+      align-items: center;
+    }
+
+    .promotion-card__content1 .product-info h3.promotion-card__heading1 {
+      display: none;
+    }
+
+    .promotion-card__content1 .product-info .main-price {
+      display: none;
+    }
+
+    .promotion-card__content1 .product-info button.product-btn {
+      color: #000000 !important;
+      font-weight: 600;
+      line-height: 1;
+    }
+
+    .np_ig {
+      bottom: 8% !important;
+    }
+  }
+
+  @media (max-width: 580px) {
+    .promotion-card-slider .flickity-viewport .flickity-slider {
+      margin-left: -4px;
+    }
+    .carousel-cell1 {
+      width: 160px !important;
+    }
+    .promotion-card1 {
+      width: 150px !important;
+    }
+    .promotion-card-slider .flickity-viewport {
+      height: 265px !important;
+    }
+  }
+
+  .promotion-card__content1 img {
+    height: 70px;
+    width: 50px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+</style>
+
+<script>
+  // Function to truncate text
+  function truncateText(element, maxLength) {
+    if (element.textContent.length > maxLength) {
+      element.textContent = element.textContent.substring(0, maxLength) + '...';
+    }
+  }
+
+  // Get all elements with the class .promotion-card__heading1
+  const headings = document.querySelectorAll('.promotion-card__heading1');
+
+  // Set the maximum length for truncation
+  const maxLength = 15; // You can adjust this value
+
+  // Loop through each heading and truncate the text
+  headings.forEach((heading) => truncateText(heading, maxLength));
+</script>
+
+{% schema %}
+{
+  "name": "Instagram reels",
+  "settings": [
+    {
+      "type": "header",
+      "content": "1. Heading options"
+    },
+    {
+      "type": "select",
+      "id": "design_heading",
+      "label": "+ Design heading",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "Design 01"
+        },
+        {
+          "value": "2",
+          "label": "Design 02"
+        },
+        {
+          "value": "3",
+          "label": "Design 03"
+        },
+        {
+          "value": "4",
+          "label": "Design 04"
+        },
+        {
+          "value": "5",
+          "label": "Design 05"
+        },
+        {
+          "value": "6",
+          "label": "Design 06 (width line-awesome)"
+        },
+        {
+          "value": "7",
+          "label": "Design 07"
+        },
+        {
+          "value": "8",
+          "label": "Design 08"
+        },
+        {
+          "value": "9",
+          "label": "Design 09"
+        },
+        {
+          "value": "10",
+          "label": "Design 10"
+        },
+        {
+          "value": "11",
+          "label": "Design 11"
+        },
+        {
+          "value": "12",
+          "label": "Design 12"
+        },
+        {
+          "value": "13",
+          "label": "Design 13"
+        },
+        {
+          "value": "14",
+          "label": "Design 14"
+        },
+        {
+          "value": "15",
+          "label": "Design 15"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "+ Heading align",
+      "default": "sr4-text-center",
+      "options": [
+        {
+          "value": "sr4-text-start",
+          "label": "Default"
+        },
+        {
+          "value": "sr4-text-center",
+          "label": "Center"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "top_heading",
+      "label": "+ Heading",
+      "default": "FOLLOW US ON INSTAGRAM"
+    },
+    {
+      "type": "textarea",
+      "id": "top_subheading",
+      "label": "+ Subheading",
+      "default": "@extraveganceofficial"
+    },
+    {
+      "type": "number",
+      "id": "tophead_mb",
+      "label": "+ Space bottom (px)",
+      "info": "The vertical spacing between heading and content",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "Section Heading"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Text"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button URL",
+      "info": "Please enter the Button URL"
+    },
+    {
+      "type": "header",
+      "content": "Layout Settings"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Columns Layout",
+      "info": "Select the number of columns",
+      "options": [
+        {
+          "value": "grid-2 grid-lap-1",
+          "label": "2 Columns"
+        },
+        {
+          "value": "grid-3 grid-lap-1",
+          "label": "3 Columns"
+        },
+        {
+          "value": "grid-4 grid-portable-2",
+          "label": "4 Columns"
+        }
+      ],
+      "default": "grid-3 grid-lap-1"
+    },
+    {
+      "type": "select",
+      "id": "image_aspect_ratio",
+      "label": "Image Aspect Ratio",
+      "options": [
+        {
+          "value": "1.33333",
+          "label": "1.333 (4:3)"
+        },
+        {
+          "value": "1",
+          "label": "1 (Square)"
+        },
+        {
+          "value": "0.83333",
+          "label": "0.833 (5:6)"
+        },
+        {
+          "value": "0.666667",
+          "label": "0.667 (2:3)"
+        }
+      ],
+      "default": "1"
+    },
+    {
+      "type": "header",
+      "content": "Text Style"
+    },
+    {
+      "type": "select",
+      "id": "text_alignment",
+      "label": "Text Alignment",
+      "options": [
+        {
+          "value": "text-align--left",
+          "label": "Left"
+        },
+        {
+          "value": "text-align--center",
+          "label": "Center"
+        },
+        {
+          "value": "text-align--right",
+          "label": "Right"
+        }
+      ],
+      "default": "text-align--center"
+    },
+    {
+      "type": "select",
+      "id": "caption_size",
+      "label": "Caption Size",
+      "options": [
+        {
+          "value": "small increased-spacing",
+          "label": "Small"
+        },
+        {
+          "value": "regular",
+          "label": "Regular"
+        }
+      ],
+      "default": "regular"
+    },
+    {
+      "type": "select",
+      "id": "title_size",
+      "label": "Title Size",
+      "options": [
+        {
+          "value": "100%",
+          "label": "100%"
+        },
+        {
+          "value": "125%",
+          "label": "125%"
+        }
+      ],
+      "default": "100%"
+    },
+    {
+      "type": "select",
+      "id": "subtitle_size",
+      "label": "Subtitle Size",
+      "options": [
+        {
+          "value": "regular",
+          "label": "Regular"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        }
+      ],
+      "default": "regular"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Spacing",
+      "min": -12,
+      "max": 60,
+      "step": 1,
+      "default": 18,
+      "unit": "px"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button Style",
+      "options": [
+        {
+          "value": "outline",
+          "label": "Outline"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ],
+      "default": "outline"
+    },
+    {
+      "type": "header",
+      "content": "Design Settings"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border Radius",
+      "min": 0,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Gutter Settings"
+    },
+    {
+      "type": "checkbox",
+      "id": "gutter_decrease",
+      "label": "Decrease Gutter",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "promotion_card",
+      "name": "Promotion Card",
+      "settings": [
+        {
+          "type": "url",
+          "id": "video_link",
+          "label": "Video Link"
+        },
+        {
+          "type": "url",
+          "id": "card_url2",
+          "label": "Card URL",
+          "info": "Please enter the Card URL"
+        },
+        {
+          "type": "text",
+          "id": "product_heading",
+          "label": "Product Heading",
+          "default": "Product Name"
+        },
+        {
+          "id": "product_id",
+          "type": "product",
+          "label": "Select Product"
+        },
+        {
+          "type": "url",
+          "id": "card_url",
+          "label": "Card URL",
+          "info": "Please enter the Card URL"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "Button Link",
+          "info": "Please enter the Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "id": "product_id2",
+          "type": "product",
+          "label": "Select Product"
+        },
+
+        {
+          "type": "url",
+          "id": "button_link2",
+          "label": "Button Link",
+          "info": "Please enter the Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text2",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "id": "product_id3",
+          "type": "product",
+          "label": "Select Product"
+        },
+        {
+          "id": "product_id_collection",
+          "type": "collection",
+          "label": "Select collection"
+        },
+        {
+          "type": "url",
+          "id": "card_url3",
+          "label": "Card URL",
+          "info": "Please enter the Card URL"
+        },
+        {
+          "type": "url",
+          "id": "button_link3",
+          "label": "Button Link",
+          "info": "Please enter the Button Link"
+        },
+        {
+          "type": "text",
+          "id": "button_text3",
+          "label": "Button Text",
+          "default": "Learn More"
+        },
+        {
+          "type": "checkbox",
+          "id": "adapt_to_image",
+          "label": "Adapt to Image Size"
+        },
+        {
+          "type": "color",
+          "id": "color_background_main",
+          "label": "Main Background Color",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "color_text_main",
+          "label": "Main Text Color",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "color",
+          "id": "color_borders_main",
+          "label": "Main Borders Color",
+          "default": "rgba(0,0,0,0)"
+        },
+        {
+          "type": "checkbox",
+          "id": "color_hide_borders",
+          "label": "Hide Borders",
+          "default": false
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Instagram reels",
+      "category": "homepage",
+      "blocks": [
+        { "type": "promotion_card" },
+        { "type": "promotion_card" },
+        { "type": "promotion_card" },
+        { "type": "promotion_card" },
+        { "type": "promotion_card" },
+        { "type": "promotion_card" }
+      ]
+    }
+  ]
+}
+{% endschema %}

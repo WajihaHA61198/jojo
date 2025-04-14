@@ -1,6 +1,5 @@
 {%- case se_stts.h_icon -%}
-
-  {%- when 'custom' -%}
+  {%- when 'jojo' -%}
     <svg xmlns="http://www.w3.org/2000/svg" class="sr4-d-none">
       <symbol
         id="icon-h-search"
@@ -142,7 +141,6 @@
         <path xmlns="http://www.w3.org/2000/svg" d="M 16 3 C 13.253906 3 11 5.253906 11 8 L 11 9 L 6.0625 9 L 6 9.9375 L 5 27.9375 L 4.9375 29 L 27.0625 29 L 27 27.9375 L 26 9.9375 L 25.9375 9 L 21 9 L 21 8 C 21 5.253906 18.746094 3 16 3 Z M 16 5 C 17.65625 5 19 6.34375 19 8 L 19 9 L 13 9 L 13 8 C 13 6.34375 14.34375 5 16 5 Z M 7.9375 11 L 11 11 L 11 14 L 13 14 L 13 11 L 19 11 L 19 14 L 21 14 L 21 11 L 24.0625 11 L 24.9375 27 L 7.0625 27 Z" />
       </symbol>
     </svg>
-
 {%- endcase -%}
 
 <div class="sr4-site-nav__icons sr4-use__{{se_stts.h_icon}} is--hover{{se_stts.hover_icon}} sr4-h-cart__design{{se_stts.cart_des}} sr4-lh-1 sr4-d-inline-flex sr4-align-items-center">
@@ -286,7 +284,8 @@
         <div
           data-predictive-search
           data-sid="search-hidden"
-          class="sr4-search-header__form-wrap sr4-search-header sr4-pr sr4-d-none sr4-d-lg-block">
+          class="sr4-search-header__form-wrap sr4-search-header sr4-pr sr4-d-none sr4-d-lg-block"
+        >
           {%- liquid
             assign collection = collections[settings.search_prs_suggest]
             assign limit = 5
@@ -303,34 +302,42 @@
             action="{{ routes.search_url }}"
             method="get"
             class="sr4-search-header__form sr4-row sr4-g-0 sr4-align-items-center"
-            role="search">
+            role="search"
+          >
             <input
               type="hidden"
               name="type"
-              value="product">
+              value="product"
+            >
             <input
               type="hidden"
               name="options[unavailable_products]"
-              value="{{settings.unavailable_prs}}">
+              value="{{settings.unavailable_prs}}"
+            >
             <input
               type="hidden"
               name="options[prefix]"
-              value="last">
+              value="last"
+            >
             {%- if settings.filter_type_search and shop_types != blank -%}
               <div data-cat-search class="sr4-search-header__type sr4-pr sr4-oh sr4-col-auto sr4-col-item">
                 <select data-name="product_type" class="sr4-truncate">
                   <option value="*">{{ 'search.general.all_categories' | t }}</option>
                   {%- for product_type in shop.types -%}
                     {%- if product_type == blank %}
-                      {% continue -%}{% endif -%}
+                      {% continue -%}
+                    {% endif -%}
                     <option
                       value="{{product_type}}"
                       {% if search_pr_type == product_type %}
-                      selected="selected"
-                      {% endif %}>{{ product_type }}</option>
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ product_type }}
+                    </option>
                   {%- endfor -%}
                 </select>
-              {%- comment %}<svg class="sr4-icon-select-arrow sr4-pe-none" role="presentation" width="10" height="10" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg>{% endcomment -%}
+                {%- comment %}<svg class="sr4-icon-select-arrow sr4-pe-none" role="presentation" width="10" height="10" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg>{%- endcomment %}
               </div>
               <div class="sr4-search-header_border sr4-col-auto sr4-col-item"></div>
             {%- endif -%}
@@ -341,15 +348,20 @@
                 autocomplete="off"
                 type="text"
                 name="q"
-                placeholder="{{ 'search.general.placeholder_products' | t }}">
-              <button class="sr4-search-header__submit{% if settings.ajax_search %} sr4-pe-none{% endif %}" type="submit">
+                placeholder="{{ 'search.general.placeholder_products' | t }}"
+              >
+              <button
+                class="sr4-search-header__submit{% if settings.ajax_search %} sr4-pe-none{% endif %}"
+                type="submit"
+              >
                 {% comment %} <svg class="sr4-icon sr4-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg> {% endcomment %}
                 <svg
                   width="24"
                   height="24"
                   viewBox="0 0 24 24"
                   fill="none"
-                  xmlns="http://www.w3.org/2000/svg">
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <circle
                     cx="11.4261"
                     cy="11.4261"
@@ -387,27 +399,33 @@
                 data-results-search
                 class="sr4-frm-search__content sr4_ratioadapt sr4-current-scrollbar"
                 {% if collection == blank or show_search_suggest == false %}
-                style="display: none;"
-                {% endif %}>
+                  style="display: none;"
+                {% endif %}
+              >
                 {%- if collection != blank and show_search_suggest -%}
                   {%- for product in collection.products limit: limit -%}
-                    {%- render 'pr-sidebar-loop'
-                      , imgatt: ""
-                      , product: product
-                      , pr_url: product.url
-                      , placeholder_img: placeholder_img
-                      , price_varies_style: price_varies_style -%}
+                    {%- render 'pr-sidebar-loop',
+                      imgatt: '',
+                      product: product,
+                      pr_url: product.url,
+                      placeholder_img: placeholder_img,
+                      price_varies_style: price_varies_style
+                    -%}
                   {%- endfor -%}
                 {%- endif -%}
               </div>
               {%- if collection != blank and show_search_suggest -%}
                 {%- if collection.all_products_count > limit -%}
                   <div data-viewAll-search>
-                    <a href="{{collection.url}}" class="sr4-mini-search__viewAll sr4-d-block">{{ 'search.pagination.view_all' | t }}
+                    <a href="{{collection.url}}" class="sr4-mini-search__viewAll sr4-d-block">
+                      {{- 'search.pagination.view_all' | t }}
                       <svg
                         width="16"
                         xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 32 32"><path d="M 18.71875 6.78125 L 17.28125 8.21875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 17.28125 23.78125 L 18.71875 25.21875 L 27.21875 16.71875 L 27.90625 16 L 27.21875 15.28125 Z" /></svg>
+                        viewBox="0 0 32 32"
+                      >
+                        <path d="M 18.71875 6.78125 L 17.28125 8.21875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 17.28125 23.78125 L 18.71875 25.21875 L 27.21875 16.71875 L 27.90625 16 L 27.21875 15.28125 Z" />
+                      </svg>
                     </a>
                   </div>
                 {%- endif -%}
@@ -421,14 +439,16 @@
           class="sr4-pr sr4-d-lg-none"
           href="{{ routes.search_url }}"
           data-drawer-delay-
-          data-drawer-options='{ "id":"#sr4-search-hidden" }'>
+          data-drawer-options='{ "id":"#sr4-search-hidden" }'
+        >
           {% comment %} <svg class="sr4-icon sr4-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg> {% endcomment %}
           <svg
             width="24"
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <circle
               cx="11.4261"
               cy="11.4261"
@@ -446,34 +466,108 @@
           </svg>
         </a>
       {%- else -%}
-        <a
-          class="sr4-pr"
-          href="{{ routes.search_url }}"
-          data-drawer-delay-
-          data-drawer-options='{ "id":"#sr4-search-hidden" }'>
-          {% comment %} <svg class="sr4-icon sr4-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg> {% endcomment %}
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg">
-            <circle
-              cx="11.4261"
-              cy="11.4261"
-              r="8.42609"
-              stroke="#2D2B2A"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"></circle>
-            <path
-              d="M17.0435 18.0259L20.0174 20.9998"
-              stroke="#2D2B2A"
-              stroke-width="1.5"
-              stroke-linecap="round"
-              stroke-linejoin="round"></path>
-          </svg>
-        </a>
+        {% comment %}
+          <a
+            class="sr4-pr"
+            href="{{ routes.search_url }}"
+            data-drawer-delay-
+            data-drawer-options='{ "id":"#sr4-search-hidden" }'
+          >
+            <div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="11.4261"
+                  cy="11.4261"
+                  r="8.42609"
+                  stroke="#2D2B2A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></circle>
+                <path
+                  d="M17.0435 18.0259L20.0174 20.9998"
+                  stroke="#2D2B2A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+              <span>Search..</span>
+            </div>
+          </a>
+        {% endcomment %}
+        {% if se_stts.show_search_text %}
+          <a
+            class="fake-input sr4-pr"
+            href="{{ routes.search_url }}"
+            data-drawer-options='{ "id":"#sr4-search-hidden" }'
+            aria-label="Search"
+          >
+            <div class="flex items-center gap-2">
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="11.4261"
+                  cy="11.4261"
+                  r="8.42609"
+                  stroke="#2D2B2A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></circle>
+                <path
+                  d="M17.0435 18.0259L20.0174 20.9998"
+                  stroke="#2D2B2A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+              <span class="text-gray-500">Search...</span>
+            </div>
+          </a>
+        {% else %}
+          <a
+            class="sr4-pr"
+            href="{{ routes.search_url }}"
+            data-drawer-delay-
+            data-drawer-options='{ "id":"#sr4-search-hidden" }'
+          >
+            <div>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle
+                  cx="11.4261"
+                  cy="11.4261"
+                  r="8.42609"
+                  stroke="#2D2B2A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></circle>
+                <path
+                  d="M17.0435 18.0259L20.0174 20.9998"
+                  stroke="#2D2B2A"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"></path>
+              </svg>
+            </div>
+          </a>
+        {% endif %}
       {%- endif -%}
     </div>
   {%- endif -%}
@@ -483,17 +577,21 @@
       class="sr4-pr"
       href="{{ routes.account_url }}"
       {% unless customer or request.page_type contains 'customers' or settings.login_side == false %}
-      data-drawer-delay-
-      data-drawer-options='{ "id":"#sr4-login-sidebar" }'
-      {% endunless %}>
-      <!-- <svg class="sr4-icon sr4-icon--account" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-account"></use></svg> -->
+        data-drawer-delay-
+        data-drawer-options='{ "id":"#sr4-login-sidebar" }'
+      {% endunless %}
+    >
+      <!--
+        <svg class="sr4-icon sr4-icon--account" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-account"></use></svg>
+      -->
       {% comment %} <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="feather feather-user"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg> {% endcomment %}
       <svg
         width="24"
         height="24"
         viewBox="0 0 24 24"
         fill="none"
-        xmlns="http://www.w3.org/2000/svg">
+        xmlns="http://www.w3.org/2000/svg"
+      >
         <circle
           cx="12"
           cy="7"
@@ -513,7 +611,9 @@
       </svg>
     </a>
     {%- if customer -%}
-      <!-- <ul class="sr4-my-account">					<li><a class="sr4-d-block" href="{{routes.account_url}}">{{ 'customer.account.dashboard' | t }}</a></li>					<li><a class="sr4-d-block" href="{{routes.account_addresses_url}}">{{ 'customer.menu.addresses' | t }}</a></li>					<li><a class="sr4-d-block" href="{{routes.account_logout_url}}" data-no-instant>{{ 'customer.account.log_out' | t }}</a></li>				</ul> -->
+      <!--
+        <ul class="sr4-my-account">					<li><a class="sr4-d-block" href="{{routes.account_url}}">{{ 'customer.account.dashboard' | t }}</a></li>					<li><a class="sr4-d-block" href="{{routes.account_addresses_url}}">{{ 'customer.menu.addresses' | t }}</a></li>					<li><a class="sr4-d-block" href="{{routes.account_logout_url}}" data-no-instant>{{ 'customer.account.log_out' | t }}</a></li>				</ul>
+      -->
       {%- style -%}
         .sr4-site-nav__account .sr4-my-account {
           position: absolute;
@@ -530,9 +630,7 @@
           border-radius: 3px;
           transform: translateY(15px) translateZ(0);
           visibility: hidden;
-          transition: opacity 0.2s
-          , visibility 0.2s
-          , transform 0.2s;
+          transition: opacity 0.2s, visibility 0.2s, transform 0.2s;
           opacity: 0;
           text-align: start;
         }
@@ -543,7 +641,7 @@
           transform: none;
         }
         .sr4-site-nav__account .sr4-my-account::after {
-          content: "";
+          content: '';
           position: absolute;
           top: auto;
           right: 0;
@@ -560,8 +658,7 @@
           left: -5px;
           right: auto;
         }
-        @media (-moz-touch-enabled: 0),
-        (hover: hover) and (min-width: 1025px) {
+        @media (-moz-touch-enabled: 0), (hover: hover) and (min-width: 1025px) {
           .sr4-site-nav__account .sr4-my-account a:hover {
             color: var(--accent-color) !important;
           }
@@ -576,14 +673,16 @@
         <a
           data-link-wishlist
           class="sr4-pr"
-          href="{{ routes.search_url }}/?view=wishlist">
+          href="{{ routes.search_url }}/?view=wishlist"
+        >
           {% comment %} <svg class="sr4-icon sr4-icon--heart" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-heart"></use></svg> {% endcomment %}
           <svg
             width="20"
             height="18"
             viewBox="0 0 20 18"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               d="M14.05 1C16.822 1 19 3.11008 19 5.79564C19 8.87183 16.3344 11.4163 12.2106 15.0526L10 17L8.08646 15.3218C3.79404 11.5372 1 8.94507 1 5.79564C1 3.11008 3.178 1 5.95 1C7.516 1 9.019 1.70627 10 2.82234C10.981 1.70627 12.484 1 14.05 1Z"
               stroke="#2D2B2A"
@@ -596,7 +695,8 @@
       {%- else -%}
         {%- capture the_snippet_fave_icon_menu %}{% render 'ssw-widget-faveicon-menu' with product.id %}{% endcapture -%}
         {%- unless the_snippet_fave_icon_menu contains 'Liquid error' %}
-          {{ the_snippet_fave_icon_menu }}{% endunless -%}
+          {{ the_snippet_fave_icon_menu -}}
+        {%- endunless -%}
       {%- endif -%}
     </div>
   {%- endif -%}
@@ -606,9 +706,10 @@
       <a
         href="{{ routes.cart_url }}"
         {% if request.page_type != 'cart' and settings.cart_type != 'disable' %}
-        data-drawer-delay-
-        data-drawer-options='{ "id":"#sr4-mini_cart" }'
-        {% endif %}>
+          data-drawer-delay-
+          data-drawer-options='{ "id":"#sr4-mini_cart" }'
+        {% endif %}
+      >
         <span class="sr4-pr sr4-icon-cart__wrap">
           {% comment %} <svg class="sr4-icon sr4-icon--cart" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-cart"></use></svg> {% endcomment %}
           <svg
@@ -616,7 +717,8 @@
             height="25"
             viewBox="0 0 24 25"
             fill="none"
-            xmlns="http://www.w3.org/2000/svg">
+            xmlns="http://www.w3.org/2000/svg"
+          >
             <path
               fill-rule="evenodd"
               clip-rule="evenodd"
@@ -675,7 +777,6 @@
       padding-right: 0;
     }
     @media (min-width: 768px) {
-
       .sr4-h-cart__design2 .sr4-site-nav__cart a,
       .sr4-h-cart__design4 .sr4-site-nav__cart a,
       .sr4-h-cart__design5 .sr4-site-nav__cart a {
@@ -690,7 +791,7 @@
       }
       .sr4-h-cart__design4 .sr4-site-nav__cart .sr4-count-box,
       .sr4-h-cart__design5 .sr4-site-nav__cart .sr4-count-box {
-        display: none
+        display: none;
       }
       .sr4-h-cart__design4 .sr4-h-cart-totals {
         margin-left: 7px;

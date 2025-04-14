@@ -94,6 +94,7 @@
   {% else %}
   data-product-unit-price{% endif %}
   {{ style_inline }}>
+
   {%- if isRangePrices -%}
 
     {%- if price_varies_style == '1' -%}
@@ -151,10 +152,8 @@
       {{- unit_price_base_unit -}}</div>
 
   {%- elsif on_sale -%}
-    <span class="sr4-inlineFlex sr4-gap10">
-      <ins>{{ money_price }}</ins>
-      <del>{{ money_compare_at_price }}</del>
-    </span>
+    <del>{{ money_compare_at_price }}</del>
+    <ins>{{ money_price }}</ins>
     {{ sale_badge_html }}
   {%- else -%}
     {{ money_price }}

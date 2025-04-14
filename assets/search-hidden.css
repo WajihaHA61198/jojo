@@ -11,11 +11,11 @@
 }
 
 #sr4-search-hidden .sr4-drawer__close {
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 #sr4-search-hidden .sr4-drawer__close:hover {
   background-color: transparent;
-  transform: rotate(180deg);
+  /* transform: rotate(180deg); */
 }
 
 #sr4-search-hidden .sr4-mini-search__cat {
@@ -43,13 +43,13 @@
   font-size: 14px;
   transition: border-color 0.5s ease 0s;
   color: var(--secondary-color);
-  border-radius: var(--btn-radius);
+  border-radius: 0;
 }
 #sr4-search-hidden input.sr4-mini-search__input:not([type='submit']):not([type='checkbox']) {
   padding: 0 50px 0 20px;
   line-height: 18px;
   color: var(--secondary-color);
-  border-radius: var(--btn-radius);
+  border-radius: 0;
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;

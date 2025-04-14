@@ -356,7 +356,7 @@
     "mini_cart": {
       "title": "Shopping cart",
       "close_cart": "Close Cart",
-      "empty": "Your cart is empty.",
+      "empty": "No item in your cart",
       "subtotal": "Subtotal:",
       "checkout": "Check Out",
       "view": "View cart",
@@ -365,8 +365,7 @@
     "cart_page": {
       "title": "Shopping cart",
       "label": { "product": "Product", "price": "Price", "quantity": "Quantity", "total": "Total" },
-      "empty": "Your cart is empty.",
-      "empty_html": "Before proceed to checkout you must add some products to your shopping cart.<br /> You will find a lot of interesting products on our \"Shop\" page.",
+      "empty": "No item in your cart",
       "subtotal": "Subtotal:",
       "checkout": "Check Out",
       "update": "Update Cart"
@@ -386,8 +385,8 @@
     },
     "404": {
       "title": "404",
-      "subtext": "Sorry! Page you are looking can’t be found.",
-      "link_html": "Go back to the <a href=\"{{link}}\" rel=\"home\">homepage</a>"
+      "subtext": "Page not found",
+      "link_html": "<button href=\"{{link}}\" rel=\"home\">Continue shopping</button>"
     }
   },
   "sections": {

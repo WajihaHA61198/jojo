@@ -246,6 +246,7 @@ html.sr4-sidebar-qv.rtl_true {
     top: 54px;
   }
   .sr4-modal__content .modal-content {
+    /*     border:2px solid red; */
     position: relative;
     right: -24%;
     width: 50%;

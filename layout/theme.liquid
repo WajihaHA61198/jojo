@@ -29,41 +29,58 @@ sr4p-theme sr4-wrapper__{{settings.general_layout}} rtl_{{isRTL}} swatch_color_s
   class="{{class_html}} no-js"
   lang="{{ iso_code }}"
   {% if isRTL %}
-  dir="rtl"
-  {% endif %}>
+    dir="rtl"
+  {% endif %}
+>
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, height=device-height, minimum-scale=1.0, maximum-scale=1.0"
+    >
     <meta name="theme-color" content="{{ settings.body_bg }}">
     <link rel="canonical" href="{{ canonical_url }}">
     <link
       rel="preconnect"
       href="https://cdn.shopify.com"
-      crossorigin>
+      crossorigin
+    >
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/brands.min.css"
       integrity="sha512-9YHSK59/rjvhtDcY/b+4rdnl0V4LPDWdkKceBl8ZLF5TB6745ml1AfluEU6dFWqwDw9lPvnauxFgpKvJqp7jiQ=="
       crossorigin="anonymous"
-      referrerpolicy="no-referrer" />
+      referrerpolicy="no-referrer"
+    >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    {%- if settings.favicon != blank %}<link
+    {%- if settings.favicon != blank -%}
+      <link
         rel="shortcut icon"
         type="image/png"
-        href="{{ settings.favicon | image_url: width:32 }}">{% endif -%}
-    {%- if settings.favicon_apple != blank %}<link
+        href="{{ settings.favicon | image_url: width:32 }}"
+      >
+    {%- endif -%}
+    {%- if settings.favicon_apple != blank -%}
+      <link
         rel="apple-touch-icon-precomposed"
         type="image/png"
         sizes="152x152"
-        href="{{ settings.favicon_apple | image_url: width:152 }}">{% endif -%}
+        href="{{ settings.favicon_apple | image_url: width:152 }}"
+      >
+    {%- endif -%}
 
-    {%- if settings.font_source == '1' and settings.fnt_fm_sp1.system? == false or settings.fnt_fm_sp2.system? == false or settings.fnt_fm_sp3.system? == false -%}
+    {%- if settings.font_source == '1'
+      and settings.fnt_fm_sp1.system? == false
+      or settings.fnt_fm_sp2.system? == false
+      or settings.fnt_fm_sp3.system? == false
+    -%}
       <link
         rel="preconnect"
         href="https://fonts.shopifycdn.com"
-        crossorigin>
+        crossorigin
+      >
     {%- endif -%}
 
     {%- if t_name != 'list-collections' -%}
@@ -75,42 +92,43 @@ sr4p-theme sr4-wrapper__{{settings.general_layout}} rtl_{{isRTL}} swatch_color_s
       {%- unless escaped_page_title contains shop.name %} &ndash; {{ shop.name }}{%- endunless -%}
     {%- endcapture -%}
       <title>{{ seo_title | strip }}</title>
-      <meta name="description" content="{{ page_description | default:shop.description | default: shop.name | escape }}">
+      <meta
+        name="description"
+        content="{{ page_description | default:shop.description | default: shop.name | escape }}"
+      >
     {%- else -%}
-      <title>{{ 'list_collections.meta_title' | t | escape }}</title><meta name="description" content="{{ 'list_collections.meta_description' | t | escape }}">
+      <title>{{ 'list_collections.meta_title' | t | escape }}</title
+      ><meta name="description" content="{{ 'list_collections.meta_description' | t | escape }}">
     {%- endif -%}
 
-    {%- render 'meta-tags'
-      , t_name: t_name -%}
+    {%- render 'meta-tags', t_name: t_name -%}
 
     <script src="{{ 'lazysizes.min.js' | asset_url }}" async="async"></script>
     <script src="{{ 'global.min.js' | asset_url }}" defer="defer"></script>
     {{ content_for_header }}
-    {%- render 'head_assets'
-      , t_name: t_name
-      , isRTL: isRTL -%}
-
+    {%- render 'head_assets', t_name: t_name, isRTL: isRTL -%}
   </head>
 
   <body
     class="template-{{ request.page_type | handle }} {{class_lazy}}"
     {% if body_img != blank %}
-    data-bgset="{{ body_img | image_url: width: 1 }}"
-    data-optimumx="2"
-    data-sizes="auto"
-    {% endif -%}>
-    <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ "accessibility.skip_to_text" | t }}</a>
+      data-bgset="{{ body_img | image_url: width: 1 }}"
+      data-optimumx="2"
+      data-sizes="auto"
+    {% endif -%}
+  >
+    <a class="skip-to-content-link visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_text' | t }}</a>
     <div class="sr4-close-overlay sr4-op-0"></div>
 
     <div class="sr4-website-wrapper">
-      {%- render 'header'
-        , t_name: t_name -%}
+      {%- render 'header', t_name: t_name -%}
 
       <main
         id="MainContent"
         class="content-for-layout focus-none"
         role="main"
-        tabindex="-1">
+        tabindex="-1"
+      >
         {{ content_for_layout }}
       </main>
 
@@ -126,3 +144,26 @@ sr4p-theme sr4-wrapper__{{settings.general_layout}} rtl_{{isRTL}} swatch_color_s
     {%- render 'render_bottom' -%}
   </body>
 </html>
+
+<style>
+  @media (max-width: 767px) {
+    .float {
+      bottom: 70px !important;
+    }
+  }
+  .float {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 15px;
+    padding-top: 1px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 30px;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 100;
+  }
+</style>

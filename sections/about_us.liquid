@@ -1,3 +1,4 @@
+<!-- sections/about_us.liquid -->
 {{ 'section.css' | asset_url | stylesheet_tag }}
 {{ 'about-us.css' | asset_url | stylesheet_tag }}
 {{ 'video-load.css' | asset_url | stylesheet_tag }}
@@ -13,8 +14,6 @@
         assign html_layout = '<div class="sr4-container">__</div></div>' | split:'__'
     elsif stt_layout == 'sr4-container-wrap'
         assign html_layout = '<div class="sr4-container">__</div>' | split:'__'
-    elsif stt_layout == 'sr4-site-wrapper'
-        assign html_layout = '<div class="sr4-site-wrapper">__</div>' | split: '__'
     else
         assign html_layout = '__' | split:'__'
     endif
@@ -43,7 +42,6 @@
                         {%- case block.type -%}
                             {%- when 'bl_image' -%}
                                 {%- assign image = bk_stts.image -%}
-
                                 <div class="sr4-about-us-img sr4-border__{{bk_stts.use_border}} sr4-pr sr4-oh" style="--mgb:{{bk_stts.mgb}}px;--mgb-mb:{{bk_stts.mgb_mb}}px;">
                                     {%- if image != blank -%}
                                         <div class="sr4-d-block sr4_ratio sr4-bg-11" style="background: url({{ image | image_url: width: 1 }});{{imgatt}}--aspect-ratioapt: {{image.aspect_ratio | default: 2}}">
@@ -54,13 +52,7 @@
                                             {{ 'image' | placeholder_svg_tag: 'sr4-placeholder-svg' }}
                                         </div>      
                                     {%- endif -%}
-                                {% liquid assign border_type = bk_stts.border_type %}
-                                {% case border_type %} 
-                                {% when '1' %}  
-                                    <span class="sr4_br_11"></span><span class="sr4_br_22"></span><span class="sr4_br_33"></span><span class="sr4_br_44"></span>
-                                {% when '2' %}
                                     <span class="sr4_br_1"></span><span class="sr4_br_2"></span><span class="sr4_br_3"></span><span class="sr4_br_4"></span>
-                                {% endcase %}
                                     {%- if bk_stts.video_url != blank -%}
                                         <div class="sr4-pa sr4-t-0 sr4-l-0 sr4-r-0 sr4-b-0 sr4-d-flex sr4-justify-content-center sr4-align-items-center">
                                             <a data-open-mfp-iframe class="sr4-d-flex sr4-justify-content-center sr4-align-items-center sr4-video-control__play" href="{{bk_stts.video_url}}" target="_blank" >
@@ -101,7 +93,7 @@
 {%- endif -%}
 {%- schema -%}
     {
-        "name": "About Us",
+        "name": "About us",
         "tag": "section",
         "class": "sr4-section sr4-section-all sr4_tp_mfps sr4-about-us",
         "settings": [
@@ -112,8 +104,8 @@
             {
                 "type": "select",
                 "id": "design_heading",
-                "label": "Heading design",
-                "default": "2",
+                "label": "+ Design heading",
+                "default": "1",
                 "options": [
                     {
                         "value": "1",
@@ -126,13 +118,57 @@
                     {
                         "value": "3",
                         "label": "Design 03"
+                    },
+                    {
+                        "value": "4",
+                        "label": "Design 04"
+                    },
+                    {
+                        "value": "5",
+                        "label": "Design 05"
+                    },
+                    {
+                        "value": "6",
+                        "label": "Design 06 (width line-awesome)"
+                    },
+                    {
+                        "value": "7",
+                        "label": "Design 07"
+                    },
+                    {
+                        "value": "8",
+                        "label": "Design 08"
+                    },
+                    {
+                        "value": "9",
+                        "label": "Design 09"
+                    },
+                    {
+                        "value": "10",
+                        "label": "Design 10"
+                    },
+                    {
+                        "value": "11",
+                        "label": "Design 11"
+                    },
+                    {
+                        "value": "12",
+                        "label": "Design 12"
+                    },
+                    {
+                        "value": "13",
+                        "label": "Design 13"
+                    },
+                    {
+                        "value": "14",
+                        "label": "Design 14"
                     }
                 ]
             },
             {
                 "type": "select",
                 "id": "heading_align",
-                "label": "Heading align",
+                "label": "+ Heading align",
                 "default": "sr4-text-center",
                 "options": [
                     {
@@ -152,20 +188,19 @@
             {
                 "type": "text",
                 "id": "top_heading",
-                "label": "Heading",
-                "default": "About Us"
+                "label": "+ Heading"
             },
             {
                 "type": "textarea",
                 "id": "top_subheading",
-                "label": "Subheading",
-                "default": "Lorem ipsum dolor sit amet. Ut ullam ratione ex nisi corrupti est nihil rerum."
+                "label": "+ Subheading"
             },
             {
                 "type": "number",
                 "id": "tophead_mb",
-                "label": "Space bottom between heading and content (px)",
-                "default": 20
+                "label": "+ Space bottom (px)",
+                "info": "The vertical spacing between heading and content.",
+                "default": 30
             },
             {
                 "type": "header",
@@ -195,12 +230,13 @@
                 "type": "select",
                 "id": "image_ratio",
                 "label": "Image ratio",
-                "default": "ratioadapt",
+                "default": "ratio16_9",
+                "info": "Aspect Ratio Custom will settings in General panel.",
                 "options": [
                 {
-                    "group": "Default",
+                    "group": "Natural",
                     "value": "ratioadapt",
-                    "label": "Adapt to media"
+                    "label": "Adapt to image"
                 },
                 {
                     "group": "Landscape",
@@ -233,6 +269,11 @@
                     "label": "Ratio ASOS"
                 },
                 {
+                    "group": "Squared",
+                    "value": "ratio1_1",
+                    "label": "1:1"
+                },
+                {
                     "group": "Portrait",
                     "value": "ratio2_3",
                     "label": "2:3"
@@ -243,9 +284,24 @@
                     "label": "1:2"
                 },
                 {
-                    "group": "Square",
-                    "value": "ratio1_1",
-                    "label": "1:1"
+                    "group": "Custom",
+                    "value": "ratiocus1",
+                    "label": "Ratio custom 1"
+                },
+                {
+                    "group": "Custom",
+                    "value": "ratiocus2",
+                    "label": "Ratio custom 2"
+                },
+                {
+                    "group": "Custom",
+                    "value": "ratio_us3",
+                    "label": "Ratio custom 3"
+                },
+                {
+                    "group": "Custom",
+                    "value": "ratiocus4",
+                    "label": "Ratio custom 4"
                 }
                 ]
             },
@@ -254,7 +310,7 @@
                 "id": "image_size",
                 "label": "Image size",
                 "default": "cover",
-                "info": "Only apply if the image ratio is not set to 'Adapt to media'.",
+                "info": "This settings apply only if the image ratio is not set to 'Adapt to image'.",
                 "options": [
                     {
                         "value": "cover",
@@ -269,7 +325,7 @@
             {
                 "type": "select",
                 "id": "image_position",
-                "info": "[Horizontal Vertical]",
+                "info": "The first value is the horizontal position and the second value is the vertical. This settings apply only if the image ratio is not set to 'Adapt to image'.And 'Not works when use 'Focal point' on image'",
                 "label": "Image position",
                 "default": "8",
                 "options": [
@@ -320,12 +376,11 @@
                 "content": "3. Design options"
             },
             {
-                "type": "select","id": "layout","default": "sr4-site-wrapper","label": "Layout",
+                "type": "select","id": "layout","default": "sr4-container-wrap","label": "Layout",
                 "options": [
                     { "value": "sr4-se-container", "label": "Container"},
                     { "value": "sr4-container-wrap", "label": "Wrapped container"},
-                    { "value": "sr4-container-fluid", "label": "Full width"},
-                    { "value": "sr4-site-wrapper", "label": "Full width with wrapped"}
+                    { "value": "sr4-container-fluid", "label": "Full width"}
                 ]
             },
             {
@@ -344,14 +399,10 @@
                 "label": "Background Image"
             },
             {
-                "type": "header",
-                "content": "Desktop"
-            },
-            {
                 "type": "text",
                 "id": "mg",
                 "label": "Margin",
-                "info":"trbl",
+                "info":"Margin top, margin right, margin bottom, margin left. If you not use to blank",
                 "default": ",,50px,",
                 "placeholder": ",,50px,"
             },
@@ -359,56 +410,59 @@
                 "type": "text",
                 "id": "pd",
                 "label": "Padding",
+                "info":"Padding top, padding right, padding bottom, padding left. If you not use to blank",
                 "placeholder": "50px,,50px,"
             },
             {
                 "type": "header",
-                "content": "Tablet"
+                "content": "+ Design Tablet Options"
             },
             {
                 "type": "text",
                 "id": "mg_tb",
                 "label": "Margin",
-                "placeholder": ",,40px,"
+                "placeholder": ",,50px,"
             },
             {
                 "type": "text",
                 "id": "pd_tb",
                 "label": "Padding",
-                "placeholder": ",,40px,"
+                "placeholder": ",,50px,"
             },   
             {
                 "type": "header",
-                "content": "Mobile"
+                "content": "+ Design mobile options"
             },
             {
                 "type": "text",
                 "id": "mg_mb",
                 "label": "Margin",
                 "default": ",,30px,",
-                "placeholder": ",,30px,"
+                "placeholder": ",,50px,"
             },
             {
                 "type": "text",
                 "id": "pd_mb",
                 "label": "Padding",
-                "placeholder": ",,30px,"
+                "placeholder": ",,50px,"
             },
             {
                 "type": "header",
-                "content": "4. Personalized css"
+                "content": "4. Custom css"
             },
             {
                 "id": "use_cus_css",
                 "type": "checkbox",
-                "label": "Use custom styling",
+                "label": "Use custom css",
                 "default":false,
-                "info": "If you prefer custom styling for this section."
+                "info": "If you want custom style for this section."
             },
             { 
                 "id": "code_cus_css",
                 "type": "textarea",
-                "label": "Code custom css" 
+                "label": "Code custom css",
+                "info": "Use selector .SectionID to style css"
+                
             }
         ],
         "blocks":[
@@ -429,52 +483,11 @@
                         "default": true
                     },
                     {
-                        "type": "select",
-                        "id": "border_type",
-                        "label": "Border type",
-                        "default": "1",
-                        "options": [
-                            {
-                                "value": "1",
-                                "label": "full border"
-                            },
-                            {
-                                "value": "2",
-                                "label": "camera border"
-                            }
-                        ]
-                    },
-                    {
                         "id": "video_url",
                         "type": "video_url",
                         "label": "Video url",
-                        "accept": ["youtube"],
+                        "accept": ["youtube", "vimeo"],
                         "default": "https://www.youtube.com/watch?v=_9VUPq3SxOc"
-                    },
-                    {
-                        "type": "number",
-                        "id": "mgb",
-                        "label": "Margin bottom",
-                        "default": 15
-                    },
-                    {
-                        "type": "number",
-                        "id": "mgb_mb",
-                        "label": "Margin bottom (Mob)",
-                        "default": 10
-                    }
-                ]
-            },
-            {
-                "type": "bl_text",
-                "name": "Content",
-                "limit": 1,
-                "settings": [
-                    {
-                        "type":"richtext",
-                        "id":"text",
-                        "label":"Content",
-                        "default":"<p>Lorem ipsum dolor sit amet. Id enim excepturi id ratione itaque qui cumque velit non repellendus autem ut consequatur molestiae ab libero consequatur qui aspernatur saepe.</p>"
                     },
                     {
                         "type": "number",
@@ -491,8 +504,32 @@
                 ]
             },
             {
+                "type": "bl_text",
+                "name": "Content",
+                "settings": [
+                    {
+                        "type":"richtext",
+                        "id":"text",
+                        "label":"Content",
+                        "default":"<p>Use this text to share information about your brand with your customers. Describe a product, share announcements, or welcome customers to your store.</p>"
+                    },
+                    {
+                        "type": "number",
+                        "id": "mgb",
+                        "label": "Margin bottom",
+                        "default": 25
+                    },
+                    {
+                        "type": "number",
+                        "id": "mgb_mb",
+                        "label": "Margin bottom (Mobile)",
+                        "default": 10
+                    }
+                ]
+            },
+            {
                 "type": "bl_sig",
-                "name": "brand signature",
+                "name": "Your signature",
                 "limit": 1,
                 "settings": [
                     {
@@ -517,24 +554,26 @@
             {
                 "type":"bl_button",
                 "name":"Button",
-                "limit": 1,
                 "settings":[
                     {
                         "type": "text",
                         "id": "button_label",
                         "label": "Button label",
-                        "default": "CTA label"
+                        "info":"If set blank will not show",
+                        "default": "Button label"
                     },
                     {
                         "type": "url",
                         "id": "button_link",
-                        "label": "Button link"
+                        "label": "Button link",
+                        "info":"If set blank will not show"
                     },
                     {
                         "type": "select",
                         "id": "open_link",
                         "label": "Open link in",
                         "default": "_blank",
+                        "info":"Only working when has a link",
                         "options": [
                             {
                                 "value": "_self",
@@ -579,7 +618,7 @@
                         "type": "select",
                         "id": "btn_size",
                         "label": "Button size",
-                        "default":"extra-small",
+                        "default":"large",
                         "options": [
                             {
                                 "label": "Extra small",
@@ -624,6 +663,14 @@
                             {
                                 "value": "primary",
                                 "label": "Primary"
+                            },
+                            {
+                                "value": "custom1",
+                                "label": "Custom color 1"
+                            },
+                            {
+                                "value": "custom2",
+                                "label": "Custom color 2"
                             }
                         ]
                     },
@@ -637,6 +684,10 @@
                             {
                                 "label":"Default",
                                 "value":"default"
+                            },
+                            {
+                                "label":"Fade",
+                                "value":"fade"
                             },
                             {
                             "label":"Rectangle out",
@@ -681,7 +732,7 @@
                     {
                         "type": "number",
                         "id": "mgb_mb",
-                        "label": "Margin bottom (Mob)",
+                        "label": "Margin bottom (Mobile)",
                         "default": 10
                     }
                 ]
@@ -689,12 +740,12 @@
         ],
         "presets": [
             {
-                "name": "About Us",
+                "name": "About us",
+                "category": "homepage",
                 "blocks": [
                     {"type": "bl_image"},
                     {"type": "bl_text"},
-                    {"type": "bl_sig"},
-                    {"type": "bl_button"}
+                    {"type": "bl_sig"}
                 ]
             }
         ]
