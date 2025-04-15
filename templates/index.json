@@ -411,6 +411,19 @@
         "code_cus_css": ".SectionID {\nbackground-color:red\n}"
       }
     },
+    "marquee_hxAN74": {
+      "type": "marquee",
+      "settings": {
+        "marq_text": "<p>Extravagence – 68 Sections of Pure Customization Power.</p>",
+        "animation_time": 50,
+        "font_size": 70,
+        "font_size_mb": 20,
+        "font_weight": 700,
+        "color": "linear-gradient(228deg, rgba(21, 209, 252, 1) 14%, rgba(187, 48, 254, 1) 83%)",
+        "paddingTb": 20,
+        "layout": "sr4-container-fluid"
+      }
+    },
     "1646035317ea8b6928": {
       "type": "featured-collection",
       "settings": {
@@ -865,6 +878,7 @@
   },
   "order": [
     "1646028739ae283905",
+    "marquee_hxAN74",
     "1646035317ea8b6928",
     "164603504020ce33da",
     "1731579615886f70be",
