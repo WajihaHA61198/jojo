@@ -1,1 +1,25 @@
-{"sections":{"main":{"type":"main-404","custom_css":[".error-404.not-found h3 {font-family: Helvetica, \"Helvetica Neue\", Arial, \"Lucida Grande\", sans-serif !important; font-size:12px;}"],"settings":{"link":""}}},"order":["main"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-404",
+      "custom_css": [
+        ".error-404.not-found h3 {font-family: Helvetica, \"Helvetica Neue\", Arial, \"Lucida Grande\", sans-serif !important; font-size: 12px;}"
+      ],
+      "settings": {
+        "link": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
