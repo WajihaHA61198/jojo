@@ -1,178 +1,24 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "breadcrumb": {
       "type": "brc-nav-product",
-      "settings": { "breadcrumb_pr": false, "back_next_pr": false, "cl_bg": "#ffffff", "cl_link": "#222222" }
-    },
-    "main": {
-      "type": "main-product",
-      "blocks": {
-        "title": {
-          "type": "title",
-          "settings": {
-            "txt_tr_pr": "uppercase",
-            "fnt_df_pr": "3",
-            "size_pr": 23,
-            "fw_pr": 500,
-            "lh_pr": 0,
-            "ls_pr": 0,
-            "pr_title_color": "#222222"
-          }
-        },
-        "price_review": {
-          "type": "price_review",
-          "settings": {
-            "price": "0",
-            "type_sale": "1",
-            "tax_ship": false,
-            "rating": false,
-            "review_liquid": "",
-            "size_price_pr": 15,
-            "fw_price_pr": 400,
-            "price_color": "#222222",
-            "price_sale_color": "#ec0101"
-          }
-        },
-        "divider_line_i4QXTY": {
-          "type": "divider_line",
-          "settings": {
-            "divider_line": false
-          }
-        },
-        "form": {
-          "type": "form",
-          "settings": {
-            "selector_mode": "underline",
-            "color_mode": "underline",
-            "enable_fit_ratio_img": false,
-            "color_size": "small",
-            "show_qty": true,
-            "enable_wishlist": true,
-            "enable_compare": false,
-            "btn_atc_full": true,
-            "pr_btn_round": 0,
-            "ani": "none",
-            "time": 5,
-            "btn_txt": "3",
-            "btn_icon": false,
-            "button_style": "default",
-            "button_color": "primary",
-            "button_effect": "fade",
-            "wishlist_color": "#222222",
-            "wishlist_color_hover": "#005b69",
-            "wishlist_color_active": "#e81e1e",
-            "compare_color": "#222222",
-            "compare_color_hover": "#005b69",
-            "compare_color_active": "#222222",
-            "show_dynamic_checkout": false,
-            "btn_txt2": "3",
-            "button_color_payment": "dark",
-            "product_list": [],
-            "show_product_current": true,
-            "qty_val": "0",
-            "advance_label": "Choose style",
-            "advance_pr_list": []
-          }
-        },
-        "order_whatsapp_QBGR3y": {
-          "type": "order_whatsapp",
-          "settings": {
-            "order_whatsapp": "923130213321"
-          }
-        },
-        "size_delivery_ask_rD8Ymq": {
-          "type": "size_delivery_ask",
-          "settings": {
-            "size_chart": "2",
-            "pos_sizeg": "2",
-            "sc_type": "2",
-            "page": "",
-            "image": "shopify://shop_images/MI-2222L_3_430x_1d7ef839-9d47-4984-9ab5-32703bd2a83e.webp",
-            "size_ck": "",
-            "delivery": false,
-            "page_dr": "",
-            "ask": false,
-            "phone": true
-          }
-        },
-        "tab_des_J49HMf": {
-          "type": "tab_des",
-          "settings": {
-            "title": "Description"
-          }
-        },
-        "7e824fef-d97e-4455-bd95-9f41bf304d2b": {
-          "type": "tab_liquid",
-          "settings": {
-            "title": "Delivery Timeline",
-            "custom_liquid": "Delivery 2 Weeks"
-          }
-        },
-        "542b73f3-60f5-47dc-acdc-0403d7677069": {
-          "type": "tab_liquid",
-          "settings": {
-            "title": "Disclaimer",
-            "custom_liquid": "The fabric pattern/laces, patchwork, and handmade details may vary!"
-          }
-        }
-      },
-      "block_order": [
-        "title",
-        "price_review",
-        "divider_line_i4QXTY",
-        "form",
-        "order_whatsapp_QBGR3y",
-        "size_delivery_ask_rD8Ymq",
-        "tab_des_J49HMf",
-        "7e824fef-d97e-4455-bd95-9f41bf304d2b",
-        "542b73f3-60f5-47dc-acdc-0403d7677069"
-      ],
       "settings": {
-        "pr_layout": "default",
-        "enable_sticky_info": true,
-        "media_layout": "two_columns",
-        "media_size": "medium",
-        "thumb_lr_size": "medium",
-        "image_ratio": "ratioadapt",
-        "image_size": "cover",
-        "image_position": "8",
-        "main_click": "zoom",
-        "zoom_tp": "external",
-        "enable_zoom_icon": true,
-        "enable_zoom_click_mb": true,
-        "enable_video_looping": true,
-        "enable_video_muting": true,
-        "enable_video_autoplaying": true,
-        "eff": "fade",
-        "nav_btn": false,
-        "btn_vi": "always",
-        "btn_owl": "default",
-        "btn_shape": "none",
-        "btn_cl": "dark",
-        "btn_size": "small",
-        "btn_hidden_mobile": false,
-        "nav_dot": true,
-        "dot_owl": "default",
-        "dots_cl": "light",
-        "dots_round": true,
-        "dots_space": 10,
-        "dots_hidden_mobile": false,
-        "tabs_design": "accordion",
-        "tabs_design_mb": "accordion",
-        "tabs_position": "inner",
-        "enable_first_tab": true,
-        "tabs_layout_fix": "default",
-        "bg": "#f6f6f8",
-        "bg_mb": "#ffffff",
-        "product_list": [],
-        "sticky_mode": "0",
-        "sticky_show": "2",
-        "sticky_layout_mb": "minimal",
-        "enable_select": true,
-        "ani": "none",
-        "time": 6
+        "breadcrumb_pr": false,
+        "back_next_pr": false,
+        "cl_bg": "#ffffff",
+        "cl_link": "#222222"
       }
     },
+
     "sidebar": {
       "type": "sidebar-product",
       "disabled": true,
@@ -295,5 +141,10 @@
       }
     }
   },
-  "order": ["breadcrumb", "main", "sidebar", "product-recommendations", "recently-viewed-products"]
+  "order": [
+    "breadcrumb",
+    "sidebar",
+    "product-recommendations",
+    "recently-viewed-products"
+  ]
 }
