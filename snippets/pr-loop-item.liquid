@@ -42,7 +42,7 @@
     endif
   endif
 
-  assign countdown = time_meta | default: meta_theme.countdown | date: '%Y/%m/%d %H:%M:%S'
+  {% comment %} assign countdown = time_meta | default: meta_theme.countdown | date: '%Y/%m/%d %H:%M:%S' {% endcomment %}
   unless placeholder_img
     assign placeholder_img = settings.placeholder_img
   endunless
