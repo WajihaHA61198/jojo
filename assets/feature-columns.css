@@ -1,6 +1,4 @@
 .sr4-feature-columns__title {
-  /*     margin-top: 20px;
-    margin-bottom: 20px; */
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: var(--fs-title);
@@ -10,7 +8,10 @@
 .sr4-feature-columns__title a {
   color: inherit;
 }
-
+.sr4-feature-columns__content.overlay-text-NK .sr4-feature-columns__title {
+  margin-top:0;
+  padding-top:10px;
+}
 .sr4-feature-columns__text {
   font-size: var(--fs-text);
   font-weight: 400;
@@ -63,4 +64,11 @@
   .sr4-feature-columns__text p a:hover {
     opacity: 0.8;
   }
+}
+.sr4-feature-columns__content.overlay-text-NK{
+   background-color:var(--bg-color);
+   /* border-bottom: var(--brdr-bm-radius); */
+   border-bottom-left-radius: var(--brdr-bm-radius);
+   border-bottom-right-radius: var(--brdr-bm-radius);
+   padding: 0 15px 15px;
 }

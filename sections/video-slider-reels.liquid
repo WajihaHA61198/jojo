@@ -47,6 +47,7 @@
                 <div class="promotion-card1">
                   <a class="jugnu" href="{{ block.settings.card_url2 }}">
                     <div class="promotion-card__image1">
+                      <div class="sr4-video-bg-placeholder sr4-img-video"></div>
                       <video
                         class="video-js"
                         loop
@@ -63,7 +64,9 @@
                         {% comment %} <source src="{{ block.settings.video_link }}" type="video/mp4"> {% endcomment %}
                       </video>
                     </div>
-                    <div class="pro__head">{{ block.settings.product_heading }}</div>
+                    <div class="pro__head {% if block.settings.product_heading == blank %}sr4-d-none{% endif %}">
+                      {{ block.settings.product_heading }}
+                    </div>
                   </a>
                   {% comment %}
                     <div class="sfc carousell js-flickity JAW" data-flickity='{"wrapAround": true,"pageDots": false,"draggable": false }'>

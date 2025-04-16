@@ -493,7 +493,7 @@
         "1646035040fee424aa-0": {
           "type": "collection_item",
           "settings": {
-            "collection": "women",
+            "collection": "",
             "collection_title": "ESSENTIALS",
             "collection_link": ""
           }
@@ -501,7 +501,7 @@
         "1646035040fee424aa-1": {
           "type": "collection_item",
           "settings": {
-            "collection": "men",
+            "collection": "",
             "collection_title": "CASUAL PRET",
             "collection_link": ""
           }
@@ -509,7 +509,7 @@
         "1646035040fee424aa-2": {
           "type": "collection_item",
           "settings": {
-            "collection": "kids",
+            "collection": "",
             "collection_title": "LUXURY PRET",
             "collection_link": ""
           }

@@ -39,12 +39,13 @@
 <div class="sr4-section-inner {{sr4_se_class}} sr4_nt_se_{{sid}} {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %} {% render 'section_style',se_stts:se_stts -%} >
     {{-html_layout[0]-}}
     {%- if stt_layout == 'sr4-se-container' -%}
-        <div class="sr4-container-inner{% if stt_image_bg != blank %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %}>{% endif -%}
+        <div class="sr4-container-inner{% if stt_image_bg != blank %} sr4-has-imgbg lazyloadsr4{% endif %}" {% if stt_image_bg != blank %} data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto"  data-optimumx="2"{% endif %}>
+    {% endif -%}
     {%- render 'section_tophead',se_stts:se_stts -%}
     {% if se_stts.layout_des == "1" %}
         <div class="sr4_{{image_ratio}} sr4_position_{{se_stts.image_position}} sr4_{{se_stts.image_size}} sr4-row sr4-row-cols-lg-{{se_stts.col_dk}} sr4-row-cols-md-{{se_stts.col_tb}} sr4-row-cols-{{se_stts.col_mb}} sr4-gx-md-{{se_stts.space_h_item}} sr4-gy-md-{{se_stts.space_v_item}} sr4-gx-{{se_stts.space_h_item_mb}} sr4-gy-{{se_stts.space_v_item_mb}}">
     {% else %}
-    {%- assign use_slider = true -%}
+        {%- assign use_slider = true -%}
         <div class="sr4-flicky-slider sr4_{{image_ratio}} sr4_position_{{se_stts.image_position}} sr4_{{se_stts.image_size}} flickitysr4 sr4-row sr4-row-cols-lg-{{se_stts.col_dk}} sr4-row-cols-md-{{se_stts.col_tb}} sr4-row-cols-{{se_stts.col_mb}}{% if se_stts.nav_btn == true %}  sr4-slider-btn-style-{{se_stts.btn_owl}} sr4-slider-btn-{{se_stts.btn_shape}} sr4-slider-btn-{{se_stts.btn_size}} sr4-slider-btn-cl-{{se_stts.btn_cl}} sr4-slider-btn-vi-{{se_stts.btn_vi}} sr4-slider-btn-hidden-mobile-{{se_stts.btn_hidden_mobile}} {% endif %}{% if se_stts.nav_dot %} sr4-dots-style-{{se_stts.dot_owl}} sr4-dots-cl-{{se_stts.dots_cl}} sr4-dots-round-{{se_stts.dots_round}} sr4-dots-hidden-mobile-{{se_stts.dots_hidden_mobile}} {% endif %} flickitysr4" data-flickitysr4-js='{"setPrevNextButtons":true,"arrowIcon":"{{arrow_icon}}","imagesLoaded": 0,"adaptiveHeight": 0, "contain": 1, "groupCells": "100%", "dragThreshold" : 5, "cellAlign": "left","wrapAround": {{se_stts.loop}},"prevNextButtons": {{se_stts.nav_btn}},"percentPosition": 1,"pageDots": {{se_stts.nav_dot}}, "autoPlay" : {{ se_stts.au_time | times: 1000 }}, "pauseAutoPlayOnHover" : {{se_stts.au_hover}} }'  style="--space-dots: {{se_stts.dots_space}}px;--flickity-btn-pos: {{se_stts.space_h_item}}px;--flickity-btn-pos-mb: {{se_stts.space_h_item_mb}}px;">
     {% endif %}
         {%- if se_blocks.size > 0 -%}
@@ -71,24 +72,23 @@
                                 {%- endif -%}
                             </a>
                         {%- endif -%}
-                        <div class="sr4-feature-columns__content  overlay-text-NK">
-                    <a style="width:100%;height:100%;" href="{{button_link}}">
-                            {%- if bk_stts.title != blank -%}
-                                <h3 class="sr4-feature-columns__title" style="--fs-title:{{se_stts.fs_title}}px;--fs-title-mb:{{se_stts.fs_title_mb}}px;"><a href="{{button_link}}" target="{{open_link}}">{{ bk_stts.title | escape }}</a></h3>
-                            {%- endif -%}
-                            {%- if bk_stts.text != blank -%}
-                                <div class="sr4-feature-columns__text sr4-rte" style="--fs-text:{{se_stts.fs_text}}px;--fs-text-mb:{{se_stts.fs_text_mb}}px;">{{ bk_stts.text }}</div>
-                            {%- endif -%}
-                            {%- if button_link != blank and bk_stts.button_label != blank -%}
-                                {%- assign use_button = true -%}
-  <a href="{{button_link}}"  class="btn-anchor" rel="nofollow"><span class="my-btn" >
-     SHOP NOW <i class="fa-solid fa-arrow-right btn-icons-nk" style="margin-left:.5rem; padding-right:1rem;"></i>
-  </span></a>
-<!--                                 <a class="sr4-btn sr4-btn-base sr4-btn-style-{{button_style}} sr4-btn-size-{{bk_stts.btn_size}} sr4-btn-color-{{bk_stts.btn_cl}} {% if button_style == 'default' or button_style == 'outline'%} sr4-btn-effect-{{bk_stts.button_effect}}{% endif %}" href="{{button_link}}" target="{{bk_stts.open_link}}">{{bk_stts.button_label}} {%- if bk_stts.btn_icon -%}<svg class="sr4-btn-icon"><use xlink:href="#sr4-icon-btn"></use></svg>{%- endif -%}</a> -->
-                            {%- endif -%}
+                        
+                        <div class="sr4-feature-columns__content overlay-text-NK" style="--bg-color:{{bk_stts.card_bg}}; --brdr-bm-radius:{{ bk_stts.box_bdr-bottom}}px;">
+                            <a href="{{button_link}}">
+                              {%- if bk_stts.title != blank -%}
+                                  <h3 class="sr4-feature-columns__title" style="--fs-title:{{se_stts.fs_title}}px; --fs-title-mb:{{se_stts.fs_title_mb}}px;">
+                                    <a href="{{button_link}}" target="{{open_link}}">{{ bk_stts.title | escape }}</a>
+                                  </h3>
+                              {%- endif -%}
+                              {%- if bk_stts.text != blank -%}
+                                  <div class="sr4-feature-columns__text sr4-rte" style="--fs-text:{{se_stts.fs_text}}px;--fs-text-mb:{{se_stts.fs_text_mb}}px;">{{ bk_stts.text }}</div>
+                              {%- endif -%}
+                              {%- if button_link != blank and bk_stts.button_label != blank -%}
+                                  {%- assign use_button = true -%}
+                                  <a class="sr4-btn sr4-btn-base sr4-btn-style-{{button_style}} sr4-btn-size-{{bk_stts.btn_size}} sr4-btn-color-{{bk_stts.btn_cl}} {% if button_style == 'default' or button_style == 'outline'%} sr4-btn-effect-{{bk_stts.button_effect}}{% endif %}" href="{{button_link}}" target="{{bk_stts.open_link}}">{{bk_stts.button_label}} {%- if bk_stts.btn_icon -%}<svg class="sr4-btn-icon"><use xlink:href="#sr4-icon-btn"></use></svg>{%- endif -%}</a>
+                              {%- endif -%}
+                            </a>
                         </div>
-
-                    </a>
                     </div>
                 {%- else -%}
                     <div class="sr4-col-item sr4-pos-text-{{se_stts.pos_text}} sr4-text-{{se_stts.text_align}}"  id="b_{{block.id}}" data-select-flickity {{ block.shopify_attributes }}>
@@ -107,7 +107,7 @@
                         {%- endif -%}
                         <div class="sr4-feature-columns__content">
                             {%- if bk_stts.title != blank -%}
-                                <h3 class="sr4-feature-columns__title" style="--fs-title:{{se_stts.fs_title}}px;--fs-title-mb:{{se_stts.fs_title_mb}}px;">{{ bk_stts.title | escape }}</h3>
+                                <h3 class="sr4-feature-columns__title" style="--fs-title:{{se_stts.fs_title}}px; --fs-title-mb:{{se_stts.fs_title_mb}}px;">{{ bk_stts.title | escape }}</h3>
                             {%- endif -%}
                             {%- if bk_stts.text != blank -%}
                                 <div class="sr4-feature-columns__text sr4-rte" style="--fs-text:{{se_stts.fs_text}}px;--fs-text-mb:{{se_stts.fs_text_mb}}px;">{{ bk_stts.text }}</div>
@@ -1144,6 +1144,22 @@
                     "label": "Image"
                 },
                 {
+                    "type": "color",
+                    "id": "card_bg",
+                    "label": "Card background",
+                    "info": "available only when button is linked."
+                },
+                {
+                    "type": "range",
+                    "id": "box_bdr-bottom",
+                    "label": "Border radius (bottom)",
+                    "default": 0,
+                    "min": 0,
+                    "max": 50,
+                    "step": 1,
+                    "unit": "px"
+                },
+                {
                     "type": "text",
                     "id": "title",
                     "label": "Heading",
@@ -1339,6 +1355,3 @@
     ]
 }
 {% endschema %}
-
-{%- javascript -%}
-{%- endjavascript -%}
