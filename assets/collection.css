@@ -112,6 +112,29 @@
   height: auto;
   display: block;
 }
+
+.sr4-coll-style-15 .sr4-cate-wrapper {
+  position: absolute;
+  text-align: center;
+  left: 0px;
+  bottom: 5%;
+  transform: translateY(-50%);
+  /* text-shadow: 0 0 4px rgb(0, 0, 0, 0.4); */
+  hyphens: auto;
+  z-index: 10;
+  transition: 0.3s;
+  box-shadow: none;
+  min-height: 1px;
+  height: auto;
+  display: block;
+}
+.sr4-coll-style-15 .sr4-cat-title,
+.sr4-coll-style-15 .sr4-cat-title:hover{
+  background-color:transparent!important;
+  /* color:white!important; */
+  color: var(--title-cl-pri)!important;
+}
+
 .sr4-coll-style-2 .sr4-cat-title {
   width: auto;
   display: inline-flex;
