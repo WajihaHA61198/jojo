@@ -71,7 +71,7 @@
   </div>
 {%- schema -%}
   {
-    "name": "Testimonial",
+    "name": "Customer reviews",
     "tag": "section",
     "class": "sr4-section sr4_bk_flickity sr4-section-all sr4_tp_cdt sr4-testimonials",
     "settings": [
@@ -171,7 +171,7 @@
           "type": "text",
           "id": "top_heading",
           "label": "+ Heading",
-          "default": "Testimonials"
+          "default": "Customer Reviews"
       },
       {
           "type": "textarea",
@@ -883,7 +883,7 @@
     "blocks": [
       {
         "type": "quote",
-        "name": "Testimonial",
+        "name": "Review",
         "settings": [
           {
             "type": "image_picker",
@@ -906,7 +906,7 @@
              "type": "text",
              "id": "title",
              "label": "Author",
-             "default": "Author's name"
+             "default": "Customer's name"
           },
           {
              "type": "text",
@@ -928,13 +928,10 @@
     ],
     "presets": [
       {
-        "name": "Testimonials",
+        "name": "Customer reviews",
         "category": "Homepage",
         "blocks": [{"type": "quote"},{"type": "quote"},{ "type": "quote"}]
       }
     ]
   }
 {% endschema %}
-
-{%- javascript -%}
-{%- endjavascript -%}

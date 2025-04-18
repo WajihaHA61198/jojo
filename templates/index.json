@@ -874,6 +874,22 @@
         "border_radius": 0,
         "gutter_decrease": false
       }
+    },
+    "before_after_KRLwet": {
+      "type": "before-after",
+      "settings": {
+        "design_heading": "1",
+        "heading_align": "sr4-text-center",
+        "top_heading": "BEFORE/AFTER",
+        "tophead_mb": 30,
+        "layout": "sr4-container-wrap",
+        "mg": ",,50px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
     }
   },
   "order": [
@@ -881,6 +897,7 @@
     "marquee_hxAN74",
     "1646035317ea8b6928",
     "164603504020ce33da",
+    "before_after_KRLwet",
     "1731579615886f70be",
     "173158195626dc8b74",
     "feature_columns_DeWjgX",
