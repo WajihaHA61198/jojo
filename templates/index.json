@@ -589,6 +589,8 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "card_bg": "",
+            "box_bdr-bottom": 0,
             "title": "Collection title",
             "text": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>",
             "button_label": "View Collection",
@@ -605,6 +607,8 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "card_bg": "",
+            "box_bdr-bottom": 0,
             "title": "Collection title",
             "text": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>",
             "button_label": "View Collection",
@@ -621,6 +625,8 @@
           "type": "text_block",
           "settings": {
             "enable_image": true,
+            "card_bg": "",
+            "box_bdr-bottom": 0,
             "title": "Collection title",
             "text": "<p>What is Lorem Ipsum? Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>",
             "button_label": "View Collection",
@@ -874,6 +880,22 @@
         "border_radius": 0,
         "gutter_decrease": false
       }
+    },
+    "before_after_xwFLiU": {
+      "type": "before-after",
+      "settings": {
+        "design_heading": "1",
+        "heading_align": "sr4-text-center",
+        "top_heading": "BEFORE/AFTER",
+        "tophead_mb": 30,
+        "layout": "sr4-container-wrap",
+        "mg": ",,50px,",
+        "pd": "",
+        "mg_tb": "",
+        "pd_tb": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
     }
   },
   "order": [
@@ -884,6 +906,7 @@
     "1731579615886f70be",
     "173158195626dc8b74",
     "feature_columns_DeWjgX",
-    "video_slider_reels_ahFwGb"
+    "video_slider_reels_ahFwGb",
+    "before_after_xwFLiU"
   ]
 }
