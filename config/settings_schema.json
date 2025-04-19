@@ -233,7 +233,8 @@
       },
       {
         "type": "text",
-        "id": "global_acc"
+        "id": "global_acc",
+        "label": "theme label"
       },
       {
         "type": "paragraph",
@@ -1041,13 +1042,6 @@
       {
         "type": "header",
         "content": "+ Compare"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_compe",
-        "label": "Enable compare",
-        "info": "Max products compare: 6",
-        "default": false
       },
       {
         "type": "header",

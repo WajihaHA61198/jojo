@@ -7,14 +7,10 @@
  * made to this file may be overwritten.
  * ------------------------------------------------------------
  */
-{
+ {
   "current": {
     "use_rtl": "0",
     "header_design": "bottom",
-    "logo": "shopify://shop_images/kalles.png",
-    "logo_width": 95,
-    "logos": "shopify://shop_images/kalles.png",
-    "logos_width": 95,
     "logo_mb": "shopify://shop_images/jbn.jpg",
     "logo_mb_width": 95,
     "logo_tr": "shopify://shop_images/header-logo-01.png",
@@ -1398,7 +1394,7 @@
             "type": "description",
             "settings": {
               "des": "2",
-              "text": "<p>Go kalles this summer with this vintage navy and white striped v-neck t-shirt from the Nike. Perfect for pairing with denim and white kicks for a stylish kalles vibe.</p>",
+              "text": "<p>Go this summer with this vintage navy and white striped v-neck t-shirt from the Nike. Perfect for pairing with denim and white kicks for a stylish vibe.</p>",
               "length": 31
             }
           },
