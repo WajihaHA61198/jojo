@@ -1356,12 +1356,12 @@
           "style": "1",
           "pos": "2",
           "enable_pr": true,
-          "enable_calc_ship": true,
+          "enable_calc_ship": false,
           "enable_note": true,
-          "enable_rates": true,
-          "enable_discount": true,
-          "enable_gift_wrap": true,
-          "ship_df_country": "United States"
+          "enable_rates": false,
+          "enable_discount": false,
+          "enable_gift_wrap": false,
+          "ship_df_country": "Pakistan"
         }
       },
       "main-qv": {

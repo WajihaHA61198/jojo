@@ -1,1 +1,62 @@
-{"sections":{"heading":{"type":"heading-template","settings":{"use_specify_image":true,"parallax":false,"color":"#000000","overlay":54,"padding":50,"paddingmb":50,"mg_b":50,"mg_bmb":50,"content_align":"sr4-text-center","bg_pos":"center center","bg_repeat":"no-repeat","bg_size":"cover","use_cus_css":false,"code_cus_css":".SectionID {\nbackground-color:red\n}"}},"main":{"type":"main-page","settings":{"layout":"sr4-container-wrap","cl_bg":"","cl_bg_gradient":"","mg":"60px,,60px,","pd":"","mg_mb":",,30px,","pd_mb":""}},"sidebar-page":{"type":"sidebar-page","disabled":true,"blocks":{"f69681ed-b75e-42de-be58-fdf73b3b7e08":{"type":"blog_cate","settings":{"title":"Blog categories","cat_link_list":"","count":true}}},"block_order":["f69681ed-b75e-42de-be58-fdf73b3b7e08"],"settings":{"enable_drawer":false,"space":50,"size":"medium","br_style":"none","brcolor":"#222222","sidebar_bdr":5,"sidebar_pd":10}}},"order":["heading","main","sidebar-page"]}
+{
+  "sections": {
+    "heading": {
+      "type": "heading-template",
+      "blocks": {
+        "1_jDBGTL": {
+          "type": "1",
+          "settings": {
+            "heading": "",
+            "fontf": "3",
+            "text_cl": "#222222",
+            "text_fs": 40,
+            "text_lh": 0,
+            "text_fw": 400,
+            "text_ls": 1,
+            "font_italic": false,
+            "font_uppercase": false,
+            "text_shadow": false,
+            "text_mgb": 0,
+            "hidden_mobile": false,
+            "text_fs_mb": 30,
+            "text_lh_mb": 0,
+            "text_ls_mb": 1,
+            "text_mgb_mobile": 0
+          }
+        }
+      },
+      "block_order": [
+        "1_jDBGTL"
+      ],
+      "settings": {
+        "use_specify_image": false,
+        "parallax": false,
+        "color": "rgba(0,0,0,0)",
+        "overlay": 0,
+        "padding": 25,
+        "paddingmb": 15,
+        "mg_b": 0,
+        "mg_bmb": 0,
+        "content_align": "sr4-text-center",
+        "bg_pos": "center center",
+        "bg_repeat": "no-repeat",
+        "bg_size": "cover",
+        "use_cus_css": false,
+        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "settings": {
+        "layout": "sr4-container-wrap",
+        "cl_bg": "",
+        "cl_bg_gradient": "",
+        "mg": "30px,,30px,",
+        "pd": "",
+        "mg_mb": ",,30px,",
+        "pd_mb": ""
+      }
+    },
+  },
+  "order": ["heading", "main"]
+}
