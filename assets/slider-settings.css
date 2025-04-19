@@ -561,10 +561,3 @@
     right: calc(var(--flickity-btn-pos-mb) / 2);
   }
 }
-
-/* li.dot.is-selected::after {
-  content: '';
-  width: 10px;
-  height: 10px;
-  border: 2px solid red;
-} */

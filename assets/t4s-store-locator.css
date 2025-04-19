@@ -25,10 +25,6 @@
   color: var(--secondary-color);
   font-weight: 500;
 }
-/*  .sr4-store-locator__listings .sr4-store-locator__item.is--active .sr4-store-locator__title,
- .sr4-store-locator__listings .sr4-store-locator__item .sr4-store-locator__title:hover {
-   color: var(--accent-color);
- } */
 .sr4-store-locator__listings .sr4-store-locator__item:hover,
 .sr4-store-locator__listings .sr4-store-locator__item.is--active {
   background-color: rgba(var(--text-color-rgb), 0.05);

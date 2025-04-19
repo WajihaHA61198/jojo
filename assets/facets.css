@@ -498,12 +498,8 @@
   color: var(--accent-color);
 }
 /* css style checkbox */
-.is--style-checkbox {
-}
 
 /* css style tag */
-.is--style-tag {
-}
 .sr4-facets__form .sr4-facet .is--style-tag li {
   display: inline-block;
   vertical-align: top;
@@ -524,8 +520,6 @@
   border-color: var(--accent-color);
 }
 /* css style color */
-.is--style-color {
-}
 .sr4-facets__form .sr4-facet .is--style-color .sr4-filter_color {
   width: 24px;
   height: 24px;
@@ -613,13 +607,6 @@
   --ts-gutter-x: 15px;
 }
 @media (min-width: 768px) {
-  /*     .sr4-filter-area {
-        padding: 30px;
-        margin: 30px 0 40px;
-        border-radius: 5px;
-        border: 1px solid var(--border-color);
-        box-shadow: 0 0 10px rgb(0 0 0 / 15%);
-    } */
   .sr4-filter-area .sr4-facets__form {
     --ts-gutter-y: 30px;
     --ts-gutter-x: 30px;
@@ -627,18 +614,4 @@
   .sr4-filter-area .sr4-facets__form > .sr4-col-item {
     width: 25%;
   }
-}
-/* ---------- */
-#sr4-filter-hidden .sr4-drawer__header span {
-  padding: 1rem 0;
-  text-align: left;
-}
-#FacetFiltersForm h5.sr4-facet-title {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
-
-button.sr4-price_slider_btn.sr4-dn {
-  background-color: black;
-  border-radius: 0;
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
 }

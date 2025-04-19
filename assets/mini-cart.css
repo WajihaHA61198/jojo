@@ -614,15 +614,6 @@ html:not(.sr4-cart-count-0) .sr4-when-cart-emty {
 .sr4-key__rate:after {
   content: ':';
 }
-
-.sr4-drawer__bottom > a,
-.sr4-drawer__bottom > button,
-p.sr4-return-to-shop > a,
-button.sr4-mini_cart-tool__primary,
-button.sr4-mini_cart-tool__back,
-.sr4-mini_cart-tool__wrap > h3 {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
 button.sr4-mini_cart-tool__primary,
 button.sr4-mini_cart-tool__back {
   border-radius: 0px;

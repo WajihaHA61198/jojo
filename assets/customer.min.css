@@ -42,7 +42,7 @@ input.sr4_frm_input:focus {
   display: none;
 }
 .sr4-customer .sr4_field input::-webkit-autofill,
-.sr4-customer .sr4_field input:::autofill {
+.sr4-customer .sr4_field input::autofill {
   color: inherit;
 }
 .sr4-customer .sr4_field input:-webkit-autofill {
@@ -121,7 +121,6 @@ input.sr4_frm_input:focus {
   text-transform: uppercase;
 }
 .sr4-customer .form__message {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
   align-items: center;
   display: flex;
   font-size: 16px;
@@ -456,21 +455,6 @@ li[data-address] > h2 {
   }
 }
 
-button.sr4_btn_submmit.sr4-btn.sr4-btn-base.sr4-btn-default-width.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-dark.sr4-btn-effect-overlay-run {
-  border-radius: 0px;
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
-
-.sr4-customer.is--login.sr4-text-start h2.form__message,
-div#guest_login > h2,
-div#guest_login button.sr4_btn_black,
-#create_customer
-  button.sr4_btn_submmit.sr4-btn.sr4-btn-base.sr4-btn-full-width.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-dark.sr4-btn-effect-overlay-run,
-#recover h2.sr4_mb_20,
-#shopify-section-template--19111144063252__main h2 {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
-
 #create_customer
   button.sr4_btn_submmit.sr4-btn.sr4-btn-base.sr4-btn-full-width.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-dark.sr4-btn-effect-overlay-run {
   border-radius: 0px;
@@ -481,29 +465,10 @@ div#guest_login button.sr4_btn_black,
   margin-bottom: 4rem;
 }
 
-.sr4-customer.sr4-customer-account.is--addresses.sr4-row button,
-.sr4-customer.sr4-customer-account.is--addresses.sr4-row h2,
-.sr4-customer.is--reset-password button {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
-}
-
 div#shopify-section-template--19111144259860__heading .page-head:before {
   background-color: white;
 }
 div#shopify-section-template--19111144259860__heading .page-head.sr4-pr.sr4-oh.page_bg_img.sr4-text-center {
   margin-bottom: 0;
   padding: 3rem 0;
-}
-@media (max-width: 1024px) {
-  div#shopify-section-template--19111144259860__heading h1 {
-    color: #878787;
-    font-size: 48px;
-  }
-}
-
-@media (min-width: 1024px) {
-  div#shopify-section-template--19111144259860__heading h1 {
-    color: #878787;
-    font-size: 65px;
-  }
 }

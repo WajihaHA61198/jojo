@@ -33,26 +33,6 @@
 .rtl_true .sr4-list-collections-simple .sr4-collection-item-simple:last-child a {
   padding-right: 0;
 }
-/* .sr4-list-collections-simple.flickitysr4_next_enable .sr4-collection-item-simple:first-child a,
-.sr4-list-collections-simple.flickitysr4_prev_enable .sr4-collection-item-simple:first-child a {
-    padding-left: 0;
-}
-.sr4-list-collections-simple.flickitysr4_next_enable .sr4-collection-item-simple:last-child a,
-.sr4-list-collections-simple.flickitysr4_prev_enable .sr4-collection-item-simple:last-child a {
-    padding-right: 0;
-} */
-/* .sr4-list-collections-simple.flickitysr4_next_enable,
-.sr4-list-collections-simple.flickitysr4_prev_enable {
-    padding: 0 35px;
-} */
-/* .sr4-list-collections-simple .flickitysr4-prev-next-button,
-.sr4-list-collections-simple .flickitysr4-prev-next-button {
-    display: none;
-} */
-/* .sr4-list-collections-simple.flickitysr4_next_enable .flickitysr4-prev-next-button,
-.sr4-list-collections-simple.flickitysr4_prev_enable .flickitysr4-prev-next-button {
-    display: flex;
-} */
 .sr4-collections-list-simple .sr4-flicky-slider .flickitysr4-prev-next-button.previous {
   left: 0;
 }

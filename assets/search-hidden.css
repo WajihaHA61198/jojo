@@ -9,13 +9,8 @@
   padding: 30px 20px;
   border-bottom: 1px solid rgba(var(--border-color-rgb), 0.8);
 }
-
-#sr4-search-hidden .sr4-drawer__close {
-  /* transition: 0.3s; */
-}
 #sr4-search-hidden .sr4-drawer__close:hover {
   background-color: transparent;
-  /* transform: rotate(180deg); */
 }
 
 #sr4-search-hidden .sr4-mini-search__cat {
@@ -199,10 +194,4 @@
   100% {
     opacity: 0.9;
   }
-}
-
-/* -------------- */
-#sr4-search-hidden span.is--login {
-  padding: 1rem 0;
-  text-align: left;
 }

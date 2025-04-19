@@ -40,8 +40,8 @@
   margin-right: 0;
 }
 .sr4-footer-link.sr4-footer-link-active {
-  /* 	color: var(--accent-color); */
-  color: white;
+  	color: var(--accent-color);
+  /* color: white; */
 }
 .sr4-footer .sr4-footer-wrap {
   color: var(--text-cl);
@@ -240,7 +240,6 @@
 
   .sr4-custom-col.sr4-col-item.sr4-col-lg-3.sr4-col-md-4.sr4-col-12.bl-footer-4
     .sr4-footer-heading.sr4-footer-heading-mobile.sr4-d-flex.sr4-align-items-center.sr4-justify-content-between.sr4-d-md-none {
-    /*     border:2px solid red; */
     display: none !important;
   }
   br.footerbr {

@@ -161,9 +161,7 @@
     margin-bottom: 10px;
   }
   .is--tab-design-mb__accordion .sr4-tab-content {
-    /* padding: 20px; */
     padding: 10px;
-    /* border: 1px solid rgba(var(--text-color-rgb), 0.08); */
     border-top: 0;
   }
 }

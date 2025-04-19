@@ -78,15 +78,10 @@
   }
 }
 button.sr4-btn-currencies-sidebar {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
   font-size: 12px;
 }
 #drawer-currency-sr4-fixed .sr4-drawer__header span,
 #drawer-languages-sr4-fixed .sr4-drawer__header span {
   padding: 1rem 0;
   text-align: left;
-}
-.sr4-drawer__main.sr4-current-scrollbar > button {
-  /*   border:2px solid red; */
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
 }

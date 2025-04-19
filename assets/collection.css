@@ -129,10 +129,10 @@
   display: block;
 }
 .sr4-coll-style-15 .sr4-cat-title,
-.sr4-coll-style-15 .sr4-cat-title:hover{
-  background-color:transparent!important;
+.sr4-coll-style-15 .sr4-cat-title:hover {
+  background-color: transparent !important;
   /* color:white!important; */
-  color: var(--title-cl-pri)!important;
+  color: var(--title-cl-pri) !important;
 }
 
 .sr4-coll-style-2 .sr4-cat-title {

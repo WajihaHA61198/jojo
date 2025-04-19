@@ -201,16 +201,4 @@ div#sr4-menu-drawer .sr4-drawer__header {
 div#sr4-menu-drawer .sr4-drawer__header span {
   padding: 2rem 0 !important;
 }
-/* ---- */
-div#sr4-search-hidden form.sr4-mini-search__frm.sr4-pr,
-div#sr4-search-hidden > div,
-div#sr4-login-sidebar > div,
-div#sr4-login-sidebar .sr4-drawer__content,
-div#sr4-mini_cart > div,
-div#sr4-mini_cart form.sr4-drawer__wrap,
-div#sr4-menu-drawer > div,
-div#sr4-menu-drawer div#shopify-mb_nav,
-div#sr4-filter-hidden > div,
-div#sr4-filter-hidden .sr4-drawer__content {
-  /* display: none; */
-}
+

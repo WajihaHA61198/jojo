@@ -9,8 +9,6 @@
   z-index: 1;
   transition: 0.5s ease-out 0s;
 }
-.sr4-newsletter .sr4-section-inner {
-}
 .sr4-newsletter .sr4-section-inner > * {
   position: relative;
   z-index: 2;

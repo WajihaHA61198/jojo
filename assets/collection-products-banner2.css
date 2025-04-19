@@ -51,8 +51,6 @@
 .sr4-collection-banner2 .sr4-prs-footer a {
   margin: 0;
 }
-@media (min-width: 768px) {
-}
 @media (max-width: 767px) {
   .sr4-collection-banner2 .sr4-col-banner {
     min-height: var(--height);

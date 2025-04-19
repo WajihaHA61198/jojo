@@ -169,11 +169,6 @@
 .sr4-countdown-des-3.sr4-countdown-size-extra_large .time > span .cd-number {
   font-size: 40px;
 }
-@media (max-width: 1024px) {
-  .sr4-countdown.sr4-countdown-size-large .time > span,
-  .sr4-countdown-des-2.sr4-countdown-size-large .time > span {
-  }
-}
 @media (max-width: 767px) {
   .sr4-countdown {
     margin-bottom: var(--mgb-mb);

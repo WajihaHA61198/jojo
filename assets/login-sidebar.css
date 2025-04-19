@@ -77,7 +77,7 @@
 }
 
 #sr4-login-sidebar .sr4_field input::-webkit-autofill,
-#sr4-login-sidebar .sr4_field input:::autofill {
+#sr4-login-sidebar .sr4_field input::autofill {
   color: inherit;
 }
 
@@ -98,6 +98,5 @@
   text-align: left;
 }
 button.sr4_btn_submmit.sr4-btn.sr4-btn-base.sr4-btn-full-width.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-primary.sr4-btn-effect-default {
-  /* font-family: Helvetica, 'Helvetica Neue', Arial, 'Lucida Grande', sans-serif !important; */
   border-radius: 0;
 }

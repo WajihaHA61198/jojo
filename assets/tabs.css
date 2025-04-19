@@ -139,8 +139,6 @@
 .sr4-tabs-divider .sr4-tabs-ul .sr4-tab-item a.sr4-active::before {
   width: 100%;
 }
-.sr4-tabs-list-underline .sr4-tabs-ul {
-}
 .sr4-tabs-list-underline .sr4-tabs-ul li {
   margin: 0 !important;
   padding: 0 calc(var(--space-between) / 2);
