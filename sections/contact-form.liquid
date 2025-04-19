@@ -163,7 +163,7 @@
     appearance: none;
   }
   .sr4-contact-form .sr4-input-textarea {
-    min-height: 230px;
+    min-height: 100px;
     overflow: hidden;
     padding: 10px 15px;
   }
@@ -449,7 +449,7 @@
           "type": "html",
           "id": "text",
           "label": "Text",
-          "default": "<p>We love to hear from you on our customer service, merchandise, website or any topics you want to share with us. Your comments and suggestions will be appreciated. Please complete the form below.</p><p><i class=\"las la-home fs__16\"></i> 184 Main Rd E, St Albans Victoria 3021, Australia</p><p><i class=\"las la-phone fs__16\"></i> 1800-123-222 / 1900-1570-230</p><p><i class=\"las la-envelope fs__16\"></i> contact@company.com</p><i class=\"las la-clock fs__16\"></i> Everyday 9:00-17:00</p>"
+          "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p><p><i class=\"las la-home fs__16\"></i> 6th & 7th Floor, China Gold Park, DHA Phase 1, Karachi, Pakistan</p><p><i class=\"las la-phone fs__16\"></i> 999-000-111</p><p><i class=\"las la-envelope fs__16\"></i> wajihahanif18@gmail.com</p><i class=\"las la-clock fs__16\"></i> Everyday 9:00-18:00</p>"
         }
       ]
     }
@@ -462,95 +462,3 @@
   ]
 }
 {%- endschema -%}
-
-<style>
-    .contact-head{
-      display:flex;
-      flex-direction: column;
-      justify-content: center;
-  /*     align-items: center; */
-    }
-  @media (min-width:1024px){
-    .contact-head{
-      align-items: center;
-    }
-  }
-
-    input#contact_form_page-name,
-    input#contact_form_page-email,
-    textarea#contact_form_page-message{
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid #B4B4B4;
-  }
-    .sr4-contact-form .sr4-input-textarea{
-      min-height: 50px !important;
-    }
-    form#contact_form_page > p{
-      color: black;
-      text-transform: uppercase;
-    }
-
-    form#contact_form_page input.sr4-btn.sr4-btn-base.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-dark.sr4-btn-effect-fade.sr4-cursor-pointer{
-      border-radius: 0px;
-    }
-    input.sr4-btn.sr4-btn-base.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-dark.sr4-btn-effect-fade.sr4-cursor-pointer{
-       font-family: Helvetica, "Helvetica Neue", Arial, "Lucida Grande", sans-serif !important;
-      font-weight:400;
-    }
-
-  @media (max-width: 786px){
-    .brcontact{
-      display: none;
-    }
-    .contact-head >h3{
-      font-size: 6rem;
-      font-weight: 400;
-      margin-bottom: 0px !important;
-    }
-     p.name-contact,
-    p.email-contact{
-      color: black;
-      text-transform: uppercase;
-    }
-    form#contact_form_page input.sr4-btn.sr4-btn-base.sr4-btn-style-default.sr4-btn-size-medium.sr4-btn-color-dark.sr4-btn-effect-fade.sr4-cursor-pointer{
-  /*     float: right; */
-      display:flex;
-      margin:auto;
-    }
-  }
-
-  @media (min-width: 786px){
-    .contact_form-field{
-      display: flex;
-      column-gap: 4rem;
-      margin-bottom:2rem;
-    }
-    p.name-contact,
-    p.email-contact{
-      width:50%;
-      color: black;
-      text-transform: uppercase;
-    }
-    .form-div{
-      margin-top:7rem;
-      margin-bottom:3rem;
-    }
-    .contact-container{
-      margin: 0 10rem;
-    }
-    .contact-head >h3{
-      font-size: 8rem;
-      font-weight: 400;
-      margin-bottom: 0px !important;
-    }
-  }
-    .sr4-contact-form .sr4-input-textarea{
-      min-height:20px !important;
-    }
-  {% if page_title contains "Contact" %}
-    #MainContent{
-      min-height: 30vh;
-     }
-  {% endif %}
-</style>
