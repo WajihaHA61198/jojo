@@ -2020,7 +2020,7 @@
     },
     {
       "type": "price_review",
-      "name": "Product Price, review",
+      "name": "Price",
       "limit": 1,
       "settings": [
         {
@@ -2068,19 +2068,6 @@
           "id": "tax_ship",
           "label": "Show tax and shipping information",
           "default": true
-        },
-
-        {
-          "type": "checkbox",
-          "id": "rating",
-          "label": "Use rating",
-          "default": true
-        },
-        {
-          "type": "liquid",
-          "id": "review_liquid",
-          "label": "Add Snippets Liquid",
-          "info": "Add app snippets reviews to show star rating on product page. Will working when you use 'Other app review'"
         },
         {
           "type": "range",
@@ -2201,7 +2188,6 @@
           "type": "select",
           "id": "color_mode",
           "label": "Color selector type",
-          /*"info": "Variant image mode requires that all variant has an associated image. [Learn more](https://help.shopify.com/en/manual/products/product-variant-images#add-images-to-existing-variants)",*/
           "options": [
             {
               "value": "circle",
@@ -2277,94 +2263,6 @@
           "info": "Only working with color swatch, variant image",
           "default": "medium"
         },
-        /*{
-               "type": "select",
-               "id": "swatch_design",
-               "default": "2",
-               "options": [
-                 {
-                   "group": "Circle:",
-                   "value": "1",
-                   "label": "Circle"
-                 },
-                 {
-                   "group": "Circle:",
-                   "value": "2",
-                   "label": "Circle + color"
-                 },
-                 {
-                   "group": "Radio:",
-                   "value": "3",
-                   "label": "Radio"
-                 },
-                 {
-                   "group": "Radio:",
-                   "value": "4",
-                   "label": "Radio + color"
-                 },
-                 {
-                   "group": "Radio:",
-                   "value": "5",
-                   "label": "Radio full width"
-                 },
-                 {
-                   "group": "Radio:",
-                   "value": "6",
-                   "label": "Radio full width + color"
-                 },
-                 {
-                   "group": "Rectangle:",
-                   "value": "7",
-                   "label": "Rectangle"
-                 },
-                 {
-                   "group": "Rectangle:",
-                   "value": "8",
-                   "label": "Rectangle + color"
-                 },
-                 {
-                   "group": "Simple:",
-                   "value": "9",
-                   "label": "Simple"
-                 },
-                 {
-                   "group": "Simple:",
-                   "value": "10",
-                   "label": "Simple + color"
-                 }
-               ],
-               "label": "Swatch design setting"
-             },
-             {
-               "type": "select",
-               "id": "style_color",
-               "options": [
-                 {
-                   "value": "1",
-                   "label": "Swatch color circle"
-                 },
-                 {
-                   "value": "2",
-                   "label": "Swatch color square"
-                 }
-               ],
-               "label": "Swatch color setting for Design"
-             },
-             {
-               "type": "select",
-               "id": "swatch_style",
-               "options": [
-                 {
-                   "value": "1",
-                   "label": "Swatch color (Default or Upload)"
-                 },
-                 {
-                   "value": "2",
-                   "label": "Swatch image variant"
-                 }
-               ],
-               "label": "Swatch Layout setting for color/img"
-             },*/
         {
           "type": "checkbox",
           "id": "show_qty",
@@ -2375,12 +2273,6 @@
           "type": "checkbox",
           "id": "enable_wishlist",
           "label": "Enable wishlist",
-          "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "enable_compare",
-          "label": "Enable compare",
           "default": true
         },
         {
@@ -2451,7 +2343,7 @@
           "label": "Loop time (seconnds)",
           "info": "Loop time add to cart animation",
           "unit": "s",
-          "default": 6
+          "default": 3
         },
         {
           "type": "select",
@@ -2538,7 +2430,7 @@
           "type": "select",
           "id": "button_effect",
           "label": "Button hover effect",
-          "default": "fade",
+          "default": "default",
           "info": "Only working button style default, outline",
           "options": [
             {
@@ -2604,28 +2496,6 @@
           "id": "wishlist_color_active",
           "label": "Button wishlist active",
           "default": "#E81E1E"
-        },
-        {
-          "type": "header",
-          "content": "+ Compare button color"
-        },
-        {
-          "type": "color",
-          "id": "compare_color",
-          "label": "Button compare",
-          "default": "#222222"
-        },
-        {
-          "type": "color",
-          "id": "compare_color_hover",
-          "label": "Button compare hover",
-          "default": "#005b69"
-        },
-        {
-          "type": "color",
-          "id": "compare_color_active",
-          "label": "Button compare active",
-          "default": "#222222"
         },
         {
           "type": "header",
@@ -2792,7 +2662,7 @@
         {
           "type": "select",
           "id": "sc_type",
-          "default": "1",
+          "default": "2",
           "options": [
             {
               "value": "1",
@@ -2873,12 +2743,6 @@
           "label": "Show product vendor",
           "default": false
         },
-        /*{
-            "type": "checkbox",
-            "id": "use_cdt",
-            "label": "Show product countdown",
-            "default": false
-          },*/
         {
           "type": "checkbox",
           "id": "show_type",
@@ -2890,12 +2754,6 @@
           "id": "show_sku",
           "label": "Show sku",
           "default": true
-        },
-        {
-          "type": "checkbox",
-          "id": "show_barcode",
-          "label": "Show barcode",
-          "default": false
         },
         {
           "type": "checkbox",
@@ -2977,7 +2835,7 @@
             { "value": "3", "label": "Style 3 (Has border)" },
             { "value": "4", "label": "Style 4 (Has border & background)" }
           ],
-          "default": "3"
+          "default": "4"
         },
         {
           "type": "select",
@@ -3220,13 +3078,6 @@
             }
           ]
         },
-        /*{
-             "type": "checkbox",
-             "id": "timezone",
-             "label": "Use General timezone?",
-             "info":"Use to display a countdown accordingly to the General timezone no matter the localtime your computer is.",
-             "default": false
-           },*/
         {
           "type": "select",
           "id": "icon",
@@ -4654,15 +4505,7 @@
   "presets": [
     {
       "name": "Featured product",
-      "blocks": [
-        { "type": "title" },
-        { "type": "price_review" },
-        { "type": "description" },
-        { "type": "form" },
-        { "type": "size_delivery_ask" },
-        { "type": "meta" },
-        { "type": "social" }
-      ]
+      "blocks": [{ "type": "title" }, { "type": "price_review" }, { "type": "description" }, { "type": "form" }]
     }
   ]
 }
