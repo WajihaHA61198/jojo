@@ -1,21 +1,27 @@
 {%- liquid
   layout none
-  assign mobile_nav_type = settings.mobile_nav_type-%}
+  assign mobile_nav_type = settings.mobile_nav_type
+-%}
 
 {%- if mobile_nav_type == '1' or mobile_nav_type == '2' -%}
   <div class="sr4-drawer__header">
     <span>
       {% if mobile_nav_type == '1' %}
-        {%- assign navActive = 'is--active' -%}<img
-          style="width:25%;"
-          src="https://cdn.shopify.com/s/files/1/0761/3959/4004/files/logo.jpg?v=1686118618"
-          alt="logo" />
+        {%- assign navActive = 'is--active' -%}
+        {%- if shop.email_logo_url %}
+          <img src="{{shop.email_logo_url}}" alt="{{ shop.name }}" width="auto" height="50px">
+        {%- else %}
+          <h1 class="shop-name__text">
+            <a href="{{shop.url}}">{{ shop.name }}</a>
+          </h1>
+        {%- endif %}
       {% else %}
-        {%- assign catActive = 'is--active' -%}{{ 'general.mobile_menu.categories' | t }}{% endif %}
+        {%- assign catActive = 'is--active' -%}
+        {{ 'general.mobile_menu.categories' | t -}}
+      {%- endif %}
     </span>
   </div>
 {%- else -%}
-
   {%- if mobile_nav_type == '3' -%}
     {%- assign navActive = 'is--active' -%}
     {%- assign catActive = '' -%}
@@ -29,13 +35,15 @@
     <div
       data-tab-mb-item
       class="sr4-mb-tab__title sr4-col-item sr4-pr sr4-d-flex sr4-align-items-center sr4-justify-content-center {{order1}} {{navActive}}"
-      data-id="#shopify-mb_nav">
+      data-id="#shopify-mb_nav"
+    >
       <span class="sr4-d-block sr4-truncate">{{ 'general.mobile_menu.menu' | t }}</span>
     </div>
     <div
       data-tab-mb-item
       class="sr4-mb-tab__title sr4-col-item sr4-pr sr4-d-flex sr4-align-items-center sr4-justify-content-center {{order2}} {{catActive}}"
-      data-id="#shopify-mb_cat">
+      data-id="#shopify-mb_cat"
+    >
       <span class="sr4-d-block sr4-truncate">{{ 'general.mobile_menu.categories' | t }}</span>
     </div>
   </div>
@@ -43,8 +51,14 @@
 <div
   data-tab-mb-content
   id="shopify-mb_nav"
-  class="sr4-mb-tab__content {{navActive}}">{%- section 'mb_nav' -%}</div>
+  class="sr4-mb-tab__content {{navActive}}"
+>
+  {%- section 'mb_nav' -%}
+</div>
 <div
   data-tab-mb-content
   id="shopify-mb_cat"
-  class="sr4-mb-tab__content {{catActive}}">{%- section 'mb_cat' -%}</div>
+  class="sr4-mb-tab__content {{catActive}}"
+>
+  {%- section 'mb_cat' -%}
+</div>

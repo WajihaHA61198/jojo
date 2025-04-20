@@ -913,7 +913,7 @@
         "settings": {
           "fnt_fm_button": "--font-family-1",
           "btn_fw": 600,
-          "btn_bdr": 60,
+          "btn_bdr": 0,
           "other_radius": 0,
           "button_effect": "default"
         }

@@ -223,7 +223,7 @@ html input[type='button']:not(.sr4-btn),
 input[type='reset'],
 input[type='submit']:not(.sr4-btn) {
   padding: 11px 15px;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 18px;
   cursor: pointer;
   box-shadow: none;
@@ -4920,4 +4920,9 @@ shopify-payment-terms {
   }
 }
 
-
+button.sr4-btn-filter,
+.sr4-dropdown.sr4-dropdown__sortby > button{
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 500;
+}

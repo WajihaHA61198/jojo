@@ -111,7 +111,10 @@
             {%- assign sort_by = collection.sort_by | default: collection.default_sort_by -%}
               {%- assign option_selected = collection.sort_options | where: "value",sort_by | first -%}
               <div class="sr4-dropdown sr4-dropdown__sortby">
-                  <button data-dropdown-open data-position="bottom-end" data-id="sr4__sortby"><span class="sr4-d-none sr4-d-md-block">{{ option_selected.name | escape }}</span><span class="sr4-d-md-none" data-not-change-txt>{{ 'collections.general.sort_button' | t }}</span><svg class="sr4-icon-select-arrow" role="presentation" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg></button>
+                  <button data-dropdown-open data-position="bottom-end" data-id="sr4__sortby">
+                    <span class="sr4-d-none">{{ option_selected.name | escape }}</span>
+                    <span class="" data-not-change-txt>{{ 'collections.general.sort_button' | t }}</span>
+                    <svg class="sr4-icon-select-arrow" role="presentation" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg></button>
                   <div data-dropdown-wrapper class="sr4-dropdown__wrapper" id="sr4__sortby">
                      <div class="sr4-drop-arrow"></div>
                      <div class="sr4-dropdown__header">
@@ -192,7 +195,9 @@
               else
                  assign show_filter = false
               endif -%}
-              {%- if show_filter %}<button data-btn-as-a class="sr4-btn-filter" data-drawer-delay data-drawer-options='{ "id":"{{ id_se }}#sr4-filter-hidden" }' aria-label="Show filters"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16"><path d="M324.4 64C339.6 64 352 76.37 352 91.63C352 98.32 349.6 104.8 345.2 109.8L240 230V423.6C240 437.1 229.1 448 215.6 448C210.3 448 205.2 446.3 200.9 443.1L124.7 385.6C116.7 379.5 112 370.1 112 360V230L6.836 109.8C2.429 104.8 0 98.32 0 91.63C0 76.37 12.37 64 27.63 64H324.4zM144 224V360L208 408.3V223.1C208 220.1 209.4 216.4 211.1 213.5L314.7 95.1H37.26L140 213.5C142.6 216.4 143.1 220.1 143.1 223.1L144 224zM496 400C504.8 400 512 407.2 512 416C512 424.8 504.8 432 496 432H336C327.2 432 320 424.8 320 416C320 407.2 327.2 400 336 400H496zM320 256C320 247.2 327.2 240 336 240H496C504.8 240 512 247.2 512 256C512 264.8 504.8 272 496 272H336C327.2 272 320 264.8 320 256zM496 80C504.8 80 512 87.16 512 96C512 104.8 504.8 112 496 112H400C391.2 112 384 104.8 384 96C384 87.16 391.2 80 400 80H496z"></path></svg>{{ 'collections.general.filter_button' | t }}</button>{% endif -%}
+              {%- if show_filter %}<button data-btn-as-a class="sr4-btn-filter" data-drawer-delay data-drawer-options='{ "id":"{{ id_se }}#sr4-filter-hidden" }' aria-label="Show filters">
+                {% comment %} <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="16" height="16"><path d="M324.4 64C339.6 64 352 76.37 352 91.63C352 98.32 349.6 104.8 345.2 109.8L240 230V423.6C240 437.1 229.1 448 215.6 448C210.3 448 205.2 446.3 200.9 443.1L124.7 385.6C116.7 379.5 112 370.1 112 360V230L6.836 109.8C2.429 104.8 0 98.32 0 91.63C0 76.37 12.37 64 27.63 64H324.4zM144 224V360L208 408.3V223.1C208 220.1 209.4 216.4 211.1 213.5L314.7 95.1H37.26L140 213.5C142.6 216.4 143.1 220.1 143.1 223.1L144 224zM496 400C504.8 400 512 407.2 512 416C512 424.8 504.8 432 496 432H336C327.2 432 320 424.8 320 416C320 407.2 327.2 400 336 400H496zM320 256C320 247.2 327.2 240 336 240H496C504.8 240 512 247.2 512 256C512 264.8 504.8 272 496 272H336C327.2 272 320 264.8 320 256zM496 80C504.8 80 512 87.16 512 96C512 104.8 504.8 112 496 112H400C391.2 112 384 104.8 384 96C384 87.16 391.2 80 400 80H496z"></path></svg> {% endcomment %}
+              {{ 'collections.general.filter_button' | t }}</button>{% endif -%}
             </div>
         {%- endcase -%}
       {%- endfor -%}

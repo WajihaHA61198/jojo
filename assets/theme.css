@@ -597,8 +597,8 @@ button.mfp-close {
 }
 button.mfp-close .sr4mfp-icon-close,
 .sr4-iconsvg-close {
-  width: 12px;
-  height: 12px;
+  width: 16px;
+  height: 16px;
   stroke-width: 1.5px;
   display: inline-block;
   pointer-events: none;
