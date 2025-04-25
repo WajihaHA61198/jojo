@@ -18,6 +18,77 @@
   endif
 %}
 
+{% style %}
+  #sid-{{ section.id }} * {
+    padding: 0;
+    margin: 0;
+  }
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee {
+    display: flex;
+    /* overflow: hidden; */
+    overflow: visible;
+    max-width: 100%;
+    padding: {{ se_stts.paddingTb }}px 0;
+    user-select: none;
+  }
+
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul,
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
+    white-space: nowrap;
+    will-change: transform;
+    /* animation: marquee {{ se_stts.animation_time }}s linear infinite; */
+    display: flex;
+  }
+  .sr4-move-left{
+    white-space: nowrap;
+    will-change: transform;
+    animation: marqueeLeft {{ se_stts.animation_time }}s linear infinite;
+    display: flex;
+  }
+  .sr4-move-right{
+    white-space: nowrap;
+    will-change: transform;
+    animation: marqueeRight {{ se_stts.animation_time }}s linear infinite;
+    display: flex;
+  }
+
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul li,
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee p,
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee h5 {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
+    font-size: clamp({{ se_stts.font_size_mb }}px,({{se_stts.font_size}} / 1440)* 100vw, {{se_stts.font_size}}px);
+    font-weight: {{se_stts.font_weight}};
+    letter-spacing: 1px;
+    line-height: 1;
+      {% if se_stts.color_mar == 'rgba(0,0,0,0)' %}
+      background-image: {{se_stts.color}}!important;
+    {% endif %}
+    color: {{ se_stts.color_mar }};
+    background-clip: text;
+  }
+
+  @keyframes marqueeLeft {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+  }
+  @keyframes marqueeRight {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0%);
+    }
+  }
+{% endstyle %}
+
 <div
   class="sr4-section-inner {{sr4_se_class}} sr4_nt_se_{{sid}} {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4{% endif %}"
   {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %}
@@ -28,62 +99,23 @@
   {{- html_layout[0] -}}
   <div id="sid-{{ section.id }}">
     <div class="marquee_container">
-      <div class="o-product-thumbnail-secondary__marquee">
+      <div class="o-product-thumbnail-secondary__marquee sr4_marFirst sr4-{{ se_stts.marqdirection1 }}">
         {% for i in (1..4) %}
-          {{ section.settings.marq_text }}&nbsp;
+          {{ se_stts.marq_text }}&nbsp;
         {% endfor %}
       </div>
+
+      {% if se_stts.marq_text2 != blank %}
+        <div class="o-product-thumbnail-secondary__marquee sr4_marRight sr4-{{ se_stts.marqdirection2 }}">
+          {% for i in (1..4) %}
+            {{ se_stts.marq_text2 }}&nbsp;
+          {% endfor %}
+        </div>
+      {% endif %}
     </div>
   </div>
   {{- html_layout[1] -}}
 </div>
-
-<style>
-  #sid-{{ section.id }} * {
-    padding: 0;
-    margin: 0;
-  }
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee {
-    display: flex;
-    overflow: hidden;
-    max-width: 100%;
-    padding: {{ section.settings.paddingTb }}px 0;
-  }
-
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul,
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
-      white-space: nowrap;
-      will-change: transform;
-      animation: marquee {{ section.settings.animation_time }}s linear infinite;
-      display: flex;
-  }
-
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul li,
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee p,
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee h5 {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-  }
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
-    font-size: clamp({{ section.settings.font_size_mb }}px,({{section.settings.font_size}} / 1440)* 100vw, {{section.settings.font_size}}px);
-    background-image: {{section.settings.color}};
-    font-weight: {{section.settings.font_weight}};
-    letter-spacing: 1px;
-    line-height: 1;
-    color: #0000;
-    background-clip: text;
-  }
-
-  @keyframes marquee {
-      0% {
-          transform: translateX(0%);
-      }
-      100% {
-          transform: translateX(-100%);
-      }
-  }
-</style>
 
 {% schema %}
 {
@@ -94,40 +126,97 @@
     {
       "type": "richtext",
       "id": "marq_text",
-      "label": "Marquee",
-      "default": "<p>Extravagence – 47 Sections of Pure Customization Power.</p>"
+      "label": "Marquee 1",
+      "default": "<p>Extravagence – 47 Sections of Pure Customization Power 👜.</p>"
     },
     {
-      "type": "number",
+      "type": "select",
+      "id": "marqdirection1",
+      "label": "Marquee direction",
+      "default": "move-left",
+      "options": [
+        {
+          "value": "move-left",
+          "label": "Left"
+        },
+        {
+          "value": "move-right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "marq_text2",
+      "label": "Marquee 2",
+      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit☂️.</p>"
+    },
+    {
+      "type": "select",
+      "id": "marqdirection2",
+      "label": "Marquee direction",
+      "default": "move-right",
+      "options": [
+        {
+          "value": "move-left",
+          "label": "Left"
+        },
+        {
+          "value": "move-right",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "range",
       "id": "animation_time",
+      "max": 100,
+      "min": 10,
+      "step": 1,
       "label": "Animation Speeds",
       "default": 50
     },
     {
-      "type": "number",
+      "type": "range",
       "id": "font_size",
+      "max": 70,
+      "min": 10,
+      "step": 1,
+      "unit": "px",
       "label": "Font Size",
-      "default": 70
+      "default": 60
     },
     {
-      "type": "number",
+      "type": "range",
       "id": "font_size_mb",
-      "label": "Font Size Mobile",
-      "default": 20
+      "max": 50,
+      "min": 10,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (Mobile)",
+      "default": 16
     },
     {
       "type": "range",
       "id": "font_weight",
       "label": "Font Weight",
-      "default": 700,
+      "default": 600,
       "step": 100,
       "min": 100,
       "max": 900
     },
     {
+      "type": "color",
+      "id": "color_mar",
+      "label": "Text Color (single color)",
+      "default": "#999999",
+      "info": "single color"
+    },
+    {
       "type": "color_background",
       "id": "color",
-      "label": "Text Color"
+      "label": "Text Color",
+      "info": "gradient color"
     },
     {
       "type": "number",

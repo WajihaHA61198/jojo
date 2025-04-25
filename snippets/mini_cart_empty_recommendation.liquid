@@ -1,0 +1,304 @@
+{{ 'sr4_flickity.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'sr4_flickity.min.js' | asset_url }}"></script>
+
+{%- assign new_arrivals = collections.test -%}
+{%- if new_arrivals.products_count > 0 -%}
+  <style>
+    .sr4-minicart-recommendations {
+      margin: 20px;
+      border-radius: 5px;
+      overflow: hidden;
+      box-shadow: 0 0 3px 0 rgb(0 0 0 / 20%);
+      color: var(--secondary-color);
+    }
+    .sr4-minicart-recommendations__title {
+      background-color: black;
+      color: white;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 10px;
+    }
+    .sr4-minicart-recommendations_items.flickitysr4-enabled {
+      display: flex;
+    }
+    .sr4-minicart-recommendations__item--title {
+      font-size: 14px;
+      line-height: 1.35;
+      color: var(--secondary-color);
+    }
+    .sr4-minicart-recommendations__item--img {
+      margin: 10px;
+    }
+    .sr4-minicart-recommendations__item--img > a {
+      width: 80px;
+      max-height: 110px;
+    }
+    .sr4-minicart-recommendations__item--img img {
+      object-fit: contain;
+      max-height: 110px;
+      border-radius: 2px;
+      overflow: hidden;
+    }
+    .sr4-minicart-recommendations__item .sr4-col-auto {
+      max-width: 100px;
+    }
+    .sr4-minicart-recommendations_items .flickitysr4-viewport,
+    .sr4-minicart-recommendations_items:not(.flickitysr4-enabled) .sr4-minicart-recommendations__item:not(:last-child) {
+      border-bottom: 4px double var(--border-color);
+    }
+    .sr4-minicart-recommendations__item--qv {
+      padding: 10px;
+      line-height: 1;
+      color: var(--sr4-light-color);
+      border-radius: 5px;
+      box-shadow: 0 0 3px 0 rgb(0 0 0 / 20%);
+      margin: 10px;
+      width: 35px;
+      height: 35px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--accent-color);
+    }
+    .sr4-minicart-recommendations__item--qv svg.sr4-btn-op0 {
+      width: 14px;
+    }
+    .sr4p-hover .sr4-minicart-recommendations__item--qv:hover {
+      opacity: 0.6;
+      color: var(--sr4-light-color);
+    }
+    .sr4-minicart-recommendations__item--price {
+      color: var(--secondary-price-color);
+    }
+    .sr4-minicart-recommendations__item--price ins {
+      color: var(--primary-price-color);
+      margin-left: 5px;
+    }
+    .rtl_true .sr4-minicart-recommendations__item--price ins {
+      margin-left: 0;
+      margin-right: 5px;
+    }
+    .sr4-minicart-recommendations__item .onsale.nt_label {
+      min-width: auto;
+      margin: 0 5px;
+      width: auto;
+      height: auto;
+      border-radius: 3px;
+      font-size: 10px;
+      color: #fff;
+      display: inline-block;
+      padding: 4px;
+      line-height: 1;
+    }
+    .sr4-minicart-recommendations .flickitysr4-prev-next-button {
+      position: static;
+      width: 44px;
+      height: 44px;
+      flex: 0 0 auto;
+      -ms-flex-order: 4;
+      order: 4;
+      color: #222;
+      border: 0;
+      background: 0 0;
+      border-radius: 0;
+      display: block;
+      transition: color 0.3s, background-color 0.3s, border-color 0.3s, box-shadow 0.3s, opacity 0.3;
+    }
+    .sr4p-hover .sr4-minicart-recommendations .flickitysr4-prev-next-button:hover {
+      background-color: #f5f5f5;
+    }
+    .sr4-minicart-recommendations .flickitysr4-prev-next-button.next {
+      -ms-flex-order: 5;
+      order: 5;
+    }
+    .sr4-minicart-recommendations .flickitysr4-prev-next-button .flickitysr4-button-icon {
+      height: 14px;
+      width: 14px;
+      stroke-width: 3px;
+      stroke: currentColor;
+      fill: currentcolor;
+    }
+    .sr4-minicart-recommendations .flickitysr4-page-dots {
+      width: 100%;
+      flex: 1 0 0%;
+      -ms-flex-order: 4;
+      order: 4;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      border: 1px solid var(--border-color);
+      border-width: 0 1px;
+    }
+    .sr4-minicart-recommendations .flickitysr4-prev-next-button:before {
+      display: inline-block;
+      width: 100%;
+      font-size: 36px;
+      height: auto;
+      line-height: 1;
+    }
+    .sr4-minicart-recommendations .flickitysr4-enabled .flickitysr4-prev-next-button {
+      -webkit-transform: scale(1);
+      transform: scale(1);
+      opacity: 1;
+    }
+    .sr4-minicart-recommendations .flickitysr4-page-dots .dot {
+      display: inline-block;
+      width: 11px;
+      height: 11px;
+      margin: 5px;
+      border-radius: 50%;
+      background: var(--sr4-light-color);
+      border: 2px solid rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+    .sr4-minicart-recommendations .flickitysr4-page-dots .dot.is-selected {
+      background-color: var(--secondary-color);
+    }
+
+    .sr4-minicart-empty_item--img img,
+    .sr4-col-item.sr4-col-auto.sr4-minicart-empty_item--img {
+      max-height: 150px;
+      max-width: 150px;
+      object-position: top;
+    }
+    .sr4-minicart-empty_item--img > a {
+      width: 200px;
+      max-height: 200px;
+    }
+    .sr4-minicart-recommendations__item.sr4-col-itemss {
+      padding: 0 0.3em;
+    }
+    .sr4-minicart-empty {
+      padding: 45px 0 0;
+      margin: 20px;
+    }
+    .sr4-col-item.sr4-col.sr4-pr.sr4-oh {
+      text-align: left;
+      margin-top: 0.5rem;
+      width: 90%;
+    }
+    .sr4-minicart-empty__item--price {
+      font-size: 12px;
+      color: black;
+    }
+    a.sr4-d-block.sr4-minicart-empty__item--title.sr4-truncate {
+      font-size: 14px;
+      line-height: 1.35;
+      color: var(--secondary-color);
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+    .sr4-minicart-empty__item--price ins {
+      color: red;
+    }
+    .sr4_empty_head {
+      width: 200px;
+      display: inline-block;
+      max-width: 49%;
+      min-height: 75px;
+      padding: 20px 5px 0;
+      text-transform: none;
+      vertical-align: middle;
+    }
+
+    .sr4-empty_title {
+      border-bottom: 2px solid #212121;
+      font-weight: 600;
+      padding: 0 4px 16px 0;
+      font-size: 1.5rem;
+      line-height: normal;
+      text-transform: none;
+    }
+    .sr4-empty-flex {
+      display: flex;
+      -webkit-box-align: end;
+      -ms-flex-align: end;
+      align-items: flex-end;
+      text-align: left;
+    }
+  </style>
+  {%- liquid
+    assign app_review = settings.app_review
+    assign price_varies_style = settings.price_varies_style
+    assign enable_rating = settings.enable_rating
+    assign placeholder_img = settings.placeholder_img
+  -%}
+  <div class="sr4-minicart-empty">
+    <div class="sr4-empty-flex">
+      <div class="sr4_empty_head">
+        <div class="sr4-empty_title">Especially for you</div>
+      </div>
+    </div>
+    <div
+      class="main-carousel carousell js-flickity flickity-enabled is-draggable"
+      data-flickity='
+        {
+        "draggable": true,
+        "wrapAround": true,
+        "pageDots": false,
+        "groupCells": 1,
+        "autoPlay": false,
+        "contains": true,
+        "freeScroll": false,
+        "checkVisibility": false,
+        "dragThreshold" : 1,
+        "cellAlign": "left"}
+      '
+      style="--space-dots: 8px;--flickity-btn-pos: 0px;--flickity-btn-pos-mb: 0px;"
+    >
+      {%- for product in new_arrivals.products -%}
+        {%- liquid
+          assign pr_url = product.url
+          assign image = product.featured_media | default: placeholder_img
+        -%}
+        <div class="sr4-minicart-recommendations__item sr4-col-itemss">
+          <div class="">
+            <div class="sr4-col-item sr4-col-auto sr4-minicart-empty_item--img">
+              {%- if image != blank -%}
+                <a
+                  class="sr4-d-block sr4-pr sr4-oh sr4_ratio"
+                  href="{{pr_url}}"
+                  style="{{imgatt}}--aspect-ratioapt: {{image.aspect_ratio | default: 1}}"
+                >
+                  <img
+                    class="lazyloadsr4"
+                    data-src="{{ image | image_url: width: 1 }}"
+                    data-widths="[100,200,400,600,700,800,900,1000,1200,1400,1600]"
+                    data-optimumx="2"
+                    data-sizes="auto"
+                    src="{% render 'img_svg',w:image.width,h:image.height %}"
+                    width="{{ image.width }}"
+                    height="{{ image.height }}"
+                    alt="{{ image.alt | escape }}"
+                  >
+                  <span
+                    class="lazyloadsr4-loader is-bg-img"
+                    style="background: url({{ image | image_url: width: 1 }});"
+                  ></span>
+                </a>
+              {%- endif -%}
+            </div>
+            <div class="sr4-col-item sr4-col sr4-pr sr4-oh">
+              {%- if enable_rating -%}
+                {%- render 'product-rating', product: product, app_review: app_review -%}
+              {%- endif -%}
+              <a href="{{pr_url}}" class="sr4-d-block sr4-minicart-empty__item--title sr4-truncate">
+                {{- product.title -}}
+              </a>
+              {%- render 'product-price',
+                class_price: 'sr4-minicart-empty__item--price',
+                product: product,
+                price_varies_style: price_varies_style,
+                type: 'card',
+                isGrouped: false
+              -%}
+            </div>
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

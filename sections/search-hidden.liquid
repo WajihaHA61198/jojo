@@ -1,7 +1,7 @@
 {%- liquid
   assign results_count = search.results_count
   assign collection = collections[settings.search_prs_suggest]
-  assign limit = 5
+  assign limit = 12
   assign show_search_suggest = settings.show_search_suggest
   assign on_sale_txt = 'products.product.on_sale' | t
   assign save_js = 'products.product.save_js' | t: saved_amount: 'saved_amount'
@@ -29,6 +29,8 @@
       assign search_terms = product_type
     endif
   endif
+
+  assign results_count = search.results_count
 -%}
 
 {%- if request.design_mode -%}
@@ -39,7 +41,13 @@
   >
 {%- endif -%}
 <div class="sr4-drawer__header">
-  <span class="is--login" aria-hidden="false">{{ 'search.general.title' | t }}</span>
+  <span class="is--login" aria-hidden="false">
+    {%- if shop.email_logo_url %}
+      <img src="{{shop.email_logo_url}}" alt="{{ shop.name }}" width="auto" height="50px">
+    {%- else %}
+      {{ 'search.general.title' | t }}
+    {%- endif %}
+  </span>
   <button
     class="sr4-drawer__close"
     data-drawer-close
@@ -83,15 +91,17 @@
 
   {%- if settings.filter_type_search and shop_types != blank -%}
     <div data-cat-search class="sr4-mini-search__cat">
-      <select data-name="product_type">
-        <option value="*">{{ 'search.general.all_categories' | t }}</option>
-        {%- for product_type in shop.types -%}
-          {%- if product_type == blank %}
-            {% continue -%}
-          {% endif -%}
-          <option value="{{product_type}}">{{ product_type }}</option>
-        {%- endfor -%}
-      </select>
+      <!--
+        <select data-name="product_type">
+          <option value="*">{{ 'search.general.all_categories' | t }}</option>
+          {%- for product_type in shop.types -%}
+            {%- if product_type == blank %}
+              {% continue -%}
+            {% endif -%}
+            <option value="{{product_type}}">{{ product_type }}</option>
+          {%- endfor -%}
+        </select>
+      -->
     </div>
   {%- endif -%}
   <div class="sr4-mini-search__btns sr4-pr sr4-oh">
@@ -183,6 +193,7 @@
     style="display:none"
   ></div>
 {%- endif -%}
+
 <div class="sr4-drawer__content">
   <div class="sr4-drawer__main">
     <div data-sr4-scroll-me class="sr4-drawer__scroll sr4-current-scrollbar">
