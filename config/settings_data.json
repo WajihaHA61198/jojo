@@ -1064,7 +1064,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "",
-              "icons_op": "2",
+              "icons_op": "0",
               "icon": ""
             }
           },
@@ -1077,7 +1077,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "",
-              "icons_op": "2",
+              "icons_op": "0",
               "icon": ""
             }
           },
@@ -1090,7 +1090,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "",
-              "icons_op": "2",
+              "icons_op": "0",
               "icon": ""
             }
           },
@@ -1103,7 +1103,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "",
-              "icons_op": "2",
+              "icons_op": "0",
               "icon": ""
             }
           },
@@ -1116,7 +1116,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "",
-              "icons_op": "2",
+              "icons_op": "0",
               "icon": ""
             }
           },
@@ -1129,7 +1129,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "",
-              "icons_op": "2",
+              "icons_op": "0",
               "icon": ""
             }
           },
@@ -1189,7 +1189,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "#e91e63",
-              "icons_op": "1",
+              "icons_op": "0",
               "icon": "chair"
             }
           },
@@ -1202,7 +1202,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "#e91e63",
-              "icons_op": "1",
+              "icons_op": "0",
               "icon": "chair"
             }
           },
@@ -1215,7 +1215,7 @@
               "menu": "",
               "lb": "",
               "lb_cl": "#e91e63",
-              "icons_op": "1",
+              "icons_op": "0",
               "icon": "chair"
             }
           },
@@ -1227,7 +1227,7 @@
               "url": "",
               "lb": "",
               "lb_cl": "#e91e63",
-              "icons_op": "1",
+              "icons_op": "0",
               "icon": "chair",
               "cat1": "",
               "url1": "",

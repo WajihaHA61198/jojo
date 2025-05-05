@@ -552,7 +552,7 @@
           }
         ],
         "label": "Header mobile show",
-        "default": "3"
+        "default": "1"
       },
       {
         "type": "checkbox",

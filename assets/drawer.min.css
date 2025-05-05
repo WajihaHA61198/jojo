@@ -21,6 +21,9 @@
   transform: translate3d(-104%, 0, 0);
 }
 @media (max-width:768px){
+  div#sr4-menu-drawer{
+    width:100%;
+  }
   .sr4-drawer{
     width:90%;
   }

@@ -193,11 +193,11 @@ input[type='checkbox'][data-agree-checkbox]:checked ~ svg {
   font-weight: 500;
 }
 #sr4-mini_cart .sr4-drawer__close {
-  transition: 0.3s;
+  /* transition: 0.3s; */
 }
 #sr4-mini_cart .sr4-drawer__close:hover {
   background-color: transparent;
-  transform: rotate(180deg);
+  /* transform: rotate(180deg); */
 }
 .sr4-mini_cart__item {
   margin:1.5rem;
