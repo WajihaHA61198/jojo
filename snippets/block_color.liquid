@@ -31,32 +31,35 @@
   <div
     id="blockid_{{block.id}} blockid_color"
     class="sr4-col-item sr4-col-12 sr4-col-md-{{col_class}} sr4-facet is--blockidColor"
-    {{ block.shopify_attributes }}>
+    {{ block.shopify_attributes }}
+  >
     <h5 class="sr4-facet-title">{{ bk_stts.title | escape }}</h5>
     <div class="sr4-facet-content">
       <ul class="sr4-filter__values is--style-color sr4-current-scrollbar">
-
         {%- for tag in tag_block -%}
-
           {%- liquid
             assign tag_dow = tag | downcase
             assign tag_key = tag | remove: key_3 | remove: key_2 | remove: key | strip
-            assign tag_handle = tag_key | handleize-%}
+            assign tag_handle = tag_key | handleize
+          -%}
 
-          {%- capture class_name %}<div class="sr4-filter_color sr4-pr sr4-oh"><span class="lazyloadsr4 bg_color_{{tag_handle}}"></span><svg focusable="false" viewBox="0 0 24 24" role="presentation"><path fill="currentColor" d="M9 20l-7-7 3-3 4 4L19 4l3 3z"></path></svg></div>{{tag_key}}</a>{% endcapture -%}
+          {%- capture class_name %}<div class="sr4-filter_color sr4-pr sr4-oh"><span class="lazyloadsr4 bg_color_{{tag_handle}}"></span><svg focusable="false" viewBox="0 0 24 24" role="presentation"><path fill="currentColor" d="M9 20l-7-7 3-3 4 4L19 4l3 3z"></path></svg></div>{{tag_key}}{% endcapture -%}
           {%- assign label = value.label | escape -%}
 
           {%- if has_current_tag and current_tags contains tag_dow -%}
-            <li class="is--selected" data-handle="{{tag_handle}}">{{ '' | link_to_remove_tag: tag_dow | replace: '</a>', class_name | replace: 'title=', 'aria-label=' }}</li>
+            <li class="is--selected" data-handle="{{tag_handle}}">
+              {{ '' | link_to_remove_tag: tag_dow | replace: '</a>', class_name | replace: 'title=', 'aria-label=' }}
+            </li>
           {%- else -%}
             <li
               {% unless tags_dow_arr2 contains tag_dow or has_current_tag == false %}
-              class="is--disabled"
-              {% endunless %}>{{ '' | link_to_add_tag: tag_dow | replace: '</a>', class_name | replace: 'title=', 'aria-label=' }}</li>
+                class="is--disabled"
+              {% endunless %}
+            >
+              {{ '' | link_to_add_tag: tag_dow | replace: '</a>', class_name | replace: 'title=', 'aria-label=' }}
+            </li>
           {%- endif -%}
-
         {%- endfor -%}
-
       </ul>
     </div>
     <style>

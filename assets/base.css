@@ -4885,7 +4885,7 @@ shopify-payment-terms {
   padding: 0;
 }
 ::-webkit-scrollbar {
-  width: 1rem;
+  width: .8rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -4893,7 +4893,7 @@ shopify-payment-terms {
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #2e1065;
+  background-color: oklch(55.4% 0.046 257.417);
   /* background-color: #0e121d; */
   border-radius: 1rem;
   border: 0.1rem solid transparent;
