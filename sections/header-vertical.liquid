@@ -224,12 +224,12 @@
   {%- render 'push_menu' -%}</div>
   <div
   class="sr4-col-lg-12 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">
-  {%- render 't4s_logo'
+  {%- render 'sr4_logo'
 , tag: 'div'
 , isTransparent: false -%}</div>
   <div
   class="sr4-col-lg-12 sr4-col-md-4 sr4-col-3 sr4-text-lg-center sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">
-  {%- render 't4s_group_btns'
+  {%- render 'sr4_group_btns'
 , se_stts: se_stts -%}</div><divclass="sr4-col-12 sr4-d-none sr4-d-lg-block sr4-col-item sr4-text-center">{%- if se_stts.show_language and shop.published_locales.size > 1 -%}<linkrel="stylesheet"href="{{ 'base_drop.min.css' | asset_url }}"media="all">{%- render 'languages'
   , sid: section.id -%}{%- endif -%}{%- if se_stts.show_currency -%}<linkrel="stylesheet"href="{{ 'base_drop.min.css' | asset_url }}"media="all">{%- render 'currencies'
   , sid: section.id -%}{%- endif -%}</div><divclass="sr4-col-12 sr4-d-none sr4-d-lg-block sr4-col-item">{%- render 'menu_blocks'

@@ -358,7 +358,7 @@
             </a>
             {%- if bk_stts.enable_wishlist or bk_stts.enable_compare -%}
               <!-- render sr4_wis_cp.liquid -->
-              {%- render 't4s_wis_cp', product: product, bk_stts: bk_stts -%}
+              {%- render 'sr4_wis_cp', product: product, bk_stts: bk_stts -%}
             {%- endif -%}
 
           {%- else -%}
@@ -394,7 +394,7 @@
 
             {%- if bk_stts.enable_wishlist or bk_stts.enable_compare -%}
               <!-- render sr4_wis_cp.liquid -->
-              {%- render 't4s_wis_cp', product: product, bk_stts: bk_stts -%}
+              {%- render 'sr4_wis_cp', product: product, bk_stts: bk_stts -%}
             {%- endif -%}
 
             <button

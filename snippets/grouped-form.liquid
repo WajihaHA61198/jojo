@@ -269,7 +269,7 @@
       <div class="sr4-d-flex sr4-flex-wrap">
         {%- if show_product_current and bk_stts.enable_wishlist or bk_stts.enable_compare -%}
           <!-- render sr4_wis_cp.liquid -->
-          {%- render 't4s_wis_cp', product: product, bk_stts: bk_stts -%}
+          {%- render 'sr4_wis_cp', product: product, bk_stts: bk_stts -%}
         {%- endif -%}
 
         <button

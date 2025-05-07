@@ -262,23 +262,23 @@
             {%- endif -%}
           </div>
           <div class="sr4-col-lg-6 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">
-            {%- render 't4s_logo', tag: 'div', isTransparent: h_transparent -%}
+            {%- render 'sr4_logo', tag: 'div', isTransparent: h_transparent -%}
           </div>
           <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">
-            {%- render 't4s_group_btns', se_stts: se_stts -%}
+            {%- render 'sr4_group_btns', se_stts: se_stts -%}
           </div>
         </div>
       {%- else -%}
         <div data-header-height class="sr4-row sr4-gx-15 sr4-gx-md-30 sr4-align-items-center">
           <div class="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div>
           <div class="sr4-col-lg-3 sr4-d-lg-block sr4-d-none sr4-col-group_btns sr4-col-item sr4-lh-1">
-            {%- render 't4s_group_btns_split', se_stts: se_stts, isSplit1: true -%}
+            {%- render 'sr4_group_btns_split', se_stts: se_stts, isSplit1: true -%}
           </div>
           <div class="sr4-col-lg-6 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-col-item">
-            {%- render 't4s_logo', tag: 'div', isTransparent: h_transparent -%}
+            {%- render 'sr4_logo', tag: 'div', isTransparent: h_transparent -%}
           </div>
           <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">
-            {%- render 't4s_group_btns_split', se_stts: se_stts, isSplit1: false -%}
+            {%- render 'sr4_group_btns_split', se_stts: se_stts, isSplit1: false -%}
           </div>
         </div>
       {%- endif -%}
