@@ -1,13 +1,14 @@
 {%- liquid
   assign se_stts = section.settings
-  assign se_blocks = section.blocks 
+  assign se_blocks = section.blocks
   assign admin_sp = request.design_mode
   assign h__bgimg = se_stts.h__bgimg
   assign h_transparent = se_stts.transparent_header
-  if request.page_type != 'index' 
-    assign h_transparent = false 
+  if request.page_type != 'index'
+    assign h_transparent = false
   endif
-  assign space_transparent = se_stts.space_transparent_header -%}
+  assign space_transparent = se_stts.space_transparent_header
+-%}
 
 {%- style -%}
   {%- assign opnav  = se_stts.opnav | divided_by: 100.0 -%}
@@ -69,10 +70,10 @@
   {%- endif -%}
 
   {%- if se_stts.sticky_header -%}
-  
+
     {%- unless se_stts.scroll_header -%}
     .sr4-hsticky__ready .sr4-section-header {
-        position: sticky;      
+        position: sticky;
         top: 0;
         z-index: 460;
     }
@@ -81,7 +82,7 @@
       box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
     }
     {%- endunless -%}
-    
+
     {%- assign opnavst  = se_stts.opnavst | divided_by: 100.0 -%}
     .is-header--stuck .sr4-header__wrapper {
       --h-text-color      : {{se_stts.clnavst}};
@@ -101,12 +102,12 @@
         --br-cl-form:{{se_stts.bgseavst | color_darken: 15}};
     }
   {%- endif -%}
- 
+
   .sr4-section-header [data-header-height] {
-      min-height: {{se_stts.h_navmb}}px;    
+      min-height: {{se_stts.h_navmb}}px;
   }
   .sr4-section-header [data-header-height2] {
-      min-height: {{se_stts.height2}}px;    
+      min-height: {{se_stts.height2}}px;
   }
   .sr4-header__logo img {
     padding-top: 5px;
@@ -148,7 +149,7 @@
   .sr4-site-nav__icon>a:hover svg.sr4-icon {
       color: var(--h-text-color-hover);
   }
-  .sr4-site-nav__icon a { 
+  .sr4-site-nav__icon a {
     display: inline-block;
     line-height: 1;
   }
@@ -166,11 +167,11 @@
        }
       {%- endif -%}
       .sr4-section-header [data-header-height] {
-         min-height: {{se_stts.height}}px;    
+         min-height: {{se_stts.height}}px;
       }
       {%- if se_stts.full_header -%}
       .sr4-announcement-bar >.sr4-container, .sr4-top-bar >.sr4-container,
-      .sr4-header__wrapper .sr4-section-header__mid >.sr4-container, 
+      .sr4-header__wrapper .sr4-section-header__mid >.sr4-container,
       .sr4-header__wrapper .sr4-section-header__bot>.sr4-container {
           max-width: 100%;
       }
@@ -215,10 +216,10 @@
     .sr4-section-header__bot .sr4-h-cat:hover {
       background-color: {{se_stts.bgcategory | color_darken: 15}};
     }
-    .sr4-section-header__bot .sr4-h-cat >h5 { 
+    .sr4-section-header__bot .sr4-h-cat >h5 {
       color: {{se_stts.clnav2}};
       min-height: {{se_stts.height2}}px;
-      font-size: 14px;    
+      font-size: 14px;
       width: 230px;
       padding:0px 15px;
       cursor: pointer;
@@ -230,7 +231,7 @@
         width:20px;
         height:20px
     }
-    
+
     .sr4-h-cat >svg.sr4-icon-select-arrow {
         margin-right: 7px;
     }
@@ -268,15 +269,23 @@
   }
 {%- endstyle -%}
 
-<div data-header-options='{ "isTransparent": {{h_transparent}},"isSticky": {{se_stts.sticky_header}},"hideScroldown": {{se_stts.scroll_header}} }' class="sr4-header__wrapper sr4-header__design{{se_stts.header_design}} sr4-layout-layout_categories{% if h__bgimg != blank %} lazyloadsr4 sr4-header__bgimg" data-bgset="{{ h__bgimg | image_url: width: 1 }}" data-ratio="{{h__bgimg.aspect_ratio}}" data-sizes="auto"{% else %}"{% endif %}>
+<div
+  data-header-options='{ "isTransparent": {{h_transparent}},"isSticky": {{se_stts.sticky_header}},"hideScroldown": {{se_stts.scroll_header}} }'
+  class="sr4-header__wrapper sr4-header__design{{se_stts.header_design}} sr4-layout-layout_categories"
+>
   <div class="sr4-section-header__mid sr4-pr">
     <div class="sr4-container">
       <div data-header-height class="sr4-row sr4-gx-15 sr4-gx-md-30 sr4-align-items-center">
-          <div class="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div>
-          <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-text-lg-start sr4-col-item">{%- render 'sr4_logo', tag:'div', isTransparent:h_transparent-%}</div>
-          <div data-predictive-search data-sid="search-hidden" class="sr4-search-header__form-wrap sr4-d-none sr4-d-lg-block sr4-col-6 sr4-col-item">
-
-            {%- style -%}
+        <div class="sr4-col-md-4 sr4-col-3 sr4-d-lg-none sr4-col-item">{%- render 'push_menu' -%}</div>
+        <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-6 sr4-text-center sr4-text-lg-start sr4-col-item">
+          {%- render 'sr4_logo', tag: 'div', isTransparent: h_transparent -%}
+        </div>
+        <div
+          data-predictive-search
+          data-sid="search-hidden"
+          class="sr4-search-header__form-wrap sr4-d-none sr4-d-lg-block sr4-col-6 sr4-col-item"
+        >
+          {%- style -%}
                 .sr4-search-header__form {
                     padding: 0;
                     border: 1px solid rgba(var(--h-text-color-rgb), 0.15);
@@ -295,7 +304,7 @@
                 .sr4-header__design2 .sr4-search-header__form,
                 .sr4-header__design2 .sr4-search-header__form .sr4-search-header__submit{border-radius:0px;}
                 .sr4-header__design2 .sr4-search-header__form .sr4-search-header__submit{min-width:56px;background-color:transparent;}
-                
+
                 .sr4-search-header__submit-icon svg{
                     width:18px;height:18px;
                     transition: .35s cubic-bezier(.25, .1, .25, 1);
@@ -408,7 +417,7 @@
                   visibility: visible;
                   pointer-events: auto;
               }
-              .sr4-frm-search__content { 
+              .sr4-frm-search__content {
                 height:auto;
                 overflow: auto;
                 overflow-x: hidden;
@@ -460,240 +469,323 @@
              .sr4-frm-search__content .sr4-widget__pr .sr4-widget__pr-title:hover,
              .sr4-search-header__form-wrap .sr4-mini-search__viewAll:hover {
                 color: var(--accent-color);
-             }                                                                                                                                     
-            {%- endstyle -%}
-            {%- liquid
-             assign collection = collections[settings.search_prs_suggest]
-             assign limit = 5 
-             assign show_search_suggest = settings.show_search_suggest
-             if shop.types.size < 3
-             assign shop_types = shop.types | join: ' ' | remove: ' '
-             else
-             assign shop_types = 'type_the4'
-             endif -%}
-             
-            <form data-frm-search action="{{ routes.search_url }}" method="get" class="sr4-search-header__form sr4-row sr4-g-0 sr4-align-items-center" role="search">
-              <input type="hidden" name="type" value="product">
-              <input type="hidden" name="options[unavailable_products]" value="{{settings.unavailable_prs}}">
-              <input type="hidden" name="options[prefix]" value="last">
-              {%- if settings.filter_type_search and shop_types != blank -%}
+             }
+          {%- endstyle -%}
+          {%- liquid
+            assign collection = collections[settings.search_prs_suggest]
+            assign limit = 5
+            assign show_search_suggest = settings.show_search_suggest
+            if shop.types.size < 3
+              assign shop_types = shop.types | join: ' ' | remove: ' '
+            else
+              assign shop_types = 'type_the4'
+            endif
+          -%}
+
+          <form
+            data-frm-search
+            action="{{ routes.search_url }}"
+            method="get"
+            class="sr4-search-header__form sr4-row sr4-g-0 sr4-align-items-center"
+            role="search"
+          >
+            <input type="hidden" name="type" value="product">
+            <input type="hidden" name="options[unavailable_products]" value="{{settings.unavailable_prs}}">
+            <input type="hidden" name="options[prefix]" value="last">
+            {%- if settings.filter_type_search and shop_types != blank -%}
               <div data-cat-search class="sr4-search-header__type sr4-pr sr4-oh sr4-col-auto sr4-col-item">
-                 <select data-name="product_type" class="sr4-truncate">
-                   <option value="*">{{ 'search.general.all_categories' | t }}</option>
-                   {%- for product_type in shop.types -%}{%- if product_type == blank %}{% continue-%}{% endif -%}<option value="{{product_type}}"{% if search_pr_type == product_type %} selected="selected"{% endif %}>{{product_type}}</option>{%- endfor -%}
-                 </select>
-                 {%- comment %}<svg class="sr4-icon-select-arrow sr4-pe-none" role="presentation" width="10" height="10" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg>{% endcomment -%}
+                <select data-name="product_type" class="sr4-truncate">
+                  <option value="*">{{ 'search.general.all_categories' | t }}</option>
+                  {%- for product_type in shop.types -%}
+                    {%- if product_type == blank %}{% continue -%}{% endif -%}
+                    <option
+                      value="{{product_type}}"
+                      {% if search_pr_type == product_type %}
+                        selected="selected"
+                      {% endif %}
+                    >
+                      {{ product_type }}
+                    </option>
+                  {%- endfor -%}
+                </select>
+                {%- comment %}<svg class="sr4-icon-select-arrow sr4-pe-none" role="presentation" width="10" height="10" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg>{%- endcomment %}
               </div>
               <div class="sr4-search-header_border sr4-col-auto sr4-col-item"></div>
-             {%- endif -%}
-              <div class="sr4-search-header__main sr4-pr sr4-oh sr4-d-flex sr4-col sr4-col-item">
-                <input data-input-search class="sr4-search-header__input sr4-input__currentcolor" autocomplete="off" type="text" name="q" placeholder="{{ 'search.general.placeholder_products' | t }}">
-                <button class="sr4-search-header__submit{% if settings.ajax_search %} sr4-pe-none{% endif %}" type="submit">
-                    <span class="sr4-search-header__submit-text">{{ 'search.general.submit' | t }}</span>
-                    <span class="sr4-search-header__submit-icon sr4-d-none"><svg class="sr4-icon sr4-icon--search" aria-hidden="true" focusable="false" role="presentation"><use href="#icon-h-search"></use></svg></span>
-                </button>
+            {%- endif -%}
+            <div class="sr4-search-header__main sr4-pr sr4-oh sr4-d-flex sr4-col sr4-col-item">
+              <input
+                data-input-search
+                class="sr4-search-header__input sr4-input__currentcolor"
+                autocomplete="off"
+                type="text"
+                name="q"
+                placeholder="{{ 'search.general.placeholder_products' | t }}"
+              >
+              <button
+                class="sr4-search-header__submit{% if settings.ajax_search %} sr4-pe-none{% endif %}"
+                type="submit"
+              >
+                <span class="sr4-search-header__submit-text">{{ 'search.general.submit' | t }}</span>
+                <span class="sr4-search-header__submit-icon sr4-d-none">
+                  <svg class="sr4-icon sr4-icon--search" aria-hidden="true" focusable="false" role="presentation">
+                    <use href="#icon-h-search"></use>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </form>
+          <div class="sr4-pr">
+            <div class="sr4-pa sr4-frm-search__results">
+              <div data-skeleton-search class="sr4-skeleton_wrap sr4-dn">
+                {%- for i in (1..4) -%}
+                  <div class="sr4-row sr4-space-item-inner">
+                    <div class="sr4-col-auto sr4-col-item sr4-widget_img_pr"><div class="sr4-skeleton_img"></div></div>
+                    <div class="sr4-col sr4-col-item sr4-widget_if_pr">
+                      <div class="sr4-skeleton_txt1"></div>
+                      <div class="sr4-skeleton_txt2"></div>
+                    </div>
+                  </div>
+                {%- endfor -%}
               </div>
-            </form>
-            <div class="sr4-pr">
-                 <div class="sr4-pa sr4-frm-search__results">
-                    <div data-skeleton-search class="sr4-skeleton_wrap sr4-dn">
-                       {%- for i in (1..4) -%}
-                       <div class="sr4-row sr4-space-item-inner">
-                          <div class="sr4-col-auto sr4-col-item sr4-widget_img_pr"><div class="sr4-skeleton_img"></div></div>
-                          <div class="sr4-col sr4-col-item sr4-widget_if_pr"><div class="sr4-skeleton_txt1"></div><div class="sr4-skeleton_txt2"></div></div>
-                       </div>
-                       {%- endfor -%}
-                    </div>
-                    <div data-results-search class="sr4-frm-search__content sr4_ratioadapt sr4-current-scrollbar"{% if collection == blank or show_search_suggest == false %} style="display: none;"{% endif%}>
-                      {%- if collection != blank and show_search_suggest -%}
-                            {%- for product in collection.products limit:limit -%}
-                            {%- render 'pr-sidebar-loop',imgatt:"",product:product,pr_url:product.url,placeholder_img:placeholder_img,price_varies_style:price_varies_style -%}
-                            {%- endfor -%}
-                        {%- endif -%}
-                    </div>
-                    {%- if collection != blank and show_search_suggest -%}
-                       {%- if collection.all_products_count > limit -%}
-                          <div data-viewAll-search>
-                             <a href="{{collection.url}}" class="sr4-mini-search__viewAll sr4-d-block">{{ 'search.pagination.view_all' | t }} <svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M 18.71875 6.78125 L 17.28125 8.21875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 17.28125 23.78125 L 18.71875 25.21875 L 27.21875 16.71875 L 27.90625 16 L 27.21875 15.28125 Z"/></svg></a>
-                          </div>
-                       {%- endif -%}
-                    {%- else -%}<div data-viewAll-search></div>
-                    {%- endif -%}
-                 </div>
+              <div
+                data-results-search
+                class="sr4-frm-search__content sr4_ratioadapt sr4-current-scrollbar"
+                {% if collection == blank or show_search_suggest == false %}
+                  style="display: none;"
+                {% endif %}
+              >
+                {%- if collection != blank and show_search_suggest -%}
+                  {%- for product in collection.products limit: limit -%}
+                    {%- render 'pr-sidebar-loop',
+                      imgatt: '',
+                      product: product,
+                      pr_url: product.url,
+                      placeholder_img: placeholder_img,
+                      price_varies_style: price_varies_style
+                    -%}
+                  {%- endfor -%}
+                {%- endif -%}
+              </div>
+              {%- if collection != blank and show_search_suggest -%}
+                {%- if collection.all_products_count > limit -%}
+                  <div data-viewAll-search>
+                    <a href="{{collection.url}}" class="sr4-mini-search__viewAll sr4-d-block">
+                      {{- 'search.pagination.view_all' | t }}
+                      <svg width="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path d="M 18.71875 6.78125 L 17.28125 8.21875 L 24.0625 15 L 4 15 L 4 17 L 24.0625 17 L 17.28125 23.78125 L 18.71875 25.21875 L 27.21875 16.71875 L 27.90625 16 L 27.21875 15.28125 Z"/>
+                      </svg>
+                    </a>
+                  </div>
+                {%- endif -%}
+              {%- else -%}
+                <div data-viewAll-search></div>
+              {%- endif -%}
             </div>
           </div>
-          <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">{%- render 'sr4_group_btns',se_stts:se_stts -%}</div>
+        </div>
+        <div class="sr4-col-lg-3 sr4-col-md-4 sr4-col-3 sr4-text-end sr4-col-group_btns sr4-col-item sr4-lh-1">
+          {%- render 'sr4_group_btns', se_stts: se_stts -%}
+        </div>
       </div>
     </div>
   </div>
   <div class="sr4-section-header__bot sr4-d-none sr4-d-lg-block">
     <div class="sr4-container">
       <div data-header-height2 class="sr4-row sr4-g-0 sr4-align-items-center">
-          {%- if se_stts.shop_cat -%}
-            <link rel="stylesheet" href="{{ 'categories-menu.css' | asset_url }}" media="print" onload="this.media='all'">
-            <div class="sr4-col-auto sr4-col-item sr4-h-cat sr4-h-cat-br__{{se_stts.border_cate}} sr4-pr">
-              <h5 class="sr4-d-flex sr4-align-items-center"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor"><path d="M 4 7 L 4 9 L 28 9 L 28 7 Z M 4 15 L 4 17 L 28 17 L 28 15 Z M 4 23 L 4 25 L 28 25 L 28 23 Z"/></svg><span class="sr4-d-inline-block sr4-truncate">{{se_stts.txt_cat}}</span></h5>
-              {%- if se_stts.arrow -%}
-              <svg class="sr4-icon-select-arrow sr4-pa sr4-op-0" width="10" height="10" role="presentation" viewBox="0 0 19 12"><use xlink:href="#sr4-select-arrow"></use></svg>
+        {%- if se_stts.shop_cat -%}
+          <link rel="stylesheet" href="{{ 'categories-menu.css' | asset_url }}" media="print" onload="this.media='all'">
+          <div class="sr4-col-auto sr4-col-item sr4-h-cat sr4-h-cat-br__{{se_stts.border_cate}} sr4-pr">
+            <h5 class="sr4-d-flex sr4-align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="20" height="20" fill="currentColor">
+                <path d="M 4 7 L 4 9 L 28 9 L 28 7 Z M 4 15 L 4 17 L 28 17 L 28 15 Z M 4 23 L 4 25 L 28 25 L 28 23 Z"/>
+              </svg>
+              <span class="sr4-d-inline-block sr4-truncate">{{ se_stts.txt_cat }}</span>
+            </h5>
+            {%- if se_stts.arrow -%}
+              <svg
+                class="sr4-icon-select-arrow sr4-pa sr4-op-0"
+                width="10"
+                height="10"
+                role="presentation"
+                viewBox="0 0 19 12"
+              >
+                <use xlink:href="#sr4-select-arrow"></use>
+              </svg>
             {%- endif -%}
-              <div data-wrapper-categories class="sr4-categories__wrapper sr4-pa sr4-op-0">
-                <svg aria-hidden="true" focusable="false" role="presentation" class="sr4-svg-spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg"><circle class="sr4-path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle> </svg>
-              </div>
+            <div data-wrapper-categories class="sr4-categories__wrapper sr4-pa sr4-op-0">
+              <svg
+                aria-hidden="true"
+                focusable="false"
+                role="presentation"
+                class="sr4-svg-spinner"
+                viewBox="0 0 66 66"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <circle class="sr4-path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+              </svg>
             </div>
-          {%- endif -%}
-          <div class="sr4-col sr4-col-item">{%- render 'menu_blocks',admin_sp:admin_sp,se_blocks:se_blocks,se_stts:se_stts -%}</div>
-          {%- if se_stts.text != blank %}<div class="sr4-col-3 sr4-text-end sr4-col-item sr4-h-cat__html sr4-rte">{{se_stts.text}}</div>{% endif -%}
+          </div>
+        {%- endif -%}
+        <div class="sr4-col sr4-col-item">
+          {%- render 'menu_blocks', admin_sp: admin_sp, se_blocks: se_blocks, se_stts: se_stts -%}
+        </div>
+        {%- if se_stts.text != blank %}
+          <div class="sr4-col-3 sr4-text-end sr4-col-item sr4-h-cat__html sr4-rte">{{ se_stts.text }}</div>
+        {% endif -%}
       </div>
     </div>
   </div>
 </div>
 
 {%- if h_transparent -%}
-<script>
-document.documentElement.classList.add('is--header-transparent');
-document.documentElement.style.setProperty('--header-height', document.getElementById('shopify-section-{{section.id}}').offsetHeight + 'px');
-</script>
+  <script>
+    document.documentElement.classList.add('is--header-transparent');
+    document.documentElement.style.setProperty(
+      '--header-height',
+      document.getElementById('shopify-section-{{section.id}}').offsetHeight + 'px'
+    );
+  </script>
 {%- endif -%}
 
 {%- schema -%}
-  {
-   "name": "Header main",
-   "tag": "header",
-   "class": "sr4-section sr4-section-header sr4-is-header-categories-menu",
-   "settings": [
-      {
-        "type": "checkbox",
-        "id": "full_header",
-        "info": "Make header full width",
-        "label": "Enable full Width",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "+ Options only working desktop"
-      },
-      {
-        "type": "range",
-        "id": "height",
-        "label": "Custom header top height",
-        "min": 60,
-        "max": 160,
-        "step": 1,
-        "unit": "px",
-        "default": 90
-      },
-      {
-        "type": "range",
-        "id": "frm_sea_mw",
-        "label": "Search form max width",
-        "min": 500,
-        "max": 1600,
-        "step": 100,
-        "unit": "px",
-        "default": 600
-      },
-      {
-        "type": "range",
-        "id": "height2",
-        "label": "Custom header bottom height",
-        "min": 40,
-        "max": 140,
-        "step": 1,
-        "unit": "px",
-        "default": 50
-      },
-      {
-        "type": "checkbox",
-        "id": "arrow",
-        "label": "Show dropdown arrow",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "border",
-        "label": "Show border bottom",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "border_cate",
-        "label": "Show border left category menu",
-        "default": false
-      },
+{
+  "name": "Header main",
+  "tag": "header",
+  "class": "sr4-section sr4-section-header sr4-is-header-categories-menu",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "full_header",
+      "info": "Make header full width",
+      "label": "Enable full Width",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "+ Options only working desktop"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Custom header top height",
+      "min": 60,
+      "max": 160,
+      "step": 1,
+      "unit": "px",
+      "default": 90
+    },
+    {
+      "type": "range",
+      "id": "frm_sea_mw",
+      "label": "Search form max width",
+      "min": 500,
+      "max": 1600,
+      "step": 100,
+      "unit": "px",
+      "default": 600
+    },
+    {
+      "type": "range",
+      "id": "height2",
+      "label": "Custom header bottom height",
+      "min": 40,
+      "max": 140,
+      "step": 1,
+      "unit": "px",
+      "default": 50
+    },
+    {
+      "type": "checkbox",
+      "id": "arrow",
+      "label": "Show dropdown arrow",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border",
+      "label": "Show border bottom",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "border_cate",
+      "label": "Show border left category menu",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "header_design",
+      "options": [
         {
-            "type": "select",
-            "id": "header_design",
-            "options": [
-                {
-                    "value": "1",
-                    "label": "Design 1"
-                },
-                {
-                    "value": "2",
-                    "label": "Design 2"
-                }
-            ],
-            "label": "Header design",
-            "default": "1"
+          "value": "1",
+          "label": "Design 1"
         },
-      {
-        "type": "select",
-        "id": "align",
-         "options": [
-          {
-            "value": "start",
-            "label": "Left"
-          },
-          {
-            "value": "center",
-            "label": "Center"
-          },
-          {
-            "value": "end",
-            "label": "Right"
-          }
-         ],
-        "label": "Main menu align",
-        "default": "start"
-      },
-      {
-        "type": "select",
-        "id": "hover",
-        "options": [
-          {
-            "value": "hover_sideup",
-            "label": "Hover Slide Up"
-          },
-          {
-            "value": "hover_fadein",
-            "label": "Hover Fade In"
-          }
-        ],
-        "label": "Hover effect",
-        "default": "hover_sideup"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_active",
-        "info": "Make hightlight if the link is active",
-        "label": "Enable link active",
-        "default": false
-      },
-      {
-        "type": "header",
-        "content": "+ Options only working Tablet, mobile"
-      },
-      {
-        "type": "range",
-        "id": "h_navmb",
-        "label": "Custom header mobile height",
-        "min": 60,
-        "max": 160,
-        "step": 1,
-        "unit": "px",
-        "default": 62
-      },
-      /*{
+        {
+          "value": "2",
+          "label": "Design 2"
+        }
+      ],
+      "label": "Header design",
+      "default": "1"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "options": [
+        {
+          "value": "start",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "end",
+          "label": "Right"
+        }
+      ],
+      "label": "Main menu align",
+      "default": "start"
+    },
+    {
+      "type": "select",
+      "id": "hover",
+      "options": [
+        {
+          "value": "hover_sideup",
+          "label": "Hover Slide Up"
+        },
+        {
+          "value": "hover_fadein",
+          "label": "Hover Fade In"
+        }
+      ],
+      "label": "Hover effect",
+      "default": "hover_sideup"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_active",
+      "info": "Make hightlight if the link is active",
+      "label": "Enable link active",
+      "default": false
+    },
+    {
+      "type": "header",
+      "content": "+ Options only working Tablet, mobile"
+    },
+    {
+      "type": "range",
+      "id": "h_navmb",
+      "label": "Custom header mobile height",
+      "min": 60,
+      "max": 160,
+      "step": 1,
+      "unit": "px",
+      "default": 62
+    },
+    /*{
         "type": "checkbox",
         "id": "mb_cat",
         "label": "Show Categories?",
@@ -713,762 +805,762 @@ document.documentElement.style.setProperty('--header-height', document.getElemen
         "label": "Categories position the first?",
         "default": false
       },*/
-      {
-        "type": "header",
-        "content": "+ Header Colors:"
-      },
-      {
-        "type": "image_picker",
-        "id": "h__bgimg",
-        "label": "Header Background image"
-      },
-      {
-        "type": "color",
-        "id": "bgnav",
-        "label": "Header background color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "range",
-        "id": "opnav",
-        "label": "Background opacity",
-        "default": 100,
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "%"
-      },
-      {
-        "type": "color",
-        "id": "clnav",
-        "label": "Header text/icon color",
-        "default": "#222222"
-      },
-      {
-        "type": "color",
-        "id": "clnav_hover",
-        "label": "Header text/icon color when hover",
-        "default": "#005b69"
-      },
-      {
-        "type": "color",
-        "id": "bgsea",
-        "label": "Header search background color",
-        "default": "#fafafa"
-      },
-      {
-        "type": "color",
-        "id": "clsea",
-        "label": "Button search form color",
-        "default": "#005b69"
-      },
-      {
-        "type": "color",
-        "id": "bgnav2",
-        "label": "Header bottom background color",
-        "default": "#005b69"
-      },
-      {
-        "type": "color",
-        "id": "clnav2",
-        "label": "Header bottom text/icon color",
-        "default": "#fff"
-      },
-      {
-        "type": "color",
-        "id": "bgcategory",
-        "label": "Header category background color",
-        "default": "#007e91"
-      },
-      {
-        "type": "header",
-        "content": "+ Header Group buttons:"
-      },
-      {
-        "type": "select",
-        "id": "h_icon",
-        "options": [
-          {
-            "value": "jojo",
-            "label": "theme icon"
-          },
-          {
-            "value": "pe",
-            "label": "Pe icon"
-          },
-          {
-            "value": "drawn",
-            "label": "Drawn icon"
-          },
-          {
-            "value": "line",
-            "label": "Line awesome"
-          }
-        ],
-        "label": "Design icon:",
-        "default": "jojo"
-      },
-      {
-        "type": "select",
-        "id": "hover_icon",
-        "options": [
-          {
-            "value": "1",
-            "label": "Simple"
-          },
-          {
-            "value": "2",
-            "label": "Zoom"
-          },
-          {
-            "value": "3",
-            "label": "Zoom and skew"
-          }
-        ],
-        "label": "Hover effect icon:",
-        "default": "2"
-      },
-      {
-        "type": "checkbox",
-        "id": "show_search",
-        "label": "Show search icon?",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_acc",
-        "label": "Show account icon?",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "show_wis",
-        "label": "Show wishlist icon?",
-        "default": true
-      },
-      {
-        "type": "select",
-        "id": "cart_des",
-        "options": [
-          {
-            "value": "0",
-            "label": "Disable"
-          },
-          {
-            "value": "1",
-            "label": "Cart count"
-          },
-          {
-            "value": "2",
-            "label": "Cart count, total price"
-          },
-          {
-            "value": "3",
-            "label": "Cart count 2"
-          },
-          {
-            "value": "4",
-            "label": "Cart total price"
-          },
-          {
-            "value": "5",
-            "label": "Cart divider, total price"
-          }
-        ],
-        "label": "Shopping cart:",
-        "default": "1",
-        "info": "Set your shopping cart widget design in the header."
-      },
-      {
-        "type": "color",
-        "id": "bg_hc",
-        "label": "Count background color",
-        "default": "#000000"
-      },
-      {
-        "type": "color",
-        "id": "cl_hc",
-        "label": "Count text color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "header",
-        "content": "+ Sticky header"
-      }, 
-      {
-        "type": "checkbox",
-        "id": "sticky_header",
-        "label": "Enable sticky header",
-        "default": true
-      },
-      {
-        "type": "checkbox",
-        "id": "scroll_header",
-        "label": "Enable hide sticky header on scroll down",
-        "default": true
-      },
-      {
-        "type": "color",
-        "id": "bgnavst",
-        "label": "Header background color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "range",
-        "id": "opnavst",
-        "label": "Background opacity",
-        "default": 100,
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "%"
-      },
-      {
-        "type": "color",
-        "id": "clnavst",
-        "label": "Header text/icon color",
-        "default": "#222222"
-      },
-      {
-        "type": "color",
-        "id": "clnavst_hover",
-        "label": "Header text/icon color when hover",
-        "default": "#005b69"
-      },
-      {
-        "type": "color",
-        "id": "bgseavst",
-        "label": "Header search background color",
-        "default": "#fafafa"
-      },
-      {
-        "type": "color",
-        "id": "clseast",
-        "label": "Button search form color",
-        "default": "#005b69"
-      },
-      {
-        "type": "header",
-        "content": "+ Transparent header"
-      },
-      {
-        "type": "checkbox",
-        "id": "transparent_header",
-        "label": "Enable transparent header",
-        "info": "Only active on homepage",
-        "default": false
-      },
-      {
-        "type": "checkbox",
-        "id": "space_transparent_header",
-        "label": "Enable transparent header space top",
-        "info": "Only active on homepage and transparent header active",
-        "default": false
-      },
-      {
-        "type": "color",
-        "id": "bgnavtr",
-        "label": "Header background color",
-        "default": "#000000"
-      },
-      {
-        "type": "range",
-        "id": "opnavtr",
-        "label": "Background opacity",
-        "default": 40,
-        "min": 0,
-        "max": 100,
-        "step": 1,
-        "unit": "%"
-      },
-      {
-        "type": "color",
-        "id": "clnavtr",
-        "label": "Header text/icon color",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "clnavtr_hover",
-        "label": "Header text/icon color when hover",
-        "default": "#ffffff"
-      },
-      {
-        "type": "color",
-        "id": "bgseatr",
-        "label": "Header search background color",
-        "default": "#fafafa"
-      },
-      {
-        "type": "color",
-        "id": "clseatr",
-        "label": "Button search form color",
-        "default": "#005b69"
-      },
-      {
-        "type": "header",
-        "content": "+ Navigation typography"
-      },
-      {
-        "type": "select",
-        "id": "fm_nav",
-        "label": "Font Family",
-        "default": "1",
-        "options": [
-          {
-            "value": "1",
-            "label": "Font Family #1"
-          },
-          {
-            "value": "2",
-            "label": "Font Family #2"
-          },
-          {
-            "value": "3",
-            "label": "Font Family #3"
-          }
-        ]
-      },
-      {
-        "type": "range",
-        "id": "fs_nav",
-        "min": 10,
-        "max": 20,
-        "step": 0.5,
-        "label": "Font size",
-        "unit": "px",
-        "default": 14
-      },
-      {
-        "type": "range",
-        "id": "fw_nav",
-        "min": 300,
-        "max": 800,
-        "step": 100,
-        "label": "Font weight",
-        "default": 400
-      },
-      {
-        "type": "number",
-        "id": "ls_nav",
-        "label": "Letter spacing (in pixel)",
-        "info": "set is '0' use to default",
-        "default": 0
-      },
-      {
-         "type":"text",
-         "id":"txt_cat",
-         "label":"Heading",
-         "default":"SHOP BY CATEGORY"
-      },
-      {
-        "type": "header",
-        "content": "+ Text menu"
-      },
-      {
-        "type": "html",
-        "id": "text",
-        "label": "Text menu right",
-        "info": "Place here text you want to see.",
-        "default": "<i class=\"las la-phone fs__14\"><\/i> +92 313 021 3321 <i class=\"las la-envelope fs__14 ml__15\"><\/i> <a class=\"cg\" href=\"mailto:wajihahanif18@gmail.com\">wajihahanif18@gmail.com<\/a>"
-      },
-      {
-        "type": "header",
-        "content": "+ Categories"
-      },
-      {
-         "type": "checkbox",
-         "id": "shop_cat",
-         "label": "Use 'shop by category'",
-         "default": true
-      }
-   ],
-   "blocks": [
-       {
-         "type": "mega",
-         "name": "Mega item",
-         "settings": [
-            {
-              "type": "text",
-              "id": "title",
-              "label": "Heading",
-              "default": "mega"
-            },
-            {
-              "type": "url",
-              "id": "url",
-              "label": "Link"
-            },
-            {
-              "type": "select",
-              "id": "open_link",
-              "options": [
-                {
-                  "value": "_self",
-                  "label": "Current window"
-                },
-               {
-                  "value": "_blank",
-                  "label": "New window"
-                }
-              ],
-              "label": "Open link in"
-            },
-            {
-              "id": "icon",
-              "type": "text",
-              "label": "Icon"
-            },
-            {
-              "type": "checkbox",
-              "id": "cus_cl",
-              "label": "Use custom heading color",
-              "default": false
-            },
-            {
-              "type":"color",
-              "id":"cl",
-              "default": "#ec0101",
-              "label":"Heading color"
-            },
-            {
-              "type":"text",
-              "id":"lb",
-              "label":"Label text"
-            },
-            {
-              "type":"color",
-              "id":"lb_cl",
-              "label":"Label color",
-              "default":"#00BADB"
-            },
-            {
-              "type": "header",
-              "content": "+ Submenu"
-            },
-            /*{
-              "type": "checkbox",
-              "id": "lazy_mn",
-              "label": "Enable Lazy menu",
-              "info": "improve page load speed",
-              "default": true
-            },*/
-            {
-              "type": "select",
-              "id": "pos_sub",
-              "default": "bottom",
-              "options": [
-                {
-                  "value": "bottom-start",
-                  "label": "Start"
-                },
-                {
-                  "value": "bottom",
-                  "label": "Center"
-                },
-                {
-                  "value": "bottom-end",
-                  "label": "End"
-                }
-              ],
-              "label": "Position submenu"
-            },
-            {
-              "type": "select",
-              "id": "wid",
-              "options": [
-                {
-                  "value": "cus",
-                  "label": "Custom"
-                },
-                {
-                  "value": "full",
-                  "label": "Full width"
-                },
-                {
-                  "value": "full nav_t4cnt",
-                  "label": "Content full width"
-                }
-              ],
-              "label": "Width submenu:"
-            },
-            {
-              "type": "range",
-              "id": "cus_wid",
-              "label": "+ Custom Width",
-              "min": 200,
-              "max": 1200,
-              "step": 50,
-              "unit": "px",
-              "default": 1200
-            },
-            {
-              "type": "range",
-              "id": "id",
-              "min": 1,
-              "max": 16,
-              "step": 1,
-              "label": "ID",
-              "unit": "#",
-              "info": "ID connect mega menu.",
-              "default": 1
-            },
-            {
-              "type": "select",
-              "id": "r_s_h_item", 
-              "options": [
-                {
-                    "value": "0", 
-                    "label": "0"
-                },
-                {
-                    "value": "2", 
-                    "label": "2px"
-                },
-                {
-                    "value": "4", 
-                    "label": "4px"
-                },
-                {
-                    "value": "6", 
-                    "label": "6px"
-                },
-                {
-                    "value": "8", 
-                    "label": "8px"
-                },
-                {
-                    "value": "10", 
-                    "label": "10px"
-                },
-                {
-                    "value": "20",
-                    "label": "20px"
-                },
-                {
-                    "value": "30",
-                    "label": "30px"
-                }
-              ],
-              "label": "Space horizontal items",
-              "default": "30"
-            },
-            {
-              "type": "select",
-              "id": "r_s_v_item",
-              "options": [
-                {
-                    "value": "0", 
-                    "label": "0"
-                },
-                {
-                    "value": "2", 
-                    "label": "2px"
-                },
-                {
-                    "value": "4", 
-                    "label": "4px"
-                },
-                {
-                    "value": "6", 
-                    "label": "6px"
-                },
-                {
-                    "value": "8", 
-                    "label": "8px"
-                },
-                {
-                    "value": "10", 
-                    "label": "10px"
-                },
-                {
-                    "value": "20",
-                    "label": "20px"
-                },
-                {
-                    "value": "30",
-                    "label": "30px"
-                }
-              ],
-              "label": "Space vertical items", 
-              "default": "30"
-             }
-          ]
-       },
-       {
-         "type": "drop",
-         "name": "Dropdown item",
-         "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "Dropdown"
-          },
-         {
-            "type": "url",
-            "id": "url",
-            "label": "Link"
-         },
-          {
-            "type": "select",
-            "id": "open_link",
-            "options": [
-              {
-                "value": "_self",
-                "label": "Current window"
-              },
-             {
-                "value": "_blank",
-                "label": "New window"
-              }
-            ],
-            "label": "Open link in"
-          },
-          {
-            "type": "link_list",
-            "id": "menu",
-            "label": "Add menu"
-          },
-          {
-            "id": "icon",
-            "type": "text",
-            "label": "Icon"
-          },
-          {
-            "type": "checkbox",
-            "id": "cus_cl",
-            "label": "Use custom heading color",
-            "default": false
-          },
-          {
-            "type":"color",
-            "id":"cl",
-            "default": "#ec0101",
-            "label":"Heading color"
-          },
-          {
-            "type":"text",
-            "id":"lb",
-            "label":"Label text"
-          },
-          {
-            "type":"color",
-            "id":"lb_cl",
-            "label":"Label color"
-          },
-          {
-            "type": "header",
-            "content": "+ Submenu"
-          },
-            /*{
-              "type": "checkbox",
-              "id": "lazy_mn",
-              "label": "Enable Lazy menu",
-              "info": "improve page load speed",
-              "default": true
-            },*/
-          {
-            "type": "select",
-            "id": "pos_sub",
-            "default": "bottom",
-            "options": [
-              {
-                "value": "bottom-start",
-                "label": "Start"
-              },
-              {
-                "value": "bottom",
-                "label": "Center"
-              },
-              {
-                "value": "bottom-end",
-                "label": "End"
-              }
-            ],
-            "label": "Position submenu"
-          },
-          {
-            "type": "select",
-            "id": "pos",
-            "options": [
-                {
-                  "value": "left",
-                  "label": "Left"
-                },
-                {
-                  "value": "right",
-                  "label": "Right"
-                }
-            ],
-            "label": "Position child submenu"
-          }
-          ]
-       },
-       {
-         "type": "base",
-         "name": "Base item",
-         "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Heading",
-            "default": "base"
-          },
-         {
-            "type": "url",
-            "id": "url",
-            "label": "Link",
-            "default": "/"
-         },
-          {
-            "type": "select",
-            "id": "open_link",
-            "options": [
-              {
-                "value": "_self",
-                "label": "Current window"
-              },
-             {
-                "value": "_blank",
-                "label": "New window"
-              }
-            ],
-            "label": "Open link in"
-          },
-          {
-            "id": "icon",
-            "type": "text",
-            "label": "Icon"
-          },
-          {
-            "type": "checkbox",
-            "id": "cus_cl",
-            "label": "Use custom heading color",
-            "default": false
-          },
-          {
-            "type":"color",
-            "id":"cl",
-            "default": "#ec0101",
-            "label":"Heading color"
-          },
-          {
-            "type":"text",
-            "id":"lb",
-            "label":"Label text"
-          },
-          {
-            "type":"color",
-            "id":"lb_cl",
-            "label":"Label color"
-          }
-          ]
-       }
-   ],
-    "default": {
-      "blocks": [
+    {
+      "type": "header",
+      "content": "+ Header Colors:"
+    },
+    {
+      "type": "image_picker",
+      "id": "h__bgimg",
+      "label": "Header Background image"
+    },
+    {
+      "type": "color",
+      "id": "bgnav",
+      "label": "Header background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "opnav",
+      "label": "Background opacity",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "clnav",
+      "label": "Header text/icon color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "clnav_hover",
+      "label": "Header text/icon color when hover",
+      "default": "#005b69"
+    },
+    {
+      "type": "color",
+      "id": "bgsea",
+      "label": "Header search background color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "clsea",
+      "label": "Button search form color",
+      "default": "#005b69"
+    },
+    {
+      "type": "color",
+      "id": "bgnav2",
+      "label": "Header bottom background color",
+      "default": "#005b69"
+    },
+    {
+      "type": "color",
+      "id": "clnav2",
+      "label": "Header bottom text/icon color",
+      "default": "#fff"
+    },
+    {
+      "type": "color",
+      "id": "bgcategory",
+      "label": "Header category background color",
+      "default": "#007e91"
+    },
+    {
+      "type": "header",
+      "content": "+ Header Group buttons:"
+    },
+    {
+      "type": "select",
+      "id": "h_icon",
+      "options": [
         {
+          "value": "jojo",
+          "label": "theme icon"
+        },
+        {
+          "value": "pe",
+          "label": "Pe icon"
+        },
+        {
+          "value": "drawn",
+          "label": "Drawn icon"
+        },
+        {
+          "value": "line",
+          "label": "Line awesome"
+        }
+      ],
+      "label": "Design icon:",
+      "default": "jojo"
+    },
+    {
+      "type": "select",
+      "id": "hover_icon",
+      "options": [
+        {
+          "value": "1",
+          "label": "Simple"
+        },
+        {
+          "value": "2",
+          "label": "Zoom"
+        },
+        {
+          "value": "3",
+          "label": "Zoom and skew"
+        }
+      ],
+      "label": "Hover effect icon:",
+      "default": "2"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_search",
+      "label": "Show search icon?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_acc",
+      "label": "Show account icon?",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_wis",
+      "label": "Show wishlist icon?",
+      "default": true
+    },
+    {
+      "type": "select",
+      "id": "cart_des",
+      "options": [
+        {
+          "value": "0",
+          "label": "Disable"
+        },
+        {
+          "value": "1",
+          "label": "Cart count"
+        },
+        {
+          "value": "2",
+          "label": "Cart count, total price"
+        },
+        {
+          "value": "3",
+          "label": "Cart count 2"
+        },
+        {
+          "value": "4",
+          "label": "Cart total price"
+        },
+        {
+          "value": "5",
+          "label": "Cart divider, total price"
+        }
+      ],
+      "label": "Shopping cart:",
+      "default": "1",
+      "info": "Set your shopping cart widget design in the header."
+    },
+    {
+      "type": "color",
+      "id": "bg_hc",
+      "label": "Count background color",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "cl_hc",
+      "label": "Count text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "header",
+      "content": "+ Sticky header"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky_header",
+      "label": "Enable sticky header",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "scroll_header",
+      "label": "Enable hide sticky header on scroll down",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "bgnavst",
+      "label": "Header background color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "opnavst",
+      "label": "Background opacity",
+      "default": 100,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "clnavst",
+      "label": "Header text/icon color",
+      "default": "#222222"
+    },
+    {
+      "type": "color",
+      "id": "clnavst_hover",
+      "label": "Header text/icon color when hover",
+      "default": "#005b69"
+    },
+    {
+      "type": "color",
+      "id": "bgseavst",
+      "label": "Header search background color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "clseast",
+      "label": "Button search form color",
+      "default": "#005b69"
+    },
+    {
+      "type": "header",
+      "content": "+ Transparent header"
+    },
+    {
+      "type": "checkbox",
+      "id": "transparent_header",
+      "label": "Enable transparent header",
+      "info": "Only active on homepage",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "space_transparent_header",
+      "label": "Enable transparent header space top",
+      "info": "Only active on homepage and transparent header active",
+      "default": false
+    },
+    {
+      "type": "color",
+      "id": "bgnavtr",
+      "label": "Header background color",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "opnavtr",
+      "label": "Background opacity",
+      "default": 40,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%"
+    },
+    {
+      "type": "color",
+      "id": "clnavtr",
+      "label": "Header text/icon color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "clnavtr_hover",
+      "label": "Header text/icon color when hover",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "bgseatr",
+      "label": "Header search background color",
+      "default": "#fafafa"
+    },
+    {
+      "type": "color",
+      "id": "clseatr",
+      "label": "Button search form color",
+      "default": "#005b69"
+    },
+    {
+      "type": "header",
+      "content": "+ Navigation typography"
+    },
+    {
+      "type": "select",
+      "id": "fm_nav",
+      "label": "Font Family",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "Font Family #1"
+        },
+        {
+          "value": "2",
+          "label": "Font Family #2"
+        },
+        {
+          "value": "3",
+          "label": "Font Family #3"
+        }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "fs_nav",
+      "min": 10,
+      "max": 20,
+      "step": 0.5,
+      "label": "Font size",
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "fw_nav",
+      "min": 300,
+      "max": 800,
+      "step": 100,
+      "label": "Font weight",
+      "default": 400
+    },
+    {
+      "type": "number",
+      "id": "ls_nav",
+      "label": "Letter spacing (in pixel)",
+      "info": "set is '0' use to default",
+      "default": 0
+    },
+    {
+      "type": "text",
+      "id": "txt_cat",
+      "label": "Heading",
+      "default": "SHOP BY CATEGORY"
+    },
+    {
+      "type": "header",
+      "content": "+ Text menu"
+    },
+    {
+      "type": "html",
+      "id": "text",
+      "label": "Text menu right",
+      "info": "Place here text you want to see.",
+      "default": "<i class=\"las la-phone fs__14\"><\/i> +92 313 021 3321 <i class=\"las la-envelope fs__14 ml__15\"><\/i> <a class=\"cg\" href=\"mailto:wajihahanif18@gmail.com\">wajihahanif18@gmail.com<\/a>"
+    },
+    {
+      "type": "header",
+      "content": "+ Categories"
+    },
+    {
+      "type": "checkbox",
+      "id": "shop_cat",
+      "label": "Use 'shop by category'",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "mega",
+      "name": "Mega item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "mega"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "open_link",
+          "options": [
+            {
+              "value": "_self",
+              "label": "Current window"
+            },
+            {
+              "value": "_blank",
+              "label": "New window"
+            }
+          ],
+          "label": "Open link in"
+        },
+        {
+          "id": "icon",
+          "type": "text",
+          "label": "Icon"
+        },
+        {
+          "type": "checkbox",
+          "id": "cus_cl",
+          "label": "Use custom heading color",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "cl",
+          "default": "#ec0101",
+          "label": "Heading color"
+        },
+        {
+          "type": "text",
+          "id": "lb",
+          "label": "Label text"
+        },
+        {
+          "type": "color",
+          "id": "lb_cl",
+          "label": "Label color",
+          "default": "#00BADB"
+        },
+        {
+          "type": "header",
+          "content": "+ Submenu"
+        },
+        /*{
+              "type": "checkbox",
+              "id": "lazy_mn",
+              "label": "Enable Lazy menu",
+              "info": "improve page load speed",
+              "default": true
+            },*/
+        {
+          "type": "select",
+          "id": "pos_sub",
+          "default": "bottom",
+          "options": [
+            {
+              "value": "bottom-start",
+              "label": "Start"
+            },
+            {
+              "value": "bottom",
+              "label": "Center"
+            },
+            {
+              "value": "bottom-end",
+              "label": "End"
+            }
+          ],
+          "label": "Position submenu"
+        },
+        {
+          "type": "select",
+          "id": "wid",
+          "options": [
+            {
+              "value": "cus",
+              "label": "Custom"
+            },
+            {
+              "value": "full",
+              "label": "Full width"
+            },
+            {
+              "value": "full nav_t4cnt",
+              "label": "Content full width"
+            }
+          ],
+          "label": "Width submenu:"
+        },
+        {
+          "type": "range",
+          "id": "cus_wid",
+          "label": "+ Custom Width",
+          "min": 200,
+          "max": 1200,
+          "step": 50,
+          "unit": "px",
+          "default": 1200
+        },
+        {
+          "type": "range",
+          "id": "id",
+          "min": 1,
+          "max": 16,
+          "step": 1,
+          "label": "ID",
+          "unit": "#",
+          "info": "ID connect mega menu.",
+          "default": 1
+        },
+        {
+          "type": "select",
+          "id": "r_s_h_item",
+          "options": [
+            {
+              "value": "0",
+              "label": "0"
+            },
+            {
+              "value": "2",
+              "label": "2px"
+            },
+            {
+              "value": "4",
+              "label": "4px"
+            },
+            {
+              "value": "6",
+              "label": "6px"
+            },
+            {
+              "value": "8",
+              "label": "8px"
+            },
+            {
+              "value": "10",
+              "label": "10px"
+            },
+            {
+              "value": "20",
+              "label": "20px"
+            },
+            {
+              "value": "30",
+              "label": "30px"
+            }
+          ],
+          "label": "Space horizontal items",
+          "default": "30"
+        },
+        {
+          "type": "select",
+          "id": "r_s_v_item",
+          "options": [
+            {
+              "value": "0",
+              "label": "0"
+            },
+            {
+              "value": "2",
+              "label": "2px"
+            },
+            {
+              "value": "4",
+              "label": "4px"
+            },
+            {
+              "value": "6",
+              "label": "6px"
+            },
+            {
+              "value": "8",
+              "label": "8px"
+            },
+            {
+              "value": "10",
+              "label": "10px"
+            },
+            {
+              "value": "20",
+              "label": "20px"
+            },
+            {
+              "value": "30",
+              "label": "30px"
+            }
+          ],
+          "label": "Space vertical items",
+          "default": "30"
+        }
+      ]
+    },
+    {
+      "type": "drop",
+      "name": "Dropdown item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "Dropdown"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "open_link",
+          "options": [
+            {
+              "value": "_self",
+              "label": "Current window"
+            },
+            {
+              "value": "_blank",
+              "label": "New window"
+            }
+          ],
+          "label": "Open link in"
+        },
+        {
+          "type": "link_list",
+          "id": "menu",
+          "label": "Add menu"
+        },
+        {
+          "id": "icon",
+          "type": "text",
+          "label": "Icon"
+        },
+        {
+          "type": "checkbox",
+          "id": "cus_cl",
+          "label": "Use custom heading color",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "cl",
+          "default": "#ec0101",
+          "label": "Heading color"
+        },
+        {
+          "type": "text",
+          "id": "lb",
+          "label": "Label text"
+        },
+        {
+          "type": "color",
+          "id": "lb_cl",
+          "label": "Label color"
+        },
+        {
+          "type": "header",
+          "content": "+ Submenu"
+        },
+        /*{
+              "type": "checkbox",
+              "id": "lazy_mn",
+              "label": "Enable Lazy menu",
+              "info": "improve page load speed",
+              "default": true
+            },*/
+        {
+          "type": "select",
+          "id": "pos_sub",
+          "default": "bottom",
+          "options": [
+            {
+              "value": "bottom-start",
+              "label": "Start"
+            },
+            {
+              "value": "bottom",
+              "label": "Center"
+            },
+            {
+              "value": "bottom-end",
+              "label": "End"
+            }
+          ],
+          "label": "Position submenu"
+        },
+        {
+          "type": "select",
+          "id": "pos",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "label": "Position child submenu"
+        }
+      ]
+    },
+    {
+      "type": "base",
+      "name": "Base item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Heading",
+          "default": "base"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link",
+          "default": "/"
+        },
+        {
+          "type": "select",
+          "id": "open_link",
+          "options": [
+            {
+              "value": "_self",
+              "label": "Current window"
+            },
+            {
+              "value": "_blank",
+              "label": "New window"
+            }
+          ],
+          "label": "Open link in"
+        },
+        {
+          "id": "icon",
+          "type": "text",
+          "label": "Icon"
+        },
+        {
+          "type": "checkbox",
+          "id": "cus_cl",
+          "label": "Use custom heading color",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "cl",
+          "default": "#ec0101",
+          "label": "Heading color"
+        },
+        {
+          "type": "text",
+          "id": "lb",
+          "label": "Label text"
+        },
+        {
+          "type": "color",
+          "id": "lb_cl",
+          "label": "Label color"
+        }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      {
         "type": "mega"
       },
       {
@@ -1489,7 +1581,7 @@ document.documentElement.style.setProperty('--header-height', document.getElemen
       {
         "type": "base"
       }
-      ]
-    }
+    ]
+  }
 }
-{% endschema %}
+{%- endschema -%}

@@ -2,23 +2,30 @@
   <p
     class="sr4-form-message sr4-form-message--success"
     tabindex="-1"
-    data-form-status>
+    data-form-status
+  >
     {{ success_message | default: 'templates.contact.form.post_success' | t }}
   </p>
 {%- endif -%}
-{% assign error_order = "author, email, body, password, form" | split: ", " %}
+{% assign error_order = 'author, email, body, password, form' | split: ', ' %}
 {%- if form.errors -%}
   {%- if form.errors.translated_fields.size == 1 and form.errors.first == 'form' -%}
     <p
       class="sr4-form-message"
       tabindex="-1"
-      data-form-status>{{ form.errors.messages['form'] }}</p>
+      data-form-status
+    >
+      {{ form.errors.messages.form }}
+    </p>
   {%- else -%}
     <div class="sr4-form-message sr4-form-message--error">
       <h2
         class="sr4-form-message__title "
         tabindex="-1"
-        data-form-status>{{ 'templates.contact.form.error_heading' | t }}</h2>
+        data-form-status
+      >
+        {{ 'templates.contact.form.error_heading' | t }}
+      </h2>
       <ul>
         {% for error in error_order %}
           {% for field in form.errors %}
@@ -37,7 +44,10 @@
                 {%- if field == 'form' -%}
                   {{ form.errors.messages[field] }}
                 {%- else -%}
-                  <a href="#{{ form_id }}-{{ field }}" class="sr4-form-message__link">{{ field_label | strip | capitalize }} {{ form.errors.messages[field] }}</a>
+                  <a href="#{{ form_id }}-{{ field }}" class="sr4-form-message__link">
+                    {{- field_label | strip | capitalize }}
+                    {{ form.errors.messages[field] -}}
+                  </a>
                 {%- endif -%}
               </li>
             {% endif %}

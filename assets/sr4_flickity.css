@@ -77,14 +77,21 @@ https://flickity.metafizzy.co
   }
   
   /* ---- previous/next buttons ---- */
-  
+  .sr4-minicart-empty .flickity-prev-next-button.previous{
+  right:50px;
+}
+
+.sr4-minicart-empty .flickity-prev-next-button{
+  top:unset;
+  bottom:-30%;
+}
   .flickity-prev-next-button {
-    top: unset;
-    bottom: -30%;
+    /* top: unset;
+    bottom: -30%; */
     width: 30px;
     height: 30px;
     border-radius: 50%;
-    /* vertically center */
+    /* vertically: center; */
     transform: translateY(-50%);
   }
   

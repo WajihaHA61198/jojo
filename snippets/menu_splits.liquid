@@ -24,12 +24,12 @@
   endif
 -%}
 
-
 <nav class="sr4-navigation sr4-text-{{_text}} sr4-nav__{{se_stts.hover}} sr4-nav-arrow__{{se_stts.arrow}}">
   <ul
     data-menu-nav
     id="sr4-nav-ul{{_id}}"
-    class="sr4-nav__ul sr4-d-inline-flex sr4-flex-wrap sr4-align-items-center">
+    class="sr4-nav__ul sr4-d-inline-flex sr4-flex-wrap sr4-align-items-center"
+  >
     {%- for block in se_blocks offset: _offset limit: _limit -%}
       {%- assign bk_stts = block.settings -%}
       {%- assign blockID = block.id -%}
@@ -40,26 +40,30 @@
             id="item_{{blockID}}"
             data-placement="{{placement}}"
             class="sr4-type__{{block.type}} menu-width__{{bk_stts.wid}} sr4-menu-item has--children menu-has__offsets"
-            {{ block.shopify_attributes }}>
+            {{ block.shopify_attributes }}
+          >
             <a
               class="sr4-lh-1 sr4-d-flex sr4-align-items-center sr4-pr"
               href="{{bk_stts.url | default:root_url}}"
               target="{{bk_stts.open_link}}"
               {% if bk_stts.cus_cl %}
-              style="color:{{bk_stts.cl}}"
-              {% endif %}>{%- render 'title_menu'
-, bk_stts: bk_stts
-, showArrow: showArrow -%}</a>
+                style="color:{{bk_stts.cl}}"
+              {% endif %}
+            >
+              {%- render 'title_menu', bk_stts: bk_stts, showArrow: showArrow -%}
+            </a>
             <div id="content_{{blockID}}" class="sr4-sub-menu sr4-pa sr4-op-0 sr4-pe-none">
               <div
                 class="sr4-container"
                 {% if bk_stts.wid != 'full nav_t4cnt' %}
-                style="width:{{bk_stts.cus_wid}}px"
-                {% endif %}>
+                  style="width:{{bk_stts.cus_wid}}px"
+                {% endif %}
+              >
                 <div
                   class="sr4-row sr4-gx-{{bk_stts.r_s_h_item}} sr4-gy-{{bk_stts.r_s_v_item}} sr4-lazy_menu{% if bk_stts.enable_packery %} isotopesr4 isotopesr4-later{% endif %}"
                   data-id="{{bk_stts.id}}"
-                  data-isotopesr4-js='{ "itemSelector": ".sr4-sub-column-item", "layoutMode": "packery","gutter": 0 }'>
+                  data-isotopesr4-js='{ "itemSelector": ".sr4-sub-column-item", "layoutMode": "packery","gutter": 0 }'
+                >
                   <div class="sr4-loading--bg"></div>
                 </div>
               </div>
@@ -71,16 +75,18 @@
             id="item_{{blockID}}"
             data-placement="{{placement}}"
             class="sr4-type__{{block.type}} sr4-menu-item has--children menu-has__offsets menu-pos__{{bk_stts.pos}}"
-            {{ block.shopify_attributes }}>
+            {{ block.shopify_attributes }}
+          >
             <a
               class="sr4-lh-1 sr4-d-flex sr4-align-items-center sr4-pr"
               href="{{bk_stts.url | default:root_url}}"
               target="{{bk_stts.open_link}}"
               {% if bk_stts.cus_cl %}
-              style="color:{{bk_stts.cl}}"
-              {% endif %}>{%- render 'title_menu'
-, bk_stts: bk_stts
-, showArrow: showArrow -%}</a>
+                style="color:{{bk_stts.cl}}"
+              {% endif %}
+            >
+              {%- render 'title_menu', bk_stts: bk_stts, showArrow: showArrow -%}
+            </a>
             {%- if linklists[bk_stts.menu].links.size > 0 -%}
               <div id="content_{{blockID}}" class="sr4-sub-menu sr4-pa sr4-op-0 sr4-pe-none">
                 {%- if admin_sp == false -%}
@@ -88,8 +94,7 @@
                     <div class="sr4-loading--bg"></div>
                   </div>
                 {%- else -%}
-                  <div class="sr4-lazy_menu">{%- render 'menu_dropdown'
-, handle_menu: bk_stts.menu -%}</div>
+                  <div class="sr4-lazy_menu">{%- render 'menu_dropdown', handle_menu: bk_stts.menu -%}</div>
                 {%- endif -%}
               </div>
             {%- endif -%}
@@ -99,20 +104,20 @@
           <li
             id="item_{{blockID}}"
             class="sr4-type__simple sr4-menu-item"
-            {{ block.shopify_attributes }}>
+            {{ block.shopify_attributes }}
+          >
             <a
               class="sr4-lh-1 sr4-d-flex sr4-align-items-center sr4-pr"
               href="{% if bk_stts.url contains '#homet4' %}{{ root_url }}{% else %}{{bk_stts.url}}{% endif %}"
               target="{{bk_stts.open_link}}"
               {% if bk_stts.cus_cl %}
-              style="color:{{bk_stts.cl}}"
-              {% endif %}>{%- render 'title_menu'
-, bk_stts: bk_stts
-, showArrow: false -%}</a>
+                style="color:{{bk_stts.cl}}"
+              {% endif %}
+            >
+              {%- render 'title_menu', bk_stts: bk_stts, showArrow: false -%}
+            </a>
           </li>
-
       {%- endcase -%}
-
     {%- endfor -%}
   </ul>
 </nav>

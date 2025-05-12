@@ -1,18 +1,18 @@
 /* Buttons Style */
 .sr4-flicky-slider.sr4-slider-btn-small {
-  --btn-width-slider: 40px;
-  --btn-height-slider: 40px;
-  --icon-height-slider: 16px;
+  --btn-width-slider: 30px;
+  --btn-height-slider: 30px;
+  --icon-height-slider: 12px;
 }
 .sr4-flicky-slider {
-  --btn-width-slider: 50px;
-  --btn-height-slider: 50px;
-  --icon-height-slider: 20px;
+  --btn-width-slider: 35px;
+  --btn-height-slider: 35px;
+  --icon-height-slider: 14px;
 }
 .sr4-flicky-slider.sr4-slider-btn-large {
-  --btn-width-slider: 60px;
-  --btn-height-slider: 60px;
-  --icon-height-slider: 24px;
+  --btn-width-slider: 40px;
+  --btn-height-slider: 40px;
+  --icon-height-slider: 18px;
 }
 .sr4-flicky-slider .flickitysr4-button {
   width: var(--btn-width-slider);
