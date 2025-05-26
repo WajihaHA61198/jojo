@@ -15,7 +15,8 @@
           <div
             class="sr4_ratio"
             {{ imgatt }}
-            style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}">
+            style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}"
+          >
             <img
               class="lazyloadsr4"
               loading="lazy"
@@ -26,12 +27,17 @@
               data-sizes="auto"
               width="{{ image.width }}"
               height="{{ image.height }}"
-              alt="{{ image.alt | escape }}">
+              alt="{{ image.alt | escape }}"
+            >
             <span class="lazyloadsr4-loader"></span>
-            <noscript><img
+            <noscript
+              ><img
                 loading="lazy"
                 src="{{ image | image_url: width: 100 }}"
-                alt="{{ image.alt | escape }}"></noscript>
+                alt="{{ image.alt | escape }}"
+                width=""
+                height=""
+            ></noscript>
           </div>
         </a>
       {%- endif -%}
@@ -40,11 +46,12 @@
       <h3 class="sr4-widget__pr-title">
         <a data-pr-href href="{{pr_url}}">{{ product.title }}</a>
       </h3>
-      {%- render 'product-price'
-        , class_price: 'sr4-widget__pr-price'
-        , product: product
-        , price_varies_style: price_varies_style
-        , isGrouped: false -%}
+      {%- render 'product-price',
+        class_price: 'sr4-widget__pr-price',
+        product: product,
+        price_varies_style: price_varies_style,
+        isGrouped: false
+      -%}
     </div>
   </div>
 </div>

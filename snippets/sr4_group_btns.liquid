@@ -693,7 +693,7 @@
           <span data-count-wishlist class="DESK-W-CHEK sr4-pa sr4-op-0 sr4-ts-op sr4-count-box">0</span>
         </a>
       {%- else -%}
-        {%- capture the_snippet_fave_icon_menu %}{% render 'ssw-widget-faveicon-menu' with product.id %}{% endcapture -%}
+        {%- capture the_snippet_fave_icon_menu %}{% endcapture -%}
         {%- unless the_snippet_fave_icon_menu contains 'Liquid error' %}
           {{ the_snippet_fave_icon_menu -}}
         {%- endunless -%}

@@ -96,7 +96,7 @@
         "mg_mb": ",,30px,",
         "pd_mb": ""
       }
-    },
+    }
   },
   "order": ["heading_template", "main"]
 }

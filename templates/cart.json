@@ -75,7 +75,7 @@
             "button_effect2": "default"
           }
         },
-        "5ae3c0ee-4bc7-4818-af8a-d10d3958189a": { "type": "btnmr", "settings": {} },
+        "5ae3c0ee-4bc7-4818-af8a-d10d3958189a": { "type": "btnmr", "settings": {} }
       },
       "block_order": [
         "5d8ed9ba-5120-4ca1-a8e8-67dd44b88bd2",
@@ -93,7 +93,7 @@
         "enable_gift_wrap": false,
         "ship_df_country": "Paksitan"
       }
-    },
+    }
   },
   "order": ["heading", "main"]
 }

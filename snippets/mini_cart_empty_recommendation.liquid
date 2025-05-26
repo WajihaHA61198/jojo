@@ -1,5 +1,5 @@
 {{ 'sr4_flickity.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'sr4_flickity.min.js' | asset_url }}"></script>
+<script src="{{ 'sr4_flickity.min.js' | asset_url }}" defer></script>
 
 {%- assign new_arrivals = collections.test -%}
 {%- if new_arrivals.products_count > 0 -%}

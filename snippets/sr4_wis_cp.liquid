@@ -59,7 +59,7 @@
     {%- endif -%}
 
   {%- elsif wishlist_mode == '3' and shop.customer_accounts_enabled -%}
-    {%- capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with product_id %}{% endcapture -%}
+    {%- capture the_snippet_fave_icon %}{% endcapture -%}
     {%- unless the_snippet_fave_icon contains 'Liquid error' -%}
       <div class="sr4-product-form__btn sr4-pr-wishlist sr4-pr-growavewishlist">{{ the_snippet_fave_icon }}</div>
     {%- endunless -%}

@@ -56,7 +56,7 @@
         "mg_mb": ",,30px,",
         "pd_mb": ""
       }
-    },
+    }
   },
   "order": ["heading", "main"]
 }

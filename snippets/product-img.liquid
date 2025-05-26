@@ -1,7 +1,8 @@
 <div
   class="sr4-product-img sr4_ratio"
   {{ imgatt }}
-  style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}">
+  style="--aspect-ratioapt: {{image.aspect_ratio | default: 1}}"
+>
   <img
     data-pr-img
     class="sr4-product-main-img lazyloadsr4"
@@ -13,12 +14,17 @@
     data-sizes="auto"
     width="{{ image.width }}"
     height="{{ image.height }}"
-    alt="{{ image.alt | escape }}">
+    alt="{{ image.alt | escape }}"
+  >
   <span class="lazyloadsr4-loader"></span>
   <div data-replace-img2></div>
-  <noscript><img
+  <noscript
+    ><img
       class="sr4-product-main-img"
       loading="lazy"
       src="{{ image | image_url: width: 600 }}"
-      alt="{{ image.alt | escape }}"></noscript>
+      alt="{{ image.alt | escape }}"
+      width=""
+      height=""
+  ></noscript>
 </div>

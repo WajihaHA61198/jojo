@@ -586,6 +586,7 @@
   },
   "gift_cards": {
     "issued": {
+      "title": "Your gift card",
       "subtext": "Your gift card",
       "gift_card_code": "Gift card code",
       "disabled": "Disabled",

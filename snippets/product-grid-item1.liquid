@@ -105,7 +105,7 @@
       </div>
       <div class="sr4-product-btns2">
         {%- if isGrowaveWishlist -%}
-          {%- capture the_snippet_fave_icon %}{% render 'ssw-widget-faveicon' with pid %}{% endcapture -%}
+          {%- capture the_snippet_fave_icon %}{% endcapture -%}
           {%- unless the_snippet_fave_icon contains 'Liquid error' -%}
             <div class="sr4-pr-item-btn sr4-pr-wishlist is--growave">{{ the_snippet_fave_icon }}</div>
           {%- endunless -%}
