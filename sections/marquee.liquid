@@ -1,245 +1,174 @@
-{%- liquid
+<!-- sections/marquee.liquid -->
+{% liquid
   assign sid = section.id
   assign se_stts = section.settings
-  assign stt_layout = se_stts.layout
-  assign stt_image_bg = se_stts.image_bg
-
-  if stt_layout == 'sr4-se-container'
-    assign html_layout = '<div class="sr4-container">__</div></div>' | split: '__'
-  elsif stt_layout == 'sr4-container-wrap'
-    assign html_layout = '<div class="sr4-container">__</div>' | split: '__'
-  else
-    assign html_layout = '__' | split: '__'
-  endif
-
-  assign sr4_se_class = 'sr4_nt_se_' | append: sid
-  if se_stts.use_cus_css and se_stts.code_cus_css != blank
-    render 'se_cus_css', code_cus_css: se_stts.code_cus_css, sr4_se_class: sr4_se_class
-  endif
 %}
 
-{% style %}
-  #sid-{{ section.id }} * {
-    padding: 0;
+<style>
+  #marquee-{{ sid }} * {
     margin: 0;
+    padding: 0;
   }
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee {
+
+  #marquee-{{ sid }} .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #marquee-{{ sid }} .marquee {
     display: flex;
-    /* overflow: hidden; */
-    overflow: visible;
-    max-width: 100%;
-    padding: {{ se_stts.paddingTb }}px 0;
+    white-space: nowrap;
+    will-change: transform;
+    gap: 2rem;
     user-select: none;
-  }
-
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul,
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
-    white-space: nowrap;
-    will-change: transform;
-    /* animation: marquee {{ se_stts.animation_time }}s linear infinite; */
-    display: flex;
-  }
-  .sr4-move-left{
-    white-space: nowrap;
-    will-change: transform;
-    animation: marqueeLeft {{ se_stts.animation_time }}s linear infinite;
-    display: flex;
-  }
-  .sr4-move-right{
-    white-space: nowrap;
-    will-change: transform;
-    animation: marqueeRight {{ se_stts.animation_time }}s linear infinite;
-    display: flex;
-  }
-
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee ul li,
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee p,
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee h5 {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  #sid-{{ section.id }} .o-product-thumbnail-secondary__marquee * {
-    font-size: clamp({{ se_stts.font_size_mb }}px,({{se_stts.font_size}} / 1440)* 100vw, {{se_stts.font_size}}px);
-    font-weight: {{se_stts.font_weight}};
-    letter-spacing: 1px;
+    font-size: clamp({{ se_stts.font_size_mb }}px, ({{ se_stts.font_size }} / 1440) * 100vw, {{ se_stts.font_size }}px);
+    font-weight: {{ se_stts.font_weight }};
     line-height: 1;
-      {% if se_stts.color_mar == 'rgba(0,0,0,0)' %}
-      background-image: {{se_stts.color}}!important;
-    {% endif %}
     color: {{ se_stts.color_mar }};
-    background-clip: text;
+    {% if se_stts.color_mar == 'rgba(0,0,0,0)' %}
+      background-image: {{ se_stts.color }};
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    {% endif %}
+  }
+
+  #marquee-{{ sid }} .move-left {
+    animation: marqueeLeft {{ se_stts.animation_time }}s linear infinite;
+  }
+  #marquee-{{ sid }} .move-right {
+    animation: marqueeRight {{ se_stts.animation_time }}s linear infinite;
   }
 
   @keyframes marqueeLeft {
-    0% {
-        transform: translateX(0%);
-    }
-    100% {
-        transform: translateX(-100%);
-    }
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
   }
   @keyframes marqueeRight {
-    0% {
-        transform: translateX(-100%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
   }
-{% endstyle %}
+</style>
 
-<div
-  class="sr4-section-inner {{sr4_se_class}} sr4_nt_se_{{sid}} {{stt_layout}}{% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %} sr4-has-imgbg lazyloadsr4{% endif %}"
-  {% if stt_image_bg != blank and stt_layout != 'sr4-se-container' %}
-    data-bgset="{{ stt_image_bg | image_url: width: 1 }}" data-sizes="auto" data-optimumx="2"
-  {% endif %}
-  {% render 'section_style', se_stts: se_stts -%}
->
-  {{- html_layout[0] -}}
-  <div id="sid-{{ section.id }}">
-    <div class="marquee_container">
-      <div class="o-product-thumbnail-secondary__marquee sr4_marFirst sr4-{{ se_stts.marqdirection1 }}">
-        {% for i in (1..4) %}
-          {{ se_stts.marq_text }}&nbsp;
-        {% endfor %}
-      </div>
-
-      {% if se_stts.marq_text2 != blank %}
-        <div class="o-product-thumbnail-secondary__marquee sr4_marRight sr4-{{ se_stts.marqdirection2 }}">
-          {% for i in (1..4) %}
-            {{ se_stts.marq_text2 }}&nbsp;
-          {% endfor %}
-        </div>
-      {% endif %}
+<div id="marquee-{{ sid }}" class="marquee-section page-width" style="padding: {{ se_stts.paddingTb }}px 0;">
+  <div class="marquee-wrapper">
+    <div class="marquee move-{{ se_stts.marqdirection1 }}">
+      {% for i in (1..6) %}
+        {{ se_stts.marq_text }}
+      {% endfor %}
     </div>
   </div>
-  {{- html_layout[1] -}}
+
+  {% if se_stts.marq_text2 != blank %}
+    <div class="marquee-wrapper">
+      <div class="marquee move-{{ se_stts.marqdirection2 }}">
+        {% for i in (1..6) %}
+          {{ se_stts.marq_text2 }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
 </div>
 
 {% schema %}
 {
   "name": "Marquee",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
   "tag": "section",
-  "class": "sr4-section sr4-section-all",
   "settings": [
     {
       "type": "richtext",
       "id": "marq_text",
-      "label": "Marquee 1",
-      "default": "<p>Extravagence – 47 Sections of Pure Customization Power 👜.</p>"
+      "label": "Marquee text 1",
+      "default": "<p>Papercut – 26 Sections of Pure Customization Power 👜</p>"
     },
     {
       "type": "select",
       "id": "marqdirection1",
-      "label": "Marquee direction",
-      "default": "move-left",
+      "label": "Direction for Marquee 1",
+      "default": "left",
       "options": [
-        {
-          "value": "move-left",
-          "label": "Left"
-        },
-        {
-          "value": "move-right",
-          "label": "Right"
-        }
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
       ]
     },
     {
       "type": "richtext",
       "id": "marq_text2",
-      "label": "Marquee 2",
-      "default": "<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit☂️.</p>"
+      "label": "Marquee text 2",
+      "default": "<p>Papercut – 26 Sections of Pure Customization Power ☂️</p>"
     },
     {
       "type": "select",
       "id": "marqdirection2",
-      "label": "Marquee direction",
-      "default": "move-right",
+      "label": "Direction for Marquee 2",
+      "default": "right",
       "options": [
-        {
-          "value": "move-left",
-          "label": "Left"
-        },
-        {
-          "value": "move-right",
-          "label": "Right"
-        }
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
       ]
     },
     {
       "type": "range",
       "id": "animation_time",
-      "max": 100,
       "min": 10,
+      "max": 100,
       "step": 1,
-      "label": "Animation Speeds",
+      "label": "Animation speed (seconds)",
       "default": 50
     },
     {
       "type": "range",
       "id": "font_size",
-      "max": 70,
       "min": 10,
+      "max": 70,
       "step": 1,
       "unit": "px",
-      "label": "Font Size",
-      "default": 60
+      "label": "Font size (Desktop)",
+      "default": 48
     },
     {
       "type": "range",
       "id": "font_size_mb",
-      "max": 50,
       "min": 10,
+      "max": 40,
       "step": 1,
       "unit": "px",
       "label": "Font size (Mobile)",
-      "default": 16
+      "default": 18
     },
     {
       "type": "range",
       "id": "font_weight",
-      "label": "Font Weight",
-      "default": 600,
-      "step": 100,
+      "label": "Font weight",
       "min": 100,
-      "max": 900
+      "max": 900,
+      "step": 100,
+      "default": 600
     },
     {
       "type": "color",
       "id": "color_mar",
-      "label": "Text Color (single color)",
-      "default": "#999999",
-      "info": "single color"
+      "label": "Text color",
+      "default": "#333333"
     },
     {
       "type": "color_background",
       "id": "color",
-      "label": "Text Color",
-      "info": "gradient color"
+      "label": "Gradient text color"
     },
     {
       "type": "number",
       "id": "paddingTb",
-      "label": "Top-Bottom Padding",
+      "label": "Top-bottom padding",
       "default": 20
-    },
-    {
-      "type": "select",
-      "id": "layout",
-      "default": "sr4-container-wrap",
-      "label": "Layout",
-      "options": [
-        { "value": "sr4-se-container", "label": "Container" },
-        { "value": "sr4-container-wrap", "label": "Wrapped container" },
-        { "value": "sr4-container-fluid", "label": "Full width" }
-      ]
     }
   ],
   "presets": [
     {
-      "name": "Marquee",
-      "category": "Text"
+      "name": "Scrolling Marquee"
     }
   ]
 }

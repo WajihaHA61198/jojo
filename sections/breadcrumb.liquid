@@ -1,0 +1,108 @@
+<!-- sections/breadcrumb.liquid -->
+{% liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+%}
+
+<style>
+  #breadcrumb-{{ sid }} {
+    font-size: {{ se_stts.font_size }}px;
+    color: {{ se_stts.color }};
+    text-align: {{ se_stts.alignment }};
+    margin: {{ se_stts.spacing }}px auto;
+  }
+  #breadcrumb-{{ sid }} a {
+    color: inherit;
+    text-decoration: none;
+  }
+  #breadcrumb-{{ sid }} a:hover {
+    text-decoration: underline;
+  }
+  #breadcrumb-{{ sid }} .separator {
+    margin: 0 0.5em;
+  }
+</style>
+
+<nav id="breadcrumb-{{ sid }}" role="navigation" aria-label="breadcrumbs" class="page-width">
+  <a href="{{ routes.root_url }}">Home</a>
+
+  {% if template contains 'collection' and collection %}
+    <span class="separator">/</span>
+    <span>{{ collection.title }}</span>
+
+  {% elsif template contains 'product' and product %}
+    {% if collection %}
+      <span class="separator">/</span>
+      <a href="{{ collection.url }}">{{ collection.title }}</a>
+    {% endif %}
+    <span class="separator">/</span>
+    <span>{{ product.title }}</span>
+
+  {% elsif template contains 'blog' and blog %}
+    <span class="separator">/</span>
+    <span>{{ blog.title }}</span>
+
+  {% elsif template contains 'article' and article %}
+    <span class="separator">/</span>
+    <a href="{{ blog.url }}">{{ blog.title }}</a>
+    <span class="separator">/</span>
+    <span>{{ article.title }}</span>
+
+  {% elsif template contains 'page' and page %}
+    <span class="separator">/</span>
+    <span>{{ page.title }}</span>
+  {% endif %}
+</nav>
+
+{% schema %}
+{
+  "name": "Breadcrumb",
+  "tag": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "label": "Font size",
+      "min": 12,
+      "max": 30,
+      "step": 1,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "range",
+      "id": "spacing",
+      "label": "Top-bottom spacing",
+      "min": 0,
+      "max": 50,
+      "step": 2,
+      "default": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Breadcrumb"
+    }
+  ]
+}
+{% endschema %}

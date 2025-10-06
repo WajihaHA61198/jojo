@@ -1,0 +1,211 @@
+{% comment %}
+  Sticky Toolbar (Mobile)
+  Appears fixed at bottom of mobile view with customizable icons/links.
+{% endcomment %}
+
+{%- liquid
+  assign se_stts = section.settings
+  assign show_txt = se_stts.show_txt
+  assign img_size = 40
+  assign search_url = routes.search_url
+-%}
+
+{%- if se_stts.enable_toolbar and section.blocks.size > 0 -%}
+  {{ 'toolbar_mobile.css' | asset_url | stylesheet_tag }}
+  <div
+    id="mb-sticky"
+    class="sr4-toolbar sr4-toolbar-label-{{ show_txt }} sr4-pf sr4-r-0 sr4-l-0 sr4-b-0 sr4-d-flex sr4-align-items-center sr4-justify-content-between"
+  >
+    {%- for block in section.blocks -%}
+      {%- assign bk_stts = block.settings -%}
+      {%- case block.type -%}
+        {% when 'shop' %}
+          <div class="sr4-toolbart-{{ block.type }} sr4-toolbar-item">
+            <a href="{{ collections[bk_stts.link].url | default: routes.all_products_collection_url }}">
+              <span class="sr4-toolbar-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-grid"
+                >
+                  <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+        {% when 'cart' %}
+          <div class="sr4-toolbart-{{ block.type }} sr4-toolbar-item">
+            <a href="{{ routes.cart_url }}">
+              <span class="sr4-toolbar-icon">
+                {% comment %} {% render 'icon-cart' %} {% endcomment %}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-shopping-cart"
+                >
+                  <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                </svg>
+                {% comment %} {% render 'global-icons' icon: 'cart' %} {% endcomment %}
+              </span>
+            </a>
+          </div>
+
+        {% when 'account' %}
+          {% if shop.customer_accounts_enabled %}
+            <div class="sr4-toolbart-{{ block.type }} sr4-toolbar-item">
+              <a href="{{ routes.account_url }}">
+                <span class="sr4-toolbar-icon">
+                  {% comment %} {% render 'icon-user' %} {% endcomment %}
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="feather feather-user"
+                  >
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </span>
+              </a>
+            </div>
+          {% endif %}
+
+        {% when 'search' %}
+          <div class="sr4-toolbart-{{ block.type }} sr4-toolbar-item">
+            <a href="{{ routes.search_url }}">
+              <span class="sr4-toolbar-icon">
+                {% comment %} {% render 'icon-search' %} {% endcomment %}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-search"
+                >
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+        {% when 'home' %}
+          <div class="sr4-toolbart-{{ block.type }} sr4-toolbar-item">
+            <a href="{{ routes.root_url }}">
+              <span class="sr4-toolbar-icon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="feather feather-home"
+                >
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </span>
+            </a>
+          </div>
+
+        {% when 'link' %}
+          <div class="sr4-toolbart-{{ block.type }} sr4-toolbar-item">
+            <a href="{{ bk_stts.link | default: routes.root_url }}">
+              {% if bk_stts.image != blank %}
+                <span class="sr4-toolbar-icon">
+                  <img
+                    src="{{ bk_stts.image | image_url: width: img_size, height: img_size }}"
+                    width="{{ img_size }}"
+                    height="{{ img_size }}"
+                    alt="{{ bk_stts.title }}"
+                  >
+                </span>
+              {% endif %}
+            </a>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Sticky toolbar mobile",
+  "class": "sticky-toolbar-mobile",
+  "settings": [
+    { "type": "checkbox", "id": "enable_toolbar", "label": "Enable toolbar", "default": true },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "color scheme",
+      "default": "background-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "shop",
+      "name": "Shop",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Shop" },
+        { "type": "collection", "id": "link", "label": "Collection" }
+      ]
+    },
+    {
+      "type": "cart",
+      "name": "Cart",
+      "settings": [{ "type": "text", "id": "title", "label": "Title", "default": "Cart" }]
+    },
+    {
+      "type": "account",
+      "name": "Account",
+      "settings": [{ "type": "text", "id": "title", "label": "Title", "default": "Account" }]
+    },
+    {
+      "type": "search",
+      "name": "Search",
+      "settings": [{ "type": "text", "id": "title", "label": "Title", "default": "Search" }]
+    },
+    {
+      "type": "home",
+      "name": "Home",
+      "settings": [{ "type": "text", "id": "title", "label": "Title", "default": "Home" }]
+    },
+    {
+      "type": "link",
+      "name": "Custom Link",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Custom" },
+        { "type": "image_picker", "id": "image", "label": "Icon" },
+        { "type": "url", "id": "link", "label": "Link", "default": "/" }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,273 @@
+{{ 'before-after.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'before-after.js' | asset_url }}" defer="defer"></script>
+{%- liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ se_stts.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ se_stts.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ se_stts.padding_top }}px;
+      padding-bottom: {{ se_stts.padding_bottom }}px;
+    }
+    .page-width.sr4-section-inner {
+      margin-bottom: 50px;
+    }
+  }
+
+  .page-width.sr4-section-inner {
+    margin-bottom: 30px;
+  }
+{%- endstyle -%}
+
+<div class="section-{{ sid }}-padding {{ se_stts.layout }}">
+  <div class="page-width sr4-section-inner">
+    {% if se_stts.title != blank %}
+      <h2 class="center title inline-richtext {{ se_stts.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ se_stts.title }}
+      </h2>
+    {% endif %}
+
+    <div class="before-after-wrapper">
+      <div class="before-after-container">
+        <div class="ba-slider">
+          {% if se_stts.before_image %}
+            <img class="ba-before" src="{{ se_stts.before_image | image_url: width: 800 }}" alt="Before">
+          {% else %}
+            <svg
+              class="ba-before"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 200 200"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid slice"
+            >
+              <rect width="200" height="200" fill="#ddd"/>
+              <text x="50%" y="50%" font-size="20" text-anchor="middle" fill="#555" dy=".3em">Before</text>
+            </svg>
+          {% endif %}
+
+          {% if se_stts.after_image %}
+            <img class="ba-after" src="{{ se_stts.after_image | image_url: width: 800 }}" alt="After">
+          {% else %}
+            <svg
+              class="ba-after"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 200 200"
+              width="100%"
+              height="100%"
+              preserveAspectRatio="xMidYMid slice"
+            >
+              <rect width="200" height="200" fill="#ccc"/>
+              <text x="50%" y="50%" font-size="20" text-anchor="middle" fill="#333" dy=".3em">After</text>
+            </svg>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Before & After Image",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Before & After",
+      "label": "Heading"
+    },
+    {
+      "type": "header",
+      "content": "1. Heading options"
+    },
+    {
+      "type": "select",
+      "id": "design_heading",
+      "label": "+ Design heading",
+      "default": "1",
+      "options": [
+        {
+          "value": "1",
+          "label": "Design 01"
+        },
+        {
+          "value": "2",
+          "label": "Design 02"
+        },
+        {
+          "value": "3",
+          "label": "Design 03"
+        },
+        {
+          "value": "4",
+          "label": "Design 04"
+        },
+        {
+          "value": "5",
+          "label": "Design 05"
+        },
+        {
+          "value": "6",
+          "label": "Design 06 (width line-awesome)"
+        },
+        {
+          "value": "7",
+          "label": "Design 07"
+        },
+        {
+          "value": "8",
+          "label": "Design 08"
+        },
+        {
+          "value": "9",
+          "label": "Design 09"
+        },
+        {
+          "value": "10",
+          "label": "Design 10"
+        },
+        {
+          "value": "11",
+          "label": "Design 11"
+        },
+        {
+          "value": "12",
+          "label": "Design 12"
+        },
+        {
+          "value": "13",
+          "label": "Design 13"
+        },
+        {
+          "value": "14",
+          "label": "Design 14"
+        }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "+ Heading align",
+      "default": "sr4-text-center",
+      "options": [
+        {
+          "value": "sr4-text-start",
+          "label": "Left"
+        },
+        {
+          "value": "sr4-text-center",
+          "label": "Center"
+        },
+        {
+          "value": "sr4-text-end",
+          "label": "Right"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "top_heading",
+      "label": "+ Heading",
+      "default": "BEFORE/AFTER"
+    },
+    {
+      "type": "number",
+      "id": "tophead_mb",
+      "label": "+ Space bottom (px)",
+      "info": "The vertical spacing between heading and content.",
+      "default": 30
+    },
+    {
+      "type": "header",
+      "content": "2. Choose images"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image",
+      "label": "Before Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image",
+      "label": "After Image"
+    },
+    {
+      "type": "select",
+      "id": "layout",
+      "default": "sr4-container-wrap",
+      "label": "Layout",
+      "options": [
+        { "value": "sr4-se-container", "label": "Container" },
+        { "value": "sr4-container-wrap", "label": "Wrapped container" },
+        { "value": "sr4-container-fluid", "label": "Full width" }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "mg",
+      "label": "Margin",
+      "info": "Margin top, margin right, margin bottom, margin left. If you not use to blank",
+      "default": ",,50px,",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd",
+      "label": "Padding",
+      "info": "Padding top, padding right, padding bottom, padding left. If you not use to blank",
+      "placeholder": "50px,,50px,"
+    },
+    {
+      "type": "header",
+      "content": "+ Design Tablet Options"
+    },
+    {
+      "type": "text",
+      "id": "mg_tb",
+      "label": "Margin",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd_tb",
+      "label": "Padding",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "header",
+      "content": "+ Design mobile options"
+    },
+    {
+      "type": "text",
+      "id": "mg_mb",
+      "label": "Margin",
+      "default": ",,30px,",
+      "placeholder": ",,50px,"
+    },
+    {
+      "type": "text",
+      "id": "pd_mb",
+      "label": "Padding",
+      "placeholder": ",,50px,"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Before & After Image"
+    }
+  ]
+}
+{% endschema %}

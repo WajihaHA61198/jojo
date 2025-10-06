@@ -1,102 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "heading_template": {
-      "type": "heading-template",
-      "blocks": {
-        "3b0cc506-49ea-4851-b5a6-ff7c2153b0e6": {
-          "type": "1",
-          "settings": {
-            "heading": "",
-            "fontf": "3",
-            "text_cl": "#222222",
-            "text_fs": 40,
-            "text_lh": 0,
-            "text_fw": 400,
-            "text_ls": 1,
-            "font_italic": false,
-            "font_uppercase": false,
-            "text_shadow": false,
-            "text_mgb": 0,
-            "hidden_mobile": false,
-            "text_fs_mb": 30,
-            "text_lh_mb": 0,
-            "text_ls_mb": 1,
-            "text_mgb_mobile": 0
-          }
-        }
-      },
-      "block_order": ["3b0cc506-49ea-4851-b5a6-ff7c2153b0e6"],
-      "settings": {
-        "use_specify_image": false,
-        "parallax": false,
-        "color": "rgba(0,0,0,0)",
-        "overlay": 0,
-        "padding": 25,
-        "paddingmb": 15,
-        "mg_b": 0,
-        "mg_bmb": 0,
-        "content_align": "sr4-text-center",
-        "bg_pos": "center center",
-        "bg_repeat": "no-repeat",
-        "bg_size": "cover",
-        "use_cus_css": false,
-        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
-      }
-    },
     "main": {
       "type": "main-search",
-      "blocks": {
-        "64e8b3f9-24d9-45f9-b8a1-139ea74f4664": {
-          "type": "filter",
-          "disabled": true,
-          "settings": { "style_filters": "sidebar" }
-        },
-        "68c58c07-8f22-4443-9d36-d081841d0cb0": { "type": "layout", "disabled": true, "settings": {} },
-        "9375b7e8-1193-4527-a6bd-dd4bcd8660ac": { "type": "sortby", "settings": {} }
-      },
-      "block_order": [
-        "64e8b3f9-24d9-45f9-b8a1-139ea74f4664",
-        "68c58c07-8f22-4443-9d36-d081841d0cb0",
-        "9375b7e8-1193-4527-a6bd-dd4bcd8660ac"
-      ],
       "settings": {
-        "product_des": "1",
-        "show_vendor": true,
-        "use_cdt": false,
-        "image_ratio": "ratioadapt",
-        "image_size": "cover",
-        "image_position": "8",
-        "content_align": "default",
-        "limit": 12,
-        "enable_listing": false,
-        "enable_listing_default": false,
-        "col_dk": "4",
-        "col_tb": "2",
-        "col_mb": "2",
-        "space_h_item": "30",
-        "space_v_item": "30",
-        "space_h_item_mb": "10",
-        "space_v_item_mb": "10",
-        "layout_des": "1",
-        "use_pagination": "default",
-        "enable_bar_lm": false,
-        "btn_icon": false,
-        "button_style": "default",
-        "btns_size": "small",
-        "btns_cl": "dark",
-        "button_effect": "default",
-        "btn_pos": "sr4-text-center",
-        "layout": "sr4-container-wrap",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": ",,50px,",
-        "pd": "",
-        "mg_tb": "",
-        "pd_tb": "",
-        "mg_mb": ",,30px,",
-        "pd_mb": ""
+        "columns_desktop": 4,
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": true,
+        "enable_filtering": true,
+        "filter_type": "drawer",
+        "enable_sorting": true,
+        "article_show_date": true,
+        "article_show_author": false,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
-  "order": ["heading_template", "main"]
+  "order": [
+    "main"
+  ]
 }

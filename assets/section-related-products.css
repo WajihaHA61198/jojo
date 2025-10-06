@@ -1,0 +1,12 @@
+.related-products {
+  display: block;
+}
+
+.related-products__heading {
+  margin: 0 0 3rem;
+}
+
+h2.related-products__heading,
+section.recently-viewed.page-width h2{
+  text-align:center;
+}

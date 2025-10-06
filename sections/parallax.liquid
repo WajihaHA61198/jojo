@@ -1,22 +1,125 @@
-{{ 'parallax-section.css' | asset_url | stylesheet_tag }}
-<script src="{{ 'parallax_section.js' | asset_url }}" defer="defer"></script>
+<script>
+  (function() {
+    let ticking = false;
 
-<section class="container_para container_para--small mt__20 mb__50">
-  {% if section.settings.desktop_image != blank %}
-    <div
-      class="pweb parallax parallax-desktop h__580"
-      data-parallax-image="{{ section.settings.desktop_image | image_url }}"
-      style="height: 580px!important;"
-    ></div>
-  {% endif %}
+    function updateParallax() {
+      const windowHeight = window.innerHeight;
+      const speed = {{ section.settings.parallax_speed | default: 120 }};
 
-  {% if section.settings.mobile_image != blank %}
-    <div
-      class="pmob parallax parallax-mobile h__580"
-      data-parallax-image="{{ section.settings.mobile_image | image_url }}"
-      style="height: 580px!important;"
-    ></div>
-  {% endif %}
+      document.querySelectorAll(".parallax-section").forEach(function(section) {
+        const img = section.querySelector(
+          window.innerWidth > 767 ? ".desktop-only" : ".mobile-only"
+        );
+        if (!img) return;
+
+        const rect = section.getBoundingClientRect();
+        if (rect.top < windowHeight && rect.bottom > 0) {
+          // progress (0 at bottom, 1 at top of screen)
+          const progress = (windowHeight - rect.top) / (windowHeight + rect.height);
+          // movement range controlled by speed slider
+          const move = (progress - 0.5) * speed;
+          img.style.transform = "translateY(" + move + "px)";
+        }
+      });
+
+      ticking = false;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        requestAnimationFrame(updateParallax);
+        ticking = true;
+      }
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", updateParallax);
+    document.addEventListener("DOMContentLoaded", updateParallax);
+  })();
+</script>
+
+<style>
+  .parallax-section {
+    position: relative;
+    height: var(--parallax-height);
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .parallax-bg {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  .parallax-img {
+    width: 100%;
+    height: 150%; /* extra tall for stronger effect */
+    object-fit: cover;
+    object-position: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateY(0);
+    will-change: transform;
+  }
+
+  .desktop-only { display: block; }
+  .mobile-only { display: none; }
+
+  @media (max-width: 767px) {
+    .desktop-only { display: none; }
+    .mobile-only { display: block; }
+  }
+
+  .parallax-content {
+    position: relative;
+    z-index: 2;
+    color: #fff;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.6);
+  }
+</style>
+
+<section>
+  <div class="page-width sr4-section-inner">
+    {%- if section.settings.title != blank -%}
+      <h2 class="title inline-richtext center {{ section.settings.heading_size }}">
+        {{ section.settings.title }}
+      </h2>
+    {%- endif -%}
+    <div class="parallax-section" style="--parallax-height: {{ section.settings.height }}px;">
+      <div class="parallax-bg">
+        {% if section.settings.desktop_image != blank %}
+          <img
+            src="{{ section.settings.desktop_image | image_url: width: 2000 }}"
+            alt=""
+            class="parallax-img desktop-only"
+            loading="lazy"
+          >
+        {% endif %}
+        {% if section.settings.mobile_image != blank %}
+          <img
+            src="{{ section.settings.mobile_image | image_url: width: 1000 }}"
+            alt=""
+            class="parallax-img mobile-only"
+            loading="lazy"
+          >
+        {% endif %}
+      </div>
+
+      <div class="parallax-content page-width">
+        {% if section.settings.heading != blank %}
+          <h2>{{ section.settings.heading }}</h2>
+        {% endif %}
+        {% if section.settings.text != blank %}
+          <div class="rte">{{ section.settings.text }}</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </section>
 
 {% schema %}
@@ -24,20 +127,76 @@
   "name": "Parallax Section",
   "settings": [
     {
+      "type": "inline_richtext",
+      "id": "title",
+      "default": "Parallax Banner",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        {
+          "value": "h2",
+          "label": "small"
+        },
+        {
+          "value": "h1",
+          "label": "medium"
+        },
+        {
+          "value": "h0",
+          "label": "large"
+        }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
       "type": "image_picker",
       "id": "desktop_image",
-      "label": "Desktop Image"
+      "label": "Desktop Background Image"
     },
     {
       "type": "image_picker",
       "id": "mobile_image",
-      "label": "Mobile Image"
+      "label": "Mobile Background Image"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Parallax Section"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Add some text here</p>"
+    },
+    {
+      "type": "range",
+      "id": "height",
+      "label": "Section Height (px)",
+      "default": 500,
+      "min": 200,
+      "max": 1000,
+      "step": 10
+    },
+    {
+      "type": "range",
+      "id": "parallax_speed",
+      "label": "Parallax Speed",
+      "default": 120,
+      "min": 40,
+      "max": 300,
+      "step": 10
     }
   ],
   "presets": [
     {
-      "name": "Parallax",
-      "category": "Media"
+      "name": "Parallax Section",
+      "category": "Image"
     }
   ]
 }

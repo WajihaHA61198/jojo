@@ -1,0 +1,104 @@
+{% style %}
+  .whatsapp-float {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    bottom: 50px;
+    right: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #25d366;
+    border-radius: 50%;
+    box-shadow: 2px 2px 3px #999;
+    z-index: 1000;
+    transition: transform 0.3s ease;
+  }
+  .whatsapp-float:hover {
+    transform: scale(1.1);
+  }
+  .whatsapp-float svg {
+    width: 28px;
+    height: 28px;
+    fill: #fff;
+  }
+  @media (max-width: 767px) {
+    .whatsapp-float {
+      bottom: 90px !important;
+    }
+  }
+  /* Optional pulse animation */
+  .whatsapp-float::before,
+  .whatsapp-float::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid rgba(37, 211, 102, 0.6);
+    width: 100%;
+    height: 100%;
+    animation: pulse 2s infinite;
+  }
+
+  .whatsapp-float::after {
+    animation-delay: 1s;
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(1);
+      opacity: 0.8;
+    }
+    100% {
+      transform: scale(2.5);
+      opacity: 0;
+    }
+  }
+{% endstyle %}
+
+
+{% if section.settings.show_wa %}
+  <a
+    href="{{ section.settings.link_wa }}"
+    class="whatsapp-float"
+    rel="nofollow"
+    target="{{ section.settings.target_link }}"
+    data-no-instant
+  >
+    {% render 'global-icons', icon: 'whatsapp' %}
+  </a>
+{% endif %}
+
+{% schema %}
+{
+  "name": "WhatsApp Button",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_wa",
+      "label": "Show WhatsApp button",
+      "default": true
+    },
+    {
+      "type": "url",
+      "id": "link_wa",
+      "label": "WhatsApp Link"
+    },
+    {
+      "type": "select",
+      "id": "target_link",
+      "label": "Open link in",
+      "default": "_blank",
+      "options": [
+        {
+          "value": "_self",
+          "label": "Current window"
+        },
+        {
+          "value": "_blank",
+          "label": "New window"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

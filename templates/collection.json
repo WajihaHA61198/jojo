@@ -1,110 +1,65 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "heading_template": {
-      "type": "heading-template",
-      "blocks": {
-        "a61b5459-0dd8-4796-a9c8-e3f1ee42dfb9": {
-          "type": "1",
-          "settings": {
-            "heading": "Page Heading",
-            "fontf": "3",
-            "text_cl": "#222222",
-            "text_fs": 40,
-            "text_lh": 0,
-            "text_fw": 400,
-            "text_ls": 1,
-            "font_italic": false,
-            "font_uppercase": false,
-            "text_shadow": false,
-            "text_mgb": 0,
-            "hidden_mobile": false,
-            "text_fs_mb": 30,
-            "text_lh_mb": 0,
-            "text_ls_mb": 1,
-            "text_mgb_mobile": 0
-          }
-        }
-      },
-      "block_order": ["a61b5459-0dd8-4796-a9c8-e3f1ee42dfb9"],
+    "breadcrumb_hPh3UB": {
+      "type": "breadcrumb",
+      "name": "Breadcrumb",
       "settings": {
-        "use_specify_image": false,
-        "parallax": false,
-        "color": "#fff",
-        "overlay": 0,
-        "padding": 25,
-        "paddingmb": 15,
-        "mg_b": 0,
-        "mg_bmb": 0,
-        "content_align": "sr4-text-center",
-        "bg_pos": "left center",
-        "bg_repeat": "inherit",
-        "bg_size": "cover",
-        "use_cus_css": false,
-        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
+        "alignment": "left",
+        "font_size": 14,
+        "color": "#838383",
+        "spacing": 10
       }
     },
-    "main": {
-      "type": "main-collection",
-      "blocks": {
-        "filter_id": { "type": "filter", "settings": { "style_filters": "sidebar" } },
-        "740319a4-8e19-4c70-b8a9-ada7cf235cbc": { "type": "layout", "disabled": true, "settings": {} },
-        "30594d23-d644-4653-9545-9ff769d2e6ab": { "type": "sortby", "settings": {} }
-      },
-      "block_order": ["filter_id", "740319a4-8e19-4c70-b8a9-ada7cf235cbc", "30594d23-d644-4653-9545-9ff769d2e6ab"],
+    "banner": {
+      "type": "main-collection-banner",
       "settings": {
-        "show_desc": false,
-        "position_desc": "2",
-        "product_des": "1",
+        "show_collection_description": true,
+        "show_collection_image": false,
+        "color_scheme": "background-1"
+      }
+    },
+    "collection_tab_Wki8eP": {
+      "type": "collection_tab",
+      "name": "Top Collections Tabs",
+      "settings": {
+        "collections": "{{ collection.metafields.custom.nav_pills.value }}"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "color_scheme": "background-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
         "show_vendor": false,
-        "use_cdt": false,
-        "image_ratio": "ratioadapt",
-        "image_size": "cover",
-        "image_position": "8",
-        "content_align": "default",
-        "limit": 12,
-        "enable_listing": false,
-        "enable_listing_default": false,
-        "col_dk": "4",
-        "col_tb": "3",
-        "col_mb": "2",
-        "space_h_item": "20",
-        "space_v_item": "20",
-        "space_h_item_mb": "10",
-        "space_v_item_mb": "10",
-        "layout_des": "1",
-        "use_pagination": "infinite",
-        "enable_bar_lm": true,
-        "btn_icon": false,
-        "button_style": "outline",
-        "btns_size": "large",
-        "btns_cl": "primary",
-        "button_effect": "sweep-to-right",
-        "btn_pos": "sr4-text-center",
-        "type_filters": "facets",
-        "layout": "sr4-container-wrap",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": ",,50px,",
-        "pd": "",
-        "mg_tb": "",
-        "pd_tb": "",
-        "mg_mb": ",,30px,",
-        "pd_mb": ""
-      }
-    },
-    "sidebar": {
-      "type": "sidebar-collection",
-      "disabled": true,
-      "settings": {
-        "enable_drawer": false,
-        "space": 50,
-        "size": "medium",
-        "br_style": "none",
-        "brcolor": "#222222",
-        "sidebar_bdr": 0,
-        "sidebar_pd": 15
+        "show_rating": false,
+        "enable_quick_add": true,
+        "quick_add_position": "Over the product",
+        "enable_filtering": true,
+        "filter_type": "vertical",
+        "enable_sorting": true,
+        "columns_mobile": "2",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
-  "order": ["heading_template", "main", "sidebar"]
+  "order": [
+    "breadcrumb_hPh3UB",
+    "banner",
+    "collection_tab_Wki8eP",
+    "product-grid"
+  ]
 }

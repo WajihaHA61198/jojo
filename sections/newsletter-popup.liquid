@@ -1,0 +1,228 @@
+{% schema %}
+{
+  "name": "✨ Newsletter Popup",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_popup",
+      "label": "Enable popup",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "popup_image",
+      "label": "Popup Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_logo",
+      "label": "Image"
+    },
+    {
+      "type": "text",
+      "id": "popup_heading",
+      "label": "Heading",
+      "default": "YOUR INVITE TO JOIN THE NOUR INSIDER CIRCLE"
+    },
+    {
+      "type": "textarea",
+      "id": "popup_subheading",
+      "label": "Subheading",
+      "default": "What's inside: 5% off on your first order, new arrivals, exclusive launches, event invites and all things Nour."
+    },
+    {
+      "type": "text",
+      "id": "popup_note",
+      "label": "Note text",
+      "default": "Your information will never be shared with any third party."
+    },
+    {
+      "type": "color",
+      "id": "input_color",
+      "label": "Input color",
+      "default": "#878787"
+    },
+    {
+      "type": "color",
+      "id": "border_color",
+      "label": "Border color",
+      "default": "#0E3D2A"
+    },
+    {
+      "type": "color",
+      "id": "button_color",
+      "label": "Button text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_bg",
+      "label": "Button background color",
+      "default": "#0E3D2A"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_color",
+      "label": "Button hover text color",
+      "default": "#FFFFFF"
+    },
+    {
+      "type": "color",
+      "id": "button_hover_bg",
+      "label": "Button hover background color",
+      "default": "#878787"
+    },
+    {
+      "type": "range",
+      "id": "popup_delay",
+      "label": "Popup delay (seconds)",
+      "min": 1,
+      "max": 30,
+      "step": 1,
+      "default": 5
+    }
+  ]
+}
+{% endschema %}
+
+{% if section.settings.enable_popup %}
+  <div id="newsletter-popup" class="newsletter-popup hidden">
+    <div class="popup-overlay"></div>
+    <div class="popup-box">
+      <button class="popup-close" aria-label="Close">
+        {% render 'global-icons', icon: 'drawer-close' %}
+      </button>
+
+      <div class="popup-grid">
+        {% if section.settings.popup_image != blank %}
+          <div class="popup-image">
+            <img src="{{ section.settings.popup_image | image_url: width: 600 }}" alt="Newsletter image">
+          </div>
+        {% endif %}
+
+        <div class="popup-content">
+          {% if section.settings.image_logo != blank %}
+            <img class="sr4-news-image" src="{{ section.settings.image_logo | img_url: 'master'}}">
+          {%- endif %}
+          <h2>{{ section.settings.popup_heading }}</h2>
+          <p class="subheading">{{ section.settings.popup_subheading }}</p>
+
+          <form method="post" action="/contact#contact_form" class="newsletter-form" accept-charset="UTF-8">
+            <input type="hidden" name="form_type" value="customer">
+            <input type="hidden" name="utf8" value="✓">
+            <input type="email" name="contact[email]" placeholder="Enter email address" required>
+            <button type="submit" class="btn">Subscribe</button>
+          </form>
+
+          <small class="note">{{ section.settings.popup_note }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <style>
+     /* Overlay */
+     .newsletter-popup.hidden { display: none; }
+     .newsletter-popup .popup-overlay {
+       position: fixed; inset: 0;
+       background: rgba(0,0,0,0.6);
+       z-index: 9998;
+       display:block;
+     }
+
+     /* Popup container */
+     .newsletter-popup .popup-box {
+       position: fixed; top: 50%; left: 50%;
+       transform: translate(-50%, -50%);
+       background: #fff;
+       border-radius: 8px;
+       max-width: 800px; width: 90%;
+       display: flex; flex-direction: column;
+       z-index: 9999; overflow: hidden;
+     }
+
+     /* Close button */
+     .newsletter-popup .popup-close {
+       position: absolute; top: 15px; right: 20px;
+       background: none; border: none;
+       font-size: 1.5rem; cursor: pointer;
+     }
+
+     /* Grid layout */
+     .newsletter-popup .popup-grid {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       align-items: center;
+     }
+     .newsletter-popup .popup-image img {
+       width: 100%; height: 100%; object-fit: cover;
+     }
+     .newsletter-popup .popup-content {
+       padding: 2rem; text-align: center;
+     }
+     .newsletter-popup h2 {
+       font-size: 2rem;
+       margin-bottom: 1rem;
+     }
+     .newsletter-popup .subheading {
+       margin-bottom: 1rem; font-size: 1.5rem; line-height: 1.4;
+     }
+     .newsletter-popup .note {
+       display: block; margin-top: 0.75rem; font-size: 1rem; color: #777;
+     }
+
+     /* Form */
+     .newsletter-form {
+       display: flex; gap: 0.5rem; margin-bottom: 0.75rem; align-items:center; flex-direction:row;
+     }
+     .newsletter-form input {
+       flex: 1; padding: 1rem;
+       border: 1px solid {{ section.settings.border_color }};
+       border-radius: 0px;
+       color: {{ section.settings.input_color }};
+     }
+     .newsletter-form button {
+       padding: 1rem 1.5rem;
+       background: {{ section.settings.button_bg }};
+       color: {{ section.settings.button_color }};
+       border: none; border-radius: 0px;
+       cursor: pointer; font-weight: 600;
+       transition: 0.3s ease;
+     }
+     .newsletter-form button:hover {
+       background: {{ section.settings.button_hover_bg }};
+       color: {{ section.settings.button_hover_color }};
+     }
+
+     /* Responsive */
+     @media(max-width: 768px){
+       .newsletter-popup .popup-grid {
+         grid-template-columns: 1fr;
+       }
+       {% comment %} .newsletter-popup .popup-image { display: none; } {% endcomment %}
+     }
+
+     button.popup-close svg {
+       height: 1.6rem;
+       width: 1.6rem;
+    }
+  </style>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const popup = document.getElementById("newsletter-popup");
+      const closeBtn = popup.querySelector(".popup-close");
+      const delay = {{ section.settings.popup_delay | times: 1000 }};
+
+      if (!localStorage.getItem("newsletterShown")) {
+        setTimeout(() => {
+          popup.classList.remove("hidden");
+          localStorage.setItem("newsletterShown", "true");
+        }, delay);
+      }
+
+      closeBtn.addEventListener("click", () => popup.classList.add("hidden"));
+      popup.querySelector(".popup-overlay").addEventListener("click", () => popup.classList.add("hidden"));
+    });
+  </script>
+{% endif %}

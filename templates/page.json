@@ -1,62 +1,35 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
-    "heading": {
-      "type": "heading-template",
-      "blocks": {
-        "1_jDBGTL": {
-          "type": "1",
-          "settings": {
-            "heading": "",
-            "fontf": "3",
-            "text_cl": "#222222",
-            "text_fs": 40,
-            "text_lh": 0,
-            "text_fw": 400,
-            "text_ls": 1,
-            "font_italic": false,
-            "font_uppercase": false,
-            "text_shadow": false,
-            "text_mgb": 0,
-            "hidden_mobile": false,
-            "text_fs_mb": 30,
-            "text_lh_mb": 0,
-            "text_ls_mb": 1,
-            "text_mgb_mobile": 0
-          }
-        }
-      },
-      "block_order": [
-        "1_jDBGTL"
-      ],
-      "settings": {
-        "use_specify_image": false,
-        "parallax": false,
-        "color": "rgba(0,0,0,0)",
-        "overlay": 0,
-        "padding": 25,
-        "paddingmb": 15,
-        "mg_b": 0,
-        "mg_bmb": 0,
-        "content_align": "sr4-text-center",
-        "bg_pos": "center center",
-        "bg_repeat": "no-repeat",
-        "bg_size": "cover",
-        "use_cus_css": false,
-        "code_cus_css": ".SectionID {\nbackground-color:red\n}"
-      }
-    },
     "main": {
       "type": "main-page",
       "settings": {
-        "layout": "sr4-container-wrap",
-        "cl_bg": "",
-        "cl_bg_gradient": "",
-        "mg": "30px,,30px,",
-        "pd": "",
-        "mg_mb": ",,30px,",
-        "pd_mb": ""
+        "padding_top": 28,
+        "padding_bottom": 28
+      }
+    },
+    "contact_form_6zxBdJ": {
+      "type": "contact-form",
+      "name": "t:sections.contact-form.presets.name",
+      "settings": {
+        "heading": "",
+        "heading_size": "h1",
+        "color_scheme": "background-1",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     }
   },
-  "order": ["heading", "main"]
+  "order": [
+    "main",
+    "contact_form_6zxBdJ"
+  ]
 }

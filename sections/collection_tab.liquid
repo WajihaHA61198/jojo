@@ -1,0 +1,89 @@
+<!-- sections/top-collections.liquid -->
+{% stylesheet %}
+  .top-collections {
+    margin: 1rem auto 1rem auto;
+    text-align: center;
+  }
+  .top-collections-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .top-collections-item{
+    border-radius: 0px;
+    border:1px solid #e7ded6;
+    min-width: 120px;
+  }
+  .top-collections-item a {
+    display: block;
+    padding: 3px 14px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #333;
+    text-decoration: none;
+    border-radius: 0px;
+    transition: all 0.2s ease;
+  }
+  .top-collections-item a:hover {
+    background: #e7ded6;
+    color: #333;
+  }
+  .top-collections-item.is-active a {
+    background: #e7ded6;
+    color: #333;
+  }
+
+  /* Mobile */
+  @media screen and (max-width: 768px) {
+    .top-collections-list {
+      gap: 6px;
+      padding: 4px 8px;
+    }
+    .top-collections-item a {
+      font-size: 11px;
+      padding: 4px 10px;
+    }
+  }
+{% endstylesheet %}
+
+
+{% if section.settings.collections != blank %}
+  <div class="top-collections">
+    <div class="top-collections-list">
+      {% if section.settings.collections != blank %}
+        {% for collection in section.settings.collections %}
+          <div class="top-collections-item{% if collection.url == request.path %} is-active{% endif %}">
+            <a href="{{ collection.url }}">
+              {{ collection.title }}
+            </a>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p>No collections selected.</p>
+      {% endif %}
+    </div>
+  </div>
+{% endif %}
+
+{% schema %}
+{
+  "name": "Top Collections Tabs",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "collection_list",
+      "id": "collections",
+      "label": "Collections",
+      "limit": 10
+    }
+  ],
+  "presets": [
+    {
+      "name": "Top Collections Tabs"
+    }
+  ]
+}
+{% endschema %}

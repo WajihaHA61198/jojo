@@ -1,67 +1,51 @@
-@media (max-width: 1024px) {
-  .sr4-toolbar-mobile {
-    height: 55px;
-  }
-  .sr4-sticky-atc {
-    bottom: 55px;
-    border-bottom: 1px solid var(--border-color);
-    -webkit-transform: translate3d(0, calc(105% + 55px), 0) !important;
-    transform: translate3d(0, calc(105% + 55px), 0) !important;
-  }
-  #shopify-section-back_top #sr4-backToTop {
-    bottom: 60px;
-  }
-  .sticky-is--active #shopify-section-back_top #sr4-backToTop {
-    bottom: calc(60px + var(--stickyATC-height, 0px));
-  }
-  .sticky-is--active .sr4-popup__sales {
-    bottom: calc(60px + var(--stickyATC-height, 0px)) !important;
+/* Sticky toolbar visible only on mobile */
+@media (min-width: 768px) {
+  div#shopify-section-toolbar-mobile {
+    display: none!important;
   }
 }
-@media (max-width: 767px) {
-  .sr4-sticky-atc .sr4-dropdown__wrapper {
-    bottom: -56px;
-  }
-}
-@media (min-width: 1025px) {
-  .sr4-toolbar {
-    display: none !important;
-  }
-}
-.sr4-toolbar-label-true .sr4-toolbar-item > a {
-  position: relative;
-  padding-bottom: 15px;
-}
-.sr4-toolbar-icon {
-  position: relative;
-}
-.sr4-toolbar-icon svg {
-  width: 20px;
-  height: 20px;
-}
-.sr4-toolbar {
-  background-color: var(--bg-color);
+
+.sticky-toolbar-mobile {
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  width: 90%;
+  background: #fff;
   z-index: 190;
-  overflow-x: auto;
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-  padding: 5px;
-  height: 55px;
-  box-shadow: 0 0 9px rgb(0 0 0 / 12%);
-  transform: translate3d(0, 104%, 0);
-  -webkit-transform: translate3d(0, 104%, 0);
-  transition: transform 0.25s;
+  padding: 10px 12px;
+  transform: translateX(-50%);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  border-radius:30px;
 }
-.sr4-toolbar {
-  transform: none;
-  -webkit-transform: none;
+
+.sticky-toolbar-mobile .toolbar-item {
+  flex: 1;
+  text-align: center;
+  color: #333;
+  text-decoration: none;
+  font-size: 12px;
 }
-.sr4-toolbar .sr4-toolbar-item {
-  -ms-flex: 1 0 20%;
-  flex: 1 0 20%;
-  position: relative;
+
+.sticky-toolbar-mobile .toolbar-item .icon {
+  width: 22px;
+  height: 22px;
+  display: block;
+  margin: 0 auto 4px;
+  fill: #333;
+  transition: fill 0.3s ease;
 }
-.sr4-toolbar-item > a {
+
+.sticky-toolbar-mobile .toolbar-item:hover .icon,
+.sticky-toolbar-mobile .toolbar-item:focus .icon {
+  fill: #000;
+}
+
+div#mb-sticky{
+  display:flex;
+  justify-content: space-around;
+ }
+
+.sr4-toolbar-item a{
   padding-right: 10px;
   padding-left: 10px;
   display: flex;
@@ -72,32 +56,13 @@
   font-weight: 400;
   line-height: 1;
 }
-.sr4-toolbar-icon {
-  color: var(--icon-color);
-}
-.sr4-toolbar-label {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  left: 10px;
-  display: block;
-  overflow: hidden;
-  text-align: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 600;
-  font-size: 11px;
-  line-height: 1;
-  color: var(--label-color);
-}
-.sr4-toolbar .sr4-count-box {
-  color: var(--count-text-color);
-  background-color: var(--count-bg-color);
+
+#mb-sticky > div:first-child {
+  background: #333333;
+  border-radius: 30px;
+  width:20%;
 }
 
-.sr4-toolbar-item > a:hover {
-  color: var(--accent-color);
-}
-.sr4-toolbar-item img {
-  max-height: 22px;
+#mb-sticky > div:first-child svg {
+  color:white;
 }
