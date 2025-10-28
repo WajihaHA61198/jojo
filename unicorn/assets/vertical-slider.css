@@ -1,0 +1,61 @@
+.vertical-slider {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.vs-wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.8s ease-in-out;
+  will-change: transform;
+}
+
+.vs-content {
+  color: white;
+  font-size: 2rem;
+}
+
+.vs-dots {
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vs-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #000000;
+  cursor: pointer;
+}
+
+.vs-dot.active {
+  background-color: black;
+  height: 30px;
+  border-radius: 12px;
+}
+
+.vs-slide picture,
+.vs-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vs-slide {
+  position: relative;
+  flex: 0 0 100vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+}

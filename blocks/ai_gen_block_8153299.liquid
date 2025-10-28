@@ -1,7 +1,6 @@
 {% doc %}
   @prompt
     make a sction with tabs collection, like tab1, tab 2, tab 3 etc, with respective collection (should be in slider).
-
 {% enddoc %}
 {% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
 
@@ -195,12 +194,12 @@
         assign tab_enabled_key = 'tab_' | append: i | append: '_enabled'
         assign tab_title_key = 'tab_' | append: i | append: '_title'
         assign collection_key = 'tab_' | append: i | append: '_collection'
-        
+
         assign tab_enabled = block.settings[tab_enabled_key]
         assign tab_title = block.settings[tab_title_key]
         assign collection = block.settings[collection_key]
       %}
-      
+
       {% if tab_enabled and tab_title != blank %}
         <button
           class="ai-collection-tabs__tab-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
@@ -218,11 +217,11 @@
       {% liquid
         assign tab_enabled_key = 'tab_' | append: i | append: '_enabled'
         assign collection_key = 'tab_' | append: i | append: '_collection'
-        
+
         assign tab_enabled = block.settings[tab_enabled_key]
         assign collection = block.settings[collection_key]
       %}
-      
+
       {% if tab_enabled %}
         <div
           class="ai-collection-tabs__panel-{{ ai_gen_id }} {% if forloop.first %}active{% endif %}"
@@ -248,7 +247,7 @@
                         </div>
                       {% endif %}
                     </a>
-                    
+
                     <div class="ai-collection-tabs__product-info-{{ ai_gen_id }}">
                       <h3 class="ai-collection-tabs__product-title-{{ ai_gen_id }}">
                         <a href="{{ product.url }}">{{ product.title }}</a>
@@ -260,7 +259,7 @@
                   </div>
                 {% endfor %}
               </div>
-              
+
               <div class="ai-collection-tabs__nav-buttons-{{ ai_gen_id }}">
                 <button
                   class="ai-collection-tabs__nav-button-{{ ai_gen_id }}"

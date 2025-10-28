@@ -1,0 +1,175 @@
+<!-- sections/marquee.liquid -->
+{% liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+%}
+
+<style>
+  #marquee-{{ sid }} * {
+    margin: 0;
+    padding: 0;
+  }
+
+  #marquee-{{ sid }} .marquee-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  #marquee-{{ sid }} .marquee {
+    display: flex;
+    white-space: nowrap;
+    will-change: transform;
+    gap: 2rem;
+    user-select: none;
+    font-size: clamp({{ se_stts.font_size_mb }}px, ({{ se_stts.font_size }} / 1440) * 100vw, {{ se_stts.font_size }}px);
+    font-weight: {{ se_stts.font_weight }};
+    line-height: 1;
+    color: {{ se_stts.color_mar }};
+    {% if se_stts.color_mar == 'rgba(0,0,0,0)' %}
+      background-image: {{ se_stts.color }};
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    {% endif %}
+  }
+
+  #marquee-{{ sid }} .move-left {
+    animation: marqueeLeft {{ se_stts.animation_time }}s linear infinite;
+  }
+  #marquee-{{ sid }} .move-right {
+    animation: marqueeRight {{ se_stts.animation_time }}s linear infinite;
+  }
+
+  @keyframes marqueeLeft {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-100%); }
+  }
+  @keyframes marqueeRight {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(0%); }
+  }
+</style>
+
+<div id="marquee-{{ sid }}" class="marquee-section page-width" style="padding: {{ se_stts.paddingTb }}px 0;">
+  <div class="marquee-wrapper">
+    <div class="marquee move-{{ se_stts.marqdirection1 }}">
+      {% for i in (1..6) %}
+        {{ se_stts.marq_text }}
+      {% endfor %}
+    </div>
+  </div>
+
+  {% if se_stts.marq_text2 != blank %}
+    <div class="marquee-wrapper">
+      <div class="marquee move-{{ se_stts.marqdirection2 }}">
+        {% for i in (1..6) %}
+          {{ se_stts.marq_text2 }}
+        {% endfor %}
+      </div>
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "tag": "section",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "marq_text",
+      "label": "Marquee text 1",
+      "default": "<p>Papercut – 26 Sections of Pure Customization Power 👜</p>"
+    },
+    {
+      "type": "select",
+      "id": "marqdirection1",
+      "label": "Direction for Marquee 1",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "richtext",
+      "id": "marq_text2",
+      "label": "Marquee text 2",
+      "default": "<p>Papercut – 26 Sections of Pure Customization Power ☂️</p>"
+    },
+    {
+      "type": "select",
+      "id": "marqdirection2",
+      "label": "Direction for Marquee 2",
+      "default": "right",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "animation_time",
+      "min": 10,
+      "max": 100,
+      "step": 1,
+      "label": "Animation speed (seconds)",
+      "default": 50
+    },
+    {
+      "type": "range",
+      "id": "font_size",
+      "min": 10,
+      "max": 70,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (Desktop)",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "font_size_mb",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size (Mobile)",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "font_weight",
+      "label": "Font weight",
+      "min": 100,
+      "max": 900,
+      "step": 100,
+      "default": 600
+    },
+    {
+      "type": "color",
+      "id": "color_mar",
+      "label": "Text color",
+      "default": "#333333"
+    },
+    {
+      "type": "color_background",
+      "id": "color",
+      "label": "Gradient text color"
+    },
+    {
+      "type": "number",
+      "id": "paddingTb",
+      "label": "Top-bottom padding",
+      "default": 20
+    }
+  ],
+  "presets": [
+    {
+      "name": "Scrolling Marquee"
+    }
+  ]
+}
+{% endschema %}

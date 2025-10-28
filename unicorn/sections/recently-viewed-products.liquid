@@ -1,0 +1,192 @@
+{% comment %}
+  Recently Viewed Products - Dawn Compatible
+{% endcomment %}
+
+<section class="recently-viewed page-width">
+  {% if section.settings.heading != blank %}
+    <h2 class="title h2">{{ section.settings.heading }}</h2>
+  {% endif %}
+  <div
+    id="recently-viewed-products"
+    class="grid grid--2-col grid--3-col-tablet grid--4-col-desktop"
+  ></div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.getElementById('recently-viewed-products');
+    let viewed = JSON.parse(localStorage.getItem('recentlyViewed')) || [];
+
+    if (!viewed.length) {
+      container.innerHTML = '<p>No recently viewed products.</p>';
+      return;
+    }
+
+    viewed.slice(0, 8).forEach((handle) => {
+      fetch(`/products/${handle}.js`)
+        .then((res) => res.json())
+        .then((product) => {
+          const wrapper = document.createElement('div');
+          wrapper.classList.add('grid__item');
+          wrapper.innerHTML = `
+  <div class="card-wrapper product-card-wrapper">
+    <div class="card card--standard card--media" style="--ratio-percent: 100.0%;">
+      <div class="card__inner color-background-2 gradient ratio" style="--ratio-percent: 100.0%;">
+        <div class="card__media">
+          <div class="media media--transparent media--hover-effect">
+            <img
+              src="${product.images[0]}"
+              alt="${product.title}"
+              class="motion-reduce"
+              loading="lazy"
+              width="600"
+              height="600"
+            />
+            ${
+              product.images[1]
+                ? `
+              <img
+                src="${product.images[1]}"
+                alt="${product.title}"
+                class="motion-reduce"
+                loading="lazy"
+                width="600"
+                height="600"
+              />
+            `
+                : ''
+            }
+          </div>
+        </div>
+
+        <div class="card__content">
+          <div>
+            <div class="quick-add no-js-hidden quick-add--overlay">
+              <form
+                method="post"
+                action="/cart/add"
+                class="form"
+                enctype="multipart/form-data"
+                novalidate
+                data-type="add-to-cart-form"
+              >
+                <input type="hidden" name="id" value="${product.variants[0].id}" />
+                <button
+                  type="submit"
+                  name="add"
+                  class="quick-add__submit button button--full-width button--secondary"
+                  aria-live="polite"
+                >
+                  <svg xmlns="http://www.w3.org/2000/svg" width="31" height="30" viewBox="0 0 31 30" fill="none">
+                    <path d="M15.5135 6.85986V23.9142M6.98633 15.387H24.0407" stroke="#1E1E1E" stroke-width="2.05519" stroke-linecap="round" stroke-linejoin="round"></path>
+                  </svg>
+                  <span class="sold-out-message ${product.available ? 'hidden' : ''}">Sold out</span>
+                  <div class="loading__spinner hidden">
+                    <svg aria-hidden="true" focusable="false" class="spinner" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+                      <circle class="path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                    </svg>
+                  </div>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <a href="${product.url}" class="sr4-full-width-link"></a>
+      </div>
+
+      <div class="card__content">
+        <div class="card__information">
+          <h3 class="card__heading h5">
+            <a href="${product.url}" class="full-unstyled-link">
+              ${product.title}
+            </a>
+          </h3>
+          <div class="card-information">
+            <span class="caption-large light">${product.vendor || ''}</span>
+            <div class="price">
+              <div class="price__container">
+                <div class="price__regular">
+                  <span class="price-item price-item--regular">
+                    <span class="money">${Shopify.currency.active} ${(product.compare_at_price / 100).toFixed(2)}</span>
+                  </span>
+                </div>
+                <div class="price__sale">
+                  ${
+                    product.compare_at_price > product.price
+                      ? `
+                    <span class="price-item price-item--sale price-item--last">
+                      <span class="money">${Shopify.currency.active} ${(product.price / 100).toFixed(2)}</span>
+                    </span>
+                  `
+                      : ''
+                  }
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card__badge top right">
+          ${!product.available ? `<span class="badge">Sold Out</span>` : ''}
+          ${product.compare_at_price > product.price ? `<span class="badge">On Sale</span>` : ''}
+        </div>
+      </div>
+    </div>
+  </div>
+`;
+
+          container.appendChild(wrapper);
+        });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Recently Viewed Products",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Recently viewed"
+    }
+  ]
+}
+{% endschema %}
+
+<script>
+  // Save current product to localStorage
+  document.addEventListener("DOMContentLoaded", function () {
+    {% if product %}
+      const handle = {{ product.handle | json }};
+      let viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+
+      viewed = viewed.filter(h => h !== handle); // remove duplicates
+      viewed.unshift(handle); // add current to front
+      if (viewed.length > 6) viewed = viewed.slice(0, 6);
+
+      localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
+    {% endif %}
+  });
+</script>
+
+<style>
+  /* Recently viewed section ke liye ratio ko remove kardo */
+  #recently-viewed-products .card__inner {
+    aspect-ratio: auto !important;   /* modern browsers ke liye */
+    height: auto !important;
+  }
+
+  /* Image ko apne natural size ke hisaab se dikhane do */
+  #recently-viewed-products .card__media .media {
+    padding-top: 0 !important; /* jo Dawn ka hack hai ratio ke liye usko disable karo */
+    height: auto !important;
+  }
+
+  #recently-viewed-products .card__media img {
+    width: 100%;
+    height: auto !important;  /* height image ki apni hogi */
+    object-fit: contain;      /* ya cover ki jagah contain use karo taake crop na ho */
+  }
+</style>

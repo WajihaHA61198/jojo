@@ -1,0 +1,166 @@
+<!-- sections/usps.liquid -->
+{% comment %}
+  {{ 'section.css' | asset_url | stylesheet_tag }}
+  {{ 'usps.css' | asset_url | stylesheet_tag }}
+{% endcomment %}
+
+<div class="usps-section page-width">
+  {% if section.settings.heading != blank %}
+    <div class="usps-header center">
+      <h2 class="usps-title">{{ section.settings.heading }}</h2>
+      {% if section.settings.subheading != blank %}
+        <p class="usps-subtitle">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="usps-list display-grid grid-cols-{{ section.settings.columns_desktop }} md:grid-cols-{{ section.settings.columns_tablet }} xs:grid-cols-{{ section.settings.columns_mob }} gap-6">
+    {% for block in section.blocks %}
+      <div class="usps-item flex items-center space-x-4" {{ block.shopify_attributes }}>
+        {% if block.settings.icon != blank %}
+          <div class="usps-icon">
+            <i class="{{ block.settings.icon }}"></i>
+          </div>
+        {% elsif block.settings.image != blank %}
+          <div class="usps-icon-img">
+            <img src="{{ block.settings.image | img_url: '64x64' }}" alt="{{ block.settings.title | escape }}">
+          </div>
+        {% endif %}
+        <div class="usps-content">
+          <h3 class="usps-item-title">{{ block.settings.title }}</h3>
+          <p class="usps-item-text">{{ block.settings.text }}</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "USPs",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Why shop with us?"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading"
+    },
+    {
+      "type": "select",
+      "id": "heading_align",
+      "label": "Heading alignment",
+      "default": "text-center",
+      "options": [
+        { "value": "text-left", "label": "Left" },
+        { "value": "text-center", "label": "Center" },
+        { "value": "text-right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "columns_desktop",
+      "label": "Columns (Desktop)",
+      "min": 2,
+      "max": 6,
+      "step": 1,
+      "default": 4
+    },
+    {
+      "type": "range",
+      "id": "columns_tablet",
+      "label": "Columns (Tablet)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 2
+    },
+    {
+      "type": "range",
+      "id": "columns_mob",
+      "label": "Columns (Mobile)",
+      "min": 1,
+      "max": 3,
+      "step": 1,
+      "default": 2
+    }
+  ],
+  "blocks": [
+    {
+      "type": "usp",
+      "name": "USP Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "icon",
+          "label": "Icon class (FontAwesome / LineAwesome etc.)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (if not using icon)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Free Shipping"
+        },
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "On all orders over $50"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "USPs",
+      "category": "Text",
+      "blocks": [
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "fa-solid fa-truck",
+            "title": "Free Shipping",
+            "text": "On all orders over $50"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "fa-solid fa-headset",
+            "title": "24/7 Support",
+            "text": "We’re always here to help"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "fa-solid fa-rotate-left",
+            "title": "Easy Returns",
+            "text": "30-day money-back guarantee"
+          }
+        },
+        {
+          "type": "usp",
+          "settings": {
+            "icon": "fa-solid fa-rotate-left",
+            "title": "Authenticity",
+            "text": "100% Authentic Products"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

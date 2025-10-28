@@ -1,0 +1,217 @@
+{{ 'component-card.css' | asset_url | stylesheet_tag }}
+{{ 'component-price.css' | asset_url | stylesheet_tag }}
+
+{{ 'component-slider.css' | asset_url | stylesheet_tag }}
+{{ 'template-collection.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.image_shape == 'blob' %}
+  {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
+{%- endif -%}
+
+{%- if section.settings.enable_quick_add -%}
+  {{ 'quick-add.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+{%- endstyle -%}
+
+<div class="tabbed-collections section-{{ section.id }}">
+  <!-- Tabs Nav -->
+  <div class="tabs-nav flex gap-4 justify-center mb-6">
+    {% for block in section.blocks %}
+      <button
+        class="tab-btn {% if forloop.first %}active{% endif %}"
+        data-tab="tab-{{ block.id }}"
+      >
+        {{ block.settings.tab_title }}
+      </button>
+    {% endfor %}
+  </div>
+
+  <!-- Tabs Content -->
+  <div class="tabs-content">
+    {% for block in section.blocks %}
+      {% assign collection = collections[block.settings.collection] %}
+      {% assign products_to_display = block.settings.products_to_show | default: 4 %}
+
+      <div
+        id="tab-{{ block.id }}"
+        class="tab-content {% if forloop.first %}active{% endif %}"
+      >
+        {% if collection != blank and collection.products_count > 0 %}
+          <slider-component class="slider-mobile-gutter slider-component-desktop page-width">
+            <ul
+              id="Slider-{{ section.id }}-{{ block.id }}"
+              class="grid product-grid contains-card contains-card--product grid--{{ block.settings.columns_desktop }}-col-desktop grid--{{ block.settings.columns_mobile }}-col-tablet-down slider slider--desktop slider--tablet grid--peek"
+              role="list"
+            >
+              {% for product in collection.products limit: products_to_display %}
+                <li class="grid__item slider__slide">
+                  {% render 'card-product',
+                    card_product: product,
+                    media_aspect_ratio: block.settings.image_ratio,
+                    image_shape: block.settings.image_shape,
+                    show_secondary_image: block.settings.show_secondary_image,
+                    show_vendor: block.settings.show_vendor,
+                    show_rating: block.settings.show_rating,
+                    show_quick_add: block.settings.enable_quick_add,
+                    section_id: section.id
+                  %}
+                </li>
+              {% endfor %}
+            </ul>
+
+            <div class="slider-buttons no-js-hidden">
+              <button
+                type="button"
+                class="slider-button slider-button--prev"
+                aria-controls="Slider-{{ section.id }}-{{ block.id }}"
+              >
+                {% render 'global-icons', icon: 'caret' %}
+              </button>
+              <div class="slider-counter caption">
+                <span class="slider-counter--current">1</span>
+                <span aria-hidden="true"> / </span>
+                <span class="visually-hidden">{{ 'general.slider.of' | t }}</span>
+                <span class="slider-counter--total">{{ products_to_display }}</span>
+              </div>
+              <button
+                type="button"
+                class="slider-button slider-button--next"
+                aria-controls="Slider-{{ section.id }}-{{ block.id }}"
+              >
+                {% render 'global-icons', icon: 'caret' %}
+              </button>
+            </div>
+          </slider-component>
+        {% else %}
+          <p class="text-center">No products found.</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tabs = document.querySelectorAll('.tabbed-collections .tab-btn');
+    const contents = document.querySelectorAll('.tabbed-collections .tab-content');
+
+    tabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        tabs.forEach((t) => t.classList.remove('active'));
+        contents.forEach((c) => c.classList.remove('active'));
+
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      });
+    });
+  });
+</script>
+
+<style>
+  .tab-btn {
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    background: #f9f9f9;
+    border-radius: 5px;
+    transition: 0.3s;
+  }
+  .tab-btn.active {
+    background: #000;
+    color: #fff;
+  }
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+</style>
+
+{% schema %}
+{
+  "name": "Tabbed Collection Slider",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "tab",
+      "name": "Tab",
+      "settings": [
+        { "type": "text", "id": "tab_title", "label": "Tab title", "default": "Tab" },
+        { "type": "collection", "id": "collection", "label": "Collection" },
+        {
+          "type": "range",
+          "id": "products_to_show",
+          "label": "Products to show",
+          "min": 2,
+          "max": 25,
+          "step": 1,
+          "default": 6
+        },
+        {
+          "type": "range",
+          "id": "columns_desktop",
+          "label": "Columns desktop",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 4
+        },
+        {
+          "type": "select",
+          "id": "columns_mobile",
+          "label": "Columns mobile",
+          "default": "2",
+          "options": [
+            { "value": "1", "label": "1" },
+            { "value": "2", "label": "2" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_ratio",
+          "label": "Image ratio",
+          "default": "adapt",
+          "options": [
+            { "value": "adapt", "label": "Adapt" },
+            { "value": "portrait", "label": "Portrait" },
+            { "value": "square", "label": "Square" }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "image_shape",
+          "label": "Image shape",
+          "default": "default",
+          "options": [
+            { "value": "default", "label": "Default" },
+            { "value": "round", "label": "Round" },
+            { "value": "arch", "label": "Arch" }
+          ]
+        },
+        { "type": "checkbox", "id": "show_secondary_image", "label": "Show secondary image", "default": false },
+        { "type": "checkbox", "id": "show_vendor", "label": "Show vendor", "default": false },
+        { "type": "checkbox", "id": "show_rating", "label": "Show rating", "default": false },
+        { "type": "checkbox", "id": "enable_quick_add", "label": "Enable quick add", "default": false }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Tabbed Collection Slider", "blocks": [{ "type": "tab" }, { "type": "tab" }, { "type": "tab" }] }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,134 @@
+{% comment %}
+  Back to Top Section
+  Shows a floating button (with optional progress bar) to scroll smoothly to top.
+{% endcomment %}
+{%- liquid
+  assign se_stts = section.settings
+  assign vertical_offset_for_trigger = se_stts.scroll_offset
+-%}
+
+{%- if se_stts.enable_backtop -%}
+  {%- if se_stts.enable_on_collection == false or template.name == 'collection' -%}
+    {{ 'back-to-top.css' | asset_url | stylesheet_tag }}
+    <button
+      id="backToTop"
+      class="back-to-top back-to-top--design{{ se_stts.backtop_des }} {% if se_stts.enable_hidden_mobile %}hidden-mobile{% endif %}"
+      data-scroll-offset="{{ vertical_offset_for_trigger }}"
+      style="--border-w:2px;--circle-normal:{{ se_stts.border_cl }};--circle-active:{{ se_stts.border_cl_active }};"
+    >
+      {%- if se_stts.enable_progress_bar -%}
+        <div class="circle-progress">
+          <div class="circle-progress__inner">
+            <svg viewBox="9.98 12.06 12.05 6.79">
+              <path d="M16.767 12.809l-0.754-0.754-6.035 6.035 0.754 0.754 5.281-5.281 5.256 5.256 0.754-0.754-3.013-3.013z" fill="currentColor"/>
+            </svg>
+          </div>
+          <div class="circle-progress__bg"></div>
+        </div>
+      {%- else -%}
+        <svg viewBox="9.98 12.06 12.05 6.79">
+          <path d="M16.767 12.809l-0.754-0.754-6.035 6.035 0.754 0.754 5.281-5.281 5.256 5.256 0.754-0.754-3.013-3.013z" fill="currentColor"/>
+        </svg>
+      {%- endif -%}
+    </button>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const btn = document.getElementById('backToTop');
+        if (!btn) return;
+
+        const offset = parseInt(btn.dataset.scrollOffset) || 100;
+        const progressBar = btn.querySelector('.circle-progress__bg');
+
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > offset) {
+            btn.classList.add('active');
+          } else {
+            btn.classList.remove('active');
+          }
+
+          // progress bar update
+          if (progressBar) {
+            let scrollTop = window.scrollY;
+            let docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            let progress = (scrollTop / docHeight) * 100;
+            progressBar.style.background = `conic-gradient(var(--circle-active) ${progress}%, var(--circle-normal) ${progress}%)`;
+          }
+        });
+
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      });
+    </script>
+  {%- endif -%}
+{% endif %}
+
+{% schema %}
+{
+  "name": "Back to top",
+  "class": "back-to-top-section",
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "enable_backtop",
+      "label": "Enable back to top",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_hidden_mobile",
+      "label": "Hide on mobile",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_on_collection",
+      "label": "Only on collection page ",
+      "default": false
+    },
+    {
+      "type": "select",
+      "id": "backtop_des",
+      "default": "1",
+      "label": "Design",
+      "options": [
+        { "value": "1", "label": "Design 1" },
+        { "value": "2", "label": "Design 2" }
+      ]
+    },
+    {
+      "type": "range",
+      "id": "scroll_offset",
+      "label": "Scroll offset (px)",
+      "min": 50,
+      "max": 1000,
+      "step": 50,
+      "default": 100
+    },
+    {
+      "type": "header",
+      "content": "Progress bar options"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_progress_bar",
+      "label": "Enable progress bar",
+      "default": true
+    },
+    {
+      "type": "color",
+      "id": "border_cl",
+      "label": "Progress bar color",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "border_cl_active",
+      "label": "Progress bar active color",
+      "default": "#000000"
+    }
+  ]
+}
+{% endschema %}
