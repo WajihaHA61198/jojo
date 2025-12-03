@@ -195,7 +195,7 @@
       "whatsapp-button": {
         "type": "whatsapp-button",
         "settings": {
-          "show_wa": true,
+          "show_wa": false,
           "link_wa": "",
           "target_link": "_blank"
         }
