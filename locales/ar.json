@@ -1520,11 +1520,133 @@
         "ineligible_return_message_when_returned": "لا يجوز إرجاع أي عناصر إضافية في هذا الطلب.",
         "print_shipping_label": "طباعة ملصق الشحن",
         "return_and_refund_modal_header": "سياسة الاسترداد",
-        "tracking_number": "عدد تتبع:"
-      }
+        "tracking_number": "عدد تتبع:",
+        "exchange_header": "تبادل العناصر",
+        "exchange_subheader": "سيتم إضافة العناصر البديلة إلى الطلب بمجرد اكتمال عملية الإرجاع."
+      },
+      "shipping": {
+        "address": "عنوان الشحن",
+        "address_map_marker": "عنوان الشحن",
+        "method": "طريقة الشحن",
+        "summary": "شحن",
+        "free": "حر",
+        "free_shipping_discount": "ًالشحن مجانا",
+        "one_time": "الشحن لمرة واحدة",
+        "subscription": "شحن الاشتراك"
+      },
+      "pickup": {
+        "pickup": "يلتقط",
+        "pickup_location": "مكان الاستلام",
+        "pickup_point": "نقطة الالتقاء"
+      },
+      "show_items": "إظهار العناصر",
+      "show_order_summary": "إظهار ملخص الطلب",
+      "hide_order_summary": "إخفاء ملخص الطلب",
+      "subtitle": "تم التأكيد {{date}}",
+      "subtotal": "المجموع الفرعي",
+      "summary_list_title_accessibility_label": "طلب العناصر",
+      "summary_title": "ملخص الطلب",
+      "summary_totals_title_accessibility_label": "إجمالي الطلبات",
+      "shop_order_tracking": {
+        "download_shop_to_track": "تنزيل المتجر لتتبع الطرد",
+        "track_order_with_shop": "تتبع الطلب مع المتجر",
+        "title_header": "امسح ضوئيًا باستخدام هاتفك",
+        "real_time_delivery_updates": "سوف يرسل لك المتجر تحديثات التسليم في الوقت الفعلي بمجرد شحن طلبك."
+      },
+      "edit_summary": {
+        "added": "تمت الإضافة",
+        "added_with_quantity": "تمت إضافة {{quantity}}",
+        "removed": "تمت الإزالة",
+        "removed_with_quantity": "تمت إزالة {{quantity}}",
+        "updated_at": "تم تحديث طلبك في {{date}}",
+        "returned": "عاد",
+        "returned_with_quantities": "تم إرجاع {{delta}} من {{total}}",
+        "removed_with_quantities": "تمت إزالة {{delta}} من {{total}}",
+        "return_line_item_removed": "تمت إزالته من العودة",
+        "return_line_item_removed_with_quantities": "تمت إزالة {{delta}} من الإرجاع"
+      },
+      "shop_pay": {
+        "order_completed_with": "تم الانتهاء من الطلب مع",
+        "learn_more": "يتعلم أكثر"
+      },
+      "taxes": "الضرائب",
+      "taxes_included": "بما في ذلك {{amount}} في الضرائب",
+      "duties_and_taxes_included": "الإجمالي يشمل الرسوم والضرائب. لا توجد رسوم إضافية عند التسليم.",
+      "duties": "الواجبات",
+      "ok_duties_tooltip": "يتم شحن هذا الطلب من بلد آخر، لذا تمت إضافة الرسوم إلى إجمالي طلبك.",
+      "error_duties_tooltip": "يتم شحن هذا الطلب من بلد آخر، لذلك قد يتم فرض الرسوم والضرائب عند التسليم.",
+      "zero_duties_tooltip": "تم شحن هذا الطلب من بلد آخر. لا تُفرض رسوم جمركية على الطلبات بهذه القيمة.",
+      "tip": "نصيحة",
+      "title": "الطلب {{name}}",
+      "total": "المجموع",
+      "unit_price": "{{price}} /للوحدة",
+      "pagination": {
+        "load_more": "تحميل المزيد",
+        "load_more_accessibility_label": "تحميل المزيد من العناصر",
+        "loading_accessibility_label": "تحميل العناصر"
+      },
+      "login_to_view_all_order_details": "قم بتسجيل الدخول لعرض كافة تفاصيل الطلب.",
+      "log_in": "تسجيل الدخول",
+      "logged_in_account_no_permission_to_order": "لقد سجّلت دخولك باسم {{email}} . هذا الحساب لا يملك صلاحية إدارة هذا الطلب.",
+      "log_in_to_a_different_account": "تسجيل الدخول إلى حساب مختلف",
+      "fees": {
+        "restocking_fee": "رسوم إعادة التخزين",
+        "return_shipping_fee": "إعادة الشحن"
+      },
+      "vat_invoices": {
+        "title": "فواتير ضريبة القيمة المضافة"
+      },
+      "link_sent": "تم إرسال الرابط",
+      "cash_rounding": "تقريب النقدية",
+      "adjusted_payment": "الدفع المعدل",
+      "adjusted_total": "الإجمالي المعدل",
+      "due_on_date": "المستحق {{date}}",
+      "due_on_fulfillment": "مستحق عند الوفاء",
+      "due_on_receipt": "مستحق عند الاستلام"
     },
     "addresses": {
-      "billing_address_dropdown_placeholder": "عنوان الفاتورة"
+      "billing_address_dropdown_placeholder": "عنوان الفاتورة",
+      "add_button": "إضافة عنوان",
+      "add_button_text": "يضيف",
+      "add_button_accessibility_label": "إضافة عنوان",
+      "back_button": "خلف",
+      "back_button_accessibility_label": "العودة إلى عنوان التحرير {{address}}",
+      "add_address_banner": "أضف عناوين لاستخدامها عند الخروج",
+      "no_addresses_banner": "لم تتم إضافة أي عناوين",
+      "address_deleted_notification": "تم حذف العنوان",
+      "cancel_adding_address_accessibility_label": "إلغاء إضافة العنوان",
+      "cancel_deletion_button": "يلغي",
+      "cancel_deletion_button_accessibility_label": "إلغاء حذف {{address}}",
+      "default_address": {
+        "title": "العنوان الافتراضي",
+        "title_accessibility_label": "العنوان الافتراضي: {{address}}"
+      },
+      "delete_button": "يمسح",
+      "delete_button_accessibility_label": "حذف {{address}}",
+      "delete_confirmation_button": "حذف العنوان",
+      "delete_confirmation_button_accessibility_label": "حذف {{address}}",
+      "delete_confirmation_message": "هل تريد حذف العنوان؟ الطلبات الحالية لن تتأثر.",
+      "delete_confirmation_title": "حذف العنوان؟",
+      "delete_confirmation_description": "لا تتأثر الطلبات الحالية.",
+      "edit_button": "يحرر",
+      "edit_button_accessibility_label": "تعديل {{address}}",
+      "edit_section_accessibility_label": "تعديل {{address}}",
+      "edit_modal_title": {
+        "default": "تعديل العنوان",
+        "billing": "تعديل عنوان الفاتورة",
+        "shipping": "تعديل عنوان الشحن"
+      },
+      "loading_accessibility_message": "عنوان التحميل",
+      "loading_addresses_accessibility_message": "تحميل العناوين",
+      "loading_billing_accessibility_message": "تحميل عنوان الفاتورة",
+      "loading_finished_accessibility_message": "تم تحميل صفحة جديدة من العناوين",
+      "loading_shipping_accessibility_message": "جاري تحميل عنوان الشحن",
+      "pagination": {
+        "load_more": "تحميل المزيد",
+        "load_more_accessibility_label": "تحميل المزيد من العناوين"
+      },
+      "save_new_address_accessibility_label": "حفظ العنوان",
+      "title": "العناوين"
     },
     "address_form": {
       "attention": "انتباه",
@@ -1788,7 +1910,30 @@
       "order_number": "طلب",
       "order_number_link": "رقم الطلب {{ number }}",
       "date": "تاريخ",
-      "payment_status": "حالة الدفع"
+      "payment_status": "حالة الدفع",
+      "fulfillment_status": "حالة الإنجاز",
+      "total": "المجموع",
+      "none": "لم تقم بوضع أي طلبات بعد."
+    },
+    "recover_password": {
+      "title": "إعادة تعيين كلمة المرور الخاصة بك",
+      "subtext": "سنرسل لك بريدًا إلكترونيًا لإعادة تعيين كلمة المرور الخاصة بك",
+      "success": "لقد أرسلنا لك رسالة بريد إلكتروني تحتوي على رابط لتحديث كلمة المرور الخاصة بك."
+    },
+    "register": {
+      "title": "إنشاء حساب",
+      "first_name": "الاسم الأول",
+      "last_name": "اسم العائلة",
+      "email": "بريد إلكتروني",
+      "password": "كلمة المرور",
+      "submit": "يخلق"
+    },
+    "reset_password": {
+      "title": "إعادة تعيين كلمة مرور الحساب",
+      "subtext": "أدخل كلمة مرور جديدة",
+      "password": "كلمة المرور",
+      "password_confirm": "تأكيد كلمة المرور",
+      "submit": "إعادة تعيين كلمة المرور"
     }
   },
   "sections": {
@@ -1991,7 +2136,31 @@
       "expanded": "نموذج مستلم بطاقة الهدايا الموسع",
       "collapsed": "تم انهيار نموذج مستلم بطاقة الهدية",
       "send_on": "سنة-شهر-يوم",
-      "send_on_label": "إرسال (اختياري)"
+      "send_on_label": "إرسال (اختياري)",
+      "checkbox": "أريد أن أرسل هذا كهدية",
+      "email_label": "بريد المستلم الإلكتروني",
+      "email_label_optional_for_no_js_behavior": "البريد الإلكتروني للمستلم (اختياري)",
+      "email": "بريد إلكتروني",
+      "name_label": "اسم المستلم (اختياري)",
+      "name": "اسم",
+      "message_label": "الرسالة (اختياري)",
+      "message": "رسالة",
+      "max_characters": "{{ max_chars }} حرف كحد أقصى"
+    }
+  },
+  "gift_cards": {
+    "issued": {
+      "how_to_use_gift_card": "استخدم رمز بطاقة الهدية عبر الإنترنت أو رمز الاستجابة السريعة في المتجر",
+      "title": "إليك رصيد بطاقة الهدايا {{ value }} لـ {{ shop }} !",
+      "subtext": "بطاقة الهدية الخاصة بك",
+      "gift_card_code": "رمز بطاقة الهدايا",
+      "shop_link": "قم بزيارة المتجر عبر الإنترنت",
+      "add_to_apple_wallet": "أضف إلى محفظة Apple",
+      "qr_image_alt": "رمز الاستجابة السريعة - امسح ضوئيًا لاسترداد بطاقة الهدايا",
+      "copy_code": "نسخ رمز بطاقة الهدية",
+      "expiration_date": "تنتهي صلاحيتها {{ expires_on }}",
+      "copy_code_success": "تم نسخ الكود بنجاح",
+      "expired": "منتهي الصلاحية"
     }
   }
 }
