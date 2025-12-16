@@ -4,7 +4,6 @@
     display: none!important;
   }
 }
-
 .sticky-toolbar-mobile {
   position: fixed;
   bottom: 15px;
@@ -17,7 +16,6 @@
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   border-radius:30px;
 }
-
 .sticky-toolbar-mobile .toolbar-item {
   flex: 1;
   text-align: center;
@@ -25,7 +23,6 @@
   text-decoration: none;
   font-size: 12px;
 }
-
 .sticky-toolbar-mobile .toolbar-item .icon {
   width: 22px;
   height: 22px;
@@ -34,17 +31,14 @@
   fill: #333;
   transition: fill 0.3s ease;
 }
-
 .sticky-toolbar-mobile .toolbar-item:hover .icon,
 .sticky-toolbar-mobile .toolbar-item:focus .icon {
   fill: #000;
 }
-
 div#mb-sticky{
   display:flex;
   justify-content: space-around;
- }
-
+}
 .sr4-toolbar-item a{
   padding-right: 10px;
   padding-left: 10px;
@@ -56,13 +50,11 @@ div#mb-sticky{
   font-weight: 400;
   line-height: 1;
 }
-
 #mb-sticky > div:first-child[aria-current="page"] {
   background: #333333;
   border-radius: 30px;
   width:20%;
 }
-
 #mb-sticky > div:first-child[aria-current="page"] svg {
   color:white;
 }

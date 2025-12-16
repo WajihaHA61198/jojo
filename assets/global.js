@@ -588,16 +588,560 @@ class DeferredMedia extends HTMLElement {
 
 customElements.define('deferred-media', DeferredMedia);
 
+// class SliderComponent extends HTMLElement {
+//   constructor() {
+//     super();
+//     this.slider = this.querySelector('[id^="Slider-"]');
+//     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
+//     this.enableSliderLooping = true;
+//     this.currentPageElement = this.querySelector('.slider-counter--current');
+//     this.pageTotalElement = this.querySelector('.slider-counter--total');
+//     this.prevButton = this.querySelector('button[name="previous"]');
+//     this.nextButton = this.querySelector('button[name="next"]');
+
+
+
+//     // Drag/swipe properties
+//     this.isDragging = false;
+//     this.startX = 0;
+//     this.currentX = 0;
+//     this.dragThreshold = 50;
+//     this.startScrollLeft = 0;
+
+//     // Infinite scroll properties
+//     // this.isScrolling = false;
+//     // this.duplicatedItems = [];
+
+
+
+
+//     if (!this.slider || !this.nextButton) return;
+
+//     // this.setupInfiniteScroll();
+
+//     this.initPages();
+//     const resizeObserver = new ResizeObserver((entries) => this.initPages());
+//     resizeObserver.observe(this.slider);
+
+//     this.slider.addEventListener('scroll', this.update.bind(this));
+//     this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
+//     this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
+
+
+
+
+
+
+
+    
+//     this.setupDragListeners();
+//   }
+
+
+//   //  setupInfiniteScroll() {
+//   //   if (this.enableSliderLooping && this.sliderItems.length > 0) {
+//   //     // Clone items for infinite scroll
+//   //     this.sliderItems.forEach((item) => {
+//   //       const clone = item.cloneNode(true);
+//   //       clone.id = clone.id + '-clone';
+//   //       this.slider.appendChild(clone);
+//   //     });
+//   //   }
+//   // }
+
+
+//   setupDragListeners() {
+
+//     this.slider.addEventListener('mousedown', this.onDragStart.bind(this));
+
+//     this.slider.addEventListener('mousemove', this.onDragMove.bind(this));
+
+//     this.slider.addEventListener('mouseup', this.onDragEnd.bind(this));
+
+//     this.slider.addEventListener('mouseleave', this.onDragEnd.bind(this));
+
+
+
+//     this.slider.addEventListener('touchstart', this.onDragStart.bind(this));
+
+//     this.slider.addEventListener('touchmove', this.onDragMove.bind(this));
+
+//     this.slider.addEventListener('touchend', this.onDragEnd.bind(this));
+
+
+
+//     this.slider.addEventListener('selectstart', (e) => {
+
+//       if (this.isDragging) e.preventDefault();
+
+//     });
+
+//   }
+
+
+
+//   onDragStart(event) {
+
+//     this.isDragging = true;
+
+//     this.startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+
+//     this.currentX = this.startX;
+
+//     this.startScrollLeft = this.slider.scrollLeft;
+
+//     this.slider.style.scrollBehavior = 'auto';
+
+//   }
+
+
+
+//   onDragMove(event) {
+
+//     if (!this.isDragging) return;
+
+    
+
+//     this.currentX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+
+//     const dragDistance = this.startX - this.currentX;
+
+    
+
+//     this.slider.scrollLeft = this.startScrollLeft + dragDistance;
+
+//   }
+
+
+
+//   onDragEnd(event) {
+
+//     if (!this.isDragging) return;
+
+    
+
+//     this.isDragging = false;
+
+//     const dragDistance = Math.abs(this.currentX - this.startX);
+
+    
+
+//     if (dragDistance > this.dragThreshold) {
+
+//       const direction = this.currentX < this.startX ? 'next' : 'previous';
+
+//       const fakeEvent = { 
+
+//         currentTarget: { name: direction, dataset: { step: 1 } },
+
+//         preventDefault: () => {}
+
+//       };
+
+//       this.onButtonClick(fakeEvent);
+
+//     }
+
+    
+
+//     this.slider.style.scrollBehavior = 'smooth';
+
+
+
+
+
+//   }
+
+//   initPages() {
+//     this.sliderItemsToShow = Array.from(this.sliderItems).filter((element) => element.clientWidth > 0);
+//     if (this.sliderItemsToShow.length < 2) return;
+//     this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
+//     this.slidesPerPage = Math.floor(
+//       (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+//     );
+//     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
+//     this.update();
+//   }
+
+//   resetPages() {
+//     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
+//     this.initPages();
+//   }
+
+//   update() {
+//     // Temporarily prevents unneeded updates resulting from variant changes
+//     // This should be refactored as part of https://github.com/Shopify/dawn/issues/2057
+//     if (!this.slider || !this.nextButton) return;
+
+//     const previousPage = this.currentPage;
+//     this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+
+//     if (this.currentPageElement && this.pageTotalElement) {
+//       this.currentPageElement.textContent = this.currentPage;
+//       this.pageTotalElement.textContent = this.totalPages;
+//     }
+
+//     if (this.currentPage != previousPage) {
+//       this.dispatchEvent(
+//         new CustomEvent('slideChanged', {
+//           detail: {
+//             currentPage: this.currentPage,
+//             currentElement: this.sliderItemsToShow[this.currentPage - 1],
+//           },
+//         })
+//       );
+//     }
+
+//     if (this.enableSliderLooping) return;
+
+//     if (this.isSlideVisible(this.sliderItemsToShow[0]) && this.slider.scrollLeft === 0) {
+//       this.prevButton.setAttribute('disabled', 'disabled');
+//     } else {
+//       this.prevButton.removeAttribute('disabled');
+//     }
+
+//     if (this.isSlideVisible(this.sliderItemsToShow[this.sliderItemsToShow.length - 1])) {
+//       this.nextButton.setAttribute('disabled', 'disabled');
+//     } else {
+//       this.nextButton.removeAttribute('disabled');
+//     }
+//   }
+
+//   isSlideVisible(element, offset = 0) {
+//     const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollLeft - offset;
+//     return element.offsetLeft + element.clientWidth <= lastVisibleSlide && element.offsetLeft >= this.slider.scrollLeft;
+//   }
+
+//   onButtonClick(event) {
+//     event.preventDefault();
+//     const step = event.currentTarget.dataset.step || 1;
+//     // this.slideScrollPosition =
+//     //   event.currentTarget.name === 'next'
+//     //     ? this.slider.scrollLeft + step * this.sliderItemOffset
+//     //     : this.slider.scrollLeft - step * this.sliderItemOffset;
+
+
+    
+
+//     const isNextButton = event.currentTarget.name === 'next';
+
+//     const isFirstSlide = this.currentPage === 1;
+
+//     const isLastSlide = this.currentPage === this.totalPages;
+
+
+
+//     if (this.enableSliderLooping) {
+
+//        if (isNextButton && isLastSlide) {
+
+//         // Infinite loop - jump to first slide
+
+//         this.slideScrollPosition = 0;
+
+//       } else if (!isNextButton && isFirstSlide) {
+
+//         // Infinite loop - jump to last slide
+
+//         const lastSlidePosition = (this.totalPages - 1) * this.sliderItemOffset;
+
+//         this.slideScrollPosition = lastSlidePosition;
+
+//       } else {
+
+//         // Normal navigation
+
+//         this.slideScrollPosition =
+
+//           isNextButton
+
+//             ? this.slider.scrollLeft + step * this.sliderItemOffset
+
+//             : this.slider.scrollLeft - step * this.sliderItemOffset;
+
+//       }
+
+//     } else {
+//       this.slideScrollPosition =
+//         isNextButton
+//           ? this.slider.scrollLeft + step * this.sliderItemOffset
+//           : this.slider.scrollLeft - step * this.sliderItemOffset;
+//       // this.setSlidePosition(this.slideScrollPosition);
+//       // this.handleInfiniteScroll();
+
+//     } else {
+//       const isFirstSlide = this.currentPage === 1;
+//       const isLastSlide = this.currentPage === this.totalPages;
+
+//       this.slideScrollPosition =
+
+//         isNextButton
+
+//           ? this.slider.scrollLeft + step * this.sliderItemOffset
+
+//           : this.slider.scrollLeft - step * this.sliderItemOffset;
+
+//           this.setSlidePosition(this.slideScrollPosition);
+
+//     }
+//   }
+
+
+
+
+
+
+
+
+//     // this.setSlidePosition(this.slideScrollPosition);
+//      handleInfiniteScroll() {
+
+//     // Get original number of items
+
+//     const originalItemCount = this.sliderItems.length;
+
+//     const maxScroll = originalItemCount * this.sliderItemOffset;
+
+
+
+//     // When scroll reaches the cloned items, jump back to start
+
+//     setTimeout(() => {
+
+//       if (this.slider.scrollLeft >= maxScroll - this.sliderItemOffset) {
+
+//         this.slider.scrollLeft = 0;
+
+//       } else if (this.slider.scrollLeft <= -this.sliderItemOffset) {
+
+//         this.slider.scrollLeft = maxScroll - this.sliderItemOffset;
+
+//       }
+
+//     }, 300);
+//   }
+
+//   setSlidePosition(position) {
+//     this.slider.scrollTo({
+//       left: position,
+//       behavior: 'smooth',
+//     });
+//   }
+// }
+
+// class SliderComponent extends HTMLElement {
+//   constructor() {
+//     super();
+//     this.slider = this.querySelector('[id^="Slider-"]');
+//     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
+//     this.enableSliderLooping = true;
+//     this.currentPageElement = this.querySelector('.slider-counter--current');
+//     this.pageTotalElement = this.querySelector('.slider-counter--total');
+//     this.prevButton = this.querySelector('button[name="previous"]');
+//     this.nextButton = this.querySelector('button[name="next"]');
+
+//     // Drag/swipe properties
+//     this.isDragging = false;
+//     this.startX = 0;
+//     this.currentX = 0;
+//     this.dragThreshold = 50;
+//     this.startScrollLeft = 0;
+    
+//     // Infinite scroll properties
+//     this.isScrolling = false;
+//     this.duplicatedItems = [];
+
+//     if (!this.slider || !this.nextButton) return;
+
+//     this.setupInfiniteScroll();
+//     this.initPages();
+//     const resizeObserver = new ResizeObserver((entries) => this.initPages());
+//     resizeObserver.observe(this.slider);
+
+//     this.slider.addEventListener('scroll', this.update.bind(this));
+//     this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
+//     this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
+
+//     this.setupDragListeners();
+//   }
+
+//   setupInfiniteScroll() {
+//     if (this.enableSliderLooping && this.sliderItems.length > 0) {
+//       // Clone items for infinite scroll
+//       this.sliderItems.forEach((item) => {
+//         const clone = item.cloneNode(true);
+//         clone.id = clone.id + '-clone';
+//         this.slider.appendChild(clone);
+//       });
+//     }
+//   }
+
+//   setupDragListeners() {
+//     this.slider.addEventListener('mousedown', this.onDragStart.bind(this));
+//     this.slider.addEventListener('mousemove', this.onDragMove.bind(this));
+//     this.slider.addEventListener('mouseup', this.onDragEnd.bind(this));
+//     this.slider.addEventListener('mouseleave', this.onDragEnd.bind(this));
+
+//     this.slider.addEventListener('touchstart', this.onDragStart.bind(this));
+//     this.slider.addEventListener('touchmove', this.onDragMove.bind(this));
+//     this.slider.addEventListener('touchend', this.onDragEnd.bind(this));
+
+//     this.slider.addEventListener('selectstart', (e) => {
+//       if (this.isDragging) e.preventDefault();
+//     });
+//   }
+
+//   onDragStart(event) {
+//     this.isDragging = true;
+//     this.startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+//     this.currentX = this.startX;
+//     this.startScrollLeft = this.slider.scrollLeft;
+//     this.slider.style.scrollBehavior = 'auto';
+//   }
+
+//   onDragMove(event) {
+//     if (!this.isDragging) return;
+    
+//     this.currentX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+//     const dragDistance = this.startX - this.currentX;
+    
+//     this.slider.scrollLeft = this.startScrollLeft + dragDistance;
+//   }
+
+//   onDragEnd(event) {
+//     if (!this.isDragging) return;
+    
+//     this.isDragging = false;
+//     const dragDistance = Math.abs(this.currentX - this.startX);
+    
+//     if (dragDistance > this.dragThreshold) {
+//       const direction = this.currentX < this.startX ? 'next' : 'previous';
+//       const fakeEvent = { 
+//         currentTarget: { name: direction, dataset: { step: 1 } },
+//         preventDefault: () => {}
+//       };
+//       this.onButtonClick(fakeEvent);
+//     }
+    
+//     this.slider.style.scrollBehavior = 'smooth';
+//   }
+
+//   initPages() {
+//     this.sliderItemsToShow = Array.from(this.sliderItems).filter((element) => element.clientWidth > 0);
+//     if (this.sliderItemsToShow.length < 2) return;
+//     this.sliderItemOffset = this.sliderItemsToShow[1].offsetLeft - this.sliderItemsToShow[0].offsetLeft;
+//     this.slidesPerPage = Math.floor(
+//       (this.slider.clientWidth - this.sliderItemsToShow[0].offsetLeft) / this.sliderItemOffset
+//     );
+//     this.totalPages = this.sliderItemsToShow.length - this.slidesPerPage + 1;
+//     this.update();
+//   }
+
+//   resetPages() {
+//     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
+//     this.initPages();
+//   }
+
+//   update() {
+//     if (!this.slider || !this.nextButton) return;
+
+//     const previousPage = this.currentPage;
+//     this.currentPage = Math.round(this.slider.scrollLeft / this.sliderItemOffset) + 1;
+
+//     if (this.currentPageElement && this.pageTotalElement) {
+//       this.currentPageElement.textContent = this.currentPage;
+//       this.pageTotalElement.textContent = this.totalPages;
+//     }
+
+//     if (this.currentPage != previousPage) {
+//       this.dispatchEvent(
+//         new CustomEvent('slideChanged', {
+//           detail: {
+//             currentPage: this.currentPage,
+//             currentElement: this.sliderItemsToShow[this.currentPage - 1],
+//           },
+//         })
+//       );
+//     }
+
+//     if (this.enableSliderLooping) return;
+
+//     if (this.isSlideVisible(this.sliderItemsToShow[0]) && this.slider.scrollLeft === 0) {
+//       this.prevButton.setAttribute('disabled', 'disabled');
+//     } else {
+//       this.prevButton.removeAttribute('disabled');
+//     }
+
+//     if (this.isSlideVisible(this.sliderItemsToShow[this.sliderItemsToShow.length - 1])) {
+//       this.nextButton.setAttribute('disabled', 'disabled');
+//     } else {
+//       this.nextButton.removeAttribute('disabled');
+//     }
+//   }
+
+//   isSlideVisible(element, offset = 0) {
+//     const lastVisibleSlide = this.slider.clientWidth + this.slider.scrollLeft - offset;
+//     return element.offsetLeft + element.clientWidth <= lastVisibleSlide && element.offsetLeft >= this.slider.scrollLeft;
+//   }
+
+//   onButtonClick(event) {
+//     event.preventDefault();
+//     const step = event.currentTarget.dataset.step || 1;
+    
+//     const isNextButton = event.currentTarget.name === 'next';
+//     const isFirstSlide = this.currentPage === 1;
+//     const isLastSlide = this.currentPage === this.totalPages;
+
+//     if (this.enableSliderLooping) {
+//       if (isNextButton && isLastSlide) {
+//         // Infinite loop - jump to first slide
+//         this.slideScrollPosition = 0;
+//       } else if (!isNextButton && isFirstSlide) {
+//         // Infinite loop - jump to last slide
+//         const lastSlidePosition = (this.totalPages - 1) * this.sliderItemOffset;
+//         this.slideScrollPosition = lastSlidePosition;
+//       } else {
+//         // Normal navigation
+//         this.slideScrollPosition =
+//           isNextButton
+//             ? this.slider.scrollLeft + step * this.sliderItemOffset
+//             : this.slider.scrollLeft - step * this.sliderItemOffset;
+//       }
+//     } else {
+//       this.slideScrollPosition =
+//         isNextButton
+//           ? this.slider.scrollLeft + step * this.sliderItemOffset
+//           : this.slider.scrollLeft - step * this.sliderItemOffset;
+//     }
+
+//     this.setSlidePosition(this.slideScrollPosition);
+//   }
+
+//   setSlidePosition(position) {
+//     this.slider.scrollTo({
+//       left: position,
+//       behavior: 'smooth',
+//     });
+//   }
+// }
+
 class SliderComponent extends HTMLElement {
   constructor() {
     super();
     this.slider = this.querySelector('[id^="Slider-"]');
     this.sliderItems = this.querySelectorAll('[id^="Slide-"]');
-    this.enableSliderLooping = false;
+    this.enableSliderLooping = true;
     this.currentPageElement = this.querySelector('.slider-counter--current');
     this.pageTotalElement = this.querySelector('.slider-counter--total');
     this.prevButton = this.querySelector('button[name="previous"]');
     this.nextButton = this.querySelector('button[name="next"]');
+
+    // Drag/swipe properties
+    this.isDragging = false;
+    this.startX = 0;
+    this.currentX = 0;
+    this.dragThreshold = 50;
+    this.startScrollLeft = 0;
 
     if (!this.slider || !this.nextButton) return;
 
@@ -608,6 +1152,58 @@ class SliderComponent extends HTMLElement {
     this.slider.addEventListener('scroll', this.update.bind(this));
     this.prevButton.addEventListener('click', this.onButtonClick.bind(this));
     this.nextButton.addEventListener('click', this.onButtonClick.bind(this));
+
+    this.setupDragListeners();
+  }
+
+  setupDragListeners() {
+    this.slider.addEventListener('mousedown', this.onDragStart.bind(this));
+    this.slider.addEventListener('mousemove', this.onDragMove.bind(this));
+    this.slider.addEventListener('mouseup', this.onDragEnd.bind(this));
+    this.slider.addEventListener('mouseleave', this.onDragEnd.bind(this));
+
+    this.slider.addEventListener('touchstart', this.onDragStart.bind(this));
+    this.slider.addEventListener('touchmove', this.onDragMove.bind(this));
+    this.slider.addEventListener('touchend', this.onDragEnd.bind(this));
+
+    this.slider.addEventListener('selectstart', (e) => {
+      if (this.isDragging) e.preventDefault();
+    });
+  }
+
+  onDragStart(event) {
+    this.isDragging = true;
+    this.startX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    this.currentX = this.startX;
+    this.startScrollLeft = this.slider.scrollLeft;
+    this.slider.style.scrollBehavior = 'auto';
+  }
+
+  onDragMove(event) {
+    if (!this.isDragging) return;
+    
+    this.currentX = event.type.includes('mouse') ? event.clientX : event.touches[0].clientX;
+    const dragDistance = this.startX - this.currentX;
+    
+    this.slider.scrollLeft = this.startScrollLeft + dragDistance;
+  }
+
+  onDragEnd(event) {
+    if (!this.isDragging) return;
+    
+    this.isDragging = false;
+    const dragDistance = Math.abs(this.currentX - this.startX);
+    
+    if (dragDistance > this.dragThreshold) {
+      const direction = this.currentX < this.startX ? 'next' : 'previous';
+      const fakeEvent = { 
+        currentTarget: { name: direction, dataset: { step: 1 } },
+        preventDefault: () => {}
+      };
+      this.onButtonClick(fakeEvent);
+    }
+    
+    this.slider.style.scrollBehavior = 'smooth';
   }
 
   initPages() {
@@ -627,8 +1223,6 @@ class SliderComponent extends HTMLElement {
   }
 
   update() {
-    // Temporarily prevents unneeded updates resulting from variant changes
-    // This should be refactored as part of https://github.com/Shopify/dawn/issues/2057
     if (!this.slider || !this.nextButton) return;
 
     const previousPage = this.currentPage;
@@ -673,21 +1267,51 @@ class SliderComponent extends HTMLElement {
   onButtonClick(event) {
     event.preventDefault();
     const step = event.currentTarget.dataset.step || 1;
-    this.slideScrollPosition =
-      event.currentTarget.name === 'next'
-        ? this.slider.scrollLeft + step * this.sliderItemOffset
-        : this.slider.scrollLeft - step * this.sliderItemOffset;
+    
+    const isNextButton = event.currentTarget.name === 'next';
+    const isFirstSlide = this.currentPage === 1;
+    const isLastSlide = this.currentPage === this.totalPages;
+
+    if (this.enableSliderLooping) {
+      if (isNextButton && isLastSlide) {
+        // Infinite loop - jump to first slide
+        this.slideScrollPosition = 0;
+      } else if (!isNextButton && isFirstSlide) {
+        // Infinite loop - jump to last slide
+        const lastSlidePosition = (this.totalPages - 1) * this.sliderItemOffset;
+        this.slideScrollPosition = lastSlidePosition;
+      } else {
+        // Normal navigation
+        this.slideScrollPosition =
+          isNextButton
+            ? this.slider.scrollLeft + step * this.sliderItemOffset
+            : this.slider.scrollLeft - step * this.sliderItemOffset;
+      }
+    } else {
+      this.slideScrollPosition =
+        isNextButton
+          ? this.slider.scrollLeft + step * this.sliderItemOffset
+          : this.slider.scrollLeft - step * this.sliderItemOffset;
+    }
+
     this.setSlidePosition(this.slideScrollPosition);
   }
 
   setSlidePosition(position) {
     this.slider.scrollTo({
       left: position,
+      behavior: 'smooth',
     });
   }
 }
 
+
+
+
 customElements.define('slider-component', SliderComponent);
+
+
+
 
 class SlideshowComponent extends SliderComponent {
   constructor() {
@@ -920,6 +1544,8 @@ class SlideshowComponent extends SliderComponent {
     });
   }
 }
+
+// ---------------------------------------
 
 customElements.define('slideshow-component', SlideshowComponent);
 

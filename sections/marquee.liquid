@@ -1,4 +1,3 @@
-<!-- sections/marquee.liquid -->
 {% liquid
   assign sid = section.id
   assign se_stts = section.settings
@@ -13,6 +12,8 @@
   #marquee-{{ sid }} .marquee-wrapper {
     overflow: hidden;
     width: 100%;
+
+    position: relative;
   }
 
   #marquee-{{ sid }} .marquee {
@@ -39,6 +40,9 @@
   #marquee-{{ sid }} .move-right {
     animation: marqueeRight {{ se_stts.animation_time }}s linear infinite;
   }
+  #marquee-{{ sid }} .marquee:hover {
+    animation-play-state: paused;
+  }
 
   @keyframes marqueeLeft {
     0% { transform: translateX(0%); }
@@ -53,7 +57,7 @@
 <div id="marquee-{{ sid }}" class="marquee-section page-width" style="padding: {{ se_stts.paddingTb }}px 0;">
   <div class="marquee-wrapper">
     <div class="marquee move-{{ se_stts.marqdirection1 }}">
-      {% for i in (1..6) %}
+      {% for i in (1..2) %}
         {{ se_stts.marq_text }}
       {% endfor %}
     </div>
@@ -82,7 +86,7 @@
       "type": "richtext",
       "id": "marq_text",
       "label": "Marquee text 1",
-      "default": "<p>Papercut – 26 Sections of Pure Customization Power 👜</p>"
+      "default": "<p>Fast Forward – 26 Sections of Pure Customization Power 👜</p>"
     },
     {
       "type": "select",
@@ -98,7 +102,7 @@
       "type": "richtext",
       "id": "marq_text2",
       "label": "Marquee text 2",
-      "default": "<p>Papercut – 26 Sections of Pure Customization Power ☂️</p>"
+      "default": "<p>Fast Forward – 26 Sections of Pure Customization Power ☂️</p>"
     },
     {
       "type": "select",
@@ -168,7 +172,8 @@
   ],
   "presets": [
     {
-      "name": "Scrolling Marquee"
+      "name": "Scrolling Marquee",
+      "category": "Text"
     }
   ]
 }

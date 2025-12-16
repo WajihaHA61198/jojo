@@ -43,7 +43,7 @@
           <p class="announcement-bar__message h5">
             <span>{{ section.blocks.first.settings.text | escape }}</span>
             {%- if section.blocks.first.settings.link != blank -%}
-              {% render 'global-icons' icon: 'arrow' %}
+              {% render 'global-icons', icon: 'arrow' %}
             {%- endif -%}
           </p>
           {%- if section.blocks.first.settings.link != blank -%}
@@ -66,7 +66,7 @@
             aria-label="{{ 'sections.announcements.previous_announcement' | t }}"
             aria-controls="Slider-{{ section.id }}"
           >
-            {% render 'global-icons' icon: 'caret' %}
+            {% render 'global-icons', icon: 'caret' %}
           </button>
           <div
             class="grid grid--1-col slider slider--everywhere"
@@ -102,7 +102,7 @@
                     <p class="announcement-bar__message h5">
                       <span>{{ block.settings.text | escape }}</span>
                       {%- if block.settings.link != blank -%}
-                        {% render 'global-icons' icon: 'arrow' %}
+                        {% render 'global-icons', icon: 'arrow' %}
                       {%- endif -%}
                     </p>
                     {%- if block.settings.link != blank -%}
@@ -120,7 +120,7 @@
             aria-label="{{ 'sections.announcements.next_announcement' | t }}"
             aria-controls="Slider-{{ section.id }}"
           >
-            {% render 'global-icons' icon: 'caret' %}
+            {% render 'global-icons', icon: 'caret' %}
           </button>
         </div>
       </slideshow-component>
@@ -159,7 +159,7 @@
                   </option>
                 {%- endfor -%}
               </select>
-              {% render 'global-icons' icon: 'caret' %}
+              {% render 'global-icons', icon: 'caret' %}
             </div>
             <button class="button button--tertiary">{{ 'localization.update_country' | t }}</button>
           {%- endform -%}
@@ -199,7 +199,7 @@
                   </option>
                 {%- endfor -%}
               </select>
-              {% render 'global-icons' icon: 'caret' %}
+              {% render 'global-icons', icon: 'caret' %}
             </div>
             <button class="button button--tertiary">{{ 'localization.update_language' | t }}</button>
           {%- endform -%}

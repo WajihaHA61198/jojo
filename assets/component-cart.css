@@ -203,8 +203,12 @@ cart-items {
     justify-content: flex-end;
   }
 
-  .cart__ctas {
+  /* .cart__ctas {
     display: flex;
     gap: 1rem;
-  }
+  } */
+}
+
+.cart__view-cart.button.w-full{
+  width:100%;
 }

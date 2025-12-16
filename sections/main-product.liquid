@@ -222,7 +222,7 @@
                           {{ block.settings.heading | default: block.settings.page.title }}
                         </h2>
                       </div>
-                      {% render 'global-icons' icon: 'caret' %}
+                      {% render 'global-icons', icon: 'caret' %}
                     </summary>
                     <div class="accordion__content rte" id="ProductAccordion-{{ block.id }}-{{ section.id }}">
                       {{ block.settings.content }}
@@ -261,7 +261,7 @@
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.decrease' | t: product: product.title | escape -}}
                         </span>
-                        {% render 'global-icons' icon: 'minus' %}
+                        {% render 'global-icons', icon: 'minus' %}
                       </button>
                       <input
                         class="quantity__input"
@@ -283,7 +283,7 @@
                         <span class="visually-hidden">
                           {{- 'products.product.quantity.increase' | t: product: product.title | escape -}}
                         </span>
-                        {% render 'global-icons' icon: 'plus' %}
+                        {% render 'global-icons', icon: 'plus' %}
                       </button>
                     </quantity-input>
                     {%- liquid
@@ -443,6 +443,20 @@
                   {%- endif -%}
                 </div>
 
+              {% when 'order_whatsapp' %}
+                <button class="button sr4_wapp">
+                  <a
+                    href="{{ block.settings.order_whatsapp_num }}"
+                    target="_blank"
+                    class="whats_btn"
+                    aria-describedby="a11y-new-window-external-message"
+                    rel="noopener"
+                  >
+                    {% render 'global-icons', icon: 'whatsapp' %}
+                    <span>{{ block.settings.order_whatsapp }}</span>
+                  </a>
+                </button>
+
               {%- when 'popup' -%}
                 <modal-opener
                   class="product-popup-modal__opener no-js-hidden quick-add-hidden"
@@ -462,17 +476,13 @@
                   {{- block.settings.text -}}
                 </a>
 
-              {%- when 'share' -%}
+              {%- when 'social_share' -%}
                 {% assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin %}
                 {% render 'share-button', block: block, share_link: share_url %}
 
               {%- when 'variant_picker' -%}
-                {% if section.settings.use_border_form %}<div class="variant-border-form"> {% endif %}
-                  {% render 'product-variant-picker',
-                    product: product,
-                    block: block,
-                    product_form_id: product_form_id
-                  %}
+                {% if section.settings.use_border_form %}<div class="variant-border-form">{% endif %}
+                {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -481,7 +491,7 @@
                   section_id: section.id,
                   show_pickup_availability: true
                 -%}
-                {% if section.settings.use_border_form %} </div> {% endif %}
+                {% if section.settings.use_border_form %}</div>{% endif %}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   {% liquid
@@ -545,7 +555,7 @@
                           {%- endif -%}
                         </div>
                         {%- if block.settings.make_collapsible_row -%}
-                          {% render 'global-icons' icon: 'caret' %}
+                          {% render 'global-icons', icon: 'caret' %}
                           </summary>
                         {%- endif -%}
                         <slideshow-component class="slider-mobile-gutter">
@@ -603,7 +613,7 @@
                                 name="previous"
                                 aria-label="{{ 'general.slider.previous_slide' | t }}"
                               >
-                                {% render 'global-icons' icon: 'caret' %}
+                                {% render 'global-icons', icon: 'caret' %}
                               </button>
                               <div class="slider-counter slider-counter--{{ block.settings.pagination_style }}{% if block.settings.pagination_style == 'counter' or block.settings.pagination_style == 'numbers' %} caption{% endif %}">
                                 {%- if block.settings.pagination_style == 'counter' -%}
@@ -635,7 +645,7 @@
                                 name="next"
                                 aria-label="{{ 'general.slider.next_slide' | t }}"
                               >
-                                {% render 'global-icons' icon: 'caret' %}
+                                {% render 'global-icons', icon: 'caret' %}
                               </button>
                             </div>
                           {%- endif -%}
@@ -655,11 +665,15 @@
                 </product-recommendations>
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
+              {% when 'product_list' %}
+                <div class="WAJIHA">
+                  {%- render 'fbt' -%}
+                </div>
             {%- endcase -%}
           {%- endfor -%}
           <a href="{{ product.url }}" class="link product__view-details animate-arrow">
             {{ 'products.product.view_full_details' | t }}
-            {% render 'global-icons' icon: 'arrow' %}
+            {% render 'global-icons', icon: 'arrow' %}
           </a>
         </product-info>
       </div>
@@ -689,7 +703,7 @@
             class="product-popup-modal__toggle"
             aria-label="{{ 'accessibility.close' | t }}"
           >
-            {% render 'global-icons' icon: 'drawer-close' %}
+            {% render 'global-icons', icon: 'drawer-close' %}
           </button>
 
           <div class="product-popup-modal__content-info">
@@ -988,8 +1002,8 @@
       "limit": 1
     },
     {
-      "type": "share",
-      "name": "t:sections.main-product.blocks.share.name",
+      "type": "social_share",
+      "name": "Product share",
       "limit": 1,
       "settings": [
         {
@@ -1005,6 +1019,23 @@
         {
           "type": "paragraph",
           "content": "t:sections.main-product.blocks.share.settings.title_info.content"
+        }
+      ]
+    },
+    {
+      "type": "order_whatsapp",
+      "name": "Order via whatsapp",
+      "settings": [
+        {
+          "type": "text",
+          "id": "order_whatsapp",
+          "label": "Title of button",
+          "default": "Order via whatsapp"
+        },
+        {
+          "type": "text",
+          "id": "order_whatsapp_num",
+          "label": "Enter whatsapp url"
         }
       ]
     },
@@ -2156,6 +2187,17 @@
           "info": "t:sections.main-product.blocks.icon_with_text.settings.heading.info"
         }
       ]
+    },
+    {
+      "type": "product_list",
+      "name": "FBT",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Open metafield with the name of fbt (e.g. custom.fbt) & type should be products with list of products."
+        }
+      ]
     }
   ],
   "settings": [
@@ -2346,4 +2388,3 @@
   ]
 }
 {% endschema %}
-

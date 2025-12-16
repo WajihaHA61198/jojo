@@ -56,7 +56,7 @@
                     </option>
                   {%- endfor -%}
                 </select>
-                {% render 'global-icons' icon: 'caret' %}
+                {% render 'global-icons', icon: 'caret' %}
               </div>
             </div>
             <noscript>
@@ -135,76 +135,74 @@
           <div class="collection{% if section.settings.filter_type != 'vertical' %} page-width{% endif %}">
             <div class="loading-overlay gradient"></div>
 
+            <ul
+              id="product-grid"
+              data-id="{{ section.id }}"
+              class="
+                grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
+                grid--{{ section.settings.columns_desktop }}-col-desktop
+              "
+            >
+              {%- for product in collection.products -%}
+                {% assign lazy_load = false %}
+                {%- if forloop.index > 2 -%}
+                  {%- assign lazy_load = true -%}
+                {%- endif -%}
 
+                {% for option in product.options %}
+                  {% if product.options_by_name.Color.values == null %}
+                    <li class="grid__item">
+                      {% render 'card-product',
+                        card_product: product,
+                        product_title: product.title,
+                        media_aspect_ratio: section.settings.image_ratio,
+                        show_secondary_image: section.settings.show_secondary_image,
+                        show_vendor: section.settings.show_vendor,
+                        show_rating: section.settings.show_rating,
+                        lazy_load: lazy_load,
+                        show_quick_add: section.settings.enable_quick_add,
+                        show_quick_add_position: section.settings.quick_add_position,
+                        section_id: section.id
+                      %}
+                    </li>
+                  {% endif %}
 
+                  {% if option == 'Color' %}
+                    {% assign index = forloop.index0 %}
+                    {% assign colorlist = '' %}
+                    {% assign color = '' %}
 
-            
-       <ul id="product-grid" data-id="{{ section.id }}" class="
-          grid product-grid grid--{{ section.settings.columns_mobile }}-col-tablet-down
-          grid--{{ section.settings.columns_desktop }}-col-desktop">
-          {%- for product in collection.products -%}
-
-            {% assign lazy_load = false %}
-            {%- if forloop.index > 2 -%}
-              {%- assign lazy_load = true -%}
-            {%- endif -%}
-
-          {% for option in product.options %}
-              {% if product.options_by_name['Color'].values == null %}
-                  <li class="grid__item">
-                    {% render 'card-product',
-                      card_product: product,
-                      product_title: product.title,
-                      media_aspect_ratio: section.settings.image_ratio,
-                      show_secondary_image: section.settings.show_secondary_image,
-                      show_vendor: section.settings.show_vendor,
-                      show_rating: section.settings.show_rating,
-                      lazy_load: lazy_load,
-                      show_quick_add: section.settings.enable_quick_add,
-                      show_quick_add_position: section.settings.quick_add_position,
-                      section_id: section.id
-                    %}
-                  </li>
-              {% endif %}
-            
-      {% if option == 'Color' %}
-        {% assign index = forloop.index0 %}
-        {% assign colorlist = '' %}
-        {% assign color = '' %}
-        
-      {% for variant in product.variants %}
-        {% capture color %}
+                    {% for variant in product.variants %}
+                      {% capture color %}
            {{ variant.options[index] }}
         {% endcapture %}
-        
-          {% unless colorlist contains color %}
-            <li class="grid__item">
-              {% render 'card-product-variant',
-                card_product: variant,
-                title: product.title,
-                color: color,
-                media_aspect_ratio: section.settings.image_ratio,
-                show_secondary_image: section.settings.show_secondary_image,
-                show_vendor: section.settings.show_vendor,
-                show_rating: section.settings.show_rating,
-                lazy_load: lazy_load,
-                show_quick_add: section.settings.enable_quick_add,
-                show_quick_add_position: section.settings.quick_add_position,
-                section_id: section.id
 
-              %}
-            </li>
-            {% capture tempList %}
+                      {% unless colorlist contains color %}
+                        <li class="grid__item">
+                          {% render 'card-product-variant',
+                            card_product: variant,
+                            title: product.title,
+                            color: color,
+                            media_aspect_ratio: section.settings.image_ratio,
+                            show_secondary_image: section.settings.show_secondary_image,
+                            show_vendor: section.settings.show_vendor,
+                            show_rating: section.settings.show_rating,
+                            lazy_load: lazy_load,
+                            show_quick_add: section.settings.enable_quick_add,
+                            show_quick_add_position: section.settings.quick_add_position,
+                            section_id: section.id
+                          %}
+                        </li>
+                        {% capture tempList %}
               {{colorlist | append: color | append: " " }}
             {% endcapture %}
-            {% assign colorlist = tempList %}
-          {% endunless %}
-      {% endfor %}
-  {% endif %}
-{% endfor %}
-{%- endfor -%}
-</ul>
-
+                        {% assign colorlist = tempList %}
+                      {% endunless %}
+                    {% endfor %}
+                  {% endif %}
+                {% endfor %}
+              {%- endfor -%}
+            </ul>
 
             {%- if paginate.pages > 1 -%}
               {% render 'pagination', paginate: paginate, anchor: '' %}
@@ -215,7 +213,7 @@
     </div>
   {%- endpaginate -%}
   {% if section.settings.image_shape == 'arch' %}
-    {% render 'global-icons' icon: 'mask-arch' %}
+    {% render 'global-icons', icon: 'mask-arch' %}
   {%- endif -%}
 </div>
 
@@ -339,7 +337,6 @@
       "default": false,
       "label": "t:sections.main-collection-product-grid.settings.enable_quick_buy.label"
     },
-
     {
       "type": "select",
       "id": "quick_add_position",
@@ -356,7 +353,6 @@
       "default": "Over the product",
       "label": "t:sections.main-collection-product-grid.settings.quick_add_position.label"
     },
-
     {
       "type": "header",
       "content": "t:sections.main-collection-product-grid.settings.header__1.content"

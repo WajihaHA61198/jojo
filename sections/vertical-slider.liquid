@@ -16,13 +16,45 @@
         </div>
       {% endcomment %}
       <div class="vs-slide">
+        {%- assign placeholder_slide = forloop.index | modulo: 2 -%}
+        {% comment %}
+          <picture>
+            <!-- mobile first -->
+            {% if block.settings.image_mobile != blank %}
+              <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | img_url: '800x' }}">
+
+            {% else %}
+              {% if placeholder_slide == 1 %}
+                {{ 'hero-apparel-2' | placeholder_svg_tag: 'parallax-img desktop-only' }}
+              {% else %}
+                {{ 'hero-apparel-1' | placeholder_svg_tag: 'parallax-img desktop-only' }}
+              {% endif %}
+            {% endif %}
+            <!-- fallback desktop -->
+            <img src="{{ block.settings.image | img_url: '1600x' }}" alt="{{ block.settings.heading | escape }}">
+          </picture>
+        {% endcomment %}
+
         <picture>
-          <!-- mobile first -->
+          <!-- Mobile Image -->
           {% if block.settings.image_mobile != blank %}
             <source media="(max-width: 767px)" srcset="{{ block.settings.image_mobile | img_url: '800x' }}">
           {% endif %}
-          <!-- fallback desktop -->
-          <img src="{{ block.settings.image | img_url: '1600x' }}" alt="{{ block.settings.heading | escape }}">
+
+          <!-- Desktop & Fallback -->
+          {% if block.settings.image != blank %}
+            <img
+              src="{{ block.settings.image | img_url: '1600x' }}"
+              alt="{{ block.settings.heading | escape }}"
+              loading="lazy"
+            >
+          {% else %}
+            {% if placeholder_slide == 1 %}
+              {{ 'hero-apparel-2' | placeholder_svg_tag: 'parallax-svg' }}
+            {% else %}
+              {{ 'hero-apparel-1' | placeholder_svg_tag: 'parallax-svg' }}
+            {% endif %}
+          {% endif %}
         </picture>
 
         <div class="vs-content">
@@ -46,6 +78,7 @@
 {% schema %}
 {
   "name": "Vertical Slider",
+  "class": "section",
   "disabled_on": {
     "groups": ["header", "footer"]
   },
@@ -81,7 +114,25 @@
   "max_blocks": 10,
   "presets": [
     {
-      "name": "Vertical Slider"
+      "name": "Vertical Slider",
+      "category": "Image",
+      "blocks": [
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        },
+        {
+          "type": "slide"
+        }
+      ]
     }
   ]
 }

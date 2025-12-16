@@ -1,0 +1,137 @@
+{% liquid
+  assign sid = section.id
+  assign se_stts = section.settings
+%}
+<style>
+  #reveal-text-{{ sid }} {
+    text-align: center;
+    padding: {{ se_stts.padding_y }}px 20px;
+    overflow: hidden;
+  }
+
+  #reveal-text-{{ sid }} .reveal-wrapper {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #reveal-text-{{ sid }} .reveal-text {
+    display: inline-block;
+    white-space: pre-wrap;
+    {% comment %} font-size: clamp(1rem, 2vw, 1.5rem); {% endcomment %}
+    line-height: 1.5;
+    font-weight: 500;
+  }
+
+  #reveal-text-{{ sid }} .reveal-text span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  #reveal-text-{{ sid }}.visible .reveal-text span {
+    animation: revealLetter-{{ sid }} 0.6s forwards;
+  }
+
+  @keyframes revealLetter-{{ sid }} {
+    0% {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>
+
+<section
+  id="reveal-text-{{ sid }}"
+  class="color-{{ se_stts.color_scheme }} gradient"
+>
+  <div class="page-width">
+    <div class="reveal-wrapper">
+      <h2 class="reveal-text" id="text-{{ sid }}">
+        {{ se_stts.reveal_text }}
+      </h2>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const section = document.querySelector('#reveal-text-{{ sid }}');
+    const textElement = section.querySelector('#text-{{ sid }}');
+    const text = textElement.textContent.trim();
+
+    // Split text into spans for each letter
+    textElement.innerHTML = text
+      .split("")
+      .map((char, i) => `<span style="animation-delay:${i * 0.009}s">${char === " " ? "&nbsp;" : char}</span>`)
+      .join("");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // restart animation
+            section.classList.remove("visible");
+            // force reflow to restart CSS animation
+            void section.offsetWidth;
+            section.classList.add("visible");
+          } else {
+            // remove visible when leaving view so it can play again
+            section.classList.remove("visible");
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    observer.observe(section);
+  });
+</script>
+
+
+{% schema %}
+{
+  "name": "Revealing Text",
+  "settings": [
+    {
+      "type": "text",
+      "id": "reveal_text",
+      "label": "Text",
+      "default": "Our latest brands are committed to pushing the boundaries of design, creating timepieces that are as functional as they are visually striking."
+    },
+    {
+      "type": "range",
+      "id": "padding_y",
+      "label": "Vertical Padding",
+      "min": 0,
+      "max": 150,
+      "step": 5,
+      "default": 30
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "t:sections.all.colors.label",
+      "default": "background-1"
+    },
+   /*{
+      "type": "select",
+      "id": "color_scheme",
+      "label": "Color Scheme",
+      "options": [
+        { "value": "background-1", "label": "Background 1" },
+        { "value": "background-2", "label": "Background 2" },
+        { "value": "inverse", "label": "Inverse" },
+        { "value": "accent-1", "label": "Accent 1" },
+        { "value": "accent-2", "label": "Accent 2" }
+      ],
+      "default": "background-1"
+    }*/
+  ],
+  "presets": [{ "name": "Revealing Text" }]
+}
+{% endschema %}

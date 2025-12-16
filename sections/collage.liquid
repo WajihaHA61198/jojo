@@ -21,7 +21,7 @@
 <div class="color-{{ section.settings.color_scheme }} gradient isolate">
   <div class="page-width section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
-      <h2 class="collage-wrapper-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="center collage-wrapper-title inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {{ section.settings.heading }}
       </h2>
     {%- endif -%}
@@ -165,7 +165,7 @@
                         {% endif %}
                       >
                         <span class="deferred-media__poster-button motion-reduce">
-                          {% render 'global-icons' icon: 'play' %}
+                          {% render 'global-icons', icon: 'play' %}
                         </span>
 
                         {%- if block.settings.cover_image != blank -%}
@@ -209,7 +209,7 @@
                       class="modal-video__toggle"
                       aria-label="{{ 'accessibility.close' | t }}"
                     >
-                      {% render 'global-icons' icon: 'drawer-close' %}
+                      {% render 'global-icons', icon: 'drawer-close' %}
                     </button>
                     <div class="modal-video__content-info">
                       <deferred-media class="modal-video__video template-popup">
@@ -432,6 +432,7 @@
   "presets": [
     {
       "name": "t:sections.collage.presets.name",
+      "category": "Image",
       "blocks": [
         {
           "type": "image"

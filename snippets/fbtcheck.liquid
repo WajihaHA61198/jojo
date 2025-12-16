@@ -1,0 +1,490 @@
+{%- comment -%} theme.fbt {%- endcomment -%}
+
+{% if product.metafields.custom.fbt.value != null %}
+  <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+  <script src="{{ 'product-form.js' | asset_url }}" defer="defer"></script>
+  {%- liquid
+    assign se_id = section.id
+    assign form_id = 't4s-fbt__frm' | append: se_id
+    assign product_list = product.metafields.custom.fbt.value
+  -%}
+
+  {%- for i in (1..1) -%}
+    {%- liquid
+      assign pid = product.id
+      assign current_variant = product.selected_or_first_available_variant
+      assign current_variant_id = current_variant.id
+    -%}
+
+    {{ 'fbt.css' | asset_url | stylesheet_tag }}
+
+    <div class="t4s-fbt__wrap t4s-container sadsdasds">
+      <h3 class="t4s-fbt__title">{{ 'products.product.fbt' | t }}</h3>
+      <div class="t4s-fbt__products">
+        {%- form 'product',
+          product,
+          id: product_form_id,
+          class: 'form',
+          novalidate: 'novalidate',
+          data-type: 'add-to-cart-form',
+          data-ajax-cart: ''
+        -%}
+          <div class="">
+            <div class="t4s-col-auto t4s-col-item is--col-fbt-img     t4s-d-flex t4s-flex-wrap t4s-align-items-center t4s-fbt__list-img">
+              {%- liquid
+                assign price = current_variant.price
+                assign compare_pr = current_variant.compare_at_price | default: price
+                assign image = current_variant.featured_image | default: product.featured_image
+                assign img_url = image | image_url: width: 400
+              -%}
+
+              <div class="t4s-fbt__img t4s-fbt_img-0 t4s-pr" data-groups-img="{% increment indexData %}">
+                <img
+                  class="lazyloadt4s t4s-lz--fadeIn"
+                  data-src="{{ image | image_url: width: 600 }}"
+                  src="{{ image | image_url: width: 60 }}"
+                  alt="{{ image.alt | escape }}"
+                  width="{{ image.width }}"
+                  height="{{ image.height }}"
+                >
+              </div>
+
+              {%- for item in product_list -%}
+                {%- liquid
+                  if pid == item.id or item.available == false
+                    continue
+                  endif
+                  assign current_variant_item = item.selected_or_first_available_variant
+                  assign cu_pr = current_variant_item.price
+                  assign cp_pr = current_variant_item.compare_at_price | default: cu_pr
+                  assign price = price | plus: cu_pr
+                  assign compare_pr = compare_pr | plus: cp_pr
+                  assign image = current_variant_item.featured_image | default: item.featured_image
+                  assign img_url = image | image_url: width: 400
+                -%}
+
+                <div
+                  class="t4s-fbt__img t4s-fbt_img{% decrement index %} t4s-pr"
+                  data-groups-img="{% increment indexData %}"
+                >
+                  <svg focusable="false" class="t4s-svg t4s-svg--plus" viewBox="0 0 10 10" role="presentation">
+                    <path d="M6 4h4v2H6v4H4V6H0V4h4V0h2v4z" fill="currentColor" fill-rule="evenodd"></path>
+                  </svg>
+                  <a href="{{ item.url }}" class="">
+                    <img
+                      class="lazyloadt4s t4s-lz--fadeIn"
+                      data-src="{{ image | image_url: width: 600 }}"
+                      src="{{ image | image_url: width: 60 }}"
+                      alt="{{ image.alt | escape }}"
+                      width="{{ image.width }}"
+                      height="{{ image.height }}"
+                    >
+                  </a>
+                </div>
+              {%- endfor -%}
+            </div>
+
+            <ul class="t4s-fbt__swatches">
+              {%- liquid
+                assign available_v = product.variants | where: 'available'
+                assign available_v_1 = available_v.first
+                assign featured_image = product.featured_image
+              -%}
+              {%- liquid
+                assign cus_qty = product.metafields.theme.cus_qty | default: 1
+                if available_v_1.quantity_rule.min and cus_qty < available_v_1.quantity_rule.min
+                  assign cus_qty = available_v_1.quantity_rule.min
+                endif
+              -%}
+              <li data-groups-pr-item class="JJ t4s-fbt__item t4s-fbt_item-0 is--checked">
+                <span>
+                  <input
+                    data-groups-pr-ck
+                    autocomplete="off"
+                    type="checkbox"
+                    checked="checked"
+                    id="t4s-fbt_ck_0{{ se_id }}"
+
+                  ><label for="t4s-fbt_ck_0{{ se_id }}" class="t4s-pr t4s-pe-none t4s-d-inline-block">
+                    <svg class="t4s-dn t4s-icon_checked" viewBox="0 0 24 24">
+                      <path d="M9 20l-7-7 3-3 4 4L19 4l3 3z"></path>
+                    </svg>
+                  </label>
+
+                  <span class="pr_title"
+                    ><strong>This item:</strong> {{ product.title | truncatewords: 12 -}}
+                    {%- if available_v.size < 2 and product.has_only_default_variant == false %}
+                      - {{ available_v_1.title -}}
+                    {%- endif -%}
+                  </span>
+                </span>
+
+                {%- if available_v.size < 2 -%}
+                  <input
+                    data-groups-pr-sl
+                    name="items[][id]"
+                    data-cpprice="{{ available_v_1.compare_at_price | default: available_v_1.price }}"
+                    data-price="{{ available_v_1.price }}"
+                    value="{{ available_v_1.id }}"
+                    type="hidden"
+                  >
+                {%- else -%}
+                  <select
+                    data-groups-pr-sl
+                    name="items[][id]"
+                    autocomplete="off"
+                    data-cpprice="{{ available_v_1.compare_at_price | default: available_v_1.price }}"
+                    data-price="{{ available_v_1.price }}"
+                  >
+                    {%- for variant in available_v -%}
+                      <option
+                        data-img="{{ variant.image | default: featured_image | image_url: width: 1 }}"
+                        data-cpprice="{{ variant.compare_at_price | default: variant.price }}"
+                        data-price="{{ variant.price }}"
+                        data-max="{% if variant.inventory_management == blank or variant.inventory_policy == 'continue' %}9999{% else %}{{ variant.inventory_quantity | default: 9999 }}{% endif %}"
+                        value="{{ variant.id }}"
+                        {% if variant.id == current_variant_id %}
+                          selected="selected"
+                        {% endif %}
+                      >
+                        {{ variant.title | escape }}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                {%- endif -%}
+                {% comment %} <br> {% endcomment %}
+                <input
+                  data-groups-qty-value
+                  value="{{ cus_qty }}"
+                  type="number"
+                  name="items[][quantity]"
+                  class="t4s-d-none"
+                >
+                <div>
+                  <span class="t4s-fbt__price" data-groups-item-price>
+                    {%- if available_v_1.compare_at_price > available_v_1.price -%}
+                      <del>{{ available_v_1.compare_at_price | money_without_trailing_zeros }}</del>
+                      <ins>{{ available_v_1.price | money_without_trailing_zeros }}</ins>
+                    {%- else -%}
+                      {{- available_v_1.price | money_without_trailing_zeros -}}
+                    {%- endif -%}
+                  </span>
+                </div>
+              </li>
+
+              {%- assign index = 0 -%}
+              {%- for item in product_list -%}
+                {%- liquid
+                  if pid == item.id or item.available == false
+                    continue
+                  endif
+                  assign index = index | plus: 1
+                  assign available_v = item.variants | where: 'available'
+                  assign available_v_1 = available_v.first
+                  assign featured_image = item.featured_image
+                -%}
+                <li data-groups-pr-item class="JJ2 t4s-fbt__item t4s-fbt_item-{{ index }} is--checked">
+                  <span>
+                    <input
+                      data-groups-pr-ck
+                      autocomplete="off"
+                      type="checkbox"
+                      checked="checked"
+                      id="t4s-fbt_ck{{ index }}{{ se_id }}"
+                    >
+                    <label for="t4s-fbt_ck{{ index }}{{ se_id }}" class="t4s-pr t4s-d-inline-block">
+                      <svg class="t4s-dn t4s-icon_checked" viewBox="0 0 24 24">
+                        <path d="M9 20l-7-7 3-3 4 4L19 4l3 3z"></path>
+                      </svg>
+                    </label>
+                    <a class="t4s-fbt__link pr_title" href="{{ item.url }}">
+                      {{- item.title | truncatewords: 12 -}}
+                      {%- if available_v.size < 2 and item.has_only_default_variant == false %}
+                        - {{ available_v_1.title -}}
+                      {%- endif -%}
+                    </a>
+                  </span>
+
+                  {%- if available_v.size < 2 -%}
+                    <input
+                      data-groups-pr-sl
+                      name="items[][id]"
+                      data-cpprice="{{ available_v_1.compare_at_price | default: available_v_1.price }}"
+                      data-price="{{ available_v_1.price }}"
+                      value="{{ available_v_1.id }}"
+                      type="hidden"
+                    >
+                  {%- else -%}
+                    <select
+                      data-groups-pr-sl
+                      name="items[][id]"
+                      autocomplete="off"
+                      data-cpprice="{{ available_v_1.compare_at_price | default: available_v_1.price }}"
+                      data-price="{{ available_v_1.price }}"
+                    >
+                      {%- for variant in available_v -%}
+                        <option
+                          data-img="{{ variant.image | default: featured_image | image_url: width: 1 }}"
+                          data-cpprice="{{ variant.compare_at_price | default: variant.price }}"
+                          data-price="{{ variant.price }}"
+                          data-max="{% if variant.inventory_management == blank or variant.inventory_policy == 'continue' %}9999{% else %}{{ variant.inventory_quantity | default: 9999 }}{% endif %}"
+                          value="{{ variant.id }}"
+                          {% if variant.id == current_variant_id %}
+                            selected="selected"
+                          {% endif %}
+                        >
+                          {{ variant.title | escape }}
+                        </option>
+                      {%- endfor -%}
+                    </select>
+                  {%- endif -%}
+                  <br>
+                  <input data-groups-qty-value value="1" type="number" name="items[][quantity]" class="t4s-d-none">
+                  <span class="t4s-fbt__price" data-groups-item-price>
+                    {%- if available_v_1.compare_at_price > available_v_1.price -%}
+                      <del>{{ available_v_1.compare_at_price | money_without_trailing_zeros }}</del>
+                      <ins>{{ available_v_1.price | money_without_trailing_zeros }}</ins>
+                    {%- else -%}
+                      {{- available_v_1.price | money_without_trailing_zeros -}}
+                    {%- endif -%}
+                  </span>
+                </li>
+              {%- endfor -%}
+            </ul>
+
+            <div class="t4s-col-auto t4s-col-item is--col-fbt-total-price">
+              <div class="t4s-fbt__text-total-price">
+                <span class="t4s-fbt_total-text" style="margin-right:1rem;">Total price:</span
+                ><span class="t4s-fbt_total-price WAJIHA" data-groups-total-price>
+                  {%- if compare_pr > price -%}
+                    <del>{{ compare_pr | money_without_trailing_zeros }}</del>
+                    <ins>{{ price | money_without_trailing_zeros }}</ins>
+                  {%- else -%}
+                    {{- price | money_without_trailing_zeros -}}
+                  {%- endif -%}
+                </span>
+              </div>
+
+              <button
+                {% comment %} onclick="addToCart()" {% endcomment %}
+                onclick="updateDivss()"
+                id="ProductSubmitButton-{{ section.id }}"
+                class="product-form__submit button button--full-width button--secondary"
+                style="background-color:black;"
+                type="submit"
+                name="add"
+                data-atc-form
+              >
+                <span class="t4s-btn-atc_text">add to cart</span>
+                <span class="t4s-loading__spinner" hidden>
+                  <svg
+                    width="16"
+                    height="16"
+                    hidden
+                    class="t4s-svg-spinner"
+                    focusable="false"
+                    role="presentation"
+                    viewBox="0 0 66 66"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <circle class="t4s-path" fill="none" stroke-width="6" cx="33" cy="33" r="30"></circle>
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        {%- endform -%}
+      </div>
+    </div>
+  {%- endfor -%}
+
+  <style>
+    .t4s-fbt__submit{
+      background-color: #060605 !important;
+    }
+    .t4s-fbt__item svg{
+      fill: #000 !important;
+    }
+    .t4s-fbt__price{
+     color: #000 !important;
+    }
+    .t4s-fbt__total-price{
+     color: #000 !important;
+    }
+    .t4s-fbt__list-img div {
+      opacity: 1;
+      transform: scale(1);
+      transition: opacity 0.35s ease, transform 0.35s ease;
+    }
+    .t4s-fbt__list-img div.is-hiding {
+      opacity: 0;
+      transform: scale(0.9);
+    }
+    .t4s-fbt__list-img div.is-hidden {
+      display: none;
+    }
+  </style>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const fbtSection = document.querySelector(".t4s-fbt__wrap");
+    if (!fbtSection) return;
+
+    const form = fbtSection.querySelector("form[data-ajax-cart]");
+    const button = form.querySelector("[data-atc-form]");
+    const spinner = button.querySelector(".t4s-loading__spinner");
+    const text = button.querySelector(".t4s-btn-atc_text");
+    const totalEl = fbtSection.querySelector("[data-groups-total-price]");
+    const checkboxes = fbtSection.querySelectorAll("[data-groups-pr-ck]");
+    const imageList = fbtSection.querySelectorAll(".t4s-fbt__list-img > div");
+
+    // LOCK main product
+    const mainCheckbox = checkboxes[0];
+    if (mainCheckbox) {
+      mainCheckbox.checked = true;
+      mainCheckbox.disabled = true;
+    }
+
+    // FORMAT MONEY
+    const shopCurrency = {{ shop.currency | json }};
+    function formatMoney(cents) {
+      const amount = cents / 100;
+      return new Intl.NumberFormat("en-US", { style: "currency", currency: shopCurrency }).format(amount);
+    }
+
+    // GET ITEM PRICE
+    function getItemPriceCents(item) {
+      const el = item.querySelector("[data-price]");
+      return el ? parseInt(el.getAttribute("data-price"), 10) : 0;
+    }
+
+    // IMAGE SHOW/HIDE
+    function showImage(img) {
+      if (img) img.classList.remove("is-hidden", "is-hiding");
+    }
+    function hideImage(img) {
+      if (!img || img.classList.contains("is-hiding")) return;
+      img.classList.add("is-hiding");
+      img.addEventListener("transitionend", () => img.classList.add("is-hidden"), { once: true });
+    }
+
+    // RECALCULATE TOTAL PRICE
+    function recalcTotal() {
+      let total = 0;
+      checkboxes.forEach((ck, i) => {
+        const item = ck.closest("[data-groups-pr-item]");
+        const img  = imageList[i];
+        const price = getItemPriceCents(item);
+        if (ck.checked) {
+          total += price;
+          showImage(img);
+        } else {
+          hideImage(img);
+        }
+      });
+      if (totalEl) totalEl.innerHTML = formatMoney(total);
+    }
+
+    // ADD TO CART VIA AJAX
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      // DISABLE unchecked items to prevent adding
+      form.querySelectorAll("[data-groups-pr-item]").forEach(item => {
+        const ck = item.querySelector("[data-groups-pr-ck]");
+        const disable = !ck.checked;
+        item.querySelectorAll('input, select').forEach(el => el.disabled = disable);
+      });
+
+      button.disabled = true;
+      spinner.hidden = false;
+      text.textContent = "Adding…";
+
+      try {
+        // Build items array with validation
+        const items = Array.from(form.querySelectorAll('[data-groups-pr-item]'))
+          .filter(item => {
+            const checkbox = item.querySelector('[data-groups-pr-ck]');
+            return checkbox && checkbox.checked;
+          })
+          .map(item => {
+            const idInput = item.querySelector('[name="items[][id]"]');
+            const qtyInput = item.querySelector('[name="items[][quantity]"]');
+            
+            if (!idInput || !idInput.value) {
+              console.error('Missing variant ID for item:', item);
+              return null;
+            }
+            
+            return {
+              id: idInput.value,
+              quantity: parseInt(qtyInput?.value || '1', 10)
+            };
+          })
+          .filter(item => item !== null);
+
+        if (items.length === 0) {
+          throw new Error("No items selected");
+        }
+
+        // POST items to cart
+        const res = await fetch("/cart/add.js", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ items })
+        });
+
+        const data = await res.json();
+
+        if (!res.ok) {
+          const errorMessage = data?.message || data?.description || "Failed to add to cart";
+          throw new Error(errorMessage);
+        }
+
+        // Fetch updated cart sections
+        const sectionsToRender = ['cart-drawer', 'cart-icon-bubble'];
+        const sectionsRes = await fetch(`/?sections=${sectionsToRender.join(',')}`);
+        const sections = await sectionsRes.json();
+
+        // Get cart drawer and render contents with proper structure
+        const drawer = document.querySelector('cart-drawer');
+        if (drawer && typeof drawer.renderContents === 'function') {
+          // Create parsedState object with the structure renderContents expects
+          const parsedState = {
+            id: data.items?.[0]?.product_id || Date.now(), // Use first product ID or timestamp
+            sections: sections
+          };
+          
+          drawer.renderContents(parsedState);
+        } else if (drawer && typeof drawer.open === 'function') {
+          // Fallback: just open the drawer
+          drawer.open();
+        } else {
+          window.location.href = "/cart";
+        }
+
+      } catch (err) {
+        console.error('Cart error:', err);
+        alert("Oops! " + (err.message || "Something went wrong. Please try again."));
+      } finally {
+        button.disabled = false;
+        spinner.hidden = true;
+        text.textContent = "add to cart";
+        
+        // Re-enable all inputs
+        form.querySelectorAll('input, select').forEach(el => el.disabled = false);
+        
+        // Re-lock main checkbox
+        if (mainCheckbox) {
+          mainCheckbox.checked = true;
+          mainCheckbox.disabled = true;
+        }
+      }
+    });
+
+    // CHECKBOXES EVENT
+    checkboxes.forEach(ck => ck.addEventListener("change", recalcTotal));
+    recalcTotal();
+  });
+  </script>
+{% endif %}
